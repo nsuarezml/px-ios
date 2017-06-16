@@ -30,7 +30,7 @@ open class PaymentResult: NSObject {
         self.statusDetail = payment.statusDetail
         self.paymentData = paymentData
         self._id = payment._id
-        self.payerEmail = payment.payer.email
+        self.payerEmail = paymentData.payer.email
         self.statementDescription = payment.statementDescriptor
     }
 

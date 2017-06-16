@@ -3318,6 +3318,18 @@
 	&quot;notification_url&quot;: null,
 	&quot;refunds&quot;: []
 }</string>
+	<key>POST/v1/checkout/payments?public_key=PK-PROCESSING-TEST&amp;payment_method_id=visa</key>
+	<string>{
+  &quot;message&quot;: &quot;&quot;,
+  &quot;error&quot;: &quot;processing&quot;,
+  &quot;status&quot;: 499,
+  &quot;cause&quot;: [
+    {
+      &quot;code&quot;: &quot;499&quot;,
+      &quot;description&quot;: &quot;processing&quot;
+    }
+  ]
+}</string>
 	<key>GET/v1/checkout/preferences/ONLY_CREDIT_CARD?public_key=PK_MLA</key>
 	<string>{
   &quot;additional_info&quot;: &quot;&quot;,

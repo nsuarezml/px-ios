@@ -358,7 +358,7 @@ class PendingPaymentResultViewModelTest: BaseTest {
         super.setUp()
 
         self.paymentData = MockBuilder.buildPaymentData(paymentMethodId: "visa", installments: 1, installmentRate: 0)
-        self.paymentResult = PaymentResult(status: "in_process", statusDetail: "pending_contingency", paymentData: paymentData, payerEmail: "sarsa@sarasita.com", id: "123", statementDescription: "mercadopago")
+        self.paymentResult = PaymentResult(status: "in_process", statusDetail: "pending_contingency", paymentData: paymentData, payerEmail: "sarsa@sarasita.com", id: "123", statementDescription: nil)
         self.instance = PaymentResultViewModel(paymentResult: paymentResult, checkoutPreference: CheckoutPreference(), callback: { (_) in})
     }
 

@@ -52,16 +52,13 @@ open class MercadoPagoService: NSObject {
             let jsonResponse = try MockManager.getMockResponseFor(finalUri, method: method)
 
             if jsonResponse != nil {
-                if let _ = jsonResponse!["error"]! {
-                    failure!(NSError(domain: uri, code: 400, userInfo: nil))
-                    return
-                } else {
-                    success(jsonResponse)
-                    //MercadoPagoTestContext.fulfillExpectation(BaseTest.WAIT_FOR_REQUEST_EXPECTATION_DESCRIPTION + uri)
-                }
-
+                // JSON responses should call success. Could be an API error, so each caller class checks:
+                // if dic["error"] == nil {...}. See MerchantServer or MPServicesBuilder methods as an example.
+                success(jsonResponse)
+                //MercadoPagoTestContext.fulfillExpectation(BaseTest.WAIT_FOR_REQUEST_EXPECTATION_DESCRIPTION + uri)
+            } else {
+                failure!(NSError(domain: uri, code: 400, userInfo: nil))
             }
-
         } catch {
             failure!(NSError(domain: uri, code: 400, userInfo: nil))
         }

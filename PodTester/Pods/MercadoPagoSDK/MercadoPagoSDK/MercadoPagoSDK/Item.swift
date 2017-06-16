@@ -64,7 +64,7 @@ open class Item: NSObject {
             "description": self._description,
             "currencyId": currencyId,
             "categoryId": categoryId,
-            "pictureUrl": pictureUrl,
+            "pictureUrl": pictureUrl
         ]
         return JSONHandler.jsonCoding(obj)
     }

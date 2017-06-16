@@ -62,6 +62,34 @@
             "resources": "MercadoPagoSDK/MercadoPagoSDK/es-CO.lproj",
             "preserve_paths": "MercadoPagoSDK/MercadoPagoSDK/es-CO.lproj"
           }
+        },
+        {
+          "name": "en",
+          "ios": {
+            "resources": "MercadoPagoSDK/MercadoPagoSDK/en.lproj",
+            "preserve_paths": "MercadoPagoSDK/MercadoPagoSDK/en.lproj"
+          }
+        },
+        {
+          "name": "es-PE",
+          "ios": {
+            "resources": "MercadoPagoSDK/MercadoPagoSDK/es-PE.lproj",
+            "preserve_paths": "MercadoPagoSDK/MercadoPagoSDK/es-PE.lproj"
+          }
+        },
+        {
+          "name": "es-VE",
+          "ios": {
+            "resources": "MercadoPagoSDK/MercadoPagoSDK/es-VE.lproj",
+            "preserve_paths": "MercadoPagoSDK/MercadoPagoSDK/es-VE.lproj"
+          }
+        },
+        {
+          "name": "es-UY",
+          "ios": {
+            "resources": "MercadoPagoSDK/MercadoPagoSDK/es-UY.lproj",
+            "preserve_paths": "MercadoPagoSDK/MercadoPagoSDK/es-UY.lproj"
+          }
         }
       ]
     }

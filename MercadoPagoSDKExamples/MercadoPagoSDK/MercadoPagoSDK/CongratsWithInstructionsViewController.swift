@@ -24,7 +24,7 @@ public class InstructionsViewController: MercadoPagoUIViewController, UITableVie
         "telecom": ["body": "instructionsCell", "body_heigth": 264, "footer": "intructionsWithSecondaryInfoFooterCell", "footer_height": 168],
         "serfin_bank_transfer": ["body": "simpleInstructionWithButtonViewCell", "body_heigth": 208, "footer": "intructionsWithSecondaryInfoFooterCell", "footer_height": 168],
         "banamex_bank_transfer": ["body": "instructionsWithButtonCell", "body_heigth": 276, "footer": "intructionsWithSecondaryInfoFooterCell", "footer_height": 168],
-        "bancomer_bank_transfer": ["body": "instructionsTwoLabelsAndButtonViewCell", "body_heigth": 258, "footer": "bankTransferInstructionsFooterCell", "footer_height": 64],
+        "bancomer_bank_transfer": ["body": "instructionsTwoLabelsAndButtonViewCell", "body_heigth": 258, "footer": "bankTransferInstructionsFooterCell", "footer_height": 64]
     ]
 
     var payment: Payment!

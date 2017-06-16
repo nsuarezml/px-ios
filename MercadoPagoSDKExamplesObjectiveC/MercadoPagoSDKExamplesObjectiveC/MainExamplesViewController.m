@@ -64,16 +64,17 @@
     [self setCheckoutPref_WithId];
     
     // Setear PaymentData
-    //[self setPaymentData];
+   // [self setPaymentData];
     
     // Setear PaymentResult
-    //[self setPaymentResult];
+   // [self setPaymentResult];
     
     
     ///  PASO 3: SETEAR CALLBACK
     
     //Setear PaymentDataCallback
-    //[self setPaymentDataCallback];
+    //
+    [self setPaymentDataCallback];
     
     //Setear PaymentCallback
     //[self setPaymentCallback];
@@ -93,9 +94,7 @@
     dc.currency_id = @"ARS";
     dc.concept = @"Descuento de patito";
     dc.amount = 300;
-    self.mpCheckout = [[MercadoPagoCheckout alloc] initWithPublicKey:TEST_PUBLIC_KEY checkoutPreference:self.pref paymentData:self.paymentData paymentResult:self.paymentResult discount:nil navigationController:self.navigationController];
-
-    
+    self.mpCheckout = [[MercadoPagoCheckout alloc] initWithPublicKey:TEST_PUBLIC_KEY checkoutPreference:self.pref paymentData:self.paymentData paymentResult:self.paymentResult discount:dc navigationController:self.navigationController];
     // Setear PaymentResultScreenPreference
     [self setPaymentResultScreenPreference];
     
@@ -107,11 +106,21 @@
 }
 
 -(void)setPaymentResult {
-    PaymentResult *paymentResult = [[PaymentResult alloc] initWithStatus:@"approved" statusDetail:@"" paymentData:self.paymentData payerEmail:@"sarasa" id:@"123" statementDescription:@"sarasa"];
+    PaymentResult *paymentResult = [[PaymentResult alloc] initWithStatus:@"rejected" statusDetail:@"cc_rejected_call_for_authorize" paymentData:self.paymentData payerEmail:@"sarasa" id:@"123" statementDescription:@"sarasa"];
     self.paymentResult = paymentResult;
     
 }
 
+-(void) setPaymentData {
+    PaymentData* paymentData = [[PaymentData alloc] init];
+    paymentData.paymentMethod = [[PaymentMethod alloc] init];
+    paymentData.paymentMethod._id = @"visa";
+    paymentData.paymentMethod.paymentTypeId = @"credit_card";
+    paymentData.paymentMethod.name = @"visa";
+    paymentData.payerCost = [[PayerCost alloc] initWithInstallments:1 installmentRate:0 labels:nil minAllowedAmount:100 maxAllowedAmount:1000 recommendedMessage:nil installmentAmount:100 totalAmount:100];
+    
+    self.paymentData = paymentData;
+}
 -(void)setRyCUpdate {
     [MercadoPagoCheckout setPaymentDataCallbackWithPaymentDataCallback: ^(PaymentData *paymentData) {
         NSLog(@"%@", paymentData.paymentMethod._id);
@@ -128,13 +137,15 @@
     }];
 }
 
-+(void)setPaymentDataCallback {
+-(void)setPaymentDataCallback {
     
     [MercadoPagoCheckout setPaymentDataCallbackWithPaymentDataCallback:^(PaymentData * paymentData) {
         NSLog(@"PaymentMethod: %@", paymentData.paymentMethod._id);
         NSLog(@"Token_id: %@", paymentData.token._id);
         NSLog(@"Installemtns: %ld", paymentData.payerCost.installments);
         NSLog(@"Issuer_id: %@", paymentData.issuer._id);
+        self.paymentData = paymentData;
+        [self setPaymentCallback];
         
     }];
 }
@@ -142,6 +153,9 @@
 -(void)setPaymentCallback {
     [MercadoPagoCheckout setPaymentCallbackWithPaymentCallback:^(Payment * payment) {
         NSLog(@"%@", payment._id);
+        [self setPaymentResult];
+        self.mpCheckout = [[MercadoPagoCheckout alloc] initWithPublicKey:TEST_PUBLIC_KEY checkoutPreference:self.pref paymentData:self.paymentData paymentResult:self.paymentResult discount:nil navigationController:self.navigationController];
+        [self.mpCheckout start];
     }];
 }
 

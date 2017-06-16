@@ -22,7 +22,7 @@ class AddCouponViewModel: NSObject {
         self.amount = amount
     }
 
-    func getCoupon(code: String, success: @escaping (Void) -> Void, failure: @escaping ((_ errorMessage: String) -> Void)) {
+    func getCoupon(code: String, success: @escaping () -> Void, failure: @escaping ((_ errorMessage: String) -> Void)) {
         let disco = DiscountService()
 
         disco.getDiscount(amount: self.amount, code: code, success: { (coupon) in

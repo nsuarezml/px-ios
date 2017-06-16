@@ -19,14 +19,14 @@ open class AddCouponViewController: MercadoPagoUIViewController, UITextFieldDele
 
     var callback : ((_ coupon: DiscountCoupon) -> Void)?
 
-    init(amount: Double, callback : @escaping ((_ coupon: DiscountCoupon) -> Void), callbackCancel: ((Void) -> Void)? = nil) {
+    init(amount: Double, callback : @escaping ((_ coupon: DiscountCoupon) -> Void), callbackCancel: (() -> Void)? = nil) {
         super.init(nibName: "AddCouponViewController", bundle: MercadoPago.getBundle())
         self.callback = callback
         self.callbackCancel = callbackCancel
         self.viewModel = AddCouponViewModel(amount: amount)
     }
 
-    init (viewModel: AddCouponViewModel, callback : @escaping ((_ coupon: DiscountCoupon) -> Void), callbackCancel: ((Void) -> Void)? = nil) {
+    init (viewModel: AddCouponViewModel, callback : @escaping ((_ coupon: DiscountCoupon) -> Void), callbackCancel: (() -> Void)? = nil) {
       super.init(nibName: "AddCouponViewController", bundle: MercadoPago.getBundle())
         self.callback = callback
         self.callbackCancel = callbackCancel

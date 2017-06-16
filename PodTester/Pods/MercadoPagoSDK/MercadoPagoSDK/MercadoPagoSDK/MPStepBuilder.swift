@@ -37,12 +37,12 @@ open class MPStepBuilder: NSObject {
 //    }
 
     open class func startPromosStep(promos: [Promo]? = nil,
-        _ callback: ((Void) -> (Void))? = nil) -> PromoViewController {
+        _ callback: (() -> (Void))? = nil) -> PromoViewController {
         MercadoPagoContext.initFlavor2()
         return PromoViewController(promos : promos, callback : callback)
     }
 
-    fileprivate class func verifyPaymentMethods(paymentMethods: [PaymentMethod], cardToken: CardToken, amount: Double, cardInformation: CardInformation?, callback: @escaping ((_ paymentMethod: PaymentMethod, _ token: Token?, _ issuer: Issuer?) -> Void), ccf: MercadoPagoUIViewController, callbackCancel: ((Void) -> Void)?) -> Bool {
+    fileprivate class func verifyPaymentMethods(paymentMethods: [PaymentMethod], cardToken: CardToken, amount: Double, cardInformation: CardInformation?, callback: @escaping ((_ paymentMethod: PaymentMethod, _ token: Token?, _ issuer: Issuer?) -> Void), ccf: MercadoPagoUIViewController, callbackCancel: (() -> Void)?) -> Bool {
 //        if paymentMethods.count == 2 {
 //            if paymentMethods[0].paymentTypeId == PaymentTypeId.CREDIT_CARD.rawValue || paymentMethods[1].paymentTypeId == PaymentTypeId.CREDIT_CARD.rawValue {
 //                if paymentMethods[0].paymentTypeId == PaymentTypeId.DEBIT_CARD.rawValue || paymentMethods[1].paymentTypeId == PaymentTypeId.DEBIT_CARD.rawValue{
@@ -58,7 +58,7 @@ open class MPStepBuilder: NSObject {
         return false
     }
 
-    open class func startCreditCardForm(_ paymentSettings: PaymentPreference? = nil, amount: Double, cardInformation: CardInformation? = nil, paymentMethods: [PaymentMethod]? = nil, token: Token? = nil, callback : @escaping ((_ paymentMethod: PaymentMethod, _ token: Token?, _ issuer: Issuer?) -> Void), callbackCancel: ((Void) -> Void)?) -> UINavigationController {
+    open class func startCreditCardForm(_ paymentSettings: PaymentPreference? = nil, amount: Double, cardInformation: CardInformation? = nil, paymentMethods: [PaymentMethod]? = nil, token: Token? = nil, callback : @escaping ((_ paymentMethod: PaymentMethod, _ token: Token?, _ issuer: Issuer?) -> Void), callbackCancel: (() -> Void)?) -> UINavigationController {
         MercadoPagoContext.initFlavor2()
         var navigation: UINavigationController?
 
@@ -107,7 +107,7 @@ open class MPStepBuilder: NSObject {
 
     open class func startCreditDebitForm(_ paymentMethod: [PaymentMethod], issuer: Issuer?, token: CardToken?, amount: Double, paymentPreference: PaymentPreference? = nil,
                                          callback : @escaping ((_ paymentMethod: NSObject?) -> Void),
-                                         callbackCancel: ((Void) -> Void)? = nil) -> UINavigationController {
+                                         callbackCancel: (() -> Void)? = nil) -> UINavigationController {
 
 //        MercadoPagoContext.initFlavor2()
 //        return AdditionalStepViewController(paymentMethods: paymentMethod, issuer: issuer, token: token, amount: amount, paymentPreference: paymentPreference, installment : nil, callback: callback)
@@ -116,7 +116,7 @@ open class MPStepBuilder: NSObject {
 
     open class func startPayerCostForm(_ paymentMethod: PaymentMethod, issuer: Issuer?, token: Token?, amount: Double, paymentPreference: PaymentPreference? = nil, installment: Installment? = nil,
                                        callback : @escaping ((_ payerCost: PayerCost?) -> Void),
-                                       callbackCancel: ((Void) -> Void)? = nil) -> UINavigationController {
+                                       callbackCancel: (() -> Void)? = nil) -> UINavigationController {
 
         MercadoPagoContext.initFlavor2()
 //        let call : (_ payerCost: NSObject?) -> Void = {(payerCost: NSObject?) in
@@ -128,7 +128,7 @@ open class MPStepBuilder: NSObject {
 
     public class func startPayerCostForm(cardInformation: CardInformation, amount: Double, paymentPreference: PaymentPreference? = nil, installment: Installment? = nil,
                                        callback : @escaping ((_ payerCost: NSObject?) -> Void),
-                                       callbackCancel: ((Void) -> Void)? = nil) -> UINavigationController {
+                                       callbackCancel: (() -> Void)? = nil) -> UINavigationController {
 
 //        MercadoPagoContext.initFlavor2()
 //        return AdditionalStepViewController(cardInformation: cardInformation, amount: amount, paymentPreference: paymentPreference, installment: installment, callback: callback)
@@ -162,8 +162,8 @@ open class MPStepBuilder: NSObject {
     }
 
     open class func startErrorViewController(_ error: MPSDKError,
-                                             callback: ((Void) -> Void)? = nil,
-                                             callbackCancel: ((Void) -> Void)? = nil) -> ErrorViewController {
+                                             callback: (() -> Void)? = nil,
+                                             callbackCancel: (() -> Void)? = nil) -> ErrorViewController {
         MercadoPagoContext.initFlavor2()
         return ErrorViewController(error: error, callback: callback, callbackCancel: callbackCancel)
     }
@@ -174,7 +174,7 @@ open class MPStepBuilder: NSObject {
     }
     fileprivate class func getIssuers(_ paymentMethod: PaymentMethod, cardToken: CardToken, customerCard: CardInformation? = nil, ccf: MercadoPagoUIViewController,
                                       callback : @escaping (_ paymentMethod: PaymentMethod, _ token: Token, _ issuer: Issuer?) -> Void ,
-                                      callbackCancel: ((Void) -> Void)? = nil) {
+                                      callbackCancel: (() -> Void)? = nil) {
 //        MercadoPagoContext.initFlavor2()
 //
 //        

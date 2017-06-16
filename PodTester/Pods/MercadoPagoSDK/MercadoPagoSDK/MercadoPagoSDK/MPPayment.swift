@@ -59,7 +59,7 @@ open class MPPayment: NSObject {
         var obj: [String:Any] = [
             "public_key": self.publicKey,
             "payment_method_id": self.paymentMethodId,
-            "pref_id": self.preferenceId,
+            "pref_id": self.preferenceId
             ]
 
         if self.tokenId != nil && self.tokenId?.characters.count > 0 {

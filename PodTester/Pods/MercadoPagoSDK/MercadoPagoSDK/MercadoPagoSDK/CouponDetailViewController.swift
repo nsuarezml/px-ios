@@ -16,13 +16,13 @@ open class CouponDetailViewController: MercadoPagoUIViewController {
     var couponView: DiscountDetailView!
     var viewModel: CouponDetailViewModel!
 
-    init(coupon: DiscountCoupon, callbackCancel: ((Void) -> Void)? = nil) {
+    init(coupon: DiscountCoupon, callbackCancel: (() -> Void)? = nil) {
         super.init(nibName: "CouponDetailViewController", bundle: MercadoPago.getBundle())
         self.callbackCancel = callbackCancel
         self.viewModel = CouponDetailViewModel(coupon: coupon)
     }
 
-    init(viewModel: CouponDetailViewModel, callbackCancel: ((Void) -> Void)? = nil) {
+    init(viewModel: CouponDetailViewModel, callbackCancel: (() -> Void)? = nil) {
         super.init(nibName: "CouponDetailViewController", bundle: MercadoPago.getBundle())
         self.callbackCancel = callbackCancel
         self.viewModel = viewModel

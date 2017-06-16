@@ -180,13 +180,13 @@ class MainTableViewController: UITableViewController {
     /// Load Checkout
     func loadCheckout(showRyC: Bool = true, setPaymentDataCallback: Bool = false, paymentData: PaymentData? = nil, setPaymentDataConfirmCallback: Bool = false, paymentResult: PaymentResult? = nil) {
         let pref = CheckoutPreference(_id: self.prefID)
-        let checkout = MercadoPagoCheckout.init(publicKey: self.publicKey, accessToken: self.accessToken, checkoutPreference: pref, paymentData: paymentData, navigationController: self.navigationController!, paymentResult: paymentResult)
+        let checkout = MercadoPagoCheckout.init(publicKey: self.publicKey, accessToken: self.accessToken, checkoutPreference: pref, paymentData: paymentData, paymentResult: paymentResult, navigationController: self.navigationController!)
 
         if let color = self.color {
-            let decorationPref: DecorationPreference = DecorationPreference(baseColor: color, fontName: "", fontLightName: "")
+            let decorationPref: DecorationPreference = DecorationPreference(baseColor: color)
             MercadoPagoCheckout.setDecorationPreference(decorationPref)
         } else {
-            let decorationPref: DecorationPreference = DecorationPreference(baseColor: UIColor.mpDefaultColor(), fontName: "", fontLightName: "")
+            let decorationPref: DecorationPreference = DecorationPreference(baseColor: UIColor.mpDefaultColor())
             MercadoPagoCheckout.setDecorationPreference(decorationPref)
         }
 
@@ -221,8 +221,14 @@ class MainTableViewController: UITableViewController {
     }
 
     func startWalletCongrats() {
+        self.payment = Payment()
+        self.payment.status = "rejected"
+        self.payment.statusDetail = "cc_rejected_call_for_authorize"
+        self.payment.payer = Payer(_id: "1", email: "asd@asd.com", type: nil, identification: nil, entityType: nil)
+      //  self.payment.payer.email = "as@asd.com"
+        self.payment.statementDescriptor = "description"
         let PR = PaymentResult(payment: self.payment, paymentData: self.paymentData)
-        loadCheckout(paymentResult: PR)
+        loadCheckout( paymentData: self.paymentData, paymentResult: PR)
     }
 
     /// F3

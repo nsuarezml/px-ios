@@ -10,13 +10,13 @@ import UIKit
 
 open class MercadoPagoUIViewController: UIViewController, UIGestureRecognizerDelegate, TimerDelegate {
 
-    open var callbackCancel: ((Void) -> Void)?
+    open var callbackCancel: (() -> Void)?
     public var timer: CountdownTimer?
     var navBarTextColor = UIColor.systemFontColor()
     private var navBarBackgroundColor = UIColor.primaryColor()
     var shouldDisplayBackButton = false
 
-    var hideNavBarCallback: ((Void) -> Void)?
+    var hideNavBarCallback: (() -> Void)?
 
     open var screenName: String { get { return MPTracker.kGenericScreenName } }
 
@@ -260,7 +260,7 @@ open class MercadoPagoUIViewController: UIViewController, UIGestureRecognizerDel
         return false
     }
 
-    internal func requestFailure(_ error: NSError, callback: ((Void) -> Void)? = nil, callbackCancel: ((Void) -> Void)? = nil) {
+    internal func requestFailure(_ error: NSError, callback: (() -> Void)? = nil, callbackCancel: (() -> Void)? = nil) {
         let errorVC = MPStepBuilder.startErrorViewController(MPSDKError.convertFrom(error), callback: callback, callbackCancel: callbackCancel)
         if self.navigationController != nil {
             self.navigationController?.present(errorVC, animated: true, completion: {})

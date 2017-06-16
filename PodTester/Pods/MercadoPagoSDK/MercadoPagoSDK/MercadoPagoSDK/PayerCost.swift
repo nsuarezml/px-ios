@@ -86,7 +86,7 @@ open class PayerCost: NSObject, Cellable {
             "maxAllowedAmount": self.installmentRate,
             "recommendedMessage": self.recommendedMessage,
             "installmentAmount": self.installmentAmount,
-            "totalAmount": self.totalAmount,
+            "totalAmount": self.totalAmount
             ]
         return obj
     }

@@ -16,7 +16,7 @@ open class IdentificationViewController: MercadoPagoUIViewController, UITextFiel
     @IBOutlet weak var numberTextField: HoshiTextField!
 
     var callback : (( Identification) -> Void)?
-    var errorExitCallback: ((Void) -> Void)?
+    var errorExitCallback: (() -> Void)?
     var identificationTypes: [IdentificationType]?
     var identificationType: IdentificationType?
 
@@ -36,7 +36,7 @@ open class IdentificationViewController: MercadoPagoUIViewController, UITextFiel
 
     override open var screenName: String { get { return "IDENTIFICATION_NUMBER" } }
 
-    public init(callback : @escaping (( _ identification: Identification) -> Void), errorExitCallback: ((Void) -> Void)?) {
+    public init(callback : @escaping (( _ identification: Identification) -> Void), errorExitCallback: (() -> Void)?) {
         super.init(nibName: "IdentificationViewController", bundle: MercadoPago.getBundle())
         self.callback = callback
         self.errorExitCallback = errorExitCallback

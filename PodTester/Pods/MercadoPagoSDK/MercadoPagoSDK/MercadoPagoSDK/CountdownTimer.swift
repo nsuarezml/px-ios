@@ -14,10 +14,10 @@ open class CountdownTimer: NSObject {
 
     var timer: Timer?
     var secondsLeft = 0
-    var timeoutCallback: ((Void) -> Void?)!
+    var timeoutCallback: (() -> Void?)!
     weak var delegate: TimerDelegate!
 
-    open func setup(seconds: Int, timeoutCallback : @escaping (Void) -> Void) {
+    open func setup(seconds: Int, timeoutCallback : @escaping () -> Void) {
         self.secondsLeft = seconds
         self.timeoutCallback = timeoutCallback
 

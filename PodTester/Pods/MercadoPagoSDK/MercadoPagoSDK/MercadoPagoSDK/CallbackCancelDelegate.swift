@@ -10,8 +10,8 @@ import UIKit
 
 open class CallbackCancelTableViewCell: UITableViewCell {
 
-    var callbackCancel: ((Void) -> Void)?
-    var defaultCallback: ((Void) -> Void)?
+    var callbackCancel: (() -> Void)?
+    var defaultCallback: (() -> Void)?
     var callbackStatusTracking: ((_ paymentResult: PaymentResult, _ status: MPStepBuilder.CongratsState) -> Void)?
     var callbackStatus: ((_ status: MPStepBuilder.CongratsState) -> Void)?
     var paymentResult: PaymentResult?

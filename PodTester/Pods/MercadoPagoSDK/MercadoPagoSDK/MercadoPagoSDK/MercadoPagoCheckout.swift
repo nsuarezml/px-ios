@@ -546,7 +546,7 @@ extension MercadoPagoCheckout {
         MercadoPagoCheckoutViewModel.paymentDataCallback = paymentDataCallback
     }
 
-    open static func setChangePaymentMethodCallback(changePaymentMethodCallback : @escaping (Void) -> Void) {
+    open static func setChangePaymentMethodCallback(changePaymentMethodCallback : @escaping () -> Void) {
         MercadoPagoCheckoutViewModel.changePaymentMethodCallback = changePaymentMethodCallback
     }
 
@@ -558,7 +558,7 @@ extension MercadoPagoCheckout {
         MercadoPagoCheckoutViewModel.paymentDataConfirmCallback = paymentDataConfirmCallback
     }
 
-    open static func setCallback(callback : @escaping (Void) -> Void) {
+    open static func setCallback(callback : @escaping () -> Void) {
         MercadoPagoCheckoutViewModel.callback = callback
     }
 

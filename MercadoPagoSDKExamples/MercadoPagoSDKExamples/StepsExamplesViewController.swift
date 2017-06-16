@@ -120,7 +120,7 @@ class StepsExamplesViewController: UIViewController, UITableViewDelegate, UITabl
     func startCardFlow() {
         var cf: UINavigationController!
 
-        let timeoutCallback: (Void) -> Void = {
+        let timeoutCallback: () -> Void = {
             let alert = UIAlertView(title: "Ups!",
                                     message: "Se ha acabado el tiempo. Reinicie la compra",
                                     delegate: nil,
@@ -145,7 +145,7 @@ class StepsExamplesViewController: UIViewController, UITableViewDelegate, UITabl
     func startCardForm() {
        var cf: UINavigationController!
 
-        let timeoutCallback: (Void) -> Void = {
+        let timeoutCallback: () -> Void = {
             let alert = UIAlertView(title: "Ups!",
                                     message: "Se ha acabado el tiempo. Reinicie la compra",
                                     delegate: nil,
