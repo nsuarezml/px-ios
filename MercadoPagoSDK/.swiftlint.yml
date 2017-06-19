@@ -96,10 +96,9 @@ disabled_rules:
   - conditional_returns_on_newline
   - function_parameter_count
   - object_literal
-
-
-
-
+  - empty_parameters
+  - statement_position
+  - unused_closure_parameter
 
 # disabled_rules:
 #     - trailing_newline
