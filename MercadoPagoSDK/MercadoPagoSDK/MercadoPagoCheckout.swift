@@ -684,8 +684,11 @@ open class MercadoPagoCheckout: NSObject {
         if self.viewModel.paymentData.isComplete() && !MercadoPagoCheckoutViewModel.flowPreference.isReviewAndConfirmScreenEnable() && MercadoPagoCheckoutViewModel.paymentDataCallback != nil && !self.viewModel.isCheckoutComplete() {
             MercadoPagoCheckoutViewModel.paymentDataCallback!(self.viewModel.paymentData)
             return
+
         } else if let payment = self.viewModel.payment, let paymentCallback = MercadoPagoCheckoutViewModel.paymentCallback {
             paymentCallback(payment)
+            return
+
         } else if let callback = MercadoPagoCheckoutViewModel.callback {
             callback()
             return
