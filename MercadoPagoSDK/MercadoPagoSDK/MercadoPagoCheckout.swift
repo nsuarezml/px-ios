@@ -621,38 +621,46 @@ open class MercadoPagoCheckout: NSObject {
     }
 
     func displayPaymentResult() {
-        // TODO : por que dos? esta bien? no hay view models, ver que onda
         if self.viewModel.paymentResult == nil {
             self.viewModel.paymentResult = PaymentResult(payment: self.viewModel.payment!, paymentData: self.viewModel.paymentData)
         }
 
-        let congratsViewController: MercadoPagoUIViewController
-        if PaymentTypeId.isOnlineType(paymentTypeId: self.viewModel.paymentData.paymentMethod.paymentTypeId) {
-            congratsViewController = PaymentResultViewController(paymentResult: self.viewModel.paymentResult!, checkoutPreference: self.viewModel.checkoutPreference, paymentResultScreenPreference: self.viewModel.paymentResultScreenPreference, callback: { [weak self] (state: PaymentResult.CongratsState) in
+        if viewModel.shouldDisplayPaymentResult() {
 
-            guard let strongSelf = self else {
-                return
-            }
-                if state == PaymentResult.CongratsState.call_FOR_AUTH {
-                    strongSelf.navigationController.setNavigationBarHidden(false, animated: false)
-                    strongSelf.viewModel.prepareForClone()
-                    strongSelf.collectSecurityCodeForRetry()
-                } else if state == PaymentResult.CongratsState.cancel_RETRY || state == PaymentResult.CongratsState.cancel_SELECT_OTHER {
-                    strongSelf.navigationController.setNavigationBarHidden(false, animated: false)
-                    strongSelf.viewModel.prepareForNewSelection()
-                    strongSelf.executeNextStep()
+            let congratsViewController: MercadoPagoUIViewController
+            if PaymentTypeId.isOnlineType(paymentTypeId: self.viewModel.paymentData.paymentMethod.paymentTypeId) {
+                congratsViewController = PaymentResultViewController(paymentResult: self.viewModel.paymentResult!, checkoutPreference: self.viewModel.checkoutPreference, paymentResultScreenPreference: self.viewModel.paymentResultScreenPreference, callback: { [weak self] (state: PaymentResult.CongratsState) in
 
-                } else {
+                    guard let strongSelf = self else {
+                        return
+                    }
+
+                    strongSelf.navigationController.setNavigationBarHidden(false, animated: false)
+                    if state == PaymentResult.CongratsState.call_FOR_AUTH {
+                        strongSelf.viewModel.prepareForClone()
+                        strongSelf.collectSecurityCodeForRetry()
+                    } else if state == PaymentResult.CongratsState.cancel_RETRY || state == PaymentResult.CongratsState.cancel_SELECT_OTHER {
+                        strongSelf.viewModel.prepareForNewSelection()
+                        strongSelf.executeNextStep()
+
+                    } else {
+                        strongSelf.finish()
+                    }
+
+                })
+            } else {
+                congratsViewController = InstructionsViewController(paymentResult: self.viewModel.paymentResult!, callback: { [weak self] (_ :PaymentResult.CongratsState) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    strongSelf.navigationController.setNavigationBarHidden(false, animated: false)
                     strongSelf.finish()
-                }
-
-            })
+                }, paymentResultScreenPreference: self.viewModel.paymentResultScreenPreference)
+            }
+            self.pushViewController(viewController : congratsViewController, animated: true)
         } else {
-            congratsViewController = InstructionsViewController(paymentResult: self.viewModel.paymentResult!, callback: { (_ :PaymentResult.CongratsState) in
-                self.finish()
-            }, paymentResultScreenPreference: self.viewModel.paymentResultScreenPreference)
+            finish()
         }
-        self.pushViewController(viewController : congratsViewController, animated: true)
     }
 
     func error() {

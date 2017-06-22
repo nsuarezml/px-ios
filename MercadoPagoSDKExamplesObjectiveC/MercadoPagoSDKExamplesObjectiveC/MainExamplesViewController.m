@@ -77,10 +77,10 @@
     [self setPaymentDataCallback];
     
     //Setear PaymentCallback
-    //[self setPaymentCallback];
+    [self setPaymentCallback];
     
     //Setear Void Callback
-    //[self setVoidCallback];
+    [self setVoidCallback];
     
     
 
@@ -153,15 +153,14 @@
 -(void)setPaymentCallback {
     [MercadoPagoCheckout setPaymentCallbackWithPaymentCallback:^(Payment * payment) {
         NSLog(@"%@", payment._id);
-        [self setPaymentResult];
-        self.mpCheckout = [[MercadoPagoCheckout alloc] initWithPublicKey:TEST_PUBLIC_KEY checkoutPreference:self.pref paymentData:self.paymentData paymentResult:self.paymentResult discount:nil navigationController:self.navigationController];
-        [self.mpCheckout start];
+        [self.navigationController popToRootViewControllerAnimated:NO];
     }];
 }
 
 -(void)setVoidCallback {
     [MercadoPagoCheckout setCallbackWithCallback:^{
         NSLog(@"Se termino el flujo");
+        [self.navigationController popToRootViewControllerAnimated:NO];
     }];
 }
 

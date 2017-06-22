@@ -562,6 +562,19 @@ open class MercadoPagoCheckoutViewModel: NSObject {
         self.errorCallback = errorCallback
     }
 
+    func shouldDisplayPaymentResult() -> Bool {
+        if !MercadoPagoCheckoutViewModel.flowPreference.isPaymentResultScreenEnable() {
+            return false
+        } else if !MercadoPagoCheckoutViewModel.flowPreference.isPaymentApprovedScreenEnable() && self.paymentResult?.status == PaymentStatus.APPROVED.rawValue {
+            return false
+        } else if !MercadoPagoCheckoutViewModel.flowPreference.isPaymentPendingScreenEnable() && self.paymentResult?.status == PaymentStatus.IN_PROCESS.rawValue {
+            return false
+        } else if !MercadoPagoCheckoutViewModel.flowPreference.isPaymentRejectedScreenEnable() && self.paymentResult?.status == PaymentStatus.REJECTED.rawValue {
+            return false
+        }
+        return true
+    }
+
 }
 
 extension MercadoPagoCheckoutViewModel {
