@@ -19,7 +19,7 @@ class SavedCardTokenTest: BaseTest {
 
     func testInitWithCard() {
         let savedCard = SavedCardToken(card: MockBuilder.buildCard(), securityCode: "123", securityCodeRequired: true)
-        XCTAssertEqual(savedCard.cardId, card.idCard.stringValue)
+        XCTAssertEqual(savedCard.cardId, card.idCard)
         XCTAssertEqual(savedCard.securityCode, "123")
         XCTAssertTrue(savedCard.securityCodeRequired)
     }

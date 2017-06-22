@@ -175,15 +175,18 @@ class CheckoutPreferenceTest: XCTestCase {
     }
 
     func testIsItemValid() {
-        let checkoutPreference = CheckoutPreference()
+        var checkoutPreference = CheckoutPreference()
         XCTAssertEqual(checkoutPreference.itemsValid(), "No hay items")
-        let item1 = Item(_id: "id1", title : "item 1 title", quantity: 1, unitPrice: 10)
-        var item2 = Item(_id: "id2", title : "item 2 title", quantity: 3, unitPrice: 5, currencyId: "MXN")
+
+        var item1 = Item(_id: "id1", title : "item 1 title", quantity: 0, unitPrice: 10)
+        checkoutPreference.addItems(items: [item1])
+        XCTAssertEqual(checkoutPreference.itemsValid(), "La cantidad de items no es valida")
+
+        checkoutPreference = CheckoutPreference()
+        item1 = Item(_id: "id1", title : "item 1 title", quantity: 1, unitPrice: 10)
+        let item2 = Item(_id: "id2", title : "item 2 title", quantity: 3, unitPrice: 5, currencyId: "MXN")
         checkoutPreference.addItems(items: [item1, item2])
         XCTAssertEqual(checkoutPreference.itemsValid(), "Los items tienen diferente moneda")
-        item2 = Item(_id: "id2", title : "", quantity: 3, unitPrice: 5)
-        checkoutPreference.items = [item1, item2]
-        XCTAssertEqual(checkoutPreference.itemsValid(), "El título del item esta vacio")
     }
 
     func testValidateMissingPayer() {

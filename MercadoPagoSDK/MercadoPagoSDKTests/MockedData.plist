@@ -171,15 +171,15 @@
 &quot;expiration_month&quot;: 4,
 &quot;expiration_year&quot;: 20,
 &quot;id&quot;: &quot;4&quot;,
-&quot;last_four_digits&quot;: &quot;4444&quot;,
-&quot;first_six_digits&quot;: &quot;451234&quot;,
+&quot;last_four_digits&quot;: &quot;1234&quot;,
+&quot;first_six_digits&quot;: &quot;123456&quot;,
 &quot;issuer&quot;: {
 &quot;id&quot;: &quot;id&quot;,
 &quot;name&quot;: &quot;name&quot;
 }
 ,
 &quot;security_code&quot;: {
-&quot;length&quot;: 0,
+&quot;length&quot;: 3,
 &quot;card_location&quot;: &quot;card_location&quot;,
 &quot;mode&quot;: &quot;mode&quot;
 }
@@ -193,7 +193,7 @@
 &quot;additional_info_needed&quot;: [&quot;additional_info_needed 1&quot;,&quot;additional_info_needed 2&quot;]
 }
 ,
-&quot;cardholder&quot;: {
+&quot;card_holder&quot;: {
 &quot;name&quot;: &quot;name&quot;,
 &quot;identification&quot;: {
 &quot;type&quot;: &quot;type&quot;,
@@ -219,7 +219,7 @@
 	<key>Customer</key>
 	<string>{
 &quot;id&quot;: &quot;id&quot;,
-&quot;live_mode&quot;: &quot;true&quot;,
+&quot;live_mode&quot;: true,
 &quot;email&quot;: &quot;email&quot;,
 &quot;first_name&quot;: &quot;first_name&quot;,
 &quot;last_name&quot;: &quot;last_name&quot;,
@@ -235,7 +235,7 @@
 },
 &quot;address&quot;: {
 &quot;street_name&quot;: &quot;street_name&quot;,
-&quot;street_number&quot;: &quot;street_number&quot;,
+&quot;street_number&quot;: 0,
 &quot;zip_code&quot;: &quot;zip_code&quot;
 },
 &quot;metadata&quot;:[],
@@ -247,15 +247,15 @@
 &quot;expiration_month&quot;: 4,
 &quot;expiration_year&quot;: 20,
 &quot;id&quot;: &quot;4&quot;,
-&quot;last_four_digits&quot;: &quot;4444&quot;,
-&quot;first_six_digits&quot;: &quot;451234&quot;,
+&quot;last_four_digits&quot;: &quot;1234&quot;,
+&quot;first_six_digits&quot;: &quot;123456&quot;,
 &quot;issuer&quot;: {
 &quot;id&quot;: &quot;id&quot;,
 &quot;name&quot;: &quot;name&quot;
 }
 ,
 &quot;security_code&quot;: {
-&quot;length&quot;: 0,
+&quot;length&quot;: 3,
 &quot;card_location&quot;: &quot;card_location&quot;,
 &quot;mode&quot;: &quot;mode&quot;
 }
@@ -286,7 +286,7 @@
 &quot;additional_info_needed&quot;: [&quot;additional_info_needed 1&quot;,&quot;additional_info_needed 2&quot;]
 }
 ,
-&quot;cardholder&quot;: {
+&quot;card_holder&quot;: {
 &quot;name&quot;: &quot;name&quot;,
 &quot;identification&quot;: {
 &quot;type&quot;: &quot;type&quot;,
@@ -827,8 +827,8 @@
 }</string>
 	<key>SecurityCode</key>
 	<string>{
-&quot;length&quot;: 40,
-&quot;card_location&quot;: &quot;card_location&quot;,
+&quot;length&quot;: 3,
+&quot;card_location&quot;: &quot;back&quot;,
 &quot;mode&quot;: &quot;mode&quot;
 }</string>
 	<key>Setting</key>

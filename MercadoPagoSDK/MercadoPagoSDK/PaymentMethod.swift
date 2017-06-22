@@ -128,18 +128,26 @@ open class PaymentMethod: NSObject, Cellable {
         }
         obj["additional_info_needed"] = String(additionalInfoJson.characters.dropLast())
 
-        var settingsJson: [[String:Any]] = [[:]]
-        for (index, setting) in self.settings.enumerated() {
-            settingsJson[index] = setting.toJSON()
-        }
-        obj["settings"] = settingsJson
+        if Array.isNullOrEmpty(settings) {
+            obj["settings"] = JSONHandler.null
 
-        var financialInstitutionsJson: [[String:Any]] = [[:]]
-        if self.financialInstitutions != nil {
-            for (index, financialInstitution) in self.financialInstitutions.enumerated() {
-                financialInstitutionsJson[index] = financialInstitution.toJSON()
+        } else {
+            var settingsJson: [[String:Any]] = [[:]]
+            for (index, setting) in self.settings.enumerated() {
+                settingsJson[index] = setting.toJSON()
             }
-            obj["financial_institutions"] = financialInstitutionsJson
+            obj["settings"] = settingsJson
+        }
+
+        if Array.isNullOrEmpty(financialInstitutions) {
+            obj["financial_institutions"] = JSONHandler.null
+
+        } else {
+            var financialInstitutionsJson: [[String:Any]] = [[:]]
+                for (index, financialInstitution) in self.financialInstitutions.enumerated() {
+                    financialInstitutionsJson[index] = financialInstitution.toJSON()
+                }
+                obj["financial_institutions"] = financialInstitutionsJson
         }
 
         return obj
@@ -191,7 +199,7 @@ open class PaymentMethod: NSObject, Cellable {
                 }
             }
         }
-        paymentMethod.settings = settings
+        paymentMethod.settings = settings.isEmpty ? nil : settings
 
         var additionalInfoNeeded: [String] = [String]()
         if let additionalInfoNeededArray = json["additional_info_needed"] as? NSArray {
@@ -208,6 +216,7 @@ open class PaymentMethod: NSObject, Cellable {
         }
 
         var financialInstitutions: [FinancialInstitution] = [FinancialInstitution]()
+
         if let financialInstitutionsArray = json["financial_institutions"] as? NSArray {
             for i in 0..<financialInstitutionsArray.count {
                 if let financialInstitutionsDic = financialInstitutionsArray[i] as? NSDictionary {
@@ -215,7 +224,8 @@ open class PaymentMethod: NSObject, Cellable {
                 }
             }
         }
-        paymentMethod.financialInstitutions = financialInstitutions
+
+        paymentMethod.financialInstitutions = financialInstitutions.isEmpty ? nil : financialInstitutions
 
         return paymentMethod
     }

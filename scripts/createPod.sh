@@ -11,7 +11,7 @@ VERSION=$1
 PROJECT="MercadoPagoSDK"
 PODSPEC_FILE="$PROJECT.podspec"
 ## Default branch is master
-GIT_BRANCH="fix-taxiBA"
+GIT_BRANCH="taxi-ba"
 
 if [ "$#" -eq 2 ]
   then

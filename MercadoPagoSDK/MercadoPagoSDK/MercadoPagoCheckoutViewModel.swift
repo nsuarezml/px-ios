@@ -400,7 +400,7 @@ open class MercadoPagoCheckoutViewModel: NSObject {
 
         var issuerId = ""
         if paymentData.issuer != nil {
-            issuerId = String(paymentData.issuer!._id!.intValue)
+            issuerId = paymentData.issuer!._id!
         }
         var tokenId = ""
         if paymentData.token != nil {

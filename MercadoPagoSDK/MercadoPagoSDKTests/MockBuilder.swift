@@ -138,25 +138,25 @@ open class MockBuilder: NSObject {
     }
 
     class func buildIdentification() -> Identification {
-        let identification = Identification()
-        identification.type = "type"
-        identification.number = "number"
+        let identification = Identification(type: "type", number: "number")
         return identification
     }
 
     class func buildCard(paymentMethodId: String? = "paymentMethodId") -> Card {
         let card = Card()
-        card.idCard = 1234567890
+        card.idCard = "4"
         card.firstSixDigits = "123456"
         card.lastFourDigits = "1234"
-        card.expirationMonth = 11
-        card.expirationYear = 22
+        card.expirationMonth = 4
+        card.expirationYear = 20
         card.cardHolder = buildCardholder()
-        card.securityCode = SecurityCode()
-        card.securityCode?.cardLocation = "cardLocation"
-        card.securityCode?.mode = "mandatory"
+        card.securityCode = buildSecurityCode()
+        card.securityCode?.cardLocation = "card_location"
+        card.securityCode?.mode = "mode"
         card.securityCode?.length = 3
         card.paymentMethod = MockBuilder.buildPaymentMethod(paymentMethodId!)
+        card.customerId = "customer_id"
+        card.issuer = buildIssuer()
         return card
     }
 
@@ -297,7 +297,8 @@ open class MockBuilder: NSObject {
 
     class func buildIssuer() -> Issuer {
         let issuer = Issuer()
-        issuer._id = 1234
+        issuer._id = "id"
+        issuer.name = "name"
         return issuer
     }
 
@@ -367,6 +368,27 @@ open class MockBuilder: NSObject {
         discount.amount_off = "20"
         discount.amount = 5
         return discount
+    }
+
+    class func buildAddress() -> Address {
+        let address = Address(streetName: "street_name", streetNumber: 0, zipCode: "zip_code")
+        return address
+    }
+
+    class func buildCustomer() -> Customer {
+        let customer = Customer()
+        customer.cards = [MockBuilder.buildCard(paymentMethodId: "visa")]
+        customer.defaultCard = "0"
+        customer._description = "description"
+        customer.email = "email"
+        customer.firstName = "first_name"
+        customer.lastName = "last_name"
+        customer._id = "id"
+        customer.identification = buildIdentification()
+        customer.liveMode = true
+        customer.address = buildAddress()
+
+        return customer
     }
 
 }

@@ -100,7 +100,7 @@ open class Token: NSObject, CardInformationForm {
         let luhn : Any =  self.luhnValidation == nil ? JSONHandler.null : self.luhnValidation!
         let lastFour : Any = self.lastFourDigits == nil ? JSONHandler.null : self.lastFourDigits
         let firstSix : Any =  self.firstSixDigit == nil ? JSONHandler.null : self.firstSixDigit
-        let cardHolderToJsonString: Any = self.cardHolder?.toJSONString() ?? JSONHandler.null
+        let cardHolderToJsonString: Any = self.cardHolder?.toJSON() ?? JSONHandler.null
 
         let obj: [String:Any] = [
             "id": _id,

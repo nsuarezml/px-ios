@@ -136,11 +136,19 @@ class Utils {
     }
 
     class func getLightFont(size: CGFloat) -> UIFont {
-        return UIFont(name: MercadoPagoCheckoutViewModel.decorationPreference.getLightFontName(), size: size) ?? UIFont.systemFont(ofSize: size, weight: UIFontWeightThin)
+        if #available(iOS 8.2, *) {
+            return UIFont(name: MercadoPagoCheckoutViewModel.decorationPreference.getLightFontName(), size: size) ?? UIFont.systemFont(ofSize: size, weight: UIFontWeightThin)
+        } else {
+            return UIFont(name: MercadoPagoCheckoutViewModel.decorationPreference.getLightFontName(), size: size) ?? UIFont.systemFont(ofSize: size)
+        }
     }
 
     class func getIdentificationFont(size: CGFloat) -> UIFont {
-        return UIFont(name: "KohinoorBangla-Regular", size: size) ?? UIFont.systemFont(ofSize: size, weight: UIFontWeightThin)
+        if #available(iOS 8.2, *) {
+            return UIFont(name: "KohinoorBangla-Regular", size: size) ?? UIFont.systemFont(ofSize: size, weight: UIFontWeightThin)
+        } else {
+            return UIFont(name: "KohinoorBangla-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
+        }
     }
 
     class func append(firstJSON: String, secondJSON: String) -> String {

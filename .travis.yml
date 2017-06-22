@@ -15,7 +15,7 @@ branches:
     - master
     - development
     - betaVersion
-    - working-betaVersion
+    - taxi-ba
 
 install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet

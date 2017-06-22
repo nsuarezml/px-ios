@@ -5,8 +5,8 @@
 	<key>flow_sdk_type_hybrid</key>
 	<false/>
 	<key>prod_mp_api_environment</key>
-	<false/>
+	<true/>
 	<key>sdk_version</key>
-	<string>3.0.0-BETA-32</string>
+	<string>3.0.0-BETA-38</string>
 </dict>
 </plist>
