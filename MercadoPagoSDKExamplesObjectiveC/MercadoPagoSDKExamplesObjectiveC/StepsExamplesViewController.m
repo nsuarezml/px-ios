@@ -172,7 +172,7 @@ CheckoutPreference *pref;
 //    MerchantPayment *merchantPayment = [[MerchantPayment alloc] initWithItems:[NSArray arrayWithObject:item] installments:installmentsSelected cardIssuer:selectedIssuer tokenId:[currentToken _id] paymentMethod:paymentMethod campaignId:0];
 //    
     
-//    [MerchantServer createPayment:merchantPayment success:^(Payment *payment) {
+//    [CustomServer createPayment:merchantPayment success:^(Payment *payment) {
 //        NSLog(@"Payment created with id: %ld", payment._id);
 //    } failure:^(NSError *error) {
 //        NSLog(@"%@", error.description);

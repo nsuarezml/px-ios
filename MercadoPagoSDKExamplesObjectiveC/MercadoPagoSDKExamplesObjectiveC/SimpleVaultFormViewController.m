@@ -79,7 +79,7 @@ UILabel *identificationType;
 //            [MPServicesBuilder createNewCardToken:cardToken success:^(Token *token) {
 ////                Item *item = [[Item alloc] initWith_id:@"1" title:@"item title" quantity:1 unitPrice:amount description:nil];
 ////                MerchantPayment *merchantPayment = [[MerchantPayment alloc] initWithItems:[NSArray arrayWithObject:item] installments:installments cardIssuer:nil tokenId:token._id paymentMethod:paymentMethod campaignId:0];
-//////                [MerchantServer createPayment:merchantPayment success:^(Payment *payment) {
+//////                [CustomServer createPayment:merchantPayment success:^(Payment *payment) {
 ////
 ////                    UIViewController *congrats = [MPStepBuilder startPaymentCongratsStep:payment paymentMethod:paymentMethod callback:^(Payment * _Nonnull payment, enum CongratsState status) {
 ////                         [self.navigationController popToRootViewControllerAnimated:YES];
@@ -100,7 +100,7 @@ UILabel *identificationType;
 //            [MPServicesBuilder createToken:savedCardtoken success:^(Token *token) {
 ////                Item *item = [[Item alloc] initWith_id:@"1" title:@"item title" quantity:1 unitPrice:amount description:nil ];
 ////                MerchantPayment *merchantPayment = [[MerchantPayment alloc] initWithItems:[NSArray arrayWithObject:item] installments:installments cardIssuer:nil tokenId:token._id paymentMethod:customerCard.paymentMethod campaignId:0];
-//////                [MerchantServer createPayment:merchantPayment success:^(Payment *payment) {
+//////                [CustomServer createPayment:merchantPayment success:^(Payment *payment) {
 ////
 ////                    UIViewController *congrats = [MPStepBuilder startPaymentCongratsStep:payment paymentMethod:customerCard.paymentMethod callback:^(Payment *payment, enum CongratsState congratsStatus) {
 ////                        [self.navigationController popToRootViewControllerAnimated:YES];

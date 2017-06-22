@@ -212,40 +212,6 @@ open class MPServicesBuilder: NSObject {
 
     }
 
-    /*open class func createPayment(_ merchantBaseUrl : String, merchantPaymentUri : String, payment : MPPayment,
-     success: @escaping (_ payment: Payment) -> Void,
-     failure: ((_ error: NSError) -> Void)?) {
-     
-     MercadoPagoContext.initFlavor1()
-     MPTracker.trackEvent(MercadoPagoContext.sharedInstance, action: "CREATE_PAYMENT", result: nil)
-     let service : MerchantService = MerchantService()
-     service.createPayment(payment: payment, success: {(jsonResult: AnyObject?) -> Void in
-     var payment : Payment? = nil
-     
-     
-     
-     if let paymentDic = jsonResult as? NSDictionary {
-     if paymentDic["error"] != nil {
-     if failure != nil {
-     failure!(NSError(domain: "mercadopago.sdk.merchantServer.createPayment", code: MercadoPago.ERROR_API_CODE, userInfo: paymentDic as! [AnyHashable: AnyObject]))
-     }
-     } else {
-     if paymentDic.allKeys.count > 0 {
-     payment = Payment.fromJSON(paymentDic)
-     success(payment!)
-     } else {
-     failure!(NSError(domain: "mercadopago.sdk.merchantServer.createPayment", code: MercadoPago.ERROR_PAYMENT, userInfo: ["message": "PAYMENT_ERROR".localized]))
-     }
-     
-     }
-     } else {
-     if failure != nil {
-     failure!(NSError(domain: "mercadopago.sdk.merchantServer.createPayment", code: MercadoPago.ERROR_UNKNOWN_CODE, userInfo: ["message": "Response cannot be decoded"]))
-     }
-     }
-     }, failure: failure)
-     }*/
-
     open class func searchPaymentMethods(_ amount: Double, defaultPaymenMethodId: String?, excludedPaymentTypeIds: Set<String>?, excludedPaymentMethodIds: Set<String>?, baseURL: String = ServicePreference.MP_API_BASE_URL, success: @escaping (PaymentMethodSearch) -> Void, failure: ((_ error: NSError) -> Void)?) {
         MercadoPagoContext.initFlavor1()
         MPTracker.trackEvent(MercadoPagoContext.sharedInstance, action: "GET_PAYMENT_METHOD_SEARCH", result: nil)

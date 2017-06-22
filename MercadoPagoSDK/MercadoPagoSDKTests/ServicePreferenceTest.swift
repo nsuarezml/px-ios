@@ -40,17 +40,17 @@ class ServicePreferenceTest: BaseTest {
         servicePreference.setAdditionalPaymentInfo(["sarasa": 4])
         XCTAssertEqual(servicePreference.getPaymentURL(), ServicePreference.MP_API_BASE_URL)
         XCTAssertEqual(servicePreference.getPaymentURI(), ServicePreference.MP_PAYMENTS_URI + "?api_version=" + ServicePreference.API_VERSION)
-        XCTAssertEqual(servicePreference.getPaymentAddionalInfo(), servicePreference.paymentAdditionalInfo?.toJsonString())
+        XCTAssertEqual(servicePreference.getPaymentAddionalInfo(), servicePreference.paymentAdditionalInfo)
 
         servicePreference.setCreatePayment(baseURL: "sarasa", URI: "sa", additionalInfo: ["sa": "sa"])
         XCTAssertEqual(servicePreference.getPaymentURL(), "sarasa")
         XCTAssertEqual(servicePreference.getPaymentURI(), "sa")
-        XCTAssertEqual(servicePreference.getPaymentAddionalInfo(), servicePreference.paymentAdditionalInfo?.toJsonString())
+        XCTAssertEqual(servicePreference.getPaymentAddionalInfo(), servicePreference.paymentAdditionalInfo)
 
         servicePreference.setCreatePayment(baseURL: "sarasa", URI: "sa")
         XCTAssertEqual(servicePreference.getPaymentURL(), "sarasa")
         XCTAssertEqual(servicePreference.getPaymentURI(), "sa")
-        XCTAssertEqual(servicePreference.getPaymentAddionalInfo(), "")
+        XCTAssertEqual(servicePreference.getPaymentAddionalInfo(), nil)
 
         servicePreference.setCreatePayment(baseURL: "", URI: "sa")
         XCTAssertFalse(servicePreference.isCreatePaymentSet())

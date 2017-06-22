@@ -199,7 +199,7 @@ open class CardsAdminViewController: MercadoPagoUIScrollViewController, UICollec
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.didScrollInTable(scrollView)
     }
-
+  
     fileprivate func hideNavBarCallbackDisplayTitle() -> (() -> (Void)) {
         return {
             if self.titleSectionReference != nil {

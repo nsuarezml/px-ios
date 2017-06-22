@@ -21,7 +21,7 @@ Card *selectedCard;
     [super viewDidLoad];
     
 //    [MercadoPagoContext setCustomerURI:MERCHANT_MOCK_GET_CUSTOMER_URI];
-//    [MerchantServer getCustomer:^(Customer * customer) {
+//    [CustomServer getCustomer:^(Customer * customer) {
 //        self.cards = customer.cards;
 //        [self.tableView reloadData];
 //    } failure:^(NSError * error) {
