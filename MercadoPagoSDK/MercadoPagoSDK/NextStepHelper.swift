@@ -213,7 +213,7 @@ extension MercadoPagoCheckoutViewModel {
     }
 
     func setPaymentOptionSelected() {
-        if self.paymentData.hasCustomerPaymentOption() {
+        if self.paymentData.hasCustomerPaymentOption() && self.customPaymentOptions != nil {
             // Account_money o customer cards
             let customOption = Utils.findCardInformationIn(customOptions: self.customPaymentOptions!, paymentData: self.paymentData)
             self.paymentOptionSelected = customOption as? PaymentMethodOption

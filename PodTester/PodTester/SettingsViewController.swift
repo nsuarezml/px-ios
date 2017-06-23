@@ -47,6 +47,7 @@ open class SettingsViewController: UIViewController, UITableViewDataSource, UITa
         NewView.accessToken = ""
         NewView.prefID = self.viewModel.selectedSite.getPrefID()
         NewView.color = self.viewModel.selectedColor
+        NewView.configJSON = self.viewModel.configurationJSON
         NewView.title = "Options"
 
         self.navigationController?.pushViewController(NewView, animated: true)

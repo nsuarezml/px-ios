@@ -47,7 +47,9 @@ class MainTableViewController: UITableViewController {
     open var publicKey: String!
     open var accessToken: String!
     open var prefID: String!
+    open var customCheckoutPref: CheckoutPreference!
     open var color: UIColor!
+    open var configJSON: String!
 
     let prefIdNoExlusions = "150216849-a0d75d14-af2e-4f03-bba4-d2f0ec75e301"
 
@@ -86,7 +88,7 @@ class MainTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        issuer._id = 303
+        issuer._id = "303"
         paymentMethod._id = "visa"
         installmentsSelected?.installments = 2
 
@@ -179,8 +181,8 @@ class MainTableViewController: UITableViewController {
 
     /// Load Checkout
     func loadCheckout(showRyC: Bool = true, setPaymentDataCallback: Bool = false, paymentData: PaymentData? = nil, setPaymentDataConfirmCallback: Bool = false, paymentResult: PaymentResult? = nil) {
-        let pref = CheckoutPreference(_id: self.prefID)
-        let checkout = MercadoPagoCheckout.init(publicKey: self.publicKey, accessToken: self.accessToken, checkoutPreference: pref, paymentData: paymentData, paymentResult: paymentResult, navigationController: self.navigationController!)
+        let pref = self.customCheckoutPref != nil ? self.customCheckoutPref :CheckoutPreference(_id: self.prefID)
+        let checkout = MercadoPagoCheckout.init(publicKey: self.publicKey, accessToken: self.accessToken, checkoutPreference: pref!, paymentData: paymentData, paymentResult: paymentResult, navigationController: self.navigationController!)
 
         if let color = self.color {
             let decorationPref: DecorationPreference = DecorationPreference(baseColor: color)
@@ -233,7 +235,66 @@ class MainTableViewController: UITableViewController {
 
     /// F3
     func startCheckout() {
-        loadCheckout()
+        if !String.isNullOrEmpty(self.configJSON) {
+            
+            do {
+                let JSON = try convertStringToDictionary(self.configJSON)
+                useJSONConfig(json: JSON!)
+            } catch {
+                print("Error")
+            }
+            loadCheckout()
+        } else {
+            loadCheckout()
+        }
+    }
+    
+    public enum startForOptions : String {
+        case payment = "payment"
+        case paymentData = "payment_data"
+    }
+    
+    func useJSONConfig(json: [String:AnyObject]) {
+        
+        let startFor: String = json["start_for"] != nil ?  json["start_for"] as! String : ""
+        let prefID : String = json["pref_id"] != nil ?  json["pref_id"] as! String : ""
+        let PK : String = json["public_key"] != nil ?  json["public_key"] as! String : ""
+        let site : String = json["site_id"] != nil ?  json["site_id"] as! String : ""
+        let payerEmail : String = json["payer_email"] != nil ?  json["payer_email"] as! String : ""
+        let items : [NSDictionary] = json["items"] != nil ?  json["items"] as! [NSDictionary] : []
+
+        switch startFor {
+        case startForOptions.payment.rawValue:
+            self.publicKey = PK
+            self.prefID = prefID
+        case startForOptions.paymentData.rawValue:
+            self.publicKey = PK
+            MercadoPagoContext.setSiteID(site)
+            let pref = createCheckoutPreference(payerEmail: payerEmail, site: site, itemsDictArray: items)
+            self.customCheckoutPref = pref
+        default: break
+        }
+    }
+    
+    func createCheckoutPreference(payerEmail: String, site: String, itemsDictArray: [NSDictionary]) -> CheckoutPreference {
+        let payer = Payer(email: payerEmail)
+        var items : [Item] = []
+        
+        for itemDict in itemsDictArray {
+            let item = Item.fromJSON(itemDict)
+            items.append(item)
+        }
+        
+        return CheckoutPreference(items: items, payer: payer)
+        }
+    
+    
+    func convertStringToDictionary(_ text: String) throws -> [String:AnyObject]? {
+        if let data = text.data(using: String.Encoding.utf8) {
+            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:AnyObject]
+            return json
+        }
+        return nil
     }
 
     /// F2

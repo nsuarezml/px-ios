@@ -90,6 +90,19 @@ open class MercadoPagoCheckoutViewModel: NSObject {
     internal var initWithPaymentData = false
     var directDiscountSearched = false
 
+    static internal func clearEnviroment() {
+        MercadoPagoCheckoutViewModel.servicePreference = ServicePreference()
+        MercadoPagoCheckoutViewModel.decorationPreference = DecorationPreference()
+        MercadoPagoCheckoutViewModel.flowPreference = FlowPreference()
+
+        MercadoPagoCheckoutViewModel.paymentDataCallback = nil
+        MercadoPagoCheckoutViewModel.paymentDataConfirmCallback = nil
+        MercadoPagoCheckoutViewModel.paymentCallback = nil
+        MercadoPagoCheckoutViewModel.callback = nil
+        MercadoPagoCheckoutViewModel.changePaymentMethodCallback = nil
+
+    }
+
     init(checkoutPreference: CheckoutPreference, paymentData: PaymentData?, paymentResult: PaymentResult?, discount: DiscountCoupon?) {
         self.checkoutPreference = checkoutPreference
         if let pm = paymentData {

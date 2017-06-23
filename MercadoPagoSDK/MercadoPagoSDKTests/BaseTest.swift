@@ -23,6 +23,7 @@ class BaseTest: XCTestCase {
 
     override func tearDown() {
         super.tearDown()
+        MercadoPagoCheckoutViewModel.clearEnviroment()
     }
 
     func simulateViewDidLoadFor(viewController: UIViewController) -> UIViewController {

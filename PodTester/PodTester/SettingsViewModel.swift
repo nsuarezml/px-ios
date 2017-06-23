@@ -14,10 +14,13 @@ open class SettingsViewModel: NSObject {
 
     open var sites: [Site] = []
     open let environments: [String] = [Environments.sandbox.rawValue, Environments.production.rawValue]
+    open let apiVersions: [String] = [ApiEnvironment.V1.rawValue, ApiEnvironment.Beta.rawValue]
 
     var selectedSite: Site!
     var selectedEnvironment: Environments = Environments.sandbox
+    var selectedApiEnvironment: ApiEnvironment = ApiEnvironment.V1
     var selectedColor: UIColor!
+    var configurationJSON: String!
     var includeOnlinePMS: Bool = true
     var includeOfflinePMS: Bool = true
 
@@ -27,7 +30,7 @@ open class SettingsViewModel: NSObject {
 
     //--TableView Build Logic
     open func getNumberOfRowsInSection(section: Int) -> Int {
-        return 5
+        return 7
     }
 
     open func getCellFor(indexPath: IndexPath) -> UITableViewCell {
@@ -36,12 +39,16 @@ open class SettingsViewModel: NSObject {
             return getSelectorCellFor(selector: Selectors.site)
         case Cells.environmentSelector.rawValue:
             return getSelectorCellFor(selector: Selectors.environment)
+        case Cells.apiEnvironment.rawValue:
+            return getSelectorCellFor(selector: Selectors.apiEnvironment)
         case Cells.onlinePMs.rawValue:
             return getSwitchCellFor(forSwitch: Switches.OnlinePaymentMethods)
         case Cells.offlinePMS.rawValue:
             return getSwitchCellFor(forSwitch: Switches.OfflinePaymentMethods)
         case Cells.colorPicker.rawValue:
             return getColorPickerCell()
+        case Cells.jsonInput.rawValue:
+            return getJsonInputCell()
         default:
             let defaultCell = UITableViewCell()
             return defaultCell
@@ -80,10 +87,16 @@ open class SettingsViewModel: NSObject {
             setEnvironment(sender: environmentSelector)
             environmentSelector.addTarget(self, action: #selector(setEnvironment(sender: )), for: .valueChanged)
             cell.addSubview(environmentSelector)
+        case Selectors.apiEnvironment:
+            let ApiVersionSelector = UISegmentedControl(items: self.apiVersions)
+            ApiVersionSelector.selectedSegmentIndex = 0
+            ApiVersionSelector.tintColor = UIColor.black
+            ApiVersionSelector.frame = selectorFrame
+            setApiVersion(sender: ApiVersionSelector)
+            ApiVersionSelector.addTarget(self, action: #selector(setApiVersion(sender: )), for: .valueChanged)
+            cell.addSubview(ApiVersionSelector)
         }
-
         return cell
-
     }
     //Selector Cell Creator--
 
@@ -91,7 +104,6 @@ open class SettingsViewModel: NSObject {
     func setSite(sender: UISegmentedControl) {
         let siteID = self.sites[sender.selectedSegmentIndex].ID
         self.selectedSite = getSitefromID(siteID: siteID)
-//        self.selectedColor = selectedSite.getColor()
     }
     //Site Selector Logic--
 
@@ -109,6 +121,21 @@ open class SettingsViewModel: NSObject {
         }
     }
     //Environment Selector Logic--
+    
+    //--Api Version Selector Logic
+    func setApiVersion(sender: UISegmentedControl) {
+        let title = sender.titleForSegment(at: sender.selectedSegmentIndex)!
+        
+        switch title {
+        case ApiEnvironment.Beta.rawValue:
+            self.selectedApiEnvironment = ApiEnvironment.Beta
+        case ApiEnvironment.V1.rawValue:
+            self.selectedApiEnvironment = ApiEnvironment.V1
+        default:
+            self.selectedApiEnvironment = ApiEnvironment.V1
+        }
+    }
+    //Api Version Selector Logic--
 
     //--Payment Methods Exclusion Logic
     func getSwitchCellFor(forSwitch: Switches) -> UITableViewCell {
@@ -200,12 +227,51 @@ open class SettingsViewModel: NSObject {
         }
     }
     //Color Picker Logic--
-
+    
+    //--Json Input Logic
+    func getJsonInputCell() -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.frame.size.height = 40
+        cell.frame.size.width = Mainframe.width
+        cell.selectionStyle = .none
+        cell.textLabel?.textColor = UIColor.black
+        cell.textLabel?.text = "Config. JSON"
+        
+        let cellFrame = cell.bounds
+        
+        let cellTextfield = UITextField()
+        cellTextfield.frame = CGRect(x: cellFrame.midX + marginSpace/2, y: cellFrame.minY + marginSpace/2, width: cellFrame.width/2 - marginSpace, height: cellFrame.height - marginSpace)
+        cellTextfield.layer.borderWidth = 1
+        cellTextfield.layer.cornerRadius = 5
+        cellTextfield.placeholder = "{JSON}"
+        cellTextfield.autocapitalizationType = .allCharacters
+        cellTextfield.addTarget(self, action: #selector(setConfigurationJSON(sender: )), for: UIControlEvents.allEditingEvents)
+        cell.addSubview(cellTextfield)
+        
+        return cell
+    }
+    
+    func setConfigurationJSON(sender: UITextField) {
+        if let text = sender.text, text.isNotEmpty {
+            configurationJSON = sender.text
+        } else {
+            configurationJSON = nil
+        }
+    }
+    //Json Input Logic--
+    
     //Updates build settings bearing in mind the customization factors
     open func update() {
         MercadoPagoContext.setSiteID(selectedSite.ID)
         selectedSite.pk = getPublicKey(site: selectedSite.ID)
         selectedSite.pref_ID = getPrefID(site: selectedSite.ID)
+        
+//        if selectedApiEnvironment == ApiEnvironment.Beta {
+//            ServicePreference.MP_SELECTED_ENV = ServicePreference.MP_TEST_ENV
+//        } else {
+//            ServicePreference.MP_SELECTED_ENV = ServicePreference.MP_PROD_ENV
+//        }
+        
     }
 
     //Return NSDictionary from requested Plist
@@ -348,19 +414,27 @@ open class SettingsViewModel: NSObject {
     public enum Cells: Int {
         case siteSelector = 0
         case environmentSelector = 1
-        case onlinePMs = 2
-        case offlinePMS = 3
-        case colorPicker = 4
+        case apiEnvironment = 2
+        case onlinePMs = 3
+        case offlinePMS = 4
+        case colorPicker = 5
+        case jsonInput = 6
     }
 
     public enum Environments: String {
         case sandbox = "Sandbox"
         case production = "Production"
     }
+    
+    public enum ApiEnvironment: String {
+        case Beta = "Beta"
+        case V1 = "V1"
+    }
 
     public enum Selectors: String {
         case site = "site"
         case environment = "environment"
+        case apiEnvironment = "api_environment"
     }
 
     public enum Switches: String {

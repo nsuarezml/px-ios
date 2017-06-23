@@ -795,6 +795,7 @@ class PaymentVaultViewModelTest: BaseTest {
 
     func testGetCustomerPaymentMethodsToDisplayCount() {
 
+
         //No customerCards loaded
         var customerCardsToDisplay = instance!.getCustomerPaymentMethodsToDisplayCount()
         XCTAssertEqual(0, customerCardsToDisplay)
@@ -900,6 +901,7 @@ class PaymentVaultViewModelTest: BaseTest {
     }
 
     func testIsCustomerPaymentMethodOptionSelected() {
+
         // No customer cards available
         var wasCustomerCardSelected = instance!.isCustomerPaymentMethodOptionSelected(2)
         XCTAssertFalse(wasCustomerCardSelected)

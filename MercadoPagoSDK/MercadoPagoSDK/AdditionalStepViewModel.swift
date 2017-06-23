@@ -203,6 +203,7 @@ class PayerCostAdditionalStepViewModel: AdditionalStepViewModel {
 
     init(amount: Double, token: CardInformationForm?, paymentMethod: PaymentMethod, dataSource: [Cellable], discount: DiscountCoupon? = nil, email: String? = nil) {
         super.init(screenName: "PAYER_COST", screenTitle: "¿En cuántas cuotas?".localized, cardSectionVisible: true, cardSectionView: CardFrontView(frame: self.cardViewRect), totalRowVisible: true, showBankInsterestWarning: true, amount: amount, token: token, paymentMethods: [paymentMethod], dataSource: dataSource, discount: discount, email: email)
+
         self.defaultRowCellHeight = 60
     }
     override func showDiscountSection() -> Bool {

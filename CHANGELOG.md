@@ -1,24 +1,150 @@
 # Change Log
 
-## [3.0.0-BETA-30](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-30) (2017-05-24)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-26...3.0.0-BETA-30)
+## [Unreleased](https://github.com/mercadopago/px-ios/tree/HEAD)
 
-**Implemented enhancements:**
-
-- Acomodar archivos y cambiar nombres a los viewControllers \(sacar revamp\) [\#955](https://github.com/mercadopago/px-ios/issues/955)
-
-**Fixed bugs:**
-
-- El pod no contiente todos los archivos de lenguaje [\#973](https://github.com/mercadopago/px-ios/issues/973)
-- Los objetos toJSON del plugin no estan alineados con android [\#947](https://github.com/mercadopago/px-ios/issues/947)
-- Queda colgado el loading al ingresar al flujo de CHO [\#944](https://github.com/mercadopago/px-ios/issues/944)
-- Fix toJson [\#948](https://github.com/mercadopago/px-ios/pull/948) ([edentorres](https://github.com/edentorres))
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-38...HEAD)
 
 **Closed issues:**
 
+- Organizar y borrar imagenes [\#1030](https://github.com/mercadopago/px-ios/issues/1030)
+- Desaparece el navbar cuando se inicia el CHO [\#1026](https://github.com/mercadopago/px-ios/issues/1026)
+- Testear el toJSON ida y vuelta de Customer y Cards [\#1022](https://github.com/mercadopago/px-ios/issues/1022)
+- No se propaga el cupon a la pantalla de cuotas cuando lo cargo en grupos [\#1017](https://github.com/mercadopago/px-ios/issues/1017)
+- Testear nuevos inits de MercadoPagoCheckout [\#1014](https://github.com/mercadopago/px-ios/issues/1014)
+- Añadir test de CardManager [\#1009](https://github.com/mercadopago/px-ios/issues/1009)
+- Modificar CardAdminViewController [\#1008](https://github.com/mercadopago/px-ios/issues/1008)
+- Cambiar wording en revisa y confirma en portugues [\#993](https://github.com/mercadopago/px-ios/issues/993)
+- Añadir showBankDeals al flowPreference [\#978](https://github.com/mercadopago/px-ios/issues/978)
+- No existen los textos "Si" - "No" dentro de los Localizables [\#974](https://github.com/mercadopago/px-ios/issues/974)
+- No anda la deserialización de JSONS Customer [\#970](https://github.com/mercadopago/px-ios/issues/970)
+- Administrador de tarjetas no anda cuando entras con cards [\#969](https://github.com/mercadopago/px-ios/issues/969)
+- Agregar pre commit hook que corra test y swiftlint [\#966](https://github.com/mercadopago/px-ios/issues/966)
+- El boton de continuar en PaymentResult no llama al callback cancel sino al paymentDataCallback [\#963](https://github.com/mercadopago/px-ios/issues/963)
+- Celda de account Money no se achica al deshabilitarle el boton [\#957](https://github.com/mercadopago/px-ios/issues/957)
+- Refactor de la CustomCell de PaymentResult [\#939](https://github.com/mercadopago/px-ios/issues/939)
+- El Tabbar heredado de la App del integrador debería ocultarse [\#677](https://github.com/mercadopago/px-ios/issues/677)
+- Implentar la flowPreference en el flujo [\#634](https://github.com/mercadopago/px-ios/issues/634)
+- Setear binary\_mode en ServicePreference en v3 [\#595](https://github.com/mercadopago/px-ios/issues/595)
+- Sacar imagenes sin usar del proyecto [\#537](https://github.com/mercadopago/px-ios/issues/537)
+- Actualización de DevSite [\#425](https://github.com/mercadopago/px-ios/issues/425)
+- Cambio automático de labels al completar campos [\#247](https://github.com/mercadopago/px-ios/issues/247)
+
+**Merged pull requests:**
+
+- Change pod iOS version to 8.0 [\#1038](https://github.com/mercadopago/px-ios/pull/1038) ([edentorres](https://github.com/edentorres))
+- Show navigation bar when exiting payment result [\#1037](https://github.com/mercadopago/px-ios/pull/1037) ([edentorres](https://github.com/edentorres))
+- Align payment callback [\#1036](https://github.com/mercadopago/px-ios/pull/1036) ([edentorres](https://github.com/edentorres))
+- Add support to disable payment result in FlowPreference [\#1035](https://github.com/mercadopago/px-ios/pull/1035) ([edentorres](https://github.com/edentorres))
+- Fixes para Taxi-ba [\#1031](https://github.com/mercadopago/px-ios/pull/1031) ([edentorres](https://github.com/edentorres))
+- Disable new swiftlint rules [\#1024](https://github.com/mercadopago/px-ios/pull/1024) ([edentorres](https://github.com/edentorres))
+
+## [3.0.0-BETA-38](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-38) (2017-06-16)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-37...3.0.0-BETA-38)
+
+**Merged pull requests:**
+
+- Nav bar fix [\#1027](https://github.com/mercadopago/px-ios/pull/1027) ([demtej](https://github.com/demtej))
+
+## [3.0.0-BETA-37](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-37) (2017-06-16)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-36...3.0.0-BETA-37)
+
+**Merged pull requests:**
+
+- \[V3\]\[Feature\] Added handling for payments in process [\#1028](https://github.com/mercadopago/px-ios/pull/1028) ([mreverter](https://github.com/mreverter))
+- \[V2\]\[Feature\] Added handling for payments in process [\#1025](https://github.com/mercadopago/px-ios/pull/1025) ([mreverter](https://github.com/mreverter))
+
+## [3.0.0-BETA-36](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-36) (2017-06-15)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-35...3.0.0-BETA-36)
+
+**Merged pull requests:**
+
+- Images Clean Up [\#1029](https://github.com/mercadopago/px-ios/pull/1029) ([augustocollerone](https://github.com/augustocollerone))
+
+## [3.0.0-BETA-35](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-35) (2017-06-15)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/2.2.13...3.0.0-BETA-35)
+
+**Closed issues:**
+
+- Update Review Screen con callback opcion custom [\#1004](https://github.com/mercadopago/px-ios/issues/1004)
+- Mejorar los inits de MercadoPagoCheckout [\#983](https://github.com/mercadopago/px-ios/issues/983)
+- Agregar init de DecotationPreference sin font para Obcj-C [\#982](https://github.com/mercadopago/px-ios/issues/982)
+
+**Merged pull requests:**
+
+- Fix jsons [\#1023](https://github.com/mercadopago/px-ios/pull/1023) ([edentorres](https://github.com/edentorres))
+- \[Fix\] Set Max Saved Cards to show [\#1020](https://github.com/mercadopago/px-ios/pull/1020) ([valeserber](https://github.com/valeserber))
+- Fix Coupon Bug [\#1018](https://github.com/mercadopago/px-ios/pull/1018) ([demtej](https://github.com/demtej))
+- Fix card manager [\#1016](https://github.com/mercadopago/px-ios/pull/1016) ([edentorres](https://github.com/edentorres))
+- Test new MercadoPagoCheckout and Decoration inits [\#1015](https://github.com/mercadopago/px-ios/pull/1015) ([edentorres](https://github.com/edentorres))
+- Update pod spec for 2.2.13 [\#1012](https://github.com/mercadopago/px-ios/pull/1012) ([edentorres](https://github.com/edentorres))
+- Update view model in updateReviewAndConfirm [\#1005](https://github.com/mercadopago/px-ios/pull/1005) ([demtej](https://github.com/demtej))
+- Added binaryMode in MercadoPagoCheckout [\#1000](https://github.com/mercadopago/px-ios/pull/1000) ([matiasromar](https://github.com/matiasromar))
+- Update pull\_request\_template.md [\#998](https://github.com/mercadopago/px-ios/pull/998) ([edentorres](https://github.com/edentorres))
+- Add control statement swiftlint rule [\#968](https://github.com/mercadopago/px-ios/pull/968) ([edentorres](https://github.com/edentorres))
+- Add pre-commit hook [\#967](https://github.com/mercadopago/px-ios/pull/967) ([edentorres](https://github.com/edentorres))
+
+## [2.2.13](https://github.com/mercadopago/px-ios/tree/2.2.13) (2017-06-09)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-34...2.2.13)
+
+**Closed issues:**
+
+- Agregar test targets [\#1010](https://github.com/mercadopago/px-ios/issues/1010)
+- Agregar condensa a v2 [\#1006](https://github.com/mercadopago/px-ios/issues/1006)
+- Resolver problema con JSONs en customer [\#1001](https://github.com/mercadopago/px-ios/issues/1001)
+- No funciona el updateRYC [\#992](https://github.com/mercadopago/px-ios/issues/992)
+
+**Merged pull requests:**
+
+- Fix Card Manager [\#1003](https://github.com/mercadopago/px-ios/pull/1003) ([edentorres](https://github.com/edentorres))
+- Fix JSON in Customer [\#1002](https://github.com/mercadopago/px-ios/pull/1002) ([edentorres](https://github.com/edentorres))
+- Hide TabBar [\#999](https://github.com/mercadopago/px-ios/pull/999) ([demtej](https://github.com/demtej))
+- Some changes for v3 [\#987](https://github.com/mercadopago/px-ios/pull/987) ([edentorres](https://github.com/edentorres))
+- Add changes for 2.2.13 and releaseTests [\#1011](https://github.com/mercadopago/px-ios/pull/1011) ([edentorres](https://github.com/edentorres))
+- Add codensa logo and color [\#1007](https://github.com/mercadopago/px-ios/pull/1007) ([edentorres](https://github.com/edentorres))
+
+## [3.0.0-BETA-34](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-34) (2017-06-05)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/2.2.12...3.0.0-BETA-34)
+
+## [2.2.12](https://github.com/mercadopago/px-ios/tree/2.2.12) (2017-06-02)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-32...2.2.12)
+
+**Closed issues:**
+
+- Cambios de CFT y TEA en V2 [\#989](https://github.com/mercadopago/px-ios/issues/989)
+- Error en el device toJSON [\#984](https://github.com/mercadopago/px-ios/issues/984)
+
+**Merged pull requests:**
+
+- Update version to 2.2.12 [\#996](https://github.com/mercadopago/px-ios/pull/996) ([edentorres](https://github.com/edentorres))
+- Corrected account money string [\#995](https://github.com/mercadopago/px-ios/pull/995) ([matiasromar](https://github.com/matiasromar))
+- Remove TEA and change size of CFT [\#994](https://github.com/mercadopago/px-ios/pull/994) ([edentorres](https://github.com/edentorres))
+- Merge master with pod 2.2.11 [\#991](https://github.com/mercadopago/px-ios/pull/991) ([edentorres](https://github.com/edentorres))
+- Add CHANGELOG [\#986](https://github.com/mercadopago/px-ios/pull/986) ([edentorres](https://github.com/edentorres))
+- Fix device toJSON and fingerPrintToJSON [\#985](https://github.com/mercadopago/px-ios/pull/985) ([edentorres](https://github.com/edentorres))
+- Update Pod Tester [\#972](https://github.com/mercadopago/px-ios/pull/972) ([augustocollerone](https://github.com/augustocollerone))
+- Fix Card Admin and toJsons [\#971](https://github.com/mercadopago/px-ios/pull/971) ([edentorres](https://github.com/edentorres))
+- Fix Callbacks and Steps [\#965](https://github.com/mercadopago/px-ios/pull/965) ([edentorres](https://github.com/edentorres))
+- Fix account Money Cell height in RyC [\#959](https://github.com/mercadopago/px-ios/pull/959) ([edentorres](https://github.com/edentorres))
+- Refactor de PaymentResultContentViewModel [\#941](https://github.com/mercadopago/px-ios/pull/941) ([edentorres](https://github.com/edentorres))
+
+## [3.0.0-BETA-32](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-32) (2017-05-26)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-31...3.0.0-BETA-32)
+
+## [3.0.0-BETA-31](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-31) (2017-05-26)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-30...3.0.0-BETA-31)
+
+## [3.0.0-BETA-30](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-30) (2017-05-24)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-26...3.0.0-BETA-30)
+
+**Closed issues:**
+
+- El pod no contiente todos los archivos de lenguaje [\#973](https://github.com/mercadopago/px-ios/issues/973)
 - No se setea el siteID cuando entras con una preferencia hecha a mano [\#958](https://github.com/mercadopago/px-ios/issues/958)
+- Acomodar archivos y cambiar nombres a los viewControllers \(sacar revamp\) [\#955](https://github.com/mercadopago/px-ios/issues/955)
 - Mover los sets de idioma y de site a MercadoPagoCheckout [\#953](https://github.com/mercadopago/px-ios/issues/953)
 - Agregar los sets de PK y AT al init de MercadoPagoCheckout [\#950](https://github.com/mercadopago/px-ios/issues/950)
+- Los objetos toJSON del plugin no estan alineados con android [\#947](https://github.com/mercadopago/px-ios/issues/947)
+- Queda colgado el loading al ingresar al flujo de CHO [\#944](https://github.com/mercadopago/px-ios/issues/944)
 - Logo Default en CardForm [\#935](https://github.com/mercadopago/px-ios/issues/935)
 - Agregar swiftlint al proyecto [\#536](https://github.com/mercadopago/px-ios/issues/536)
 
@@ -32,6 +158,7 @@
 - Add swiflint check to PR [\#952](https://github.com/mercadopago/px-ios/pull/952) ([edentorres](https://github.com/edentorres))
 - Add PK and AT to MercadoPagoCheckout init [\#951](https://github.com/mercadopago/px-ios/pull/951) ([edentorres](https://github.com/edentorres))
 - Beta v3 pod [\#949](https://github.com/mercadopago/px-ios/pull/949) ([demtej](https://github.com/demtej))
+- Fix toJson [\#948](https://github.com/mercadopago/px-ios/pull/948) ([edentorres](https://github.com/edentorres))
 - Swift Example Proyect [\#946](https://github.com/mercadopago/px-ios/pull/946) ([augustocollerone](https://github.com/augustocollerone))
 - Fix reference count cho - bug [\#945](https://github.com/mercadopago/px-ios/pull/945) ([demtej](https://github.com/demtej))
 - Add swiftlint basic Rules [\#943](https://github.com/mercadopago/px-ios/pull/943) ([edentorres](https://github.com/edentorres))
@@ -50,25 +177,11 @@
 ## [3.0.0-BETA-23](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-23) (2017-05-03)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-21...3.0.0-BETA-23)
 
-**Implemented enhancements:**
-
-- Sacar referencias strong de self en los callbacks en MercadoPagoCheckout [\#900](https://github.com/mercadopago/px-ios/issues/900)
-- Remove self strong references in callbacks [\#901](https://github.com/mercadopago/px-ios/pull/901) ([edentorres](https://github.com/edentorres))
-
-**Fixed bugs:**
-
-- Problema en el PayerCost ToJSON [\#937](https://github.com/mercadopago/px-ios/issues/937)
-- Pantalla blanca al autoseleccionar cuotas con PaymentDataCallback como nextStep [\#931](https://github.com/mercadopago/px-ios/issues/931)
-- Ocultar la flecha de descuento en la congrats [\#916](https://github.com/mercadopago/px-ios/issues/916)
-- El color del navbar de RyC no se customiza [\#914](https://github.com/mercadopago/px-ios/issues/914)
-- El tamaño de la celda de Medio de Pago ON de RyC no es correcto [\#911](https://github.com/mercadopago/px-ios/issues/911)
-- No se puede customizar el content title de las rejected [\#902](https://github.com/mercadopago/px-ios/issues/902)
-- Fix PayerCost toJSONString [\#938](https://github.com/mercadopago/px-ios/pull/938) ([edentorres](https://github.com/edentorres))
-- Fix PaymentMethod RyC cell Height [\#912](https://github.com/mercadopago/px-ios/pull/912) ([edentorres](https://github.com/edentorres))
-
 **Closed issues:**
 
+- Problema en el PayerCost ToJSON [\#937](https://github.com/mercadopago/px-ios/issues/937)
 - Test PaymentResultViewModel [\#933](https://github.com/mercadopago/px-ios/issues/933)
+- Pantalla blanca al autoseleccionar cuotas con PaymentDataCallback como nextStep [\#931](https://github.com/mercadopago/px-ios/issues/931)
 - Test FinacialInstitutionsViewModel [\#927](https://github.com/mercadopago/px-ios/issues/927)
 - Test EntitityTypeViewModel [\#926](https://github.com/mercadopago/px-ios/issues/926)
 - Tests CardTypeViewModel [\#925](https://github.com/mercadopago/px-ios/issues/925)
@@ -76,11 +189,17 @@
 - Tests PayerCostViewModel [\#923](https://github.com/mercadopago/px-ios/issues/923)
 - Problema con wordings en la celda de Medios Off en revisa y confirma [\#920](https://github.com/mercadopago/px-ios/issues/920)
 - Sacar TEA de RyC y cambiar el tamaño de CFT [\#918](https://github.com/mercadopago/px-ios/issues/918)
+- Ocultar la flecha de descuento en la congrats [\#916](https://github.com/mercadopago/px-ios/issues/916)
+- El color del navbar de RyC no se customiza [\#914](https://github.com/mercadopago/px-ios/issues/914)
+- El tamaño de la celda de Medio de Pago ON de RyC no es correcto [\#911](https://github.com/mercadopago/px-ios/issues/911)
+- No se puede customizar el content title de las rejected [\#902](https://github.com/mercadopago/px-ios/issues/902)
+- Sacar referencias strong de self en los callbacks en MercadoPagoCheckout [\#900](https://github.com/mercadopago/px-ios/issues/900)
 - Retormar proyecto de ejemplo con Pod [\#859](https://github.com/mercadopago/px-ios/issues/859)
 - Meter el refactor de customCells en PaymentResultViewController [\#715](https://github.com/mercadopago/px-ios/issues/715)
 
 **Merged pull requests:**
 
+- Fix PayerCost toJSONString [\#938](https://github.com/mercadopago/px-ios/pull/938) ([edentorres](https://github.com/edentorres))
 - Test payment result viewModel [\#934](https://github.com/mercadopago/px-ios/pull/934) ([edentorres](https://github.com/edentorres))
 - SwiftPodTester [\#930](https://github.com/mercadopago/px-ios/pull/930) ([augustocollerone](https://github.com/augustocollerone))
 - Test AdditionalStepViewModel [\#928](https://github.com/mercadopago/px-ios/pull/928) ([edentorres](https://github.com/edentorres))
@@ -89,30 +208,29 @@
 - Hide arrow in discount Congrats [\#917](https://github.com/mercadopago/px-ios/pull/917) ([edentorres](https://github.com/edentorres))
 - Fix custom color in ryc navbar [\#915](https://github.com/mercadopago/px-ios/pull/915) ([edentorres](https://github.com/edentorres))
 - BetaVersion a develop [\#913](https://github.com/mercadopago/px-ios/pull/913) ([edentorres](https://github.com/edentorres))
+- Fix PaymentMethod RyC cell Height [\#912](https://github.com/mercadopago/px-ios/pull/912) ([edentorres](https://github.com/edentorres))
+- Remove self strong references in callbacks [\#901](https://github.com/mercadopago/px-ios/pull/901) ([edentorres](https://github.com/edentorres))
 
 ## [3.0.0-BETA-21](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-21) (2017-04-26)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-20...3.0.0-BETA-21)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-33...3.0.0-BETA-21)
 
-**Implemented enhancements:**
-
-- Eliminar el total en el primer Row de PayerCost [\#909](https://github.com/mercadopago/px-ios/issues/909)
-- Gestor de Tarjetas de Crédito [\#430](https://github.com/mercadopago/px-ios/issues/430)
-- Análisis de alarmas y trackeo de excepciones [\#427](https://github.com/mercadopago/px-ios/issues/427)
-
-**Fixed bugs:**
-
-- El teclado tapa los Textfields en CardFormVC e IdentifictionVC [\#613](https://github.com/mercadopago/px-ios/issues/613)
-- No se ve input en Form CC \[Verificar en iPad\] [\#391](https://github.com/mercadopago/px-ios/issues/391)
-- Agregar timeout en grupos [\#219](https://github.com/mercadopago/px-ios/issues/219)
+## [3.0.0-BETA-33](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-33) (2017-04-26)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-20...3.0.0-BETA-33)
 
 **Closed issues:**
 
+- Eliminar el total en el primer Row de PayerCost [\#909](https://github.com/mercadopago/px-ios/issues/909)
 - Testear Revisa y Confirma [\#906](https://github.com/mercadopago/px-ios/issues/906)
 - Mover logica de Revisa y Confirma al viewModel [\#905](https://github.com/mercadopago/px-ios/issues/905)
 - Poder entrar a RyC con un paymentData sin enableReviewScreenPreference [\#751](https://github.com/mercadopago/px-ios/issues/751)
+- El teclado tapa los Textfields en CardFormVC e IdentifictionVC [\#613](https://github.com/mercadopago/px-ios/issues/613)
+- Gestor de Tarjetas de Crédito [\#430](https://github.com/mercadopago/px-ios/issues/430)
+- Análisis de alarmas y trackeo de excepciones [\#427](https://github.com/mercadopago/px-ios/issues/427)
 - Cupones [\#416](https://github.com/mercadopago/px-ios/issues/416)
+- No se ve input en Form CC \[Verificar en iPad\] [\#391](https://github.com/mercadopago/px-ios/issues/391)
 - UI Tests no funcionan [\#353](https://github.com/mercadopago/px-ios/issues/353)
 - Agregar imagen de Meli Card \(BR\) [\#348](https://github.com/mercadopago/px-ios/issues/348)
+- Agregar timeout en grupos [\#219](https://github.com/mercadopago/px-ios/issues/219)
 
 **Merged pull requests:**
 
@@ -131,44 +249,36 @@
 ## [3.0.0-BETA-18](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-18) (2017-04-20)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-17...3.0.0-BETA-18)
 
-**Implemented enhancements:**
-
-- Añadir textos de error a cada assets para saber exactamente que esta fallando [\#867](https://github.com/mercadopago/px-ios/issues/867)
-- Revision de steps y cortes condicionales de flujo nextStep [\#866](https://github.com/mercadopago/px-ios/issues/866)
-- Validacion de preferencias como nuevo step + Test [\#865](https://github.com/mercadopago/px-ios/issues/865)
-- Agregar toJSON de PaymentData completo [\#862](https://github.com/mercadopago/px-ios/issues/862)
-- Manejo de Cupones desde Flow Preference y Service Preference [\#853](https://github.com/mercadopago/px-ios/issues/853)
-- Configuracion común para creación de Pod [\#420](https://github.com/mercadopago/px-ios/issues/420)
-- Validate preference step [\#868](https://github.com/mercadopago/px-ios/pull/868) ([crisyelpegaso](https://github.com/crisyelpegaso))
-- External config [\#848](https://github.com/mercadopago/px-ios/pull/848) ([crisyelpegaso](https://github.com/crisyelpegaso))
-
-**Fixed bugs:**
-
-- Fix MercadopagoCheckout Errors Screens [\#894](https://github.com/mercadopago/px-ios/issues/894)
-- Fix MercadoPagoCheckout Loadings [\#893](https://github.com/mercadopago/px-ios/issues/893)
-- Se puede seleccionar la celda que contiene el boton de cambiar medio de pago en PaymentResult [\#877](https://github.com/mercadopago/px-ios/issues/877)
-- Añadir imagenes faltantes a la vista de cupones [\#872](https://github.com/mercadopago/px-ios/issues/872)
-- En el CVV antes de editarlo por primera vez se ven puntos suspensivos y no los puntos grandes [\#861](https://github.com/mercadopago/px-ios/issues/861)
-- Sacar las celdas custom como variables estaticas [\#694](https://github.com/mercadopago/px-ios/issues/694)
-
 **Closed issues:**
 
 - Hacer que las preferencias de pantallas no sean estaticas [\#897](https://github.com/mercadopago/px-ios/issues/897)
+- Fix MercadopagoCheckout Errors Screens [\#894](https://github.com/mercadopago/px-ios/issues/894)
+- Fix MercadoPagoCheckout Loadings [\#893](https://github.com/mercadopago/px-ios/issues/893)
 - Updetear la vista de descuento de grupos cuando se agrega un descuento en PayerCost [\#888](https://github.com/mercadopago/px-ios/issues/888)
 - Actualizar las cuotas cuando se agrega un descuento en la pantalla de descuento [\#887](https://github.com/mercadopago/px-ios/issues/887)
 - Agregar pantalla de agregar un descuento [\#886](https://github.com/mercadopago/px-ios/issues/886)
 - Agregar customizacion del servicio de descuento en Service Preference [\#885](https://github.com/mercadopago/px-ios/issues/885)
 - Agregar apagado de descuento en la flowPreference [\#884](https://github.com/mercadopago/px-ios/issues/884)
 - Agregar step de buscar descuento directo [\#883](https://github.com/mercadopago/px-ios/issues/883)
+- Se puede seleccionar la celda que contiene el boton de cambiar medio de pago en PaymentResult [\#877](https://github.com/mercadopago/px-ios/issues/877)
+- Añadir imagenes faltantes a la vista de cupones [\#872](https://github.com/mercadopago/px-ios/issues/872)
+- Añadir textos de error a cada assets para saber exactamente que esta fallando [\#867](https://github.com/mercadopago/px-ios/issues/867)
+- Revision de steps y cortes condicionales de flujo nextStep [\#866](https://github.com/mercadopago/px-ios/issues/866)
+- Validacion de preferencias como nuevo step + Test [\#865](https://github.com/mercadopago/px-ios/issues/865)
 - Subir la tabla de opciones \(Hacer mas grande el espacio de la tabla destinado a opciones seleccionables\) y achicar la tarjeta [\#864](https://github.com/mercadopago/px-ios/issues/864)
 - Distancia entre el titulo \(Texto\) y la tarjeta debe ser igual a la distancia de la tarjeta a la tabla de opciones [\#863](https://github.com/mercadopago/px-ios/issues/863)
+- Agregar toJSON de PaymentData completo [\#862](https://github.com/mercadopago/px-ios/issues/862)
+- En el CVV antes de editarlo por primera vez se ven puntos suspensivos y no los puntos grandes [\#861](https://github.com/mercadopago/px-ios/issues/861)
 - La font de "DOCUMENTO DEL TITULAR ..." deberia ser una monoespaciada [\#860](https://github.com/mercadopago/px-ios/issues/860)
 - La caja de input deberia tener 84 pts de alto [\#857](https://github.com/mercadopago/px-ios/issues/857)
 - La imagen del hombre y el sello deben estar contenidas en una vista de 61x65 [\#856](https://github.com/mercadopago/px-ios/issues/856)
 - Espacio entra la Descripcion del item y el texto "cantidad tanto, precio unitario tanto" es muy grande, deberia ser de 20 pts [\#855](https://github.com/mercadopago/px-ios/issues/855)
 - Distancias arriba \(con el titulo\) y abajo \(Con otro bloque\) del bloque de medio de pago deberia ser la misma [\#854](https://github.com/mercadopago/px-ios/issues/854)
+- Manejo de Cupones desde Flow Preference y Service Preference [\#853](https://github.com/mercadopago/px-ios/issues/853)
 - Modificaciones UX - Cupón [\#849](https://github.com/mercadopago/px-ios/issues/849)
 - Finish debería ser el Step por default [\#695](https://github.com/mercadopago/px-ios/issues/695)
+- Sacar las celdas custom como variables estaticas [\#694](https://github.com/mercadopago/px-ios/issues/694)
+- Configuracion común para creación de Pod [\#420](https://github.com/mercadopago/px-ios/issues/420)
 
 **Merged pull requests:**
 
@@ -188,25 +298,24 @@
 - Se deshabilita la seleccion de la celda de SecodaryButton en PaymentResult [\#878](https://github.com/mercadopago/px-ios/pull/878) ([edentorres](https://github.com/edentorres))
 - Fixes UX [\#876](https://github.com/mercadopago/px-ios/pull/876) ([edentorres](https://github.com/edentorres))
 - Update discount view [\#875](https://github.com/mercadopago/px-ios/pull/875) ([demtej](https://github.com/demtej))
+- Validate preference step [\#868](https://github.com/mercadopago/px-ios/pull/868) ([crisyelpegaso](https://github.com/crisyelpegaso))
+- External config [\#848](https://github.com/mercadopago/px-ios/pull/848) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Cobertura + finish como último step [\#847](https://github.com/mercadopago/px-ios/pull/847) ([crisyelpegaso](https://github.com/crisyelpegaso))
 
 ## [3.0.0-BETA-17](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-17) (2017-04-04)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-16...3.0.0-BETA-17)
 
-**Fixed bugs:**
-
-- Cambiar texto de dinero en cuenta en PaymentResult [\#869](https://github.com/mercadopago/px-ios/issues/869)
-- Display proper amount with discount [\#858](https://github.com/mercadopago/px-ios/pull/858) ([crisyelpegaso](https://github.com/crisyelpegaso))
-- Change wording in approvedBodyCell [\#870](https://github.com/mercadopago/px-ios/pull/870) ([edentorres](https://github.com/edentorres))
-
 **Closed issues:**
 
+- Cambiar texto de dinero en cuenta en PaymentResult [\#869](https://github.com/mercadopago/px-ios/issues/869)
 - Cambiar el tamaño de las celdas en RyC [\#832](https://github.com/mercadopago/px-ios/issues/832)
 
 **Merged pull requests:**
 
 - Fix loading for wallet [\#874](https://github.com/mercadopago/px-ios/pull/874) ([edentorres](https://github.com/edentorres))
 - Change wording in approvedBodyCell [\#873](https://github.com/mercadopago/px-ios/pull/873) ([edentorres](https://github.com/edentorres))
+- Display proper amount with discount [\#858](https://github.com/mercadopago/px-ios/pull/858) ([crisyelpegaso](https://github.com/crisyelpegaso))
+- Change wording in approvedBodyCell [\#870](https://github.com/mercadopago/px-ios/pull/870) ([edentorres](https://github.com/edentorres))
 
 ## [3.0.0-BETA-16](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-16) (2017-03-31)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-15...3.0.0-BETA-16)
@@ -220,32 +329,26 @@
 ## [3.0.0-BETA-15](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-15) (2017-03-31)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-14...3.0.0-BETA-15)
 
-**Implemented enhancements:**
-
-- MLV Rollout [\#424](https://github.com/mercadopago/px-ios/issues/424)
-
-**Fixed bugs:**
-
-- No mostrar CFT cuando es una cuota [\#842](https://github.com/mercadopago/px-ios/issues/842)
-- No se muestran la cantidad de cuotas cuando es sin interes [\#838](https://github.com/mercadopago/px-ios/issues/838)
-- Problemas con el presentLoading y cleanStack [\#708](https://github.com/mercadopago/px-ios/issues/708)
-- Remove CFT when installments is 1 [\#843](https://github.com/mercadopago/px-ios/pull/843) ([edentorres](https://github.com/edentorres))
-- Fix installment number not showing in Ryc [\#841](https://github.com/mercadopago/px-ios/pull/841) ([edentorres](https://github.com/edentorres))
-
 **Closed issues:**
 
+- No mostrar CFT cuando es una cuota [\#842](https://github.com/mercadopago/px-ios/issues/842)
 - Mover la celda de descuentos y de total a otra sección en AdditionalViewController [\#839](https://github.com/mercadopago/px-ios/issues/839)
+- No se muestran la cantidad de cuotas cuando es sin interes [\#838](https://github.com/mercadopago/px-ios/issues/838)
 - Color incorrecto en celda de paymentMethod en RyC [\#836](https://github.com/mercadopago/px-ios/issues/836)
 - No funciona RyC con recarga recurrente [\#834](https://github.com/mercadopago/px-ios/issues/834)
 - Loading en securityCodeVIewController se va antes de tiempo [\#788](https://github.com/mercadopago/px-ios/issues/788)
 - Colision de nombre con MLSpinner [\#713](https://github.com/mercadopago/px-ios/issues/713)
 - Traer debitoMLA a refactor3.0 [\#709](https://github.com/mercadopago/px-ios/issues/709)
+- Problemas con el presentLoading y cleanStack [\#708](https://github.com/mercadopago/px-ios/issues/708)
+- MLV Rollout [\#424](https://github.com/mercadopago/px-ios/issues/424)
 - MCO Rollout [\#423](https://github.com/mercadopago/px-ios/issues/423)
 - MPU Rollout [\#422](https://github.com/mercadopago/px-ios/issues/422)
 
 **Merged pull requests:**
 
 - Add selection for Discount in Payer Cost [\#844](https://github.com/mercadopago/px-ios/pull/844) ([demtej](https://github.com/demtej))
+- Remove CFT when installments is 1 [\#843](https://github.com/mercadopago/px-ios/pull/843) ([edentorres](https://github.com/edentorres))
+- Fix installment number not showing in Ryc [\#841](https://github.com/mercadopago/px-ios/pull/841) ([edentorres](https://github.com/edentorres))
 - Fix additional step [\#840](https://github.com/mercadopago/px-ios/pull/840) ([edentorres](https://github.com/edentorres))
 
 ## [3.0.0-BETA-14](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-14) (2017-03-30)
@@ -262,35 +365,27 @@
 ## [3.0.0-BETA-12](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-12) (2017-03-29)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-11...3.0.0-BETA-12)
 
-**Fixed bugs:**
-
-- Problemas con las pantallas de error [\#817](https://github.com/mercadopago/px-ios/issues/817)
-- Add missing translations [\#831](https://github.com/mercadopago/px-ios/pull/831) ([edentorres](https://github.com/edentorres))
-
 **Closed issues:**
 
 - Cambiar colores de las pantallas de resultado [\#827](https://github.com/mercadopago/px-ios/issues/827)
+- Problemas con las pantallas de error [\#817](https://github.com/mercadopago/px-ios/issues/817)
 
 **Merged pull requests:**
 
+- Add missing translations [\#831](https://github.com/mercadopago/px-ios/pull/831) ([edentorres](https://github.com/edentorres))
 - Minor Fixes [\#830](https://github.com/mercadopago/px-ios/pull/830) ([demtej](https://github.com/demtej))
 
 ## [3.0.0-BETA-11](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-11) (2017-03-27)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-10...3.0.0-BETA-11)
 
-**Fixed bugs:**
+**Closed issues:**
 
 - No aparecen los ultimos 4 digitos en AdditionalViewController [\#821](https://github.com/mercadopago/px-ios/issues/821)
+- Añadir la opción de ocultar el amount en las custom summaryRows [\#819](https://github.com/mercadopago/px-ios/issues/819)
+- Agregar una customCell abajo del header en paymentResult [\#813](https://github.com/mercadopago/px-ios/issues/813)
 - Se muestra una linea extra en el summaryRow [\#811](https://github.com/mercadopago/px-ios/issues/811)
 - Al volver para atras de cuotas queda el loading [\#809](https://github.com/mercadopago/px-ios/issues/809)
 - No se vuelven a buscar cuotas al ir para atras ir volver [\#808](https://github.com/mercadopago/px-ios/issues/808)
-- Add last four digits to AdditionalViewController [\#822](https://github.com/mercadopago/px-ios/pull/822) ([edentorres](https://github.com/edentorres))
-- Remove extra line in summaryRow [\#812](https://github.com/mercadopago/px-ios/pull/812) ([edentorres](https://github.com/edentorres))
-
-**Closed issues:**
-
-- Añadir la opción de ocultar el amount en las custom summaryRows [\#819](https://github.com/mercadopago/px-ios/issues/819)
-- Agregar una customCell abajo del header en paymentResult [\#813](https://github.com/mercadopago/px-ios/issues/813)
 
 **Merged pull requests:**
 
@@ -298,56 +393,52 @@
 - Add selected braches to .travis.yml [\#825](https://github.com/mercadopago/px-ios/pull/825) ([edentorres](https://github.com/edentorres))
 - WIP Wallet PaymentMethods [\#824](https://github.com/mercadopago/px-ios/pull/824) ([augustocollerone](https://github.com/augustocollerone))
 - Remove 1x in RyC & Congrats [\#823](https://github.com/mercadopago/px-ios/pull/823) ([crisyelpegaso](https://github.com/crisyelpegaso))
+- Add last four digits to AdditionalViewController [\#822](https://github.com/mercadopago/px-ios/pull/822) ([edentorres](https://github.com/edentorres))
 - Add option to disable amount in custom summaryRows [\#820](https://github.com/mercadopago/px-ios/pull/820) ([edentorres](https://github.com/edentorres))
 - Fix error screens [\#818](https://github.com/mercadopago/px-ios/pull/818) ([edentorres](https://github.com/edentorres))
 - Add height constraint in discount view in Congrats [\#816](https://github.com/mercadopago/px-ios/pull/816) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Payment recovery [\#815](https://github.com/mercadopago/px-ios/pull/815) ([demtej](https://github.com/demtej))
 - Add subheader customCell [\#814](https://github.com/mercadopago/px-ios/pull/814) ([edentorres](https://github.com/edentorres))
+- Remove extra line in summaryRow [\#812](https://github.com/mercadopago/px-ios/pull/812) ([edentorres](https://github.com/edentorres))
 
 ## [3.0.0-BETA-10](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-10) (2017-03-22)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-beta-9...3.0.0-BETA-10)
 
-**Fixed bugs:**
+**Closed issues:**
 
 - Sacar espacio extra entre la celda de descuentos y el header de grupos [\#806](https://github.com/mercadopago/px-ios/issues/806)
 - Se muestra una linea separadora en la celda de cupones en Congrats [\#804](https://github.com/mercadopago/px-ios/issues/804)
-- No se carga el mail del payer en congrats [\#800](https://github.com/mercadopago/px-ios/issues/800)
-- Fix del flujo de back de AddiotionalStepViewController [\#810](https://github.com/mercadopago/px-ios/pull/810) ([edentorres](https://github.com/edentorres))
-- Fix email cell in PaymentResult [\#801](https://github.com/mercadopago/px-ios/pull/801) ([edentorres](https://github.com/edentorres))
-
-**Closed issues:**
-
 - Problemas visuales en la pantalla de documento [\#802](https://github.com/mercadopago/px-ios/issues/802)
+- No se carga el mail del payer en congrats [\#800](https://github.com/mercadopago/px-ios/issues/800)
 
 **Merged pull requests:**
 
+- Fix del flujo de back de AddiotionalStepViewController [\#810](https://github.com/mercadopago/px-ios/pull/810) ([edentorres](https://github.com/edentorres))
 - Remove extra space between header and discount [\#807](https://github.com/mercadopago/px-ios/pull/807) ([edentorres](https://github.com/edentorres))
 - Remove line in discountCell in PaymentResult [\#805](https://github.com/mercadopago/px-ios/pull/805) ([edentorres](https://github.com/edentorres))
 - UX fixes to IndentificationViewController [\#803](https://github.com/mercadopago/px-ios/pull/803) ([edentorres](https://github.com/edentorres))
+- Fix email cell in PaymentResult [\#801](https://github.com/mercadopago/px-ios/pull/801) ([edentorres](https://github.com/edentorres))
 - MLPXSpinner instead MLSpinner [\#798](https://github.com/mercadopago/px-ios/pull/798) ([navicor90](https://github.com/navicor90))
 
 ## [3.0.0-beta-9](https://github.com/mercadopago/px-ios/tree/3.0.0-beta-9) (2017-03-21)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-8...3.0.0-beta-9)
 
-**Fixed bugs:**
+**Closed issues:**
 
 - Sacar espacio entre la celda de cupones y items en PaymentVault [\#793](https://github.com/mercadopago/px-ios/issues/793)
 - El description del summaryRow deberia achicarse si el texto es muy largo [\#790](https://github.com/mercadopago/px-ios/issues/790)
-- Currency Symbol harcodeado en RyC installments [\#529](https://github.com/mercadopago/px-ios/issues/529)
-- ID label no ajusta el FontSize en iPhone SE con IDs de 12 digitos [\#528](https://github.com/mercadopago/px-ios/issues/528)
-- Revisa y Confirma MPE siempre muestra Full Carga [\#517](https://github.com/mercadopago/px-ios/issues/517)
-- Fix amount Off in RyC with discount [\#796](https://github.com/mercadopago/px-ios/pull/796) ([edentorres](https://github.com/edentorres))
-
-**Closed issues:**
-
 - Correciones de UX para los rollouts [\#581](https://github.com/mercadopago/px-ios/issues/581)
 - Soporte de Currencies sin centavos [\#576](https://github.com/mercadopago/px-ios/issues/576)
 - Aumentar el tamaño de la tarjetita en IdentificationViewController [\#568](https://github.com/mercadopago/px-ios/issues/568)
+- Currency Symbol harcodeado en RyC installments [\#529](https://github.com/mercadopago/px-ios/issues/529)
+- ID label no ajusta el FontSize en iPhone SE con IDs de 12 digitos [\#528](https://github.com/mercadopago/px-ios/issues/528)
+- Revisa y Confirma MPE siempre muestra Full Carga [\#517](https://github.com/mercadopago/px-ios/issues/517)
 - MPE Rollout [\#421](https://github.com/mercadopago/px-ios/issues/421)
 
 **Merged pull requests:**
 
 - Discount beta version [\#797](https://github.com/mercadopago/px-ios/pull/797) ([demtej](https://github.com/demtej))
+- Fix amount Off in RyC with discount [\#796](https://github.com/mercadopago/px-ios/pull/796) ([edentorres](https://github.com/edentorres))
 - Se agrega la row de discount en Revisa y Confimra [\#795](https://github.com/mercadopago/px-ios/pull/795) ([edentorres](https://github.com/edentorres))
 - Fix spacing in groups [\#794](https://github.com/mercadopago/px-ios/pull/794) ([edentorres](https://github.com/edentorres))
 - Add discount to CheckoutViewModel [\#792](https://github.com/mercadopago/px-ios/pull/792) ([demtej](https://github.com/demtej))
@@ -355,165 +446,142 @@
 ## [3.0.0-BETA-8](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-8) (2017-03-20)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-7...3.0.0-BETA-8)
 
-**Implemented enhancements:**
-
-- Dejar de mostrar la celda total cuando no se necesita [\#784](https://github.com/mercadopago/px-ios/issues/784)
-- Cambiar mascara y logo de MercadoPago Card para MLM [\#771](https://github.com/mercadopago/px-ios/issues/771)
-- Poner todas las URI como variables en ServicePreference [\#765](https://github.com/mercadopago/px-ios/issues/765)
-- Cambiar nombres de PaymentResultScreenPreference [\#759](https://github.com/mercadopago/px-ios/issues/759)
-- Mejorar la transición entre las pantallas de grupos [\#752](https://github.com/mercadopago/px-ios/issues/752)
-- Fix MercadoPago Card Mask & Logo [\#772](https://github.com/mercadopago/px-ios/pull/772) ([augustocollerone](https://github.com/augustocollerone))
-- Add loading to PaymentSelection Screen [\#753](https://github.com/mercadopago/px-ios/pull/753) ([edentorres](https://github.com/edentorres))
-
-**Fixed bugs:**
-
-- No mostramos error al crear el token [\#769](https://github.com/mercadopago/px-ios/issues/769)
-- No se esta mandando paymentAdditionalInfo en createPayment [\#767](https://github.com/mercadopago/px-ios/issues/767)
-- Desaparece el nabvar en Ryc al cambiar medio de pago y volver [\#754](https://github.com/mercadopago/px-ios/issues/754)
-- Fix- Se agrega un minimo al description en Summary Row [\#791](https://github.com/mercadopago/px-ios/pull/791) ([edentorres](https://github.com/edentorres))
-- Add paymentAdditionalInfo to createPayment [\#768](https://github.com/mercadopago/px-ios/pull/768) ([edentorres](https://github.com/edentorres))
-
 **Closed issues:**
 
+- Dejar de mostrar la celda total cuando no se necesita [\#784](https://github.com/mercadopago/px-ios/issues/784)
 - Setear color de fondo en las custom cells en RyC [\#782](https://github.com/mercadopago/px-ios/issues/782)
 - Agregar linea separadora a todas las celdas en RyC [\#781](https://github.com/mercadopago/px-ios/issues/781)
 - Cambiar texto del boton secundario de confirmar pago en RyC [\#780](https://github.com/mercadopago/px-ios/issues/780)
 - Cambiar Wording de la celda de dinero en cuenta en RyC [\#779](https://github.com/mercadopago/px-ios/issues/779)
 - Buscar imagenes en el mainBundle primero y despues en MercadoPago [\#777](https://github.com/mercadopago/px-ios/issues/777)
+- Cambiar mascara y logo de MercadoPago Card para MLM [\#771](https://github.com/mercadopago/px-ios/issues/771)
+- No mostramos error al crear el token [\#769](https://github.com/mercadopago/px-ios/issues/769)
+- No se esta mandando paymentAdditionalInfo en createPayment [\#767](https://github.com/mercadopago/px-ios/issues/767)
+- Poner todas las URI como variables en ServicePreference [\#765](https://github.com/mercadopago/px-ios/issues/765)
 - Mostrar loading al entrar en CardAdditionalStep mientras carga [\#763](https://github.com/mercadopago/px-ios/issues/763)
 - Sacar los api calls SecurityCodeViewController [\#762](https://github.com/mercadopago/px-ios/issues/762)
 - Agregar summaryRow a Revisa y Confirma [\#760](https://github.com/mercadopago/px-ios/issues/760)
+- Cambiar nombres de PaymentResultScreenPreference [\#759](https://github.com/mercadopago/px-ios/issues/759)
+- Desaparece el nabvar en Ryc al cambiar medio de pago y volver [\#754](https://github.com/mercadopago/px-ios/issues/754)
+- Mejorar la transición entre las pantallas de grupos [\#752](https://github.com/mercadopago/px-ios/issues/752)
 
 **Merged pull requests:**
 
+- Fix- Se agrega un minimo al description en Summary Row [\#791](https://github.com/mercadopago/px-ios/pull/791) ([edentorres](https://github.com/edentorres))
 - Debito MLA [\#786](https://github.com/mercadopago/px-ios/pull/786) ([augustocollerone](https://github.com/augustocollerone))
 - Remove total row when it's not necessary [\#785](https://github.com/mercadopago/px-ios/pull/785) ([edentorres](https://github.com/edentorres))
 - Add Ux change to Review and Confirm [\#783](https://github.com/mercadopago/px-ios/pull/783) ([edentorres](https://github.com/edentorres))
 - Buscar imagenes en el main bundle [\#778](https://github.com/mercadopago/px-ios/pull/778) ([edentorres](https://github.com/edentorres))
+- Fix MercadoPago Card Mask & Logo [\#772](https://github.com/mercadopago/px-ios/pull/772) ([augustocollerone](https://github.com/augustocollerone))
 - Rollouts [\#770](https://github.com/mercadopago/px-ios/pull/770) ([augustocollerone](https://github.com/augustocollerone))
+- Add paymentAdditionalInfo to createPayment [\#768](https://github.com/mercadopago/px-ios/pull/768) ([edentorres](https://github.com/edentorres))
 - Move services URI to ServicePreference [\#766](https://github.com/mercadopago/px-ios/pull/766) ([edentorres](https://github.com/edentorres))
 - Remove services from SecurityCodeViewController [\#764](https://github.com/mercadopago/px-ios/pull/764) ([edentorres](https://github.com/edentorres))
 - Add summaryRow to ReviewScreenPreference [\#761](https://github.com/mercadopago/px-ios/pull/761) ([edentorres](https://github.com/edentorres))
 - MercadoPagoCheckoutVMTests before refactor [\#758](https://github.com/mercadopago/px-ios/pull/758) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Additional Step View Model Refactor [\#757](https://github.com/mercadopago/px-ios/pull/757) ([augustocollerone](https://github.com/augustocollerone))
 - Discount beta version [\#756](https://github.com/mercadopago/px-ios/pull/756) ([demtej](https://github.com/demtej))
+- Add loading to PaymentSelection Screen [\#753](https://github.com/mercadopago/px-ios/pull/753) ([edentorres](https://github.com/edentorres))
 
 ## [3.0.0-BETA-7](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-7) (2017-03-10)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-6...3.0.0-BETA-7)
 
-**Fixed bugs:**
+**Closed issues:**
 
 - No se el muestra loading al cambiar medio de pago [\#747](https://github.com/mercadopago/px-ios/issues/747)
 - App crashea cuando no seteas un exitCallback [\#745](https://github.com/mercadopago/px-ios/issues/745)
 - No se muestra mensaje de error al pagar [\#742](https://github.com/mercadopago/px-ios/issues/742)
 - Se pierde color de NavBar cuando se sale de la SDK [\#641](https://github.com/mercadopago/px-ios/issues/641)
-- Fix exit crash [\#749](https://github.com/mercadopago/px-ios/pull/749) ([edentorres](https://github.com/edentorres))
 
 **Merged pull requests:**
 
+- Fix exit crash [\#749](https://github.com/mercadopago/px-ios/pull/749) ([edentorres](https://github.com/edentorres))
 - Status bar in RyC [\#746](https://github.com/mercadopago/px-ios/pull/746) ([crisyelpegaso](https://github.com/crisyelpegaso))
 
 ## [3.0.0-BETA-6](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-6) (2017-03-09)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-5...3.0.0-BETA-6)
 
-**Implemented enhancements:**
-
-- Verificar colores [\#249](https://github.com/mercadopago/px-ios/issues/249)
-
-**Fixed bugs:**
-
-- No funciona correctamente el back de tarjetas de creditos cuando se autoselecciona grupos, para algunos flujos [\#355](https://github.com/mercadopago/px-ios/issues/355)
-- Default installments no anda en CustomerCards [\#326](https://github.com/mercadopago/px-ios/issues/326)
-- Exclusion de paymentMethod no esta andando en Mexico [\#325](https://github.com/mercadopago/px-ios/issues/325)
-- FIX - Show loading in RyC changePaymentMethod [\#748](https://github.com/mercadopago/px-ios/pull/748) ([edentorres](https://github.com/edentorres))
-
 **Closed issues:**
 
 - Análisis con UX de pedido de email al usuario [\#532](https://github.com/mercadopago/px-ios/issues/532)
+- No funciona correctamente el back de tarjetas de creditos cuando se autoselecciona grupos, para algunos flujos [\#355](https://github.com/mercadopago/px-ios/issues/355)
+- Default installments no anda en CustomerCards [\#326](https://github.com/mercadopago/px-ios/issues/326)
+- Exclusion de paymentMethod no esta andando en Mexico [\#325](https://github.com/mercadopago/px-ios/issues/325)
+- Verificar colores [\#249](https://github.com/mercadopago/px-ios/issues/249)
+- Verificar Congrats MLM [\#155](https://github.com/mercadopago/px-ios/issues/155)
 
 **Merged pull requests:**
 
 - ChangePaymentMethod callback \(temporary fix\) [\#750](https://github.com/mercadopago/px-ios/pull/750) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Update sdk version to 2.2.11 docu [\#744](https://github.com/mercadopago/px-ios/pull/744) ([edentorres](https://github.com/edentorres))
 - Change ReadMe to sdk 2.2.11 [\#743](https://github.com/mercadopago/px-ios/pull/743) ([edentorres](https://github.com/edentorres))
+- FIX - Show loading in RyC changePaymentMethod [\#748](https://github.com/mercadopago/px-ios/pull/748) ([edentorres](https://github.com/edentorres))
 
 ## [3.0.0-BETA-5](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-5) (2017-03-09)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-4...3.0.0-BETA-5)
 
-**Fixed bugs:**
+**Closed issues:**
 
 - El alto de la paymentMethodCell en Revisa y Confima es incorrecto [\#737](https://github.com/mercadopago/px-ios/issues/737)
 - El tamaño de las customCell no lo agarra de getHeight\(\), sino el de la customCell [\#728](https://github.com/mercadopago/px-ios/issues/728)
 - No anda el link de los terminos y condicciones en ingles [\#621](https://github.com/mercadopago/px-ios/issues/621)
-- Se puede seleccionar dos veces una tarjeta guardada [\#740](https://github.com/mercadopago/px-ios/issues/740)
-- Fix double click in gruops [\#741](https://github.com/mercadopago/px-ios/pull/741) ([edentorres](https://github.com/edentorres))
-- Fix - Get custom cell height from MPCustomCell getHeight [\#739](https://github.com/mercadopago/px-ios/pull/739) ([edentorres](https://github.com/edentorres))
-
-**Closed issues:**
-
 - CustomRows en RyC no se muestran al cambiar medio de pago [\#615](https://github.com/mercadopago/px-ios/issues/615)
+- Se puede seleccionar dos veces una tarjeta guardada [\#740](https://github.com/mercadopago/px-ios/issues/740)
 
 **Merged pull requests:**
 
+- Fix double click in gruops [\#741](https://github.com/mercadopago/px-ios/pull/741) ([edentorres](https://github.com/edentorres))
+- Fix - Get custom cell height from MPCustomCell getHeight [\#739](https://github.com/mercadopago/px-ios/pull/739) ([edentorres](https://github.com/edentorres))
 - Pop keyboard in identification vc [\#736](https://github.com/mercadopago/px-ios/pull/736) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - screenName updated in PaymentResultVC [\#735](https://github.com/mercadopago/px-ios/pull/735) ([crisyelpegaso](https://github.com/crisyelpegaso))
 
 ## [3.0.0-BETA-4](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-4) (2017-03-08)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-3...3.0.0-BETA-4)
 
-**Fixed bugs:**
+**Closed issues:**
 
 - Deshabilitar swipe en revisa y confimra [\#731](https://github.com/mercadopago/px-ios/issues/731)
 - No se muestra el back button en RyC [\#729](https://github.com/mercadopago/px-ios/issues/729)
 - Setear todos los addCustomCell como setCustomCell [\#726](https://github.com/mercadopago/px-ios/issues/726)
-- Change constraints in PaymentMethodCell in RyC [\#738](https://github.com/mercadopago/px-ios/pull/738) ([edentorres](https://github.com/edentorres))
-
-**Closed issues:**
-
 - Teclado no se vuelve a levantar en la pantalla de documento [\#721](https://github.com/mercadopago/px-ios/issues/721)
 - Flujo de tarjeta nueva rompe cuando es una exclusion [\#719](https://github.com/mercadopago/px-ios/issues/719)
 
+**Merged pull requests:**
+
+- Change constraints in PaymentMethodCell in RyC [\#738](https://github.com/mercadopago/px-ios/pull/738) ([edentorres](https://github.com/edentorres))
+
 ## [3.0.0-BETA-3](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-3) (2017-03-08)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-2...3.0.0-BETA-3)
-
-**Fixed bugs:**
-
-- Se deshabilita el swipe en Revisa y confirma [\#732](https://github.com/mercadopago/px-ios/pull/732) ([edentorres](https://github.com/edentorres))
-- Se agrega el back button en revisa y confirma [\#730](https://github.com/mercadopago/px-ios/pull/730) ([edentorres](https://github.com/edentorres))
 
 **Merged pull requests:**
 
 - Debvisa asset missing [\#734](https://github.com/mercadopago/px-ios/pull/734) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Clean nav stack fix [\#733](https://github.com/mercadopago/px-ios/pull/733) ([demtej](https://github.com/demtej))
+- Se deshabilita el swipe en Revisa y confirma [\#732](https://github.com/mercadopago/px-ios/pull/732) ([edentorres](https://github.com/edentorres))
+- Se agrega el back button en revisa y confirma [\#730](https://github.com/mercadopago/px-ios/pull/730) ([edentorres](https://github.com/edentorres))
 
 ## [3.0.0-BETA-2](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-2) (2017-03-07)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.2.11...3.0.0-BETA-2)
 
-**Implemented enhancements:**
-
-- Entrar a la pantalla de grupos cuando sea necesario [\#697](https://github.com/mercadopago/px-ios/issues/697)
-
-**Fixed bugs:**
+**Closed issues:**
 
 - Flujo rompe cuando entras con todo excluido salvo accountMoney [\#725](https://github.com/mercadopago/px-ios/issues/725)
 - Problema con exclusiones [\#723](https://github.com/mercadopago/px-ios/issues/723)
+- Celdas custom se pueden selccionar [\#720](https://github.com/mercadopago/px-ios/issues/720)
 - Flujo de debito roto en 3.0.0-BETA-1 [\#718](https://github.com/mercadopago/px-ios/issues/718)
 - No se muestra el precio de cada cuota en Congrats [\#710](https://github.com/mercadopago/px-ios/issues/710)
-- Fix flow with debitCard [\#724](https://github.com/mercadopago/px-ios/pull/724) ([edentorres](https://github.com/edentorres))
-
-**Closed issues:**
-
-- Celdas custom se pueden selccionar [\#720](https://github.com/mercadopago/px-ios/issues/720)
+- Entrar a la pantalla de grupos cuando sea necesario [\#697](https://github.com/mercadopago/px-ios/issues/697)
 
 **Merged pull requests:**
 
 - Cambiar todos los addCustomCell a setCustomCell [\#727](https://github.com/mercadopago/px-ios/pull/727) ([edentorres](https://github.com/edentorres))
+- Fix flow with debitCard [\#724](https://github.com/mercadopago/px-ios/pull/724) ([edentorres](https://github.com/edentorres))
 - Tracking Payment Result screen. Update examples in objC [\#722](https://github.com/mercadopago/px-ios/pull/722) ([crisyelpegaso](https://github.com/crisyelpegaso))
 
 ## [2.2.11](https://github.com/mercadopago/px-ios/tree/2.2.11) (2017-03-07)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA-1...2.2.11)
 
-**Fixed bugs:**
+**Closed issues:**
 
 - Ir atrás en la pantalla de documento, no podes volver a cargar una tarjeta [\#716](https://github.com/mercadopago/px-ios/issues/716)
 
@@ -524,7 +592,7 @@
 ## [3.0.0-BETA-1](https://github.com/mercadopago/px-ios/tree/3.0.0-BETA-1) (2017-03-06)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/3.0.0-BETA...3.0.0-BETA-1)
 
-**Fixed bugs:**
+**Merged pull requests:**
 
 - Terms & Conditions in English Fixed [\#712](https://github.com/mercadopago/px-ios/pull/712) ([augustocollerone](https://github.com/augustocollerone))
 
@@ -538,41 +606,20 @@
 ## [v3.0.1-beta](https://github.com/mercadopago/px-ios/tree/v3.0.1-beta) (2017-03-03)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/v3.0-beta...v3.0.1-beta)
 
-**Implemented enhancements:**
-
-- No hacer un apicalls a paymentMethod desde el formulario de tarjeta [\#696](https://github.com/mercadopago/px-ios/issues/696)
-- Tener máscaras por settings y no por paymentMethods [\#569](https://github.com/mercadopago/px-ios/issues/569)
-- Remover clases deprecadas del proyecto [\#467](https://github.com/mercadopago/px-ios/issues/467)
-
-**Fixed bugs:**
+**Closed issues:**
 
 - Crashea el api call de installments [\#700](https://github.com/mercadopago/px-ios/issues/700)
+- No hacer un apicalls a paymentMethod desde el formulario de tarjeta [\#696](https://github.com/mercadopago/px-ios/issues/696)
 - Se ve mal las celdas de CFT en ryc [\#691](https://github.com/mercadopago/px-ios/issues/691)
+- Agregar test de ReviewScreenPrefernce [\#688](https://github.com/mercadopago/px-ios/issues/688)
+- Sacar servicios de getInstallments y getIssuers de CardAddtionalViewController [\#681](https://github.com/mercadopago/px-ios/issues/681)
 - Al regresar el control a la App del integrador el NavgationBar pierde totalmente el estilo. [\#675](https://github.com/mercadopago/px-ios/issues/675)
 - No se pueden setear cuotas default en refactor [\#672](https://github.com/mercadopago/px-ios/issues/672)
 - No se ven los últimos 4 digitos de una tarjeta guarda en la selección de cuotas [\#669](https://github.com/mercadopago/px-ios/issues/669)
-- Hacer que la celda de total en PayerCost no sea seleccionable [\#661](https://github.com/mercadopago/px-ios/issues/661)
-- No se envia el paymentType seleccionado a CardFormController [\#645](https://github.com/mercadopago/px-ios/issues/645)
-- Guessing de Tarjetas no funciona [\#643](https://github.com/mercadopago/px-ios/issues/643)
-- No se borran los Datos al ir para atras en el PaymentVaultViewController [\#642](https://github.com/mercadopago/px-ios/issues/642)
-- Issuer crashe con el cambio de CFT [\#640](https://github.com/mercadopago/px-ios/issues/640)
-- No tenemos celda de accountMoney en RyC [\#603](https://github.com/mercadopago/px-ios/issues/603)
-- Pantalla de identificación crashea si no llega a buscar los tipos de documentos [\#562](https://github.com/mercadopago/px-ios/issues/562)
-- Validación sobre Array de Settings [\#550](https://github.com/mercadopago/px-ios/issues/550)
-- Error al no encontrar un color para pintar la tarjeta [\#541](https://github.com/mercadopago/px-ios/issues/541)
-- Identification Mask no se ajusta al largo del ID [\#492](https://github.com/mercadopago/px-ios/issues/492)
-- Sacar el botón de atras en RyC [\#484](https://github.com/mercadopago/px-ios/issues/484)
-- Remove force Unwrapping in installments apicall [\#701](https://github.com/mercadopago/px-ios/pull/701) ([edentorres](https://github.com/edentorres))
-- Fix CFT cell height in Ryc [\#693](https://github.com/mercadopago/px-ios/pull/693) ([edentorres](https://github.com/edentorres))
-- Fix CardAdditionalStep total bug [\#662](https://github.com/mercadopago/px-ios/pull/662) ([edentorres](https://github.com/edentorres))
-
-**Closed issues:**
-
-- Agregar test de ReviewScreenPrefernce [\#688](https://github.com/mercadopago/px-ios/issues/688)
-- Sacar servicios de getInstallments y getIssuers de CardAddtionalViewController [\#681](https://github.com/mercadopago/px-ios/issues/681)
 - No estan las imagenes actualizadas de masterDebito [\#667](https://github.com/mercadopago/px-ios/issues/667)
 - Revisa y confirma crashea con tarjeta de debito [\#666](https://github.com/mercadopago/px-ios/issues/666)
 - Traer cambios de development en refactor [\#664](https://github.com/mercadopago/px-ios/issues/664)
+- Hacer que la celda de total en PayerCost no sea seleccionable [\#661](https://github.com/mercadopago/px-ios/issues/661)
 - Agregar test de PaymentResultScreenPreference [\#659](https://github.com/mercadopago/px-ios/issues/659)
 - Hacer que las pantallas de error sean customizables [\#658](https://github.com/mercadopago/px-ios/issues/658)
 - Agregar un secondaryExitButton a las PaymentResult [\#656](https://github.com/mercadopago/px-ios/issues/656)
@@ -581,7 +628,11 @@
 - Incluir un opción de no mostrar el total, el comprobante y el paymentMethod description en la congrats [\#649](https://github.com/mercadopago/px-ios/issues/649)
 - Agarrar site y amount de la checkoutPrefernce para la congrats [\#648](https://github.com/mercadopago/px-ios/issues/648)
 - Desactivar el boton de cambiar de medio de Pago en la PaymentResultPreference [\#647](https://github.com/mercadopago/px-ios/issues/647)
+- No se envia el paymentType seleccionado a CardFormController [\#645](https://github.com/mercadopago/px-ios/issues/645)
 - No hay callback de payment en refactor 3.0 [\#644](https://github.com/mercadopago/px-ios/issues/644)
+- Guessing de Tarjetas no funciona [\#643](https://github.com/mercadopago/px-ios/issues/643)
+- No se borran los Datos al ir para atras en el PaymentVaultViewController [\#642](https://github.com/mercadopago/px-ios/issues/642)
+- Issuer crashe con el cambio de CFT [\#640](https://github.com/mercadopago/px-ios/issues/640)
 - Empezar mercadoPagoCheckout con un paymentResult [\#638](https://github.com/mercadopago/px-ios/issues/638)
 - Agregar todos los api call en servicePrefernece [\#635](https://github.com/mercadopago/px-ios/issues/635)
 - Permitir reload de RyC desde MercadoPagoCheckout [\#628](https://github.com/mercadopago/px-ios/issues/628)
@@ -592,10 +643,18 @@
 - PaymentResult Preference: Añandir Subtitulo [\#616](https://github.com/mercadopago/px-ios/issues/616)
 - Empezar la pantalla de congrats sin un payment [\#610](https://github.com/mercadopago/px-ios/issues/610)
 - Mergear Rollouts con refactor [\#609](https://github.com/mercadopago/px-ios/issues/609)
+- No tenemos celda de accountMoney en RyC [\#603](https://github.com/mercadopago/px-ios/issues/603)
 - Setear dos fuentes en decoration preference [\#590](https://github.com/mercadopago/px-ios/issues/590)
 - No mostrar terminos y condicciones y el www.mercadoapago.com si estas con AT [\#589](https://github.com/mercadopago/px-ios/issues/589)
+- Tener máscaras por settings y no por paymentMethods [\#569](https://github.com/mercadopago/px-ios/issues/569)
+- Pantalla de identificación crashea si no llega a buscar los tipos de documentos [\#562](https://github.com/mercadopago/px-ios/issues/562)
 - Verificar máscaras de debito MLA [\#552](https://github.com/mercadopago/px-ios/issues/552)
+- Validación sobre Array de Settings [\#550](https://github.com/mercadopago/px-ios/issues/550)
+- Error al no encontrar un color para pintar la tarjeta [\#541](https://github.com/mercadopago/px-ios/issues/541)
 - Probar debito en Sanbox MLA [\#534](https://github.com/mercadopago/px-ios/issues/534)
+- Identification Mask no se ajusta al largo del ID [\#492](https://github.com/mercadopago/px-ios/issues/492)
+- Sacar el botón de atras en RyC [\#484](https://github.com/mercadopago/px-ios/issues/484)
+- Remover clases deprecadas del proyecto [\#467](https://github.com/mercadopago/px-ios/issues/467)
 
 **Merged pull requests:**
 
@@ -604,8 +663,10 @@
 - Revert "Merge pull request \#702 from mercadopago/finishDefaultStep" [\#705](https://github.com/mercadopago/px-ios/pull/705) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Se cambian los add cells por setArray de cells para evitar duplicados [\#703](https://github.com/mercadopago/px-ios/pull/703) ([demtej](https://github.com/demtej))
 - Finish como step default [\#702](https://github.com/mercadopago/px-ios/pull/702) ([crisyelpegaso](https://github.com/crisyelpegaso))
+- Remove force Unwrapping in installments apicall [\#701](https://github.com/mercadopago/px-ios/pull/701) ([edentorres](https://github.com/edentorres))
 - Pasaje de paymentMethods a CardFormViewController [\#699](https://github.com/mercadopago/px-ios/pull/699) ([edentorres](https://github.com/edentorres))
 - AutoSelección en grupos [\#698](https://github.com/mercadopago/px-ios/pull/698) ([edentorres](https://github.com/edentorres))
+- Fix CFT cell height in Ryc [\#693](https://github.com/mercadopago/px-ios/pull/693) ([edentorres](https://github.com/edentorres))
 - Remove RyC flag [\#692](https://github.com/mercadopago/px-ios/pull/692) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Apply memento pattern [\#690](https://github.com/mercadopago/px-ios/pull/690) ([demtej](https://github.com/demtej))
 - Se agregan test de review screen preference [\#689](https://github.com/mercadopago/px-ios/pull/689) ([edentorres](https://github.com/edentorres))
@@ -625,6 +686,7 @@
 - Fix Debit Mexico in refactor [\#668](https://github.com/mercadopago/px-ios/pull/668) ([edentorres](https://github.com/edentorres))
 - Fix customer card selection when RyC is disabled [\#665](https://github.com/mercadopago/px-ios/pull/665) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - AT en Servicios a Getaway [\#663](https://github.com/mercadopago/px-ios/pull/663) ([crisyelpegaso](https://github.com/crisyelpegaso))
+- Fix CardAdditionalStep total bug [\#662](https://github.com/mercadopago/px-ios/pull/662) ([edentorres](https://github.com/edentorres))
 - Add exit Callbacks [\#660](https://github.com/mercadopago/px-ios/pull/660) ([edentorres](https://github.com/edentorres))
 - Hide TyC with AT [\#657](https://github.com/mercadopago/px-ios/pull/657) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Deshabilitar RyC desde FlowPreference [\#655](https://github.com/mercadopago/px-ios/pull/655) ([crisyelpegaso](https://github.com/crisyelpegaso))
@@ -640,10 +702,6 @@
 ## [v3.0-beta](https://github.com/mercadopago/px-ios/tree/v3.0-beta) (2017-02-16)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.2.10...v3.0-beta)
 
-**Fixed bugs:**
-
-- No aparece el total en las congrats con account Money [\#604](https://github.com/mercadopago/px-ios/issues/604)
-
 **Closed issues:**
 
 - Obtener root VC de navigation [\#620](https://github.com/mercadopago/px-ios/issues/620)
@@ -651,6 +709,7 @@
 - Añadir celdas de items en RyC [\#607](https://github.com/mercadopago/px-ios/issues/607)
 - Añadir callback a las celdas de RyC [\#606](https://github.com/mercadopago/px-ios/issues/606)
 - Problemas con la navegacion en grupos [\#605](https://github.com/mercadopago/px-ios/issues/605)
+- No aparece el total en las congrats con account Money [\#604](https://github.com/mercadopago/px-ios/issues/604)
 - Refactor customRows [\#597](https://github.com/mercadopago/px-ios/issues/597)
 - Verificar que el precio total no sea negativo [\#582](https://github.com/mercadopago/px-ios/issues/582)
 - \[Flow Controller\] Selección de Medio de pago para medio de pago de customer [\#551](https://github.com/mercadopago/px-ios/issues/551)
@@ -676,21 +735,6 @@
 ## [2.2.10](https://github.com/mercadopago/px-ios/tree/2.2.10) (2017-02-10)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/test_tag...2.2.10)
 
-**Implemented enhancements:**
-
-- Animación Giro de Tarjeta [\#560](https://github.com/mercadopago/px-ios/issues/560)
-- Coveralls sin funcionar [\#449](https://github.com/mercadopago/px-ios/issues/449)
-- Soporte binary\_mode [\#407](https://github.com/mercadopago/px-ios/issues/407)
-- Id de Idempotencia en MerchantServer [\#379](https://github.com/mercadopago/px-ios/issues/379)
-
-**Fixed bugs:**
-
-- No se ve el referenceValue en ProviciaNET MLA [\#544](https://github.com/mercadopago/px-ios/issues/544)
-- El color custom no se agrega en RyC [\#523](https://github.com/mercadopago/px-ios/issues/523)
-- Color de texto de NavBar de RyC con colores custom [\#460](https://github.com/mercadopago/px-ios/issues/460)
-- Se re agrega la opcion de customizar RyC [\#524](https://github.com/mercadopago/px-ios/pull/524) ([edentorres](https://github.com/edentorres))
-- Fix traducciones portugues [\#522](https://github.com/mercadopago/px-ios/pull/522) ([edentorres](https://github.com/edentorres))
-
 **Closed issues:**
 
 - El flujo de rompe cuando vienen mas de un tipo de tarjeta [\#591](https://github.com/mercadopago/px-ios/issues/591)
@@ -702,15 +746,18 @@
 - Loading desaparece antes de entrar a RyC [\#574](https://github.com/mercadopago/px-ios/issues/574)
 - Comprimir Imagenes [\#572](https://github.com/mercadopago/px-ios/issues/572)
 - Agregar cells customs a RyC [\#570](https://github.com/mercadopago/px-ios/issues/570)
+- Animación Giro de Tarjeta [\#560](https://github.com/mercadopago/px-ios/issues/560)
 - Hacer el pago desde MercadoPagoViewModel y no desde MercadoPago [\#559](https://github.com/mercadopago/px-ios/issues/559)
 - Tarjetas de Debito - Mexico [\#557](https://github.com/mercadopago/px-ios/issues/557)
 - Agregar pantalla de confirmación de cuotas en F2 [\#555](https://github.com/mercadopago/px-ios/issues/555)
 - Agregar CFT en Revisa y Confirma [\#554](https://github.com/mercadopago/px-ios/issues/554)
 - Agregar row de total en PayerCost [\#553](https://github.com/mercadopago/px-ios/issues/553)
+- No se ve el referenceValue en ProviciaNET MLA [\#544](https://github.com/mercadopago/px-ios/issues/544)
 - Alinear flowPreference con Android [\#542](https://github.com/mercadopago/px-ios/issues/542)
 - Testing de CheckoutPreference [\#540](https://github.com/mercadopago/px-ios/issues/540)
 - Agregar CheckoutPreference [\#535](https://github.com/mercadopago/px-ios/issues/535)
 - Verificación de items con monto negativo con OP [\#531](https://github.com/mercadopago/px-ios/issues/531)
+- El color custom no se agrega en RyC [\#523](https://github.com/mercadopago/px-ios/issues/523)
 - Test de ServicePreference [\#520](https://github.com/mercadopago/px-ios/issues/520)
 - Revisar traduccion en portugues [\#519](https://github.com/mercadopago/px-ios/issues/519)
 - Codecov no lee el archivo de configuración [\#497](https://github.com/mercadopago/px-ios/issues/497)
@@ -720,6 +767,10 @@
 - Iconos Bancos y Medios off MPE [\#481](https://github.com/mercadopago/px-ios/issues/481)
 - Crear input con todas las preferencias [\#472](https://github.com/mercadopago/px-ios/issues/472)
 - Crear ServicePreference [\#470](https://github.com/mercadopago/px-ios/issues/470)
+- Color de texto de NavBar de RyC con colores custom [\#460](https://github.com/mercadopago/px-ios/issues/460)
+- Coveralls sin funcionar [\#449](https://github.com/mercadopago/px-ios/issues/449)
+- Soporte binary\_mode [\#407](https://github.com/mercadopago/px-ios/issues/407)
+- Id de Idempotencia en MerchantServer [\#379](https://github.com/mercadopago/px-ios/issues/379)
 
 **Merged pull requests:**
 
@@ -743,17 +794,16 @@
 - Align flow preference with Android [\#543](https://github.com/mercadopago/px-ios/pull/543) ([edentorres](https://github.com/edentorres))
 - Enhancement [\#530](https://github.com/mercadopago/px-ios/pull/530) ([augustocollerone](https://github.com/augustocollerone))
 - Add Service preference [\#525](https://github.com/mercadopago/px-ios/pull/525) ([edentorres](https://github.com/edentorres))
+- Se re agrega la opcion de customizar RyC [\#524](https://github.com/mercadopago/px-ios/pull/524) ([edentorres](https://github.com/edentorres))
+- Fix traducciones portugues [\#522](https://github.com/mercadopago/px-ios/pull/522) ([edentorres](https://github.com/edentorres))
 - Add CFT y TEA in installments and RyC [\#563](https://github.com/mercadopago/px-ios/pull/563) ([edentorres](https://github.com/edentorres))
 
 ## [test_tag](https://github.com/mercadopago/px-ios/tree/test_tag) (2017-01-27)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.2.9...test_tag)
 
-**Fixed bugs:**
-
-- Actualizar los idiomas en MercadoPagoContex.languages [\#513](https://github.com/mercadopago/px-ios/issues/513)
-
 **Closed issues:**
 
+- Actualizar los idiomas en MercadoPagoContex.languages [\#513](https://github.com/mercadopago/px-ios/issues/513)
 - Crear flowPreference [\#471](https://github.com/mercadopago/px-ios/issues/471)
 
 **Merged pull requests:**
@@ -770,15 +820,11 @@
 ## [2.2.8.1](https://github.com/mercadopago/px-ios/tree/2.2.8.1) (2017-01-25)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.2.8...2.2.8.1)
 
-**Fixed bugs:**
-
-- Identification Type ID Error [\#500](https://github.com/mercadopago/px-ios/issues/500)
-- Issue \#500 Fixed [\#501](https://github.com/mercadopago/px-ios/pull/501) ([augustocollerone](https://github.com/augustocollerone))
-
 **Closed issues:**
 
 - Añadir tests a flowPreference  [\#507](https://github.com/mercadopago/px-ios/issues/507)
 - Alinear decorationPreference con Andorid [\#505](https://github.com/mercadopago/px-ios/issues/505)
+- Identification Type ID Error [\#500](https://github.com/mercadopago/px-ios/issues/500)
 
 **Merged pull requests:**
 
@@ -786,22 +832,17 @@
 - Update codevoc.yml [\#509](https://github.com/mercadopago/px-ios/pull/509) ([edentorres](https://github.com/edentorres))
 - Add flowPreference test [\#508](https://github.com/mercadopago/px-ios/pull/508) ([edentorres](https://github.com/edentorres))
 - Align decorationPreference with Android  [\#506](https://github.com/mercadopago/px-ios/pull/506) ([edentorres](https://github.com/edentorres))
+- Issue \#500 Fixed [\#501](https://github.com/mercadopago/px-ios/pull/501) ([augustocollerone](https://github.com/augustocollerone))
 
 ## [2.2.8](https://github.com/mercadopago/px-ios/tree/2.2.8) (2017-01-24)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.0.3.8...2.2.8)
 
-**Implemented enhancements:**
-
-- Agregar color custom a RyC [\#479](https://github.com/mercadopago/px-ios/issues/479)
-- Cambiar color de las imagenes de grupos [\#478](https://github.com/mercadopago/px-ios/issues/478)
-
-**Fixed bugs:**
+**Closed issues:**
 
 - El nombre del paymentMethod llega mal en RyC [\#486](https://github.com/mercadopago/px-ios/issues/486)
 - Error al utilizar IDtypes de más de 9 dígitos [\#483](https://github.com/mercadopago/px-ios/issues/483)
-
-**Closed issues:**
-
+- Agregar color custom a RyC [\#479](https://github.com/mercadopago/px-ios/issues/479)
+- Cambiar color de las imagenes de grupos [\#478](https://github.com/mercadopago/px-ios/issues/478)
 - Cambiar color del loading de wallet [\#477](https://github.com/mercadopago/px-ios/issues/477)
 - Agregar decorationPreference [\#469](https://github.com/mercadopago/px-ios/issues/469)
 - Tomar Fuente Externa Custom [\#433](https://github.com/mercadopago/px-ios/issues/433)
@@ -825,22 +866,16 @@
 ## [2.0.3.8](https://github.com/mercadopago/px-ios/tree/2.0.3.8) (2017-01-18)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.2.7...2.0.3.8)
 
-**Implemented enhancements:**
-
-- Timer en CHO [\#451](https://github.com/mercadopago/px-ios/issues/451)
-- Testear F3 [\#409](https://github.com/mercadopago/px-ios/issues/409)
-
-**Fixed bugs:**
-
-- No se filtran la respuesta de cuotas por grupos [\#475](https://github.com/mercadopago/px-ios/issues/475)
-- Espacio entre el titulo de grupos y las demás celdas [\#465](https://github.com/mercadopago/px-ios/issues/465)
-- Se oculta la flecha para volver para atrás [\#461](https://github.com/mercadopago/px-ios/issues/461)
-- "Ver promociones" - Verificar que haya promociones para mostrar el boton o no [\#317](https://github.com/mercadopago/px-ios/issues/317)
-- CountdownTimer ejecuta timeoutCallback en nuevos forms [\#178](https://github.com/mercadopago/px-ios/issues/178)
-
 **Closed issues:**
 
 - Boton "Ver Promociones" se muestra siempre [\#480](https://github.com/mercadopago/px-ios/issues/480)
+- No se filtran la respuesta de cuotas por grupos [\#475](https://github.com/mercadopago/px-ios/issues/475)
+- Espacio entre el titulo de grupos y las demás celdas [\#465](https://github.com/mercadopago/px-ios/issues/465)
+- Se oculta la flecha para volver para atrás [\#461](https://github.com/mercadopago/px-ios/issues/461)
+- Timer en CHO [\#451](https://github.com/mercadopago/px-ios/issues/451)
+- Testear F3 [\#409](https://github.com/mercadopago/px-ios/issues/409)
+- "Ver promociones" - Verificar que haya promociones para mostrar el boton o no [\#317](https://github.com/mercadopago/px-ios/issues/317)
+- CountdownTimer ejecuta timeoutCallback en nuevos forms [\#178](https://github.com/mercadopago/px-ios/issues/178)
 - Plugin Híbrido Framework [\#151](https://github.com/mercadopago/px-ios/issues/151)
 
 **Merged pull requests:**
@@ -859,14 +894,11 @@
 ## [2.2.7](https://github.com/mercadopago/px-ios/tree/2.2.7) (2017-01-06)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.0.3.7...2.2.7)
 
-**Fixed bugs:**
-
-- Texto en RyC para RedLink home banking es erróneo [\#401](https://github.com/mercadopago/px-ios/issues/401)
-- Validación de Número de tarjeta erróneo [\#450](https://github.com/mercadopago/px-ios/issues/450)
-
 **Closed issues:**
 
+- Texto en RyC para RedLink home banking es erróneo [\#401](https://github.com/mercadopago/px-ios/issues/401)
 - MerchantServer.createPreference invierte los parámetros del request [\#452](https://github.com/mercadopago/px-ios/issues/452)
+- Validación de Número de tarjeta erróneo [\#450](https://github.com/mercadopago/px-ios/issues/450)
 - Falta mapear algunos campos en PaymentMethod [\#412](https://github.com/mercadopago/px-ios/issues/412)
 
 **Merged pull requests:**
@@ -876,7 +908,7 @@
 ## [2.0.3.7](https://github.com/mercadopago/px-ios/tree/2.0.3.7) (2017-01-04)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.2.6...2.0.3.7)
 
-**Fixed bugs:**
+**Closed issues:**
 
 - Promos toJSONString\(\) falla [\#384](https://github.com/mercadopago/px-ios/issues/384)
 - Instruccion Telecomm se carga mal [\#321](https://github.com/mercadopago/px-ios/issues/321)
@@ -890,15 +922,12 @@
 ## [2.2.6](https://github.com/mercadopago/px-ios/tree/2.2.6) (2017-01-02)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.2.5...2.2.6)
 
-**Fixed bugs:**
+**Closed issues:**
 
 - Crash al validar un código de seguridad [\#436](https://github.com/mercadopago/px-ios/issues/436)
 - Colores BlueMercadoPago difieren en apps [\#432](https://github.com/mercadopago/px-ios/issues/432)
-- Se carga mal la tarjeta [\#215](https://github.com/mercadopago/px-ios/issues/215)
-
-**Closed issues:**
-
 - Automatizar buildeo y tests en gitHub con Travis [\#281](https://github.com/mercadopago/px-ios/issues/281)
+- Se carga mal la tarjeta [\#215](https://github.com/mercadopago/px-ios/issues/215)
 
 **Merged pull requests:**
 
@@ -913,23 +942,17 @@
 ## [2.2.5](https://github.com/mercadopago/px-ios/tree/2.2.5) (2016-12-29)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.0.3.6...2.2.5)
 
-**Implemented enhancements:**
-
-- Tomar el idioma del celular para la aplicacion [\#389](https://github.com/mercadopago/px-ios/issues/389)
-- Locale Header para API's a backend [\#257](https://github.com/mercadopago/px-ios/issues/257)
-
-**Fixed bugs:**
-
-- Instrucciones se rompe cuando el site no es el mismo que el de la preferencia [\#340](https://github.com/mercadopago/px-ios/issues/340)
-- Payment.\_id Int type es siempre nulo \(Int overflows\) [\#417](https://github.com/mercadopago/px-ios/issues/417)
-- Pantalla de loading al clickear la tarjeta en selección de cuotas [\#411](https://github.com/mercadopago/px-ios/issues/411)
-
 **Closed issues:**
 
 - Loading descentrado [\#398](https://github.com/mercadopago/px-ios/issues/398)
 - Loading desactualizado [\#377](https://github.com/mercadopago/px-ios/issues/377)
+- Instrucciones se rompe cuando el site no es el mismo que el de la preferencia [\#340](https://github.com/mercadopago/px-ios/issues/340)
+- Payment.\_id Int type es siempre nulo \(Int overflows\) [\#417](https://github.com/mercadopago/px-ios/issues/417)
+- Pantalla de loading al clickear la tarjeta en selección de cuotas [\#411](https://github.com/mercadopago/px-ios/issues/411)
 - Enviar payer en el body del pago [\#408](https://github.com/mercadopago/px-ios/issues/408)
+- Tomar el idioma del celular para la aplicacion [\#389](https://github.com/mercadopago/px-ios/issues/389)
 - Agregar textos en ingles [\#386](https://github.com/mercadopago/px-ios/issues/386)
+- Locale Header para API's a backend [\#257](https://github.com/mercadopago/px-ios/issues/257)
 
 **Merged pull requests:**
 
@@ -954,16 +977,13 @@
 ## [2.2.4](https://github.com/mercadopago/px-ios/tree/2.2.4) (2016-12-15)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.2.3...2.2.4)
 
-**Fixed bugs:**
+**Closed issues:**
 
 - Toke.toJSONString\(\) devuelve id null [\#402](https://github.com/mercadopago/px-ios/issues/402)
 - Loading default en IdentificationVC se ve defasado [\#390](https://github.com/mercadopago/px-ios/issues/390)
 - Loading DNI View Controller se ve corto [\#375](https://github.com/mercadopago/px-ios/issues/375)
 - DNI Textos recortados [\#374](https://github.com/mercadopago/px-ios/issues/374)
 - DNI View Controller - Low Res [\#373](https://github.com/mercadopago/px-ios/issues/373)
-
-**Closed issues:**
-
 -  El navigation bar "salta" de forma errática entre las transiciones de pantalla, si bien no es un blocker seria bueno mejorar la experiencia de uso para el usuario en esta instancia  [\#331](https://github.com/mercadopago/px-ios/issues/331)
 - Verificar que llega el bin en cuotas desde Tarjeta guardadas [\#230](https://github.com/mercadopago/px-ios/issues/230)
 - Actualizar documentación [\#159](https://github.com/mercadopago/px-ios/issues/159)
@@ -976,7 +996,7 @@
 ## [2.2.3](https://github.com/mercadopago/px-ios/tree/2.2.3) (2016-12-14)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.2.2...2.2.3)
 
-**Fixed bugs:**
+**Closed issues:**
 
 - Grupos no carga si falla customer cards [\#392](https://github.com/mercadopago/px-ios/issues/392)
 - Crash - Error Sin Conexion [\#372](https://github.com/mercadopago/px-ios/issues/372)
@@ -992,18 +1012,15 @@
 ## [2.2.2](https://github.com/mercadopago/px-ios/tree/2.2.2) (2016-12-13)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.2.1...2.2.2)
 
-**Fixed bugs:**
+**Closed issues:**
 
 - No es valido el mes y año actual [\#378](https://github.com/mercadopago/px-ios/issues/378)
 - Copy paste text [\#376](https://github.com/mercadopago/px-ios/issues/376)
+- iPhone 5s performance [\#371](https://github.com/mercadopago/px-ios/issues/371)
 - No se puede pegar un numero de tarjeta en el formulario [\#369](https://github.com/mercadopago/px-ios/issues/369)
 - Se resetea estilo de tarjeta al volver de documento [\#368](https://github.com/mercadopago/px-ios/issues/368)
-- Botones de Continuar / Anterior en Form de CC para IPAD [\#364](https://github.com/mercadopago/px-ios/issues/364)
-
-**Closed issues:**
-
-- iPhone 5s performance [\#371](https://github.com/mercadopago/px-ios/issues/371)
 - No se permite una fecha de expiración del mes y año actual [\#365](https://github.com/mercadopago/px-ios/issues/365)
+- Botones de Continuar / Anterior en Form de CC para IPAD [\#364](https://github.com/mercadopago/px-ios/issues/364)
 
 **Merged pull requests:**
 
@@ -1028,109 +1045,99 @@
 ## [2.2.0](https://github.com/mercadopago/px-ios/tree/2.2.0) (2016-12-07)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.0.3.3...2.2.0)
 
-**Implemented enhancements:**
-
-- Ejemplos de ObjectiveC [\#255](https://github.com/mercadopago/px-ios/issues/255)
-- Tests for CardFormManager [\#133](https://github.com/mercadopago/px-ios/issues/133)
-- Update CardFormVC tests according to CardFormManager [\#132](https://github.com/mercadopago/px-ios/issues/132)
-- Move MPFlowBuilder bussiness logic into CardFormManager [\#131](https://github.com/mercadopago/px-ios/issues/131)
-- Move MPStepBuilder business logic into CardFormManager [\#130](https://github.com/mercadopago/px-ios/issues/130)
-- Remove bussiness logic from CardFormVC into CardFormManager [\#129](https://github.com/mercadopago/px-ios/issues/129)
-- Implement automatic selection rules [\#89](https://github.com/mercadopago/px-ios/issues/89)
-- Posibilitar el uso del loading default mediante un seteo de flag en MPContext [\#271](https://github.com/mercadopago/px-ios/issues/271)
-- Traducción de textos Brasil [\#264](https://github.com/mercadopago/px-ios/issues/264)
-- Revisión UX [\#259](https://github.com/mercadopago/px-ios/issues/259)
-- Actualizar API VERSION [\#252](https://github.com/mercadopago/px-ios/issues/252)
-- Fixes para integración con Wallet [\#165](https://github.com/mercadopago/px-ios/issues/165)
-- Servicio Access Token [\#152](https://github.com/mercadopago/px-ios/issues/152)
-- Update PR template with UX validation [\#312](https://github.com/mercadopago/px-ios/pull/312) ([crisyelpegaso](https://github.com/crisyelpegaso))
-- Countdown timer [\#148](https://github.com/mercadopago/px-ios/pull/148) ([crisyelpegaso](https://github.com/crisyelpegaso))
-
-**Fixed bugs:**
+**Closed issues:**
 
 - Se puede continuar sin llenar el DNI [\#345](https://github.com/mercadopago/px-ios/issues/345)
 - Instrucciones se rompen con fix \#324 [\#341](https://github.com/mercadopago/px-ios/issues/341)
 - Formulario de credito/debito no esta apareciendo [\#334](https://github.com/mercadopago/px-ios/issues/334)
 - En f2 en mexico hay que mandar el payment\_type a CardForm [\#333](https://github.com/mercadopago/px-ios/issues/333)
+- Unit Tests no estan corriendo [\#327](https://github.com/mercadopago/px-ios/issues/327)
+- Cambiar el "Seguir Comprando" Por "Continuar" [\#291](https://github.com/mercadopago/px-ios/issues/291)
+- Agregar extra params al delegate de tracker [\#284](https://github.com/mercadopago/px-ios/issues/284)
+- No funcionan las notificaciones IPN [\#283](https://github.com/mercadopago/px-ios/issues/283)
+- Revisión UX : verificar font de decimales [\#282](https://github.com/mercadopago/px-ios/issues/282)
+- Actualizar API\_VERSION : 1.3.4 [\#280](https://github.com/mercadopago/px-ios/issues/280)
 - Falta view background en Scrolling. Resetear texto de sección 0 cuando se muestra navBar [\#274](https://github.com/mercadopago/px-ios/issues/274)
 - C4A - "Ya autoricé mi amex" se defasa en iPhone SE [\#267](https://github.com/mercadopago/px-ios/issues/267)
 - Tarjeta de crédito no se despinta al borrar número luego de error [\#256](https://github.com/mercadopago/px-ios/issues/256)
+- Ejemplos de ObjectiveC [\#255](https://github.com/mercadopago/px-ios/issues/255)
 - Elección de cuotas tiene “45454545” [\#246](https://github.com/mercadopago/px-ios/issues/246)
 - Excluded Payment methods no considera customer payment methods [\#244](https://github.com/mercadopago/px-ios/issues/244)
 - Labels de medios de pago se ven cortados [\#243](https://github.com/mercadopago/px-ios/issues/243)
 - Verificar imagenes de medios de pago para MLA / MLM / MLB [\#242](https://github.com/mercadopago/px-ios/issues/242)
+- Botón de back está comprimido [\#241](https://github.com/mercadopago/px-ios/issues/241)
 - No se carga la tarjeta de Cuotas con una tarjeta Guardada [\#228](https://github.com/mercadopago/px-ios/issues/228)
 - Descripción de tarjeta guardada incorrecta en RyC [\#227](https://github.com/mercadopago/px-ios/issues/227)
 - Constraints de pantalla en SecCode [\#226](https://github.com/mercadopago/px-ios/issues/226)
+- CCs : desde PaymentVault ir a cuotas y después a CVV [\#225](https://github.com/mercadopago/px-ios/issues/225)
 - Carga virtual sin ícono [\#223](https://github.com/mercadopago/px-ios/issues/223)
+- Exclusiones en F2 : corregir altura en sección de customer payment [\#222](https://github.com/mercadopago/px-ios/issues/222)
+- API VERSION de backend en Requests [\#221](https://github.com/mercadopago/px-ios/issues/221)
 - Callback termina Payment Vault [\#220](https://github.com/mercadopago/px-ios/issues/220)
+- Verificar Tradrucción de textos [\#214](https://github.com/mercadopago/px-ios/issues/214)
 - Imagen de Tarjeta se borra cuando borras un número [\#209](https://github.com/mercadopago/px-ios/issues/209)
+- Actualizar los logos de las tarjetas [\#204](https://github.com/mercadopago/px-ios/issues/204)
 - No se muestran los centavos en letra chica en congrats y instrucciones [\#200](https://github.com/mercadopago/px-ios/issues/200)
 - Callback Cancel no se setea en MPFlow PaymentVault [\#198](https://github.com/mercadopago/px-ios/issues/198)
+- UI wallet : botón back [\#197](https://github.com/mercadopago/px-ios/issues/197)
+- UI wallet : actualizar loading [\#196](https://github.com/mercadopago/px-ios/issues/196)
 - Se cargan antes los grupos que las Customers Cards [\#190](https://github.com/mercadopago/px-ios/issues/190)
 - Customer Cards no settea bien el Payment Method [\#187](https://github.com/mercadopago/px-ios/issues/187)
 - Pagar varias veces en Revisa y Confirma [\#180](https://github.com/mercadopago/px-ios/issues/180)
+- Pantallas Token Recuperable [\#179](https://github.com/mercadopago/px-ios/issues/179)
+- Blacklbabel en swift 3.0 [\#170](https://github.com/mercadopago/px-ios/issues/170)
 - No funciona link terminos y condiciones en iPhone [\#169](https://github.com/mercadopago/px-ios/issues/169)
+- Enviar defaultPaymentMethod desde preferencia a grupos. Verificar comportamiento para cada caso [\#167](https://github.com/mercadopago/px-ios/issues/167)
+- Notificaciones para tracking Wallet [\#166](https://github.com/mercadopago/px-ios/issues/166)
 - Error al rellenar Formulario de CC [\#162](https://github.com/mercadopago/px-ios/issues/162)
+- Pantalla Revisa y Confirma [\#157](https://github.com/mercadopago/px-ios/issues/157)
+- Xcode 8 iOS 10 - production code [\#144](https://github.com/mercadopago/px-ios/issues/144)
+- Tests for CardFormManager [\#133](https://github.com/mercadopago/px-ios/issues/133)
+- Update CardFormVC tests according to CardFormManager [\#132](https://github.com/mercadopago/px-ios/issues/132)
+- Move MPFlowBuilder bussiness logic into CardFormManager [\#131](https://github.com/mercadopago/px-ios/issues/131)
+- Move MPStepBuilder business logic into CardFormManager [\#130](https://github.com/mercadopago/px-ios/issues/130)
+- Remove bussiness logic from CardFormVC into CardFormManager [\#129](https://github.com/mercadopago/px-ios/issues/129)
+- Tests for CustomCards from groups [\#120](https://github.com/mercadopago/px-ios/issues/120)
+- Implement automatic selection rules [\#89](https://github.com/mercadopago/px-ios/issues/89)
+- Modificar parametros de MPStepBuilder [\#357](https://github.com/mercadopago/px-ios/issues/357)
+- Pasar todos los items de groups a una seccion [\#330](https://github.com/mercadopago/px-ios/issues/330)
 - Decimales se formatean mal [\#324](https://github.com/mercadopago/px-ios/issues/324)
 - Falta el logo de Telecomm [\#322](https://github.com/mercadopago/px-ios/issues/322)
 - Tarjeta guardada con 1 cuota pasa por pantalla cuotas [\#319](https://github.com/mercadopago/px-ios/issues/319)
 - Agregar un label para sacar el boton "Ver Promociones" [\#315](https://github.com/mercadopago/px-ios/issues/315)
+- Cambiar el tamaño de la letra del titulo con el scrolling [\#314](https://github.com/mercadopago/px-ios/issues/314)
 - Revisión de Loading Custom [\#313](https://github.com/mercadopago/px-ios/issues/313)
+- Actualizar pantalla de error [\#308](https://github.com/mercadopago/px-ios/issues/308)
+- AutoSelect Dinero en cuenta si es opción única [\#306](https://github.com/mercadopago/px-ios/issues/306)
 - PaymentPreference no se aplican en Customer Cards [\#304](https://github.com/mercadopago/px-ios/issues/304)
 - Autoselección para account\_money y tarjetas guardadas [\#303](https://github.com/mercadopago/px-ios/issues/303)
 - maxAcceptedInstallments no funciona con tarjetas guardadas MP [\#301](https://github.com/mercadopago/px-ios/issues/301)
+- Cambiar el fondo de grupos con dos colores [\#300](https://github.com/mercadopago/px-ios/issues/300)
+- Agregar filtro genérico para payment\_methods [\#299](https://github.com/mercadopago/px-ios/issues/299)
 - Banamex\_Bank\_Transfer viene como amex y banamex [\#295](https://github.com/mercadopago/px-ios/issues/295)
+- Decimales se dividen en la congrats / instrucciones [\#290](https://github.com/mercadopago/px-ios/issues/290)
 - Quitar cache de grupos [\#286](https://github.com/mercadopago/px-ios/issues/286)
+- Agregar el loading default nuevamente pero seguir usando el de wallet [\#272](https://github.com/mercadopago/px-ios/issues/272)
+- Posibilitar el uso del loading default mediante un seteo de flag en MPContext [\#271](https://github.com/mercadopago/px-ios/issues/271)
+- Traducción de textos Brasil [\#264](https://github.com/mercadopago/px-ios/issues/264)
+- Verificar que devuelva un mensaje de error acorde cuando dadas las exclusiones Payment Vault no puede ofrecer ningun medio de pago [\#261](https://github.com/mercadopago/px-ios/issues/261)
+- Revisión UX [\#259](https://github.com/mercadopago/px-ios/issues/259)
 - Limpiar idempotencia con el status del request y no con el error [\#254](https://github.com/mercadopago/px-ios/issues/254)
 - Fix id de idenpotencia [\#253](https://github.com/mercadopago/px-ios/issues/253)
+- Actualizar API VERSION [\#252](https://github.com/mercadopago/px-ios/issues/252)
 - Falta Loading en CardAdditionalStep [\#251](https://github.com/mercadopago/px-ios/issues/251)
 - Codigo Seguridad - Ocultar teclado tras confirmar [\#250](https://github.com/mercadopago/px-ios/issues/250)
 - Amex - Codigo de Seguridad - no se muestra en tarjeta [\#248](https://github.com/mercadopago/px-ios/issues/248)
 - Actualizar imágen de MPLoading [\#245](https://github.com/mercadopago/px-ios/issues/245)
+- Setear cantidad de métodos de pago de customer a mostrar [\#240](https://github.com/mercadopago/px-ios/issues/240)
 - Faltan Imagenes para Credito y Debito  [\#236](https://github.com/mercadopago/px-ios/issues/236)
 - Validación de "Numero de Tarjeta" en Form CC [\#175](https://github.com/mercadopago/px-ios/issues/175)
 - Volver Para atras de Credito/debito [\#174](https://github.com/mercadopago/px-ios/issues/174)
 - Error en escenario de C4A [\#172](https://github.com/mercadopago/px-ios/issues/172)
 - Xcode solicita cambiar código de Pod a Swift 3 [\#168](https://github.com/mercadopago/px-ios/issues/168)
-- Autoselección de medios custom [\#307](https://github.com/mercadopago/px-ios/pull/307) ([crisyelpegaso](https://github.com/crisyelpegaso))
-- Fix paymentPreference in Customer Cards [\#305](https://github.com/mercadopago/px-ios/pull/305) ([edentorres](https://github.com/edentorres))
-- Remove cache from groups [\#293](https://github.com/mercadopago/px-ios/pull/293) ([demtej](https://github.com/demtej))
-
-**Closed issues:**
-
-- Unit Tests no estan corriendo [\#327](https://github.com/mercadopago/px-ios/issues/327)
-- Cambiar el "Seguir Comprando" Por "Continuar" [\#291](https://github.com/mercadopago/px-ios/issues/291)
-- Agregar extra params al delegate de tracker [\#284](https://github.com/mercadopago/px-ios/issues/284)
-- Revisión UX : verificar font de decimales [\#282](https://github.com/mercadopago/px-ios/issues/282)
-- Actualizar API\_VERSION : 1.3.4 [\#280](https://github.com/mercadopago/px-ios/issues/280)
-- Botón de back está comprimido [\#241](https://github.com/mercadopago/px-ios/issues/241)
-- CCs : desde PaymentVault ir a cuotas y después a CVV [\#225](https://github.com/mercadopago/px-ios/issues/225)
-- Exclusiones en F2 : corregir altura en sección de customer payment [\#222](https://github.com/mercadopago/px-ios/issues/222)
-- API VERSION de backend en Requests [\#221](https://github.com/mercadopago/px-ios/issues/221)
-- Verificar Tradrucción de textos [\#214](https://github.com/mercadopago/px-ios/issues/214)
-- Actualizar los logos de las tarjetas [\#204](https://github.com/mercadopago/px-ios/issues/204)
-- UI wallet : botón back [\#197](https://github.com/mercadopago/px-ios/issues/197)
-- UI wallet : actualizar loading [\#196](https://github.com/mercadopago/px-ios/issues/196)
-- Pantallas Token Recuperable [\#179](https://github.com/mercadopago/px-ios/issues/179)
-- Blacklbabel en swift 3.0 [\#170](https://github.com/mercadopago/px-ios/issues/170)
-- Enviar defaultPaymentMethod desde preferencia a grupos. Verificar comportamiento para cada caso [\#167](https://github.com/mercadopago/px-ios/issues/167)
-- Notificaciones para tracking Wallet [\#166](https://github.com/mercadopago/px-ios/issues/166)
-- Pantalla Revisa y Confirma [\#157](https://github.com/mercadopago/px-ios/issues/157)
-- Xcode 8 iOS 10 - production code [\#144](https://github.com/mercadopago/px-ios/issues/144)
-- Tests for CustomCards from groups [\#120](https://github.com/mercadopago/px-ios/issues/120)
-- Modificar parametros de MPStepBuilder [\#357](https://github.com/mercadopago/px-ios/issues/357)
-- Pasar todos los items de groups a una seccion [\#330](https://github.com/mercadopago/px-ios/issues/330)
-- Cambiar el tamaño de la letra del titulo con el scrolling [\#314](https://github.com/mercadopago/px-ios/issues/314)
-- Actualizar pantalla de error [\#308](https://github.com/mercadopago/px-ios/issues/308)
-- AutoSelect Dinero en cuenta si es opción única [\#306](https://github.com/mercadopago/px-ios/issues/306)
-- Cambiar el fondo de grupos con dos colores [\#300](https://github.com/mercadopago/px-ios/issues/300)
-- Agregar filtro genérico para payment\_methods [\#299](https://github.com/mercadopago/px-ios/issues/299)
-- Decimales se dividen en la congrats / instrucciones [\#290](https://github.com/mercadopago/px-ios/issues/290)
-- Agregar el loading default nuevamente pero seguir usando el de wallet [\#272](https://github.com/mercadopago/px-ios/issues/272)
-- Verificar que devuelva un mensaje de error acorde cuando dadas las exclusiones Payment Vault no puede ofrecer ningun medio de pago [\#261](https://github.com/mercadopago/px-ios/issues/261)
-- Setear cantidad de métodos de pago de customer a mostrar [\#240](https://github.com/mercadopago/px-ios/issues/240)
+- Fixes para integración con Wallet [\#165](https://github.com/mercadopago/px-ios/issues/165)
 - Pantalla Grupos [\#154](https://github.com/mercadopago/px-ios/issues/154)
+- Servicio Access Token [\#152](https://github.com/mercadopago/px-ios/issues/152)
 - New Issuers VC [\#126](https://github.com/mercadopago/px-ios/issues/126)
 - New PayerCost VC [\#125](https://github.com/mercadopago/px-ios/issues/125)
 
@@ -1154,6 +1161,7 @@
 - Mix of fixes [\#332](https://github.com/mercadopago/px-ios/pull/332) ([demtej](https://github.com/demtej))
 - Fix StepExampleViewController examples [\#320](https://github.com/mercadopago/px-ios/pull/320) ([edentorres](https://github.com/edentorres))
 - Fixing Custom Loading [\#318](https://github.com/mercadopago/px-ios/pull/318) ([crisyelpegaso](https://github.com/crisyelpegaso))
+- Update PR template with UX validation [\#312](https://github.com/mercadopago/px-ios/pull/312) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Mpsdk target [\#309](https://github.com/mercadopago/px-ios/pull/309) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Add two colours to PaymentVaultViewController [\#302](https://github.com/mercadopago/px-ios/pull/302) ([edentorres](https://github.com/edentorres))
 - Fixes para Mexico [\#297](https://github.com/mercadopago/px-ios/pull/297) ([edentorres](https://github.com/edentorres))
@@ -1196,7 +1204,10 @@
 - Default pm in groups [\#323](https://github.com/mercadopago/px-ios/pull/323) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Add showBankDeals flag in CardForm to disable deals [\#316](https://github.com/mercadopago/px-ios/pull/316) ([edentorres](https://github.com/edentorres))
 - Error xib updated [\#311](https://github.com/mercadopago/px-ios/pull/311) ([crisyelpegaso](https://github.com/crisyelpegaso))
+- Autoselección de medios custom [\#307](https://github.com/mercadopago/px-ios/pull/307) ([crisyelpegaso](https://github.com/crisyelpegaso))
+- Fix paymentPreference in Customer Cards [\#305](https://github.com/mercadopago/px-ios/pull/305) ([edentorres](https://github.com/edentorres))
 - Custom and Default Loading [\#294](https://github.com/mercadopago/px-ios/pull/294) ([crisyelpegaso](https://github.com/crisyelpegaso))
+- Remove cache from groups [\#293](https://github.com/mercadopago/px-ios/pull/293) ([demtej](https://github.com/demtej))
 - Back button for wallet [\#262](https://github.com/mercadopago/px-ios/pull/262) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - - Update Version number [\#260](https://github.com/mercadopago/px-ios/pull/260) ([demtej](https://github.com/demtej))
 - Fixes Ux [\#239](https://github.com/mercadopago/px-ios/pull/239) ([edentorres](https://github.com/edentorres))
@@ -1204,6 +1215,7 @@
 - Se cargan  los grupos y las CCs todo junto [\#191](https://github.com/mercadopago/px-ios/pull/191) ([demtej](https://github.com/demtej))
 - Revamp Congrats [\#173](https://github.com/mercadopago/px-ios/pull/173) ([edentorres](https://github.com/edentorres))
 - Revamp- Bancos, Cuotas y Credito/debito [\#158](https://github.com/mercadopago/px-ios/pull/158) ([edentorres](https://github.com/edentorres))
+- Countdown timer [\#148](https://github.com/mercadopago/px-ios/pull/148) ([crisyelpegaso](https://github.com/crisyelpegaso))
 
 ## [2.0.3.3](https://github.com/mercadopago/px-ios/tree/2.0.3.3) (2016-11-16)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.0.8...2.0.3.3)
@@ -1235,7 +1247,7 @@
 ## [2.0.7](https://github.com/mercadopago/px-ios/tree/2.0.7) (2016-11-01)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.0.3.2...2.0.7)
 
-**Implemented enhancements:**
+**Closed issues:**
 
 - Plugin Cordova [\#102](https://github.com/mercadopago/px-ios/issues/102)
 
@@ -1253,15 +1265,12 @@
 ## [2.0.3.1](https://github.com/mercadopago/px-ios/tree/2.0.3.1) (2016-10-25)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/2.0.5...2.0.3.1)
 
-**Implemented enhancements:**
-
-- Verify AT in all SDK services [\#111](https://github.com/mercadopago/px-ios/issues/111)
-
 **Closed issues:**
 
 - Revisa y Confirma [\#150](https://github.com/mercadopago/px-ios/issues/150)
 - Crash in iOS 8.x -`San Francisco` font is available in iOS 9.0+ [\#145](https://github.com/mercadopago/px-ios/issues/145)
 - TR in Congrats [\#124](https://github.com/mercadopago/px-ios/issues/124)
+- Verify AT in all SDK services [\#111](https://github.com/mercadopago/px-ios/issues/111)
 - SDK 1.0.0 - iOS 10 [\#104](https://github.com/mercadopago/px-ios/issues/104)
 
 **Merged pull requests:**
@@ -1291,17 +1300,14 @@
 - Migration swift 2.3 [\#138](https://github.com/mercadopago/px-ios/pull/138) ([crisyelpegaso](https://github.com/crisyelpegaso))
 
 ## [2.0.1](https://github.com/mercadopago/px-ios/tree/2.0.1) (2016-09-16)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/2.0.0...2.0.1)
-
-**Implemented enhancements:**
-
-- Move model in CardFormVC into CardFormManager [\#128](https://github.com/mercadopago/px-ios/issues/128)
-- ViewModel for PaymentVault [\#119](https://github.com/mercadopago/px-ios/issues/119)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/2.0.3...2.0.1)
 
 **Closed issues:**
 
+- Move model in CardFormVC into CardFormManager [\#128](https://github.com/mercadopago/px-ios/issues/128)
 - Integrate with alpha services [\#123](https://github.com/mercadopago/px-ios/issues/123)
 - Adapt CC form for MP Card [\#122](https://github.com/mercadopago/px-ios/issues/122)
+- ViewModel for PaymentVault [\#119](https://github.com/mercadopago/px-ios/issues/119)
 - Init payment method selection with AT. Display user payment methods [\#110](https://github.com/mercadopago/px-ios/issues/110)
 - Adapt PayerCost form for customer cards [\#108](https://github.com/mercadopago/px-ios/issues/108)
 - Release MLA for iOS 10 / Swift 3 - Analysis [\#105](https://github.com/mercadopago/px-ios/issues/105)
@@ -1312,26 +1318,23 @@
 - Paying with account money [\#135](https://github.com/mercadopago/px-ios/pull/135) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Card Manager in CardFormVC [\#127](https://github.com/mercadopago/px-ios/pull/127) ([crisyelpegaso](https://github.com/crisyelpegaso))
 
-## [2.0.0](https://github.com/mercadopago/px-ios/tree/2.0.0) (2016-08-31)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.15...2.0.0)
+## [2.0.3](https://github.com/mercadopago/px-ios/tree/2.0.3) (2016-08-31)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.15...2.0.3)
 
 ## [0.9.15](https://github.com/mercadopago/px-ios/tree/0.9.15) (2016-08-31)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/2.0.3...0.9.15)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/2.0.0...0.9.15)
 
-## [2.0.3](https://github.com/mercadopago/px-ios/tree/2.0.3) (2016-08-31)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.14...2.0.3)
-
-**Implemented enhancements:**
-
-- Tests Customer Cards [\#99](https://github.com/mercadopago/px-ios/issues/99)
-- Create token for Saved Cards [\#91](https://github.com/mercadopago/px-ios/issues/91)
-- Adapt card form when a cardId is given [\#90](https://github.com/mercadopago/px-ios/issues/90)
+## [2.0.0](https://github.com/mercadopago/px-ios/tree/2.0.0) (2016-08-31)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.14...2.0.0)
 
 **Closed issues:**
 
 - Init group service with AT [\#109](https://github.com/mercadopago/px-ios/issues/109)
 - Fix UX [\#101](https://github.com/mercadopago/px-ios/issues/101)
 - Localization texts [\#100](https://github.com/mercadopago/px-ios/issues/100)
+- Tests Customer Cards [\#99](https://github.com/mercadopago/px-ios/issues/99)
+- Create token for Saved Cards [\#91](https://github.com/mercadopago/px-ios/issues/91)
+- Adapt card form when a cardId is given [\#90](https://github.com/mercadopago/px-ios/issues/90)
 
 **Merged pull requests:**
 
@@ -1346,19 +1349,19 @@
 ## [0.9.14](https://github.com/mercadopago/px-ios/tree/0.9.14) (2016-08-23)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.13...0.9.14)
 
-**Implemented enhancements:**
+**Closed issues:**
 
 - Align SDK px signatures [\#95](https://github.com/mercadopago/px-ios/issues/95)
 - Add PaymentResultStep [\#94](https://github.com/mercadopago/px-ios/issues/94)
 - Show customer cards in payment method selection [\#88](https://github.com/mercadopago/px-ios/issues/88)
 - Retrieve customer cards in payment method selection if customer\_uri is configured [\#87](https://github.com/mercadopago/px-ios/issues/87)
-- Align methods signature [\#96](https://github.com/mercadopago/px-ios/pull/96) ([crisyelpegaso](https://github.com/crisyelpegaso))
 
 **Merged pull requests:**
 
 - Portuges [\#103](https://github.com/mercadopago/px-ios/pull/103) ([demtej](https://github.com/demtej))
 - Test coverage [\#98](https://github.com/mercadopago/px-ios/pull/98) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Input mask [\#97](https://github.com/mercadopago/px-ios/pull/97) ([demtej](https://github.com/demtej))
+- Align methods signature [\#96](https://github.com/mercadopago/px-ios/pull/96) ([crisyelpegaso](https://github.com/crisyelpegaso))
 
 ## [0.9.13](https://github.com/mercadopago/px-ios/tree/0.9.13) (2016-08-12)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.12...0.9.13)
@@ -1378,7 +1381,7 @@
 ## [0.9.12](https://github.com/mercadopago/px-ios/tree/0.9.12) (2016-08-10)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.11...0.9.12)
 
-**Implemented enhancements:**
+**Closed issues:**
 
 - Localized according to siteId [\#77](https://github.com/mercadopago/px-ios/issues/77)
 
@@ -1398,19 +1401,13 @@
 ## [0.9.10](https://github.com/mercadopago/px-ios/tree/0.9.10) (2016-08-03)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.9...0.9.10)
 
-**Implemented enhancements:**
-
-- Instructions [\#69](https://github.com/mercadopago/px-ios/pull/69) ([crisyelpegaso](https://github.com/crisyelpegaso))
-
-**Fixed bugs:**
-
-- Error vc fix [\#72](https://github.com/mercadopago/px-ios/pull/72) ([crisyelpegaso](https://github.com/crisyelpegaso))
-
 **Merged pull requests:**
 
 - Items in MerchantPayment.toJSONStr [\#73](https://github.com/mercadopago/px-ios/pull/73) ([crisyelpegaso](https://github.com/crisyelpegaso))
+- Error vc fix [\#72](https://github.com/mercadopago/px-ios/pull/72) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Payment.toJSONString [\#71](https://github.com/mercadopago/px-ios/pull/71) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Promos callback [\#70](https://github.com/mercadopago/px-ios/pull/70) ([crisyelpegaso](https://github.com/crisyelpegaso))
+- Instructions [\#69](https://github.com/mercadopago/px-ios/pull/69) ([crisyelpegaso](https://github.com/crisyelpegaso))
 - Trackimprovements [\#68](https://github.com/mercadopago/px-ios/pull/68) ([demtej](https://github.com/demtej))
 - Trackimprovements [\#67](https://github.com/mercadopago/px-ios/pull/67) ([demtej](https://github.com/demtej))
 
@@ -1453,13 +1450,13 @@
 - Test for pod [\#48](https://github.com/mercadopago/px-ios/pull/48) ([crisyelpegaso](https://github.com/crisyelpegaso))
 
 ## [0.9.5](https://github.com/mercadopago/px-ios/tree/0.9.5) (2016-06-22)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.4...0.9.5)
-
-## [0.9.4](https://github.com/mercadopago/px-ios/tree/0.9.4) (2016-06-21)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.3...0.9.4)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.3...0.9.5)
 
 ## [0.9.3](https://github.com/mercadopago/px-ios/tree/0.9.3) (2016-06-21)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.2...0.9.3)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.4...0.9.3)
+
+## [0.9.4](https://github.com/mercadopago/px-ios/tree/0.9.4) (2016-06-21)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.2...0.9.4)
 
 ## [0.9.2](https://github.com/mercadopago/px-ios/tree/0.9.2) (2016-06-21)
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.1...0.9.2)
@@ -1468,20 +1465,20 @@
 [Full Changelog](https://github.com/mercadopago/px-ios/compare/0.7.1...0.9.1)
 
 ## [0.7.1](https://github.com/mercadopago/px-ios/tree/0.7.1) (2016-06-14)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.0...0.7.1)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/WORKSHOP...0.7.1)
 
 **Merged pull requests:**
 
 - Fixes en Promociones [\#47](https://github.com/mercadopago/px-ios/pull/47) ([demtej](https://github.com/demtej))
 
-## [0.9.0](https://github.com/mercadopago/px-ios/tree/0.9.0) (2016-06-14)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/v2-beta...0.9.0)
+## [WORKSHOP](https://github.com/mercadopago/px-ios/tree/WORKSHOP) (2016-06-14)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/v2-beta...WORKSHOP)
 
 ## [v2-beta](https://github.com/mercadopago/px-ios/tree/v2-beta) (2016-06-14)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/WORKSHOP...v2-beta)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.9.0...v2-beta)
 
-## [WORKSHOP](https://github.com/mercadopago/px-ios/tree/WORKSHOP) (2016-06-14)
-[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.2.0...WORKSHOP)
+## [0.9.0](https://github.com/mercadopago/px-ios/tree/0.9.0) (2016-06-14)
+[Full Changelog](https://github.com/mercadopago/px-ios/compare/0.2.0...0.9.0)
 
 **Merged pull requests:**
 
