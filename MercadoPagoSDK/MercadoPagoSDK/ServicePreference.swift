@@ -27,7 +27,7 @@ open class ServicePreference: NSObject {
     open static var MP_TEST_ENV = "/beta"
     open static let MP_PROD_ENV = "/v1"
     open static var MP_SELECTED_ENV = MP_PROD_ENV
-    
+
     static var API_VERSION = "1.3.X"
 
     static var MP_ENVIROMENT = MP_SELECTED_ENV  + "/checkout"
@@ -158,7 +158,7 @@ open class ServicePreference: NSObject {
     }
 
     public func getPaymentAddionalInfo() -> NSDictionary? {
-        if !NSDictionary.isNullOrEmpty(paymentAdditionalInfo){
+        if !NSDictionary.isNullOrEmpty(paymentAdditionalInfo) {
             return paymentAdditionalInfo!
         }
         return nil
@@ -199,7 +199,7 @@ open class ServicePreference: NSObject {
     }
 
     public func isCustomerInfoAvailable() -> Bool {
-        return !String.isNullOrEmpty(self.customerURL) && !String.isNullOrEmpty(self.customerURI) && customerAdditionalInfo != nil
+        return !String.isNullOrEmpty(self.customerURL) && !String.isNullOrEmpty(self.customerURI)
     }
 
     static public func setupMPEnvironment() {

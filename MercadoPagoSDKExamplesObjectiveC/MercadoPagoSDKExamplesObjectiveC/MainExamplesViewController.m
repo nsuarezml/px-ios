@@ -119,8 +119,7 @@
 
         ReviewScreenPreference *reviewPreferenceUpdated = [[ReviewScreenPreference alloc] init];
         [reviewPreferenceUpdated setTitleWithTitle:@"Updated"];
-        //[ReviewScreenP
-        reference addCustomItemCellWithCustomCell:customCargaSube];
+        //[ReviewScreenPreference addCustomItemCellWithCustomCell:customCargaSube];
         //[ReviewScreenPreference addAddionalInfoCellWithCustomCell:customCargaSube];
         [self.mpCheckout setReviewScreenPreference:reviewPreferenceUpdated];
         //        UIViewController *vc = [[[MercadoPagoCheckout alloc] initWithCheckoutPreference:self.pref paymentData:paymentData navigationController:self.navigationController] getRootViewController];
