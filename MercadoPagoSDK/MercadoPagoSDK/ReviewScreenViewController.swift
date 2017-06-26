@@ -28,12 +28,14 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
 
     @IBOutlet weak var checkoutTable: UITableView!
 
-   public init(viewModel: CheckoutViewModel, callbackPaymentData : @escaping (PaymentData) -> Void, callbackCancel : @escaping (() -> Void), callbackConfirm : @escaping (PaymentData) -> Void) {
+   public init(viewModel: CheckoutViewModel, callbackPaymentData : @escaping (PaymentData) -> Void, callbackCancel :(() -> Void)? = nil, callbackConfirm : @escaping (PaymentData) -> Void) {
         super.init(nibName: "ReviewScreenViewController", bundle: MercadoPago.getBundle())
         self.initCommon()
         self.viewModel = viewModel
         self.callbackPaymentData = callbackPaymentData
-        self.callbackCancel = callbackCancel
+        if let callbackCancel = callbackCancel {
+            self.callbackCancel = callbackCancel
+        }
         self.callbackConfirm = callbackConfirm
     }
 
@@ -73,8 +75,9 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
         self.navBarTextColor = UIColor.primaryColor()
 
         self.displayBackButton()
-        self.navigationItem.leftBarButtonItem!.action = #selector(ReviewScreenViewController.exitCheckoutFlow)
-
+        if let callbackCancel = self.callbackCancel{
+            self.navigationItem.leftBarButtonItem!.action = #selector(ReviewScreenViewController.exitCheckoutFlow)
+        }
         self.checkoutTable.dataSource = self
         self.checkoutTable.delegate = self
 

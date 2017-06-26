@@ -48,7 +48,7 @@ public class PaymentData: NSObject {
 
         if paymentMethod!.isCard() && (token == nil || payerCost == nil) {
 
-            if paymentMethod.paymentTypeId == PaymentTypeId.DEBIT_CARD.rawValue && token != nil {
+            if (paymentMethod.paymentTypeId == PaymentTypeId.DEBIT_CARD.rawValue || paymentMethod.paymentTypeId == PaymentTypeId.PREPAID_CARD.rawValue ) && token != nil {
                 return true
             }
             return false

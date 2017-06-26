@@ -255,11 +255,13 @@ open class MercadoPagoCheckoutViewModel: NSObject {
 
     //PAYMENT_METHOD_SELECTION
     public func updateCheckoutModel(paymentOptionSelected: PaymentMethodOption) {
+        if !self.initWithPaymentData {
+            resetInformation()
+        }
+        
         self.paymentOptionSelected = paymentOptionSelected
         if paymentOptionSelected.hasChildren() {
             self.paymentMethodOptions =  paymentOptionSelected.getChildren()
-        } else if !self.initWithPaymentData {
-            resetInformation()
         }
 
         if self.paymentOptionSelected!.isCustomerPaymentMethod() {

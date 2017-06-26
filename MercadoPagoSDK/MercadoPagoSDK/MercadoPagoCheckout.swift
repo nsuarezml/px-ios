@@ -519,15 +519,7 @@ open class MercadoPagoCheckout: NSObject {
             }
             strongSelf.executeNextStep()
 
-            }, callbackCancel : { [weak self] () -> Void in
-                guard let strongSelf = self else {
-                    return
-                }
-
-                strongSelf.viewModel.setIsCheckoutComplete(isCheckoutComplete: true)
-                strongSelf.executeNextStep()
-
-            }, callbackConfirm : {[weak self] (paymentData: PaymentData) -> Void in
+            }, callbackCancel : nil, callbackConfirm : {[weak self] (paymentData: PaymentData) -> Void in
                 guard let strongSelf = self else {
                     return
                 }

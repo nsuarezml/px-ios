@@ -209,7 +209,15 @@ class MainTableViewController: UITableViewController {
                 self.buttonViewControllerCreator(title: "Ir a Congrats", walletStep: walletSteps.congrats)
             }
         }
+        
+        if !setPaymentDataCallback && !setPaymentDataConfirmCallback {
+            MercadoPagoCheckout.setPaymentCallback(paymentCallback: { (payment) in
+                print(payment._id)
+                self.navigationController?.popToRootViewController(animated: false)
+            })
+        }
 
+        MercadoPagoContext.setLanguage(language: ._SPANISH_MEXICO)
         checkout.start()
     }
 
