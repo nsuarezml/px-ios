@@ -278,6 +278,12 @@ open class CheckoutViewModel: NSObject {
         return isPaymentMethodSelectedCard() && self.paymentData.paymentMethod.paymentTypeId != "debit_card" && paymentData.payerCost != nil && paymentData.payerCost?.installments != 1
     }
 
+    func getClearPaymentData() -> PaymentData {
+        let newPaymentData: PaymentData = paymentData
+        newPaymentData.clearCollectedData()
+        return newPaymentData
+    }
+
     public enum Sections: Int {
         case title = 0
         case summary = 1

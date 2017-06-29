@@ -28,6 +28,7 @@ class CheckoutViewModelTest: BaseTest {
         paymentData.payerCost = MockBuilder.buildInstallment().payerCosts[1]
         paymentData.payerCost?.installments = 3
         paymentData.discount = MockBuilder.buildDiscount()
+        paymentData.payer = MockBuilder.buildPayer("id")
 
         self.instanceWithCoupon = CheckoutViewModel(checkoutPreference: CheckoutPreference(), paymentData: paymentData, paymentOptionSelected: mockPaymentMethodSearchItem as PaymentMethodOption)
 
@@ -107,7 +108,6 @@ class CheckoutViewModelTest: BaseTest {
     }
 
     func testNumberOfSections() {
-
         let preference = MockBuilder.buildCheckoutPreference()
         self.instance!.preference = preference
 
@@ -576,5 +576,18 @@ class CheckoutViewModelTest: BaseTest {
         XCTAssertEqual(self.instance!.numberOfRowsInSection(section: 2), 1)
         XCTAssertTrue(self.instance!.isItemCellFor(indexPath: IndexPath(row: 0, section: 2)))
         XCTAssertEqual(self.instance!.heightForRow(IndexPath(row: 0, section: 2)), reviewScreenPreference.customItemCells[0].getHeight())
+    }
+
+    func testCleanPaymentData() {
+        XCTAssertEqual(self.instanceWithCoupon!.paymentData.paymentMethod._id, "visa")
+        XCTAssertEqual(self.instanceWithCoupon!.paymentData.payerCost!.installments, 3)
+        XCTAssertEqual(self.instanceWithCoupon!.paymentData.payer.email, "thisisanem@il.com")
+        XCTAssertEqual(self.instanceWithCoupon!.paymentData.discount!._id, "id")
+        let newPaymentData = self.instanceWithCoupon!.getClearPaymentData()
+
+        XCTAssertNil(newPaymentData.paymentMethod)
+        XCTAssertNil(newPaymentData.payerCost)
+        XCTAssertEqual(newPaymentData.payer.email, "thisisanem@il.com")
+        XCTAssertEqual(newPaymentData.discount!._id, "id")
     }
 }

@@ -10,8 +10,6 @@ import UIKit
 
 open class MercadoPagoCheckout: NSObject {
 
-    open var callbackCancel: (() -> Void)?
-
     static var currentCheckout: MercadoPagoCheckout?
     var viewModel: MercadoPagoCheckoutViewModel
     var navigationController: UINavigationController!
@@ -156,15 +154,15 @@ open class MercadoPagoCheckout: NSObject {
     func collectPaymentMethodSearch() {
         self.presentLoading()
         MPServicesBuilder.searchPaymentMethods(self.viewModel.getFinalAmount(), defaultPaymenMethodId: self.viewModel.getDefaultPaymentMethodId(), excludedPaymentTypeIds: self.viewModel.getExcludedPaymentTypesIds(), excludedPaymentMethodIds: self.viewModel.getExcludedPaymentMethodsIds(),
-             baseURL: MercadoPagoCheckoutViewModel.servicePreference.getDefaultBaseURL(), success: {  [weak self](paymentMethodSearchResponse: PaymentMethodSearch) -> Void in
+                                               baseURL: MercadoPagoCheckoutViewModel.servicePreference.getDefaultBaseURL(), success: {  [weak self](paymentMethodSearchResponse: PaymentMethodSearch) -> Void in
 
-                   guard let strongSelf = self else {
-                        return
-                   }
+                                                guard let strongSelf = self else {
+                                                    return
+                                                }
 
-                   strongSelf.viewModel.updateCheckoutModel(paymentMethodSearch: paymentMethodSearchResponse)
-                   strongSelf.dismissLoading()
-                   strongSelf.executeNextStep()
+                                                strongSelf.viewModel.updateCheckoutModel(paymentMethodSearch: paymentMethodSearchResponse)
+                                                strongSelf.dismissLoading()
+                                                strongSelf.executeNextStep()
 
             }, failure: { [weak self] (error) -> Void in
                 guard let strongSelf = self else {
@@ -519,7 +517,14 @@ open class MercadoPagoCheckout: NSObject {
             }
             strongSelf.executeNextStep()
 
-            }, callbackCancel : nil, callbackConfirm : {[weak self] (paymentData: PaymentData) -> Void in
+            }, callbackExit : { [weak self] () -> Void in
+                guard let strongSelf = self else {
+                    return
+                }
+
+                strongSelf.cancel()
+
+            }, callbackConfirm : {[weak self] (paymentData: PaymentData) -> Void in
                 guard let strongSelf = self else {
                     return
                 }
@@ -649,7 +654,7 @@ open class MercadoPagoCheckout: NSObject {
                     }
                     strongSelf.navigationController.setNavigationBarHidden(false, animated: false)
                     strongSelf.finish()
-                }, paymentResultScreenPreference: self.viewModel.paymentResultScreenPreference)
+                    }, paymentResultScreenPreference: self.viewModel.paymentResultScreenPreference)
             }
             self.pushViewController(viewController : congratsViewController, animated: true)
         } else {
@@ -691,7 +696,15 @@ open class MercadoPagoCheckout: NSObject {
             paymentCallback(payment)
             return
 
-        } else if let callback = MercadoPagoCheckoutViewModel.callback {
+        }
+
+        goToRootViewController()
+    }
+
+    func cancel() {
+        DecorationPreference.applyAppNavBarDecorationPreferencesTo(navigationController: self.navigationController)
+
+        if let callback = viewModel.callbackCancel {
             callback()
             return
         }
@@ -750,8 +763,9 @@ open class MercadoPagoCheckout: NSObject {
                                     completion : (() -> Swift.Void)? = nil) {
 
         viewController.hidesBottomBarWhenPushed = true
-        if self.navigationController.viewControllers.count == 0 {
-            viewController.callbackCancel = self.callbackCancel
+        let mercadoPagoViewControllers = self.navigationController.viewControllers.filter {$0.isKind(of:MercadoPagoUIViewController.self)}
+        if mercadoPagoViewControllers.count == 0 {
+            viewController.callbackCancel = { self.cancel() }
         }
         self.navigationController.pushViewController(viewController, animated: animated)
     }

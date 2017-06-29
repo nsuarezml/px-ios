@@ -68,8 +68,8 @@ extension MercadoPagoCheckout {
         MercadoPagoCheckoutViewModel.paymentDataConfirmCallback = paymentDataConfirmCallback
     }
 
-    open static func setCallback(callback : @escaping () -> Void) {
-        MercadoPagoCheckoutViewModel.callback = callback
+    open func setCallbackCancel(callback : @escaping () -> Void) {
+        self.viewModel.callbackCancel = callback
     }
 
     open static func setLanguage(language: Languages) {

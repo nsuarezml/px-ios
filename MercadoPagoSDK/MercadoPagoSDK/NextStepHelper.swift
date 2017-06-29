@@ -186,6 +186,7 @@ extension MercadoPagoCheckoutViewModel {
         }
 
         if self.initWithPaymentData && paymentData.isComplete() {
+            initWithPaymentData = false
             return true
         }
 

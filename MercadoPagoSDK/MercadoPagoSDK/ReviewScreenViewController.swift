@@ -18,6 +18,7 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
     var bundle: Bundle? = MercadoPago.getBundle()
     var callbackPaymentData: ((PaymentData) -> Void)!
     var callbackConfirm: ((PaymentData) -> Void)!
+    var callbackExit: ((Void) -> Void)!
     var viewModel: CheckoutViewModel!
     override open var screenName: String { get { return "REVIEW_AND_CONFIRM" } }
     fileprivate var reviewAndConfirmContent = Set<String>()
@@ -28,14 +29,12 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
 
     @IBOutlet weak var checkoutTable: UITableView!
 
-   public init(viewModel: CheckoutViewModel, callbackPaymentData : @escaping (PaymentData) -> Void, callbackCancel :(() -> Void)? = nil, callbackConfirm : @escaping (PaymentData) -> Void) {
+   public init(viewModel: CheckoutViewModel, callbackPaymentData : @escaping (PaymentData) -> Void, callbackExit :@escaping (() -> Void), callbackConfirm : @escaping (PaymentData) -> Void) {
         super.init(nibName: "ReviewScreenViewController", bundle: MercadoPago.getBundle())
         self.initCommon()
         self.viewModel = viewModel
         self.callbackPaymentData = callbackPaymentData
-        if let callbackCancel = callbackCancel {
-            self.callbackCancel = callbackCancel
-        }
+        self.callbackExit = callbackExit
         self.callbackConfirm = callbackConfirm
     }
 
@@ -75,9 +74,7 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
         self.navBarTextColor = UIColor.primaryColor()
 
         self.displayBackButton()
-        if let callbackCancel = self.callbackCancel{
-            self.navigationItem.leftBarButtonItem!.action = #selector(ReviewScreenViewController.exitCheckoutFlow)
-        }
+
         self.checkoutTable.dataSource = self
         self.checkoutTable.delegate = self
 
@@ -384,9 +381,7 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
     }
 
 	func changePaymentMethodSelected() {
-        let pm = PaymentData()
-        pm.discount = self.viewModel.paymentData.discount
-		self.callbackPaymentData(pm)
+        self.callbackPaymentData(self.viewModel.getClearPaymentData())
 	}
 
     internal func openTermsAndConditions(_ title: String, url: URL) {
@@ -404,7 +399,7 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
     }
 
     internal func exitCheckoutFlow() {
-        self.callbackCancel!()
+        self.callbackExit()
     }
 
     override func getNavigationBarTitle() -> String {

@@ -65,8 +65,7 @@ open class CustomService: MercadoPagoService {
                 }
             } else if failure != nil {
                 failure!(NSError(domain: "mercadopago.sdk.customServer.createPayment", code: MercadoPago.ERROR_UNKNOWN_CODE, userInfo: ["message": "Response cannot be decoded"]))
-            }}
-            , failure: { (error) -> Void in
+            }}, failure: { (error) -> Void in
                 if let failure = failure {
                     failure(NSError(domain: "mercadopago.sdk.CustomService.createPayment", code: error.code, userInfo: [NSLocalizedDescriptionKey: "Hubo un error".localized, NSLocalizedFailureReasonErrorKey: "Verifique su conexión a internet e intente nuevamente".localized]))
                 }

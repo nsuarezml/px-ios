@@ -22,7 +22,6 @@ open class Payer: NSObject {
 	}
 
     func clearCollectedData() {
-        self._id = nil
         self.entityType = nil
         self.identification = nil
     }

@@ -44,7 +44,7 @@ open class MercadoPagoCheckoutViewModel: NSObject {
     internal static var paymentDataCallback: ((PaymentData) -> Void)?
     internal static var paymentDataConfirmCallback: ((PaymentData) -> Void)?
     internal static var paymentCallback: ((Payment) -> Void)?
-    internal static var callback: (() -> Void)?
+    var callbackCancel: (() -> Void)?
     internal static var changePaymentMethodCallback: (() -> Void)?
 
     var checkoutPreference: CheckoutPreference!
@@ -98,7 +98,6 @@ open class MercadoPagoCheckoutViewModel: NSObject {
         MercadoPagoCheckoutViewModel.paymentDataCallback = nil
         MercadoPagoCheckoutViewModel.paymentDataConfirmCallback = nil
         MercadoPagoCheckoutViewModel.paymentCallback = nil
-        MercadoPagoCheckoutViewModel.callback = nil
         MercadoPagoCheckoutViewModel.changePaymentMethodCallback = nil
 
     }
@@ -258,7 +257,7 @@ open class MercadoPagoCheckoutViewModel: NSObject {
         if !self.initWithPaymentData {
             resetInformation()
         }
-        
+
         self.paymentOptionSelected = paymentOptionSelected
         if paymentOptionSelected.hasChildren() {
             self.paymentMethodOptions =  paymentOptionSelected.getChildren()
