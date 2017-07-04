@@ -1,0 +1,13 @@
+//
+//  module.modulemap
+//  MercadoPagoSDK
+//
+//  Created by AUGUSTO COLLERONE ALFONSO on 7/4/17.
+//  Copyright © 2017 MercadoPago. All rights reserved.
+//
+
+
+module NetworkTools {
+    header "NetworkTools.h"
+    export *
+}
