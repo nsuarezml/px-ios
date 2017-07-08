@@ -45,9 +45,11 @@ open class MercadoPagoCheckout: NSObject {
     public func start() {
         MercadoPagoCheckout.currentCheckout = self
         executeNextStep()
+
     }
 
     func executeNextStep() {
+
         switch self.viewModel.nextStep() {
         case .SEARCH_PREFERENCE :
             self.collectCheckoutPreference()

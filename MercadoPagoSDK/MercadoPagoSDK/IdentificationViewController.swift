@@ -267,7 +267,8 @@ open class IdentificationViewController: MercadoPagoUIViewController, UITextFiel
 
     }
 
-     var errorLabel: MPLabel?
+    var errorLabel: MPLabel?
+
     func showErrorMessage(_ errorMessage: String) {
         errorLabel = MPLabel(frame: toolbar!.frame)
         self.errorLabel!.backgroundColor = UIColor.mpLightGray()
