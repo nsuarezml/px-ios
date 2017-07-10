@@ -17,6 +17,8 @@ public class PaymentData: NSObject {
     public var payer = Payer()
     public var transactionDetails: TransactionDetails?
     public var discount: DiscountCoupon?
+    public var additionalInfo: AdditionalInfo?
+
 
     func clearCollectedData() {
         self.paymentMethod = nil
@@ -25,6 +27,7 @@ public class PaymentData: NSObject {
         self.token = nil
         self.payer.clearCollectedData()
         self.transactionDetails = nil
+        self.additionalInfo = nil
         // No borrar el descuento
     }
 
@@ -85,6 +88,10 @@ public class PaymentData: NSObject {
 
         if let discount = self.discount {
             obj["discount"] = discount.toJSON()
+        }
+        
+        if let additionalInfo = self.additionalInfo {
+            obj["additional_info"] = additionalInfo.toJSON()
         }
 
         return obj
