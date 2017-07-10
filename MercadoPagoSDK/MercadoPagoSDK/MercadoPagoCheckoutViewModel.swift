@@ -435,7 +435,11 @@ open class MercadoPagoCheckoutViewModel: NSObject {
         if paymentData.payer != nil {
             payer = paymentData.payer
         }
-        
+
+        var additionalInfo = AdditionalInfo()
+        if paymentData.additionalInfo != nil {
+            additionalInfo = paymentData.additionalInfo!
+        }
         var ipAddress = ""
         if let IP = MercadoPagoContext.getIPAddress() {
             ipAddress = IP
@@ -443,7 +447,7 @@ open class MercadoPagoCheckoutViewModel: NSObject {
 
         let isBlacklabelPayment = paymentData.token != nil && paymentData.token!.cardId != nil && String.isNullOrEmpty(customerId)
 
-        let mpPayment = MPPaymentFactory.createMPPayment(preferenceId: preferenceId, publicKey: MercadoPagoContext.publicKey(), paymentMethodId: paymentData.paymentMethod!._id, installments: installments, issuerId: issuerId, tokenId: tokenId, customerId: customerId, isBlacklabelPayment: isBlacklabelPayment, transactionDetails: transactionDetails, payer: payer, binaryMode: binaryMode, ipAddress: ipAddress)
+        let mpPayment = MPPaymentFactory.createMPPayment(preferenceId: preferenceId, publicKey: MercadoPagoContext.publicKey(), paymentMethodId: paymentData.paymentMethod!._id, installments: installments, issuerId: issuerId, tokenId: tokenId, customerId: customerId, isBlacklabelPayment: isBlacklabelPayment, transactionDetails: transactionDetails, payer: payer, binaryMode: binaryMode, ipAddress: ipAddress, additionalInfo: additionalInfo)
         return mpPayment
     }
 
