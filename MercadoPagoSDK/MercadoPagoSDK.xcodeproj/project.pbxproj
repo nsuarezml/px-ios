@@ -541,6 +541,8 @@
 		FCAA97011E6A0E0D000612F6 /* AdditionalStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAA96FF1E6A0E0D000612F6 /* AdditionalStepViewModel.swift */; };
 		FCAD2BE51E96E1370087D943 /* AdditionalStepCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAD2BE41E96E1370087D943 /* AdditionalStepCellFactory.swift */; };
 		FCAD2BE61E96E1370087D943 /* AdditionalStepCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAD2BE41E96E1370087D943 /* AdditionalStepCellFactory.swift */; };
+		FCBCD58C1F13B8B30037E5B0 /* AdditionalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCD58B1F13B8B30037E5B0 /* AdditionalInfo.swift */; };
+		FCBCD58D1F13B8B30037E5B0 /* AdditionalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCD58B1F13B8B30037E5B0 /* AdditionalInfo.swift */; };
 		FCBF132D1E71D6A60092B756 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF132C1E71D6A60092B756 /* Updatable.swift */; };
 		FCBF132E1E71D6A60092B756 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF132C1E71D6A60092B756 /* Updatable.swift */; };
 		FCBF13421E7201570092B756 /* FinancialInstituion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF13411E7201570092B756 /* FinancialInstituion.swift */; };
@@ -922,6 +924,7 @@
 		FCA653831E79CFD700E8D9C0 /* EntityTypes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EntityTypes.plist; sourceTree = "<group>"; };
 		FCAA96FF1E6A0E0D000612F6 /* AdditionalStepViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalStepViewModel.swift; sourceTree = "<group>"; };
 		FCAD2BE41E96E1370087D943 /* AdditionalStepCellFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalStepCellFactory.swift; sourceTree = "<group>"; };
+		FCBCD58B1F13B8B30037E5B0 /* AdditionalInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalInfo.swift; sourceTree = "<group>"; };
 		FCBF132C1E71D6A60092B756 /* Updatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
 		FCBF13411E7201570092B756 /* FinancialInstituion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinancialInstituion.swift; sourceTree = "<group>"; };
 		FCBF13471E7204C30092B756 /* FinancialInstitutionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinancialInstitutionTableViewCell.swift; sourceTree = "<group>"; };
@@ -1356,6 +1359,7 @@
 		15E08F6B1DA2CFC70087041B /* Parsed */ = {
 			isa = PBXGroup;
 			children = (
+				FCBCD58B1F13B8B30037E5B0 /* AdditionalInfo.swift */,
 				76743C751C45A00E00120347 /* CheckoutPreference.swift */,
 				0F98833B1AD2AB6000F750F0 /* CardNumber.swift */,
 				0F9883381AD2AB6000F750F0 /* Card.swift */,
@@ -2179,6 +2183,7 @@
 				4BEFBF8F1F06BB20003EA94E /* PayerCostCFTTableViewCell.swift in Sources */,
 				FCAD2BE51E96E1370087D943 /* AdditionalStepCellFactory.swift in Sources */,
 				4B31AA381E5A078B0084C5DB /* InstructionBodyTableViewCell.swift in Sources */,
+				FCBCD58C1F13B8B30037E5B0 /* AdditionalInfo.swift in Sources */,
 				4BEF81001E538CCE00797CD1 /* PaymentResultScreenPreference.swift in Sources */,
 				23ECADC51EF1C7CC003E4539 /* ApiUtil.swift in Sources */,
 				4BAE1D441DCBE8FF0000ED5C /* CallForAuthTableViewCell.swift in Sources */,
@@ -2413,6 +2418,7 @@
 				0F9883861AD2AB6000F750F0 /* PayerCost.swift in Sources */,
 				15B8B1AC1E71DE750065DF50 /* DiscountCoupon.swift in Sources */,
 				1553AF371E36457F00E36C62 /* MercadoPagoCheckoutViewModel.swift in Sources */,
+				FCBCD58D1F13B8B30037E5B0 /* AdditionalInfo.swift in Sources */,
 				7622E32F1DF5F00500490C4E /* AdditionalStepTitleTableViewCell.swift in Sources */,
 				76265C571E2422E3005FFC0E /* CountdownTimerTest.swift in Sources */,
 				0FC4FC191B0FAA6400CF7148 /* Promo.swift in Sources */,
