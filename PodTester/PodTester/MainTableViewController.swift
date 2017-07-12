@@ -234,7 +234,6 @@ class MainTableViewController: UITableViewController {
             self.navigationController?.popToRootViewController(animated: true)
         }
 
-        MercadoPagoContext.setLanguage(language: ._SPANISH_MEXICO)
         checkout.start()
     }
 
