@@ -12,11 +12,11 @@ open class SecurityCodeViewController: MercadoPagoUIViewController, UITextFieldD
 
     var securityCodeLabel: UILabel!
     @IBOutlet weak var securityCodeTextField: HoshiTextField!
-    @IBOutlet weak var errorLabel: UILabel!
+    var errorLabel: MPLabel?
+
 
     @IBOutlet weak var panelView: UIView!
     var viewModel: SecurityCodeViewModel!
-    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var cardCvvThumbnail: UIImageView!
     var textMaskFormater: TextMaskFormater!
     var cardFront: CardFrontView!
@@ -29,10 +29,8 @@ open class SecurityCodeViewController: MercadoPagoUIViewController, UITextFieldD
         super.viewDidLoad()
          self.hideNavBar()
         loadMPStyles()
-        self.errorLabel.alpha = 0
         self.securityCodeTextField.placeholder = "security_code".localized
         setupInputAccessoryView()
-        self.errorLabel.text = "Revisa este dato".localized
         self.view.backgroundColor = UIColor.primaryColor()
         self.cardFront = CardFrontView.init(frame: viewModel.getCardBounds())
         self.view.addSubview(cardFront)
@@ -106,7 +104,8 @@ open class SecurityCodeViewController: MercadoPagoUIViewController, UITextFieldD
     func continueAction(){
         securityCodeTextField.resignFirstResponder()
         guard securityCodeTextField.text?.characters.count == viewModel.secCodeLenght() else {
-            showErrorMessage()
+            let errorMessage: String = ("Ingresa los %1$s números del código de seguridad".localized as NSString).replacingOccurrences(of: "%1$s", with: ((self.viewModel.secCodeLenght()) as NSNumber).stringValue)
+            showErrorMessage(errorMessage)
             return
         }
         self.viewModel.executeCallback(secCode:  securityCodeTextField.text)
@@ -152,11 +151,28 @@ open class SecurityCodeViewController: MercadoPagoUIViewController, UITextFieldD
 
     }
 
-    open func showErrorMessage() {
-        self.errorLabel.alpha = 1
+    open func showErrorMessage(_ errorMessage: String) {
+        errorLabel = MPLabel(frame: toolbar!.frame)
+        self.errorLabel!.backgroundColor = UIColor.mpLightGray()
+        self.errorLabel!.textColor = UIColor.mpRedErrorMessage()
+        self.errorLabel!.textAlignment = .center
+        self.errorLabel!.text = errorMessage
+        self.errorLabel!.font = self.errorLabel!.font.withSize(12)
+        securityCodeTextField.borderInactiveColor = UIColor.red
+        securityCodeTextField.borderActiveColor = UIColor.red
+        securityCodeTextField.inputAccessoryView = errorLabel
+        securityCodeTextField.setNeedsDisplay()
+        securityCodeTextField.resignFirstResponder()
+        securityCodeTextField.becomeFirstResponder()
+
     }
     open func hideErrorMessage() {
-        self.errorLabel.alpha = 0
+        self.securityCodeTextField.borderInactiveColor = UIColor(netHex: 0x3F9FDA)
+        self.securityCodeTextField.borderActiveColor = UIColor(netHex: 0x3F9FDA)
+        self.securityCodeTextField.inputAccessoryView = self.toolbar
+        self.securityCodeTextField.setNeedsDisplay()
+        self.securityCodeTextField.resignFirstResponder()
+        self.securityCodeTextField.becomeFirstResponder()
     }
 
     func completeCvvLabel() {
