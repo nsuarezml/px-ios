@@ -561,6 +561,8 @@
 		FCBF13531E720A6E0092B756 /* EntityTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF13501E720A6E0092B756 /* EntityTypeTableViewCell.swift */; };
 		FCBF13541E720A6E0092B756 /* EntityTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCBF13511E720A6E0092B756 /* EntityTypeTableViewCell.xib */; };
 		FCBF13551E720A6E0092B756 /* EntityTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCBF13511E720A6E0092B756 /* EntityTypeTableViewCell.xib */; };
+		FCD34FFD1F28F8C400440DC6 /* LocalizableStringsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD34FFC1F28F8C400440DC6 /* LocalizableStringsUtil.swift */; };
+		FCD34FFE1F28F8C400440DC6 /* LocalizableStringsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD34FFC1F28F8C400440DC6 /* LocalizableStringsUtil.swift */; };
 		FCD647541EBB90E40082A3D3 /* PayerCostPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCEB90811EB8F3FA0096B1A2 /* PayerCostPreferences.plist */; };
 		FCD647551EBB91200082A3D3 /* UnlockCardLinks.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCEB90821EB8F3FA0096B1A2 /* UnlockCardLinks.plist */; };
 		FCEB90831EB8F3FA0096B1A2 /* mpsdk_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCEB90801EB8F3FA0096B1A2 /* mpsdk_settings.plist */; };
@@ -938,6 +940,7 @@
 		FCBF134D1E7208900092B756 /* EntityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityType.swift; sourceTree = "<group>"; };
 		FCBF13501E720A6E0092B756 /* EntityTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityTypeTableViewCell.swift; sourceTree = "<group>"; };
 		FCBF13511E720A6E0092B756 /* EntityTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityTypeTableViewCell.xib; sourceTree = "<group>"; };
+		FCD34FFC1F28F8C400440DC6 /* LocalizableStringsUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableStringsUtil.swift; sourceTree = "<group>"; };
 		FCEB90801EB8F3FA0096B1A2 /* mpsdk_settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mpsdk_settings.plist; sourceTree = "<group>"; };
 		FCEB90811EB8F3FA0096B1A2 /* PayerCostPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PayerCostPreferences.plist; sourceTree = "<group>"; };
 		FCEB90821EB8F3FA0096B1A2 /* UnlockCardLinks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UnlockCardLinks.plist; sourceTree = "<group>"; };
@@ -1095,6 +1098,7 @@
 				0F9883AD1AD2ACF400F750F0 /* Additions */,
 				0F9883AC1AD2ABBC00F750F0 /* Frameworks */,
 				23ECADC41EF1C7CC003E4539 /* ApiUtil.swift */,
+				FCD34FFC1F28F8C400440DC6 /* LocalizableStringsUtil.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -2159,6 +2163,7 @@
 				76B085271CE500D100C157BF /* PaymentMethodSelectedTableViewCell.swift in Sources */,
 				4BAA55EB1DB0015800501061 /* AdditionalStepCardTableViewCell.swift in Sources */,
 				0F9883A31AD2AB8000F750F0 /* PaymentService.swift in Sources */,
+				FCD34FFD1F28F8C400440DC6 /* LocalizableStringsUtil.swift in Sources */,
 				15B8B1BD1E71DEAE0065DF50 /* AddCouponViewModel.swift in Sources */,
 				158F17701D34141B00E7EBDA /* MercadoPagoContext.swift in Sources */,
 				FC114D6B1E6DECEF00640196 /* Cellable.swift in Sources */,
@@ -2474,6 +2479,7 @@
 				76EC48061C862B000086FA53 /* InstructionTest.swift in Sources */,
 				0F98836E1AD2AB6000F750F0 /* Device.swift in Sources */,
 				767C9CD61E266C0600BB4662 /* MPPaymentTest.swift in Sources */,
+				FCD34FFE1F28F8C400440DC6 /* LocalizableStringsUtil.swift in Sources */,
 				7656CA181C7644F10043BDB2 /* Instruction.swift in Sources */,
 				76FD24821C5BFEA1008C5DC0 /* CardFrontView.swift in Sources */,
 				76FD247A1C5BFEA1008C5DC0 /* CardBackView.swift in Sources */,
