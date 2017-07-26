@@ -12,13 +12,14 @@ public class LocalizableStringsUtil: NSObject {
     
     //Basic UI
     open static let SI = "Si".localized
-    open static let NO = "No".localized
+    open static let NOn = "No".localized
     open static let OK = "OK".localized
     open static let CARGANDO = "Cargando...".localized
     open static let ERROR = "Hubo un error".localized
     open static let CONTINUAR = "Continuar".localized
     open static let ANTERIOR = "Anterior".localized
     open static let SIGUIENTE = "Siguiente".localized
+    open static let CANCELAR = "Cancelar".localized
     open static let SALIR = "Salir".localized
     open static let REINTENTAR = "Reintentar".localized
     
@@ -117,9 +118,7 @@ public class LocalizableStringsUtil: NSObject {
     open static let FECHA_DE_EXPIRACION = "Fecha de expiración".localized
     open static let CODIGO_DE_SEGURIDAD = "Código de seguridad".localized
     open static let INGRESAR_NUMERO_TARJETA = "Ingresa el número de la tarjeta de crédito".localized
-    open static let REVISA_ESTE_DATO = "Revisa este dato".localized //REPETIDA
     open static let INGRESA_NOMBRE_EN_TARJETA = "Ingresa el nombre y apellido impreso en la tarjeta".localized
-    open static let INGRESA_X_NUMEROS_CVV = "Ingresa los %1$s números del código de seguridad".localized //REPETIDA
     open static let METODO_DE_PAGO_NO_SOPORTADO = "Método de pago no soportado".localized
     open static let NOMBRE_Y_APELLIDO = "Nombre y apellido".localized
     
@@ -210,7 +209,7 @@ public class LocalizableStringsUtil: NSObject {
 //    
 //    //Discount
 //    "Código de descuento"="Código de descuento";
-//    "Canejar"="Canejar";
+    open static let CANJEAR = "Canjear".localized
 //    "Código inválido"="Código inválido";
 //    "de descuento"="de descuento";
 //    "Tengo un descuento"="Tengo un descuento";
@@ -226,7 +225,7 @@ public class LocalizableStringsUtil: NSObject {
 //    "Desbloqueo de Tarjeta"="Desbloqueo de Tarjeta";
 //    
 //    //Administrador de tarjetas
-//    "¿Con qué tarjeta?"="¿Con qué tarjeta?";
+    open static let CON_QUE_TARJETA = "¿Con qué tarjeta?".localized
     
 
     
