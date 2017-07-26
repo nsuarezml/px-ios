@@ -13,7 +13,7 @@ open class ReviewScreenPreference: NSObject {
     private var title = "Confirma tu compra".localized
     private var productsTitle = "Productos".localized
     private var confirmButtonText = "Confirmar".localized
-    private var cancelButtonText = "Cancelar Pago".localized
+    private var cancelButtonText = LocalizableStringsUtil.CANCELAR_PAGO
 	private var shouldDisplayChangeMethodOption = true
 
     private var summaryRows = [SummaryRow]()

@@ -93,7 +93,7 @@ class PaymentMethodSelectedTableViewCell: UITableViewCell {
         }
         
         if showPayerCostDescription(paymentData: paymentData) {
-            self.noRateLabel.attributedText = NSAttributedString(string : "Sin interés".localized)
+            self.noRateLabel.attributedText = NSAttributedString(string : LocalizableStringsUtil.SIN_INTERES)
         }
     }
     

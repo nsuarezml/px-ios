@@ -17,7 +17,7 @@ class BankInsterestTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        mainLabel.text = "No incluye intereses bancarios".localized
+        mainLabel.text = LocalizableStringsUtil.NO_INCLUYE_INTERES_BANCARIOS
         mainLabel.textAlignment = .center
         mainLabel.font = Utils.getLightFont(size: 14)
         mainLabel.textColor = UIColor.systemFontColor()

@@ -196,7 +196,7 @@ class IssuerAdditionalStepViewModel: AdditionalStepViewModel {
     let cardViewRect = CGRect(x: 0, y: 0, width: 100, height: 30)
 
     init(amount: Double, token: CardInformationForm?, paymentMethod: PaymentMethod, dataSource: [Cellable] ) {
-        super.init(screenName: "ISSUER", screenTitle: "¿Quién emitió tu tarjeta?".localized, cardSectionVisible: true, cardSectionView: CardFrontView(frame: self.cardViewRect), totalRowVisible: false, amount: amount, token: token, paymentMethods: [paymentMethod], dataSource: dataSource)
+        super.init(screenName: "ISSUER", screenTitle: LocalizableStringsUtil.EMISOR_TARJETA, cardSectionVisible: true, cardSectionView: CardFrontView(frame: self.cardViewRect), totalRowVisible: false, amount: amount, token: token, paymentMethods: [paymentMethod], dataSource: dataSource)
     }
 
 }
@@ -206,7 +206,7 @@ class PayerCostAdditionalStepViewModel: AdditionalStepViewModel {
     let cardViewRect = CGRect(x: 0, y: 0, width: 100, height: 30)
 
     init(amount: Double, token: CardInformationForm?, paymentMethod: PaymentMethod, dataSource: [Cellable], discount: DiscountCoupon? = nil, email: String? = nil) {
-        super.init(screenName: "PAYER_COST", screenTitle: "¿En cuántas cuotas?".localized, cardSectionVisible: true, cardSectionView: CardFrontView(frame: self.cardViewRect), totalRowVisible: true, showBankInsterestWarning: true, amount: amount, token: token, paymentMethods: [paymentMethod], dataSource: dataSource, discount: discount, email: email)
+        super.init(screenName: "PAYER_COST", screenTitle: LocalizableStringsUtil.EN_CUANTAS_CUOTAS, cardSectionVisible: true, cardSectionView: CardFrontView(frame: self.cardViewRect), totalRowVisible: true, showBankInsterestWarning: true, amount: amount, token: token, paymentMethods: [paymentMethod], dataSource: dataSource, discount: discount, email: email)
     }
 
     override func getDefaultRowCellHeight() -> CGFloat {
@@ -232,7 +232,7 @@ class CardTypeAdditionalStepViewModel: AdditionalStepViewModel {
     let cardViewRect = CGRect(x: 0, y: 0, width: 100, height: 30)
 
     init(amount: Double, token: CardInformationForm?, paymentMethods: [PaymentMethod], dataSource: [Cellable] ) {
-        super.init(screenName: "CARD_TYPE", screenTitle: "¿Qué tipo de tarjeta es?".localized, cardSectionVisible: true, cardSectionView:CardFrontView(frame: self.cardViewRect), totalRowVisible: false, amount: amount, token: token, paymentMethods: paymentMethods, dataSource: dataSource)
+        super.init(screenName: "CARD_TYPE", screenTitle: LocalizableStringsUtil.TIPO_DE_TARJETA, cardSectionVisible: true, cardSectionView:CardFrontView(frame: self.cardViewRect), totalRowVisible: false, amount: amount, token: token, paymentMethods: paymentMethods, dataSource: dataSource)
     }
 
 }
@@ -240,7 +240,7 @@ class CardTypeAdditionalStepViewModel: AdditionalStepViewModel {
 class FinancialInstitutionAdditionalStepViewModel: AdditionalStepViewModel {
 
     init(amount: Double, token: CardInformationForm?, paymentMethod: PaymentMethod, dataSource: [Cellable] ) {
-        super.init(screenName: "FINANCIAL_INSTITUTION", screenTitle: "¿Cuál es tu banco?".localized, cardSectionVisible: false, cardSectionView: nil, totalRowVisible: false, amount: amount, token: token, paymentMethods: [paymentMethod], dataSource: dataSource)
+        super.init(screenName: "FINANCIAL_INSTITUTION", screenTitle: LocalizableStringsUtil.CUAL_ES_TU_BANCO, cardSectionVisible: false, cardSectionView: nil, totalRowVisible: false, amount: amount, token: token, paymentMethods: [paymentMethod], dataSource: dataSource)
     }
 
 }
@@ -252,7 +252,7 @@ class EntityTypeAdditionalStepViewModel: AdditionalStepViewModel {
     let cardViewRect = CGRect(x: 0, y: 0, width: 100, height: 30)
 
     init(amount: Double, token: CardInformationForm?, paymentMethod: PaymentMethod, dataSource: [Cellable] ) {
-        super.init(screenName: "ENTITY_TYPE", screenTitle: "¿Cuál es el tipo de persona?".localized, cardSectionVisible: true, cardSectionView:IdentificationCardView(frame: self.cardViewRect), totalRowVisible: false, amount: amount, token: token, paymentMethods: [paymentMethod], dataSource: dataSource)
+        super.init(screenName: "ENTITY_TYPE", screenTitle: LocalizableStringsUtil.TIPO_DE_PERSONA, cardSectionVisible: true, cardSectionView:IdentificationCardView(frame: self.cardViewRect), totalRowVisible: false, amount: amount, token: token, paymentMethods: [paymentMethod], dataSource: dataSource)
     }
 
 }

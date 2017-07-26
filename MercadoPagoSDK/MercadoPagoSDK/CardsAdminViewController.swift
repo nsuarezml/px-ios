@@ -134,8 +134,8 @@ open class CardsAdminViewController: MercadoPagoUIScrollViewController, UICollec
         let title = self.viewModel.getAlertCardTitle(card: card)
 
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "No".localized, style: UIAlertActionStyle.cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Si".localized, style: UIAlertActionStyle.default, handler: { (_) -> Void in
+        alert.addAction(UIAlertAction(title: LocalizableStringsUtil.SI, style: UIAlertActionStyle.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizableStringsUtil.NOn, style: UIAlertActionStyle.default, handler: { (_) -> Void in
             self.callback(card)
         }))
 

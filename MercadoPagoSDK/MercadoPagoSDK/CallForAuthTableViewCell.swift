@@ -25,11 +25,11 @@ class CallForAuthTableViewCell: CallbackCancelTableViewCell {
     }
     func fillCell(paymentMehtod: PaymentMethod?) {
         if let paymentMethodName = paymentMehtod!.name {
-            let message = ("Ya hable con %0 y me autorizó".localized as NSString).replacingOccurrences(of: "%0", with: "\(paymentMethodName)")
+            let message = (LocalizableStringsUtil.YA_AUTORIZE as NSString).replacingOccurrences(of: "%0", with: "\(paymentMethodName)")
             self.button.setTitle(message, for: UIControlState.normal)
         }
-        title.text = "¿Qué puedo hacer?".localized
-        subtitle.text = "El teléfono está al dorso de tu tarjeta.".localized
+        title.text = LocalizableStringsUtil.QUE_PUEDO_HACER
+        subtitle.text = LocalizableStringsUtil.TELEFONO_EN_DORSO_TARJETA
         self.title.font = Utils.getFont(size: self.title.font.pointSize)
         self.subtitle.font = Utils.getFont(size: self.subtitle.font.pointSize)
     }

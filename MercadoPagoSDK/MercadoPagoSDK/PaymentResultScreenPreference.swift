@@ -19,7 +19,7 @@ open class PaymentResultScreenPreference: NSObject {
 
     var pendingTitle = "Estamos procesando el pago".localized
     var pendingSubtitle = ""
-    var pendingContentTitle = "¿Qué puedo hacer?".localized
+    var pendingContentTitle = LocalizableStringsUtil.QUE_PUEDO_HACER
     var pendingContentText = ""
     var pendingIconName = "MPSDK_payment_result_pending"
     var pendingIconBundle = MercadoPago.getBundle()!
@@ -34,7 +34,7 @@ open class PaymentResultScreenPreference: NSObject {
     var rejectedIconSubtext = "Algo salió mal… ".localized
     var rejectedIconName = "MPSDK_payment_result_error"
     var rejectedIconBundle = MercadoPago.getBundle()!
-    var rejectedContentTitle = "¿Qué puedo hacer?".localized
+    var rejectedContentTitle = LocalizableStringsUtil.QUE_PUEDO_HACER
     var rejectedContentText = ""
     var hideRejectedSecondaryButton = false
     var hideRejectedContentText = false

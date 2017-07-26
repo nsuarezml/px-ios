@@ -57,8 +57,8 @@ class PaymentResultScreenPreferenceTest: BaseTest {
     }
 
     func testSetContentTitle() {
-        XCTAssertEqual(self.mpCheckout.viewModel.paymentResultScreenPreference.getPendingContetTitle(), "¿Qué puedo hacer?".localized)
-        XCTAssertEqual(self.mpCheckout.viewModel.paymentResultScreenPreference.getRejectedContetTitle(), "¿Qué puedo hacer?".localized)
+        XCTAssertEqual(self.mpCheckout.viewModel.paymentResultScreenPreference.getPendingContetTitle(), LocalizableStringsUtil.QUE_PUEDO_HACER)
+        XCTAssertEqual(self.mpCheckout.viewModel.paymentResultScreenPreference.getRejectedContetTitle(), LocalizableStringsUtil.QUE_PUEDO_HACER)
 
         paymentResultScreenPreference.setPendingContentTitle(title: "1")
         paymentResultScreenPreference.setRejectedContentTitle(title: "2")

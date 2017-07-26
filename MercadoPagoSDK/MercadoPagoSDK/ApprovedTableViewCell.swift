@@ -83,7 +83,7 @@ class ApprovedTableViewCell: UITableViewCell {
 
     func fillID(id: String?) {
         if !String.isNullOrEmpty(id) {
-            comprobante.text = "Comprobante".localized
+            comprobante.text = LocalizableStringsUtil.COMPROBANTE
             paymentId.text = "Nº \(id!)"
 
         } else {
@@ -110,12 +110,12 @@ class ApprovedTableViewCell: UITableViewCell {
         if !payerCost.hasInstallmentsRate() {
 
             if MercadoPagoCheckout.showBankInterestWarning() {
-                installmentRate.text = "No incluye intereses bancarios".localized
+                installmentRate.text = LocalizableStringsUtil.NO_INCLUYE_INTERES_BANCARIOS
                 installmentRate.font = installmentRate.font.withSize(paymentId.font.pointSize)
                 installmentRate.textColor = total.textColor
             } else {
                 if MercadoPagoCheckout.showPayerCostDescription() {
-                    installmentRate.text = "Sin interés".localized
+                    installmentRate.text = LocalizableStringsUtil.SIN_INTERES
                 } else {
                     installmentRate.text = ""
                 }
@@ -140,15 +140,15 @@ class ApprovedTableViewCell: UITableViewCell {
 
     func fillPaymentMethodDescriptionLabel(paymentMethod: PaymentMethod?, token: Token?) {
         if let token = token {
-            self.lastFourDigits.text = "Terminada en ".localized + String(describing: token.lastFourDigits!)
+            self.lastFourDigits.text = LocalizableStringsUtil.TERMINADA_EN + String(describing: token.lastFourDigits!)
         } else if let paymentMethod = paymentMethod {
-            self.lastFourDigits.text = paymentMethod._id == "account_money" ? "Con dinero en cuenta".localized : ""
+            self.lastFourDigits.text = paymentMethod._id == "account_money" ? LocalizableStringsUtil.CON_DINERO_EN_CUENTA : ""
         }
     }
 
     func fillStatementDescriptionLabel(description: String?) {
         if !String.isNullOrEmpty(description) {
-            statement.text = ("En tu estado de cuenta verás el cargo como %0".localized as NSString).replacingOccurrences(of: "%0", with: "\(description!)")
+            statement.text = (LocalizableStringsUtil.EN_TU_ESTADO_VERAS_EL_CARGO_COMO as NSString).replacingOccurrences(of: "%0", with: "\(description!)")
         } else {
             paymentMethodStatementDescriptionConstraint.constant = 0
         }

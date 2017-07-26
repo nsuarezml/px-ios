@@ -29,9 +29,9 @@ class CardTypeTableViewCell: UITableViewCell {
     }
     func fillCell() {
         if paymentMethod.paymentTypeId == "credit_card"{
-            cardTypeLable.text = "Crédito".localized
+            cardTypeLable.text = LocalizableStringsUtil.CREDITO
         } else {
-            cardTypeLable.text = "Débito".localized
+            cardTypeLable.text = LocalizableStringsUtil.DEBITO
         }
     }
     func addSeparatorLineToBottom(width: Double, height: Double) {

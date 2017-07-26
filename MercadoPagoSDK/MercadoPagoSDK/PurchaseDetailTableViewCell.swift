@@ -47,7 +47,7 @@ open class PurchaseDetailTableViewCell: UITableViewCell {
             }
             if !payerCost!.hasInstallmentsRate() {
                 separatorLineHeight = MercadoPagoCheckout.showPayerCostDescription() ? separatorLineHeight + 26 : separatorLineHeight
-                self.noRateLabel.attributedText = NSAttributedString(string : MercadoPagoCheckout.showPayerCostDescription() ? "Sin interés".localized : "")
+                self.noRateLabel.attributedText = NSAttributedString(string : MercadoPagoCheckout.showPayerCostDescription() ? LocalizableStringsUtil.SIN_INTERES : "")
             }
             let separatorLine = ViewUtils.getTableCellSeparatorLineView(21, y: separatorLineHeight, width: self.frame.width - 42, height: 1)
             self.addSubview(separatorLine)

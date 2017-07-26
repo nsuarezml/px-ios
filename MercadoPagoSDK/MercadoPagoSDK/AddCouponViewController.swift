@@ -37,7 +37,7 @@ open class AddCouponViewController: MercadoPagoUIViewController, UITextFieldDele
     }
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        textBox.placeholder = "Código de descuento".localized
+        textBox.placeholder = LocalizableStringsUtil.CODIGO_DE_DESCUENTO
 
     }
     override open func viewDidLoad() {
@@ -63,8 +63,8 @@ open class AddCouponViewController: MercadoPagoUIViewController, UITextFieldDele
         toolbar.alpha = 1
         toolbar.isUserInteractionEnabled = true
 
-        buttonNext = UIBarButtonItem(title: "Canejar".localized, style: .done, target: self, action: #selector(AddCouponViewController.rightArrowKeyTapped))
-        buttonPrev = UIBarButtonItem(title: "Cancelar".localized, style: .plain, target: self, action: #selector(AddCouponViewController.leftArrowKeyTapped))
+        buttonNext = UIBarButtonItem(title: LocalizableStringsUtil.CANJEAR, style: .done, target: self, action: #selector(AddCouponViewController.rightArrowKeyTapped))
+        buttonPrev = UIBarButtonItem(title: LocalizableStringsUtil.CANCELAR, style: .plain, target: self, action: #selector(AddCouponViewController.leftArrowKeyTapped))
 
          let font = Utils.getFont(size: 14)
         buttonNext.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)

@@ -70,7 +70,7 @@ class PaymentResultContentViewModel: NSObject {
     let paymentResult: PaymentResult
     var paymentResultScreenPreference: PaymentResultScreenPreference
 
-    let defaultTitle = "¿Qué puedo hacer?".localized
+    let defaultTitle = LocalizableStringsUtil.QUE_PUEDO_HACER
 
     init(paymentResult: PaymentResult, paymentResultScreenPreference: PaymentResultScreenPreference) {
         self.paymentResult = paymentResult

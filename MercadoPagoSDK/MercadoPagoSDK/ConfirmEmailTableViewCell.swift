@@ -16,11 +16,11 @@ class ConfirmEmailTableViewCell: UITableViewCell {
         // Initialization code
         self.selectionStyle = .none
         label.font = Utils.getFont(size: label.font.pointSize)
-        label.text = "También enviamos el código a tu email".localized
+        label.text = LocalizableStringsUtil.CODIGO_ENVIADO_POR_EMAIL_GENERAL
     }
     func fillCell(paymentResult: PaymentResult?) {
         if paymentResult?.status == "approved" {
-            label.text = ("Te enviaremos este comprobante a %0".localized as NSString).replacingOccurrences(of: "%0", with: "\(paymentResult!.payerEmail!)")
+            label.text = (LocalizableStringsUtil.CODIGO_ENVIADO_POR_EMAIL as NSString).replacingOccurrences(of: "%0", with: "\(paymentResult!.payerEmail!)")
 
         }
     }

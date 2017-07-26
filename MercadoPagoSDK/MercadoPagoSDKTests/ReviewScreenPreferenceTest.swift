@@ -56,7 +56,7 @@ class ReviewScreenPreferenceTest: BaseTest {
 
     func testSetCancelButtonText() {
 
-        XCTAssertEqual(reviewScreenPreference.getCancelButtonTitle(), "Cancelar Pago".localized)
+        XCTAssertEqual(reviewScreenPreference.getCancelButtonTitle(), LocalizableStringsUtil.CANCELAR_PAGO)
 
         reviewScreenPreference.setCancelButtonText(cancelButtonText: "1")
         self.mpCheckout.setReviewScreenPreference(reviewScreenPreference)
