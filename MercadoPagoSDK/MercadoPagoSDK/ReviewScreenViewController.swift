@@ -150,7 +150,7 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
             return self.getPurchaseDetailCell(indexPath: indexPath, title : "Pagas".localized, amount : self.viewModel.preference!.getAmount(), payerCost : self.viewModel.paymentData.payerCost, addSeparatorLine: true)
 
         } else if self.viewModel.isTotalCellFor(indexPath: indexPath) {
-            return self.getPurchaseSimpleDetailCell(indexPath: indexPath, title : "Total".localized, amount : self.viewModel.getTotalAmount(), addSeparatorLine: false)
+            return self.getPurchaseSimpleDetailCell(indexPath: indexPath, title : LocalizableStringsUtil.TOTAL, amount : self.viewModel.getTotalAmount(), addSeparatorLine: false)
 
         } else if self.viewModel.isPayerCostAdditionalInfoFor(indexPath: indexPath) {
             return self.getConfirmAddtionalInfo(indexPath: indexPath, payerCost: self.viewModel.paymentData.payerCost)
@@ -199,7 +199,7 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
         MPServicesBuilder.getPreference(self.preferenceId, baseURL: MercadoPagoCheckoutViewModel.servicePreference.getDefaultBaseURL(), success: { (preference) in
                 if let error = preference.validate() {
                     // Invalid preference - cannot continue
-                    let mpError =  MPSDKError(message: "Hubo un error".localized, messageDetail: error.localized, retry: false)
+                    let mpError =  MPSDKError(message: LocalizableStringsUtil.ERROR, messageDetail: error.localized, retry: false)
                     self.displayFailure(mpError)
                 } else {
                     self.viewModel.preference = preference
@@ -332,7 +332,7 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
     private func getConfirmPaymentButtonCell(indexPath: IndexPath) -> UITableViewCell {
         let confirmPaymentTableViewCell = self.checkoutTable.dequeueReusableCell(withIdentifier: "confirmPaymentTableViewCell", for: indexPath) as! ConfirmPaymentTableViewCell
         confirmPaymentTableViewCell.confirmPaymentButton.addTarget(self, action: #selector(confirmPayment), for: .touchUpInside)
-		let confirmPaymentTitle = (indexPath.section == 1) ? viewModel.reviewScreenPreference.getConfirmButtonText() : "Confirmar".localized
+		let confirmPaymentTitle = (indexPath.section == 1) ? viewModel.reviewScreenPreference.getConfirmButtonText() : LocalizableStringsUtil.CONFIRMAR
         confirmPaymentTableViewCell.confirmPaymentButton.setTitle(confirmPaymentTitle, for: .normal)
         return confirmPaymentTableViewCell
     }
@@ -385,14 +385,14 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
 	}
 
     internal func openTermsAndConditions(_ title: String, url: URL) {
-        let webVC = WebViewController(url: url, screenName: "TERMS_AND_CONDITIONS", navigationBarTitle: "Términos y Condiciones".localized)
+        let webVC = WebViewController(url: url, screenName: "TERMS_AND_CONDITIONS", navigationBarTitle: LocalizableStringsUtil.TERMINOS_Y_CONDICIONES)
         webVC.title = title
         self.navigationController!.pushViewController(webVC, animated: true)
 
     }
 
     internal func openUnlockCard(_ title: String, url: URL) {
-        let webVC = WebViewController(url: url, screenName: "UNLOCK_CARD", navigationBarTitle: "Desbloqueo de Tarjeta".localized)
+        let webVC = WebViewController(url: url, screenName: "UNLOCK_CARD", navigationBarTitle: LocalizableStringsUtil.DESBLOQUEO_DE_TARJETA)
         webVC.title = title
         self.navigationController!.pushViewController(webVC, animated: true)
 

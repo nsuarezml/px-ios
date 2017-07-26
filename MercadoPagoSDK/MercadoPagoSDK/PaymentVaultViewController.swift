@@ -89,7 +89,7 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
         collectionSearch.addSubview(upperView)
 
         if self.title == nil || self.title!.isEmpty {
-            self.title = "¿Cómo quiéres pagar?".localized
+            self.title = LocalizableStringsUtil.COMO_QUIERES_PAGAR
         }
 
         self.registerAllCells()
@@ -200,7 +200,7 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
         if Array.isNullOrEmpty(self.viewModel.paymentMethodOptions) {
             MPServicesBuilder.searchPaymentMethods(self.viewModel.amount, defaultPaymenMethodId: self.viewModel.getPaymentPreferenceDefaultPaymentMethodId(), excludedPaymentTypeIds: viewModel.getExcludedPaymentTypeIds(), excludedPaymentMethodIds: viewModel.getExcludedPaymentMethodIds(), baseURL: MercadoPagoCheckoutViewModel.servicePreference.getDefaultBaseURL(), success: { (paymentMethodSearchResponse: PaymentMethodSearch) -> Void in
                 if paymentMethodSearchResponse.customerPaymentMethods?.count == 0 && paymentMethodSearchResponse.groups.count == 0 {
-                    let error = MPSDKError(message: "Hubo un error".localized, messageDetail: "No se ha podido obtener los métodos de pago con esta preferencia".localized, retry: false)
+                    let error = MPSDKError(message: LocalizableStringsUtil.ERROR, messageDetail: LocalizableStringsUtil.NO_SE_ENCONTRARON_MEDIOS_DE_PAGO, retry: false)
                     self.displayFailure(error)
                 }
 
@@ -243,7 +243,7 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
         if self.titleSectionReference != nil {
             self.titleSectionReference.title.text = ""
         }
-        return "¿Cómo quiéres pagar?".localized
+        return LocalizableStringsUtil.COMO_QUIERES_PAGAR
     }
 
     open override func didReceiveMemoryWarning() {

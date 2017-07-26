@@ -14,7 +14,7 @@ open class PromosTyCTableViewCell: UITableViewCell {
 
     override open func awakeFromNib() {
         super.awakeFromNib()
-		self.title.text = "Términos y condiciones".localized
+		self.title.text = LocalizableStringsUtil.TERMINOS_Y_CONDICIONES
     }
 
     override open func setSelected(_ selected: Bool, animated: Bool) {

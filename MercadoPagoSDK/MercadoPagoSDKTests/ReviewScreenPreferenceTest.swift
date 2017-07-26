@@ -46,7 +46,7 @@ class ReviewScreenPreferenceTest: BaseTest {
 
     func testSetConfirmButtonText() {
 
-        XCTAssertEqual(reviewScreenPreference.getConfirmButtonText(), "Confirmar".localized)
+        XCTAssertEqual(reviewScreenPreference.getConfirmButtonText(), LocalizableStringsUtil.CONFIRMAR)
 
         reviewScreenPreference.setConfirmButtonText(confirmButtonText: "1")
         self.mpCheckout.setReviewScreenPreference(reviewScreenPreference)

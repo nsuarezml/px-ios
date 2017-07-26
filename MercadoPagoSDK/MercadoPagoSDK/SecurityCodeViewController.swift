@@ -29,7 +29,7 @@ open class SecurityCodeViewController: MercadoPagoUIViewController, UITextFieldD
         super.viewDidLoad()
          self.hideNavBar()
         loadMPStyles()
-        self.securityCodeTextField.placeholder = "security_code".localized
+        self.securityCodeTextField.placeholder = LocalizableStringsUtil.CODIGO_DE_SEGURIDAD
         setupInputAccessoryView()
         self.view.backgroundColor = UIColor.primaryColor()
         self.cardFront = CardFrontView.init(frame: viewModel.getCardBounds())
@@ -82,8 +82,8 @@ open class SecurityCodeViewController: MercadoPagoUIViewController, UITextFieldD
         toolbar.alpha = 1
         toolbar.isUserInteractionEnabled = true
         
-        let buttonNext = UIBarButtonItem(title: "Siguiente".localized, style: .done, target: self, action: #selector(self.continueAction))
-        let buttonPrev = UIBarButtonItem(title: "Anterior".localized, style: .plain, target: self, action: #selector(self.backAction))
+        let buttonNext = UIBarButtonItem(title: LocalizableStringsUtil.SIGUIENTE, style: .done, target: self, action: #selector(self.continueAction))
+        let buttonPrev = UIBarButtonItem(title: LocalizableStringsUtil.ANTERIOR, style: .plain, target: self, action: #selector(self.backAction))
         
         let font = Utils.getFont(size: 14)
         buttonNext.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
@@ -104,7 +104,7 @@ open class SecurityCodeViewController: MercadoPagoUIViewController, UITextFieldD
     func continueAction(){
         securityCodeTextField.resignFirstResponder()
         guard securityCodeTextField.text?.characters.count == viewModel.secCodeLenght() else {
-            let errorMessage: String = ("Ingresa los %1$s números del código de seguridad".localized as NSString).replacingOccurrences(of: "%1$s", with: ((self.viewModel.secCodeLenght()) as NSNumber).stringValue)
+            let errorMessage: String = (LocalizableStringsUtil.LARGO_CVV_INVALIDO as NSString).replacingOccurrences(of: "%1$s", with: ((self.viewModel.secCodeLenght()) as NSNumber).stringValue)
             showErrorMessage(errorMessage)
             return
         }

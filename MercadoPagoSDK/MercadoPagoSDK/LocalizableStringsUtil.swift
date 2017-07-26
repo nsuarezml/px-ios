@@ -21,6 +21,7 @@ public class LocalizableStringsUtil: NSObject {
     open static let SIGUIENTE = "Siguiente".localized
     open static let CANCELAR = "Cancelar".localized
     open static let SALIR = "Salir".localized
+    open static let CONFIRMAR = "Confirmar".localized
     open static let REINTENTAR = "Reintentar".localized
     
     
@@ -33,7 +34,6 @@ public class LocalizableStringsUtil: NSObject {
     open static let CAMPO_INVALIDO = "Revisa este dato".localized
     open static let LARGO_TARJETA_INVALIDO = "Ingresa los %1$s números de la tarjeta".localized
     open static let LARGO_TARJETA_INVALIDO_GENERAL = "Ingresa todos los números de la tarjeta".localized
-    open static let CVV = "Código de seguridad".localized
     
     open static let CVV_LOCATION_NUMBERS = "Últimos %1$s números al dorso de la tarjeta".localized //NO SE USA
     open static let CVV_LOCATION_NUMBERS_AMEX = "%1$s números al frente de la tarjeta".localized //NO SE USA
@@ -43,7 +43,7 @@ public class LocalizableStringsUtil: NSObject {
     open static let NO_SE_ENCONTRARON_CUOTAS = "No se encontraron cuotas disponibles para un monto de $".localized
     
     open static let ERROR_DE_PAGO = "No se pudo realizar el pago.".localized
-    open static let NO_SE_ENCONTRARON_MEDIO_DE_PAGO = "No se ha podido obtener los métodos de pago con esta preferencia".localized
+    open static let NO_SE_ENCONTRARON_MEDIOS_DE_PAGO = "No se ha podido obtener los métodos de pago con esta preferencia".localized
     open static let VISA = "Visa".localized
     open static let MASTER = "Mastercard".localized
     open static let AMEX = "Amex".localized
@@ -220,10 +220,10 @@ public class LocalizableStringsUtil: NSObject {
 //    "La campaña expiró"="La campaña expiró";
 //    
 //    // Unlock Card
-//    "Recuerda desbloquear tu tarjeta antes de confirmar el pago."="Recuerda desbloquear tu tarjeta antes de confirmar el pago.";
-//    "desbloquear tu tarjeta"="desbloquear tu tarjeta";
-//    "Desbloqueo de Tarjeta"="Desbloqueo de Tarjeta";
-//    
+    open static let RECUERDA_DESBLOQUEAR_ANTES_DE_CONFIRMAR = "Recuerda desbloquear tu tarjeta antes de confirmar el pago.".localized
+    open static let DESBLOQUEAR_TU_TARJETA_LOWER_CASED = "desbloquear tu tarjeta".localized
+    open static let DESBLOQUEO_DE_TARJETA = "Desbloqueo de Tarjeta".localized
+    
 //    //Administrador de tarjetas
     open static let CON_QUE_TARJETA = "¿Con qué tarjeta?".localized
     
