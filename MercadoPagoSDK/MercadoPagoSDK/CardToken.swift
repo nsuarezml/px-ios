@@ -87,7 +87,7 @@ open class CardToken: NSObject, CardInformationForm {
                 if userInfo == nil {
                     userInfo = [String: String]()
                 }
-                return "El número de tarjeta que ingresaste no se corresponde con el tipo de tarjeta".localized
+                return LocalizableStringsUtil.NUMERO_TARJETA_NO_CORRESPONDE_CON_TIPO
             }
 
                 // Validate card length
@@ -117,7 +117,7 @@ open class CardToken: NSObject, CardInformationForm {
         if userInfo == nil {
             return nil
         } else {
-            return "El número de tarjeta que ingresaste no se corresponde con el tipo de tarjeta".localized
+            return LocalizableStringsUtil.NUMERO_TARJETA_NO_CORRESPONDE_CON_TIPO
          //   return NSError(domain: "mercadopago.sdk.card.error", code: 1, userInfo: userInfo)
         }
     }

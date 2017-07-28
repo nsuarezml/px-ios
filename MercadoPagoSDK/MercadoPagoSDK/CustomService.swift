@@ -60,14 +60,14 @@ open class CustomService: MercadoPagoService {
                     if paymentDic.allKeys.count > 0 {
                         success(Payment.fromJSON(paymentDic))
                     } else {
-                        failure?(NSError(domain: "mercadopago.sdk.customServer.createPayment", code: MercadoPago.ERROR_PAYMENT, userInfo: ["message": "PAYMENT_ERROR".localized]))
+                        failure?(NSError(domain: "mercadopago.sdk.customServer.createPayment", code: MercadoPago.ERROR_PAYMENT, userInfo: ["message": LocalizableStringsUtil.ERROR_DE_PAGO]))
                     }
                 }
             } else if failure != nil {
                 failure!(NSError(domain: "mercadopago.sdk.customServer.createPayment", code: MercadoPago.ERROR_UNKNOWN_CODE, userInfo: ["message": "Response cannot be decoded"]))
             }}, failure: { (error) -> Void in
                 if let failure = failure {
-                    failure(NSError(domain: "mercadopago.sdk.CustomService.createPayment", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: "Verifique su conexión a internet e intente nuevamente".localized]))
+                    failure(NSError(domain: "mercadopago.sdk.CustomService.createPayment", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: LocalizableStringsUtil.VERIFIQUE_CONEXION]))
                 }
         })
     }

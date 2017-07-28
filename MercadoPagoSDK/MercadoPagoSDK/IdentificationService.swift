@@ -15,7 +15,7 @@ open class IdentificationService: MercadoPagoService {
         }
         self.request(uri: uri, params: params, body: nil, method: method, success: success, failure: { (error) -> Void in
             if let failure = failure {
-                failure(NSError(domain: "mercadopago.sdk.IdentificationService.getIdentificationTypes", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: "Verifique su conexión a internet e intente nuevamente".localized]))
+                failure(NSError(domain: "mercadopago.sdk.IdentificationService.getIdentificationTypes", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: LocalizableStringsUtil.VERIFIQUE_CONEXION]))
             }
         })
     }

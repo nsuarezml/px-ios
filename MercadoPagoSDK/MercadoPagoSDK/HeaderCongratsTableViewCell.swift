@@ -46,7 +46,7 @@ class HeaderCongratsTableViewCell: UITableViewCell, TimerDelegate {
             icon.image = MercadoPago.getImage("MPSDK_payment_result_c4a")
             var titleWithParams: String = ""
             if let paymentMethodName = paymentMethod?.name {
-                titleWithParams = ("Debes autorizar ante %p el pago de %t a MercadoPago".localized as NSString).replacingOccurrences(of: "%p", with: "\(paymentMethodName)")
+                titleWithParams = (LocalizableStringsUtil.DEBES_AUTORIZAR as NSString).replacingOccurrences(of: "%p", with: "\(paymentMethodName)")
             }
             let currency = MercadoPagoContext.getCurrency()
             let currencySymbol = currency.getCurrencySymbolOrDefault()
@@ -72,7 +72,7 @@ class HeaderCongratsTableViewCell: UITableViewCell, TimerDelegate {
                     self.title.text = paymentResultScreenPreference.getRejectedTitle()
                     subtitle.text = paymentResultScreenPreference.getRejectedSubtitle()
                 } else {
-                    self.title.text = "Uy, no pudimos procesar el pago".localized
+                    self.title.text = LocalizableStringsUtil.ERROR_PAGO_UY
                 }
 
             } else {

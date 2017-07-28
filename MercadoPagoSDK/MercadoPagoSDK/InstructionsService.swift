@@ -49,7 +49,7 @@ open class InstructionsService: MercadoPagoService {
 
             let error = jsonResult?["error"] as? String
             if error != nil && error!.characters.count > 0 {
-                let e : NSError = NSError(domain: "com.mercadopago.sdk.getInstructions", code: MercadoPago.ERROR_INSTRUCTIONS, userInfo: [NSLocalizedDescriptionKey: "No se ha podido obtener las intrucciones correspondientes al pago".localized, NSLocalizedFailureReasonErrorKey: jsonResult!["error"] as! String])
+                let e : NSError = NSError(domain: "com.mercadopago.sdk.getInstructions", code: MercadoPago.ERROR_INSTRUCTIONS, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.NUMERO_TARJETA_NO_CORRESPONDE_CON_TIPO, NSLocalizedFailureReasonErrorKey: jsonResult!["error"] as! String])
                 failure!(e)
             } else {
                 success(InstructionsInfo.fromJSON(jsonResult as! NSDictionary))

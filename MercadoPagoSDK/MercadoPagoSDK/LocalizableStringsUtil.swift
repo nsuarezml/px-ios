@@ -24,6 +24,7 @@ public class LocalizableStringsUtil: NSObject {
     open static let CONFIRMAR = "Confirmar".localized
     open static let REINTENTAR = "Reintentar".localized
     
+    open static let VERIFIQUE_CONEXION = "Verifique su conexión a internet e intente nuevamente".localized
     
     //Coupon
     open static let CODIGO_DE_DESCUENTO = "Código de descuento".localized
@@ -111,6 +112,7 @@ public class LocalizableStringsUtil: NSObject {
 //    "cc_rejected_call_for_authorize_subtitle_debit_card" = "";
     
     //CARD FORM
+    open static let PROMOCIONES = "Promociones".localized
     open static let VER_PROMOCIONES = "Ver promociones".localized
     open static let NUMERO_DE_TARJETA = "Número de tarjeta".localized
     open static let NOMBRE_APELLIDO = "NOMBRE APELLIDO".localized
@@ -208,16 +210,16 @@ public class LocalizableStringsUtil: NSObject {
 //    "ryc_payment_method_redlink_bank_transfer" = "Red Link";
 //    
 //    //Discount
-//    "Código de descuento"="Código de descuento";
+    open static let DESCUENTO = "Descuento".localized
     open static let CANJEAR = "Canjear".localized
 //    "Código inválido"="Código inválido";
 //    "de descuento"="de descuento";
-//    "Tengo un descuento"="Tengo un descuento";
+    open static let TENGO_UN_DESCUENTO = "Tengo un descuento".localized
 //    "Total: "="Total: ";
-//    "Vendedor sin descuento disponible"="Vendedor sin descuento disponible";
-//    "Se agotó la cantidad de usos"="Se agotó la cantidad de usos";
-//    "Importe fuera del alcance"="Importe fuera del alcance";
-//    "La campaña expiró"="La campaña expiró";
+    open static let VENDEDOR_SIN_DESCUENTO = "Vendedor sin descuento disponible".localized
+    open static let SE_AGOTO_LA_CANTIDAD_DE_USOS = "Se agotó la cantidad de usos".localized
+    open static let IMPORTE_FUERA_DE_ALCANCE = "Importe fuera del alcance".localized
+    open static let LA_CAMPAÑA_EXPIRO = "La campaña expiró".localized
 //    
 //    // Unlock Card
     open static let RECUERDA_DESBLOQUEAR_ANTES_DE_CONFIRMAR = "Recuerda desbloquear tu tarjeta antes de confirmar el pago.".localized
@@ -227,12 +229,7 @@ public class LocalizableStringsUtil: NSObject {
 //    //Administrador de tarjetas
     open static let CON_QUE_TARJETA = "¿Con qué tarjeta?".localized
     
-
+    open static let NUMERO_TARJETA_NO_CORRESPONDE_CON_TIPO = "El número de tarjeta que ingresaste no se corresponde con el tipo de tarjeta".localized
     
     
-    
-
-    
-    
-
 }

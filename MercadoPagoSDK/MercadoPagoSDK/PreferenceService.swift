@@ -26,7 +26,7 @@ open class PreferenceService: MercadoPagoService {
                 }
             }
             }, failure : { (error) in
-                failure(NSError(domain: "mercadopago.sdk.PreferenceService.getPreference", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: "Verifique su conexión a internet e intente nuevamente".localized]))
+                failure(NSError(domain: "mercadopago.sdk.PreferenceService.getPreference", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: LocalizableStringsUtil.VERIFIQUE_CONEXION]))
         })
     }
 

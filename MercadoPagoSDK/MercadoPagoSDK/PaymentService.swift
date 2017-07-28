@@ -32,7 +32,7 @@ open class PaymentService: MercadoPagoService {
     open func getPaymentMethods(_ method: String = "GET", uri: String = ServicePreference.MP_PAYMENT_METHODS_URI, key: String, success: @escaping (_ jsonResult: AnyObject?) -> Void, failure: ((_ error: NSError) -> Void)?) {
         self.request(uri: uri, params: MercadoPagoContext.keyType() + "=" + key, body: nil, method: method, success: success, failure: { (error) in
             if let failure = failure {
-            failure(NSError(domain: "mercadopago.sdk.paymentService.getPaymentMethods", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: "Verifique su conexión a internet e intente nuevamente".localized]))
+            failure(NSError(domain: "mercadopago.sdk.paymentService.getPaymentMethods", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: LocalizableStringsUtil.VERIFIQUE_CONEXION]))
             }
             })
     }
@@ -68,7 +68,7 @@ open class PaymentService: MercadoPagoService {
                 }
             }
             }, failure: { (error) in
-                failure(NSError(domain: "mercadopago.sdk.paymentService.getInstallments", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: "Verifique su conexión a internet e intente nuevamente".localized]))
+                failure(NSError(domain: "mercadopago.sdk.paymentService.getInstallments", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: LocalizableStringsUtil.VERIFIQUE_CONEXION]))
 
         })
     }
@@ -78,13 +78,13 @@ open class PaymentService: MercadoPagoService {
         if bin != nil {
             self.request(uri: uri, params: params + "&bin=" + bin!, body: nil, method: method, success: success, failure: { (error) in
                 if let failure = failure {
-                    failure(NSError(domain: "mercadopago.sdk.paymentService.getIssuers", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: "Verifique su conexión a internet e intente nuevamente".localized]))
+                    failure(NSError(domain: "mercadopago.sdk.paymentService.getIssuers", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: LocalizableStringsUtil.VERIFIQUE_CONEXION]))
                 }
             })
         } else {
             self.request(uri: uri, params: params, body: nil, method: method, success: success, failure: { (error) in
                 if let failure = failure {
-                    failure(NSError(domain: "mercadopago.sdk.paymentService.getIssuers", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: "Verifique su conexión a internet e intente nuevamente".localized]))
+                    failure(NSError(domain: "mercadopago.sdk.paymentService.getIssuers", code: error.code, userInfo: [NSLocalizedDescriptionKey: LocalizableStringsUtil.ERROR, NSLocalizedFailureReasonErrorKey: LocalizableStringsUtil.VERIFIQUE_CONEXION]))
                 }
             })
         }

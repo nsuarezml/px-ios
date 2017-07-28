@@ -10,14 +10,14 @@ import Foundation
 
 open class PaymentResultScreenPreference: NSObject {
 
-    var approvedTitle = "¡Listo, se acreditó tu pago!".localized
+    var approvedTitle = LocalizableStringsUtil.PAGO_ACREDITADO
     var approvedSubtitle = ""
     var approvedSecondaryExitButtonText = ""
     var approvedSecondaryExitButtonCallback: ((PaymentResult) -> Void)?
     var approvedIconName = "MPSDK_payment_result_approved"
     var approvedIconBundle = MercadoPago.getBundle()!
 
-    var pendingTitle = "Estamos procesando el pago".localized
+    var pendingTitle = LocalizableStringsUtil.ESTAMOS_PROCESANDO_EL_PAGO
     var pendingSubtitle = ""
     var pendingContentTitle = LocalizableStringsUtil.QUE_PUEDO_HACER
     var pendingContentText = ""
@@ -26,12 +26,12 @@ open class PaymentResultScreenPreference: NSObject {
     var hidePendingSecondaryButton = false
     var hidePendingContentText = false
     var hidePendingContentTitle = false
-    var pendingSecondaryExitButtonText = "Pagar con otro medio".localized
+    var pendingSecondaryExitButtonText = LocalizableStringsUtil.PAGAR_CON_OTRO_MEDIO
     var pendingSecondaryExitButtonCallback: ((PaymentResult) -> Void)?
 
-    var rejectedTitle = "Uy, no pudimos procesar el pago".localized
+    var rejectedTitle = LocalizableStringsUtil.ERROR_PAGO_UY
     var rejectedSubtitle = ""
-    var rejectedIconSubtext = "Algo salió mal… ".localized
+    var rejectedIconSubtext = LocalizableStringsUtil.ALGO_SALIO_MAL
     var rejectedIconName = "MPSDK_payment_result_error"
     var rejectedIconBundle = MercadoPago.getBundle()!
     var rejectedContentTitle = LocalizableStringsUtil.QUE_PUEDO_HACER
@@ -39,10 +39,10 @@ open class PaymentResultScreenPreference: NSObject {
     var hideRejectedSecondaryButton = false
     var hideRejectedContentText = false
     var hideRejectedContentTitle = false
-    var rejectedSecondaryExitButtonText = "Pagar con otro medio".localized
+    var rejectedSecondaryExitButtonText = LocalizableStringsUtil.PAGAR_CON_OTRO_MEDIO
     var rejectedSecondaryExitButtonCallback: ((PaymentResult) -> Void)?
 
-    var exitButtonTitle = "Continuar".localized
+    var exitButtonTitle = LocalizableStringsUtil.CONTINUAR
 
     var statusBackgroundColor: UIColor?
 

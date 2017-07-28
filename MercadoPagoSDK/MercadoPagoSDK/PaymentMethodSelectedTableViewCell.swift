@@ -87,7 +87,7 @@ class PaymentMethodSelectedTableViewCell: UITableViewCell {
         self.noRateLabel.attributedText = NSAttributedString(string : "")
         
         if showBankInterestWarning(paymentData: paymentData) {
-            self.noRateLabel.attributedText = NSAttributedString(string : "No incluye intereses bancarios".localized)
+            self.noRateLabel.attributedText = NSAttributedString(string : LocalizableStringsUtil.NO_INCLUYE_INTERES_BANCARIOS)
             self.noRateLabel.textColor = self.totalAmountLabel.textColor
             self.noRateLabel.font = Utils.getFont(size: self.totalAmountLabel.font.pointSize)
         }

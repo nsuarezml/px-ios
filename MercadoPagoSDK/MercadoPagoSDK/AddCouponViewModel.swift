@@ -32,15 +32,15 @@ class AddCouponViewModel: NSObject {
                 success()
             }}, failure: { (error) in
                 if error.localizedDescription == self.DISCOUNT_ERROR_CAMPAIGN_DOESNT_MATCH {
-                    failure("Vendedor sin descuento disponible".localized)
+                    failure(LocalizableStringsUtil.VENDEDOR_SIN_DESCUENTO)
                 } else if error.localizedDescription == self.DISCOUNT_ERROR_RUN_OUT_OF_USES {
-                    failure("Se agotó la cantidad de usos".localized)
+                    failure(LocalizableStringsUtil.SE_AGOTO_LA_CANTIDAD_DE_USOS)
                 } else if error.localizedDescription == self.DISCOUNT_ERROR_AMOUNT_DOESNT_MATCH {
-                    failure("Importe fuera del alcance".localized)
+                    failure(LocalizableStringsUtil.IMPORTE_FUERA_DE_ALCANCE)
                 } else if error.localizedDescription == self.DISCOUNT_ERROR_CAMPAIGN_EXPIRED {
-                    failure("La campaña expiró".localized)
+                    failure(LocalizableStringsUtil.LA_CAMPAÑA_EXPIRO)
                 } else {
-                    failure("Algo salió mal… ".localized)
+                    failure(LocalizableStringsUtil.ALGO_SALIO_MAL)
                 }
         })
     }

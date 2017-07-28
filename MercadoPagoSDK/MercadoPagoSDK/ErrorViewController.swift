@@ -54,8 +54,8 @@ open class ErrorViewController: MercadoPagoUIViewController {
 
         self.errorSubtitle.attributedText = NSAttributedString(string :error.messageDetail, attributes: normalAttributes)
         self.exitButton.addTarget(self, action: #selector(ErrorViewController.invokeExitCallback), for: .touchUpInside)
-        self.exitButton.setTitle("Salir".localized, for: .normal)
-        self.retryButton.setTitle("Reintentar".localized, for: .normal)
+        self.exitButton.setTitle(LocalizableStringsUtil.SALIR, for: .normal)
+        self.retryButton.setTitle(LocalizableStringsUtil.REINTENTAR, for: .normal)
 
         if self.error.retry! {
             self.retryButton.addTarget(self, action: #selector(ErrorViewController.invokeCallback), for: .touchUpInside)

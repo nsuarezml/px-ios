@@ -37,7 +37,7 @@ open class PromoViewController: MercadoPagoUIViewController, UITableViewDataSour
 
     override open func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Promociones".localized
+        self.title = LocalizableStringsUtil.PROMOCIONES
         if self.navigationController != nil {
             self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.systemFontColor()]
         }

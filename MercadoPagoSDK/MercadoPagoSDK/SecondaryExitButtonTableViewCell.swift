@@ -26,7 +26,7 @@ class SecondaryExitButtonTableViewCell: CallbackCancelTableViewCell {
 
         if paymentResult.statusDetail.contains("cc_rejected_bad_filled") {
             status = PaymentResult.CongratsState.cancel_RECOVER
-            self.button.setTitle("Ingresalo nuevamente".localized, for: UIControlState.normal)
+            self.button.setTitle(LocalizableStringsUtil.INGRESALO_NUEVAMENTE, for: UIControlState.normal)
         }
         if paymentResult.status == "approved"{
             self.button.setTitle(paymentResultScreenPreference.getApprovedSecondaryButtonText(), for: .normal)

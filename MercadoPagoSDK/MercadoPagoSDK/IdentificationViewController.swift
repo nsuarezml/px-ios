@@ -70,7 +70,7 @@ open class IdentificationViewController: MercadoPagoUIViewController, UITextFiel
         toolBar.barStyle = UIBarStyle.default
         toolBar.sizeToFit()
 
-        let doneButton = UIBarButtonItem(title: "OK".localized, style: .plain, target: self, action: #selector(IdentificationViewController.donePicker))
+        let doneButton = UIBarButtonItem(title: LocalizableStringsUtil.OK, style: .plain, target: self, action: #selector(IdentificationViewController.donePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
 
         let font = Utils.getFont(size: 14)
@@ -147,10 +147,10 @@ open class IdentificationViewController: MercadoPagoUIViewController, UITextFiel
         tipoDeDocumentoLabel = identificationCard?.tipoDeDocumentoLabel
         numberDocLabel = identificationCard?.numberDocLabel
 
-        self.tipoDeDocumentoLabel.text =  "DOCUMENTO DEL TITULAR DE LA TARJETA".localized
+        self.tipoDeDocumentoLabel.text =  LocalizableStringsUtil.DOCUMENTO_TITULAR_TARJETA
         self.tipoDeDocumentoLabel.font = Utils.getIdentificationFont(size: 10)
-        self.numberTextField.placeholder = "Número".localized
-        self.textField.placeholder = "Tipo".localized
+        self.numberTextField.placeholder = LocalizableStringsUtil.NUMERO
+        self.textField.placeholder = LocalizableStringsUtil.TIPO
         self.view.backgroundColor = UIColor.primaryColor()
         numberTextField.autocorrectionType = UITextAutocorrectionType.no
         numberTextField.keyboardType = UIKeyboardType.numberPad
@@ -233,8 +233,8 @@ open class IdentificationViewController: MercadoPagoUIViewController, UITextFiel
         toolbar.alpha = 1
         toolbar.isUserInteractionEnabled = true
 
-        let buttonNext = UIBarButtonItem(title: "Continuar".localized, style: .done, target: self, action: #selector(CardFormViewController.rightArrowKeyTapped))
-        let buttonPrev = UIBarButtonItem(title: "Anterior".localized, style: .plain, target: self, action: #selector(CardFormViewController.leftArrowKeyTapped))
+        let buttonNext = UIBarButtonItem(title: LocalizableStringsUtil.CONTINUAR, style: .done, target: self, action: #selector(CardFormViewController.rightArrowKeyTapped))
+        let buttonPrev = UIBarButtonItem(title: LocalizableStringsUtil.ANTERIOR, style: .plain, target: self, action: #selector(CardFormViewController.leftArrowKeyTapped))
 
         let font = Utils.getFont(size: 14)
         buttonNext.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)

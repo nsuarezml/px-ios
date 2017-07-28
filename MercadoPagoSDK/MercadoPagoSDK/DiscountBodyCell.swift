@@ -61,7 +61,7 @@ class DiscountBodyCell: UIView {
         rightArrow.tintColor = UIColor.primaryColor()
         let detailLabel = MPLabel()
         detailLabel.textAlignment = .center
-        detailLabel.text = "Tengo un descuento".localized
+        detailLabel.text = LocalizableStringsUtil.TENGO_UN_DESCUENTO
         detailLabel.textColor = UIColor.primaryColor()
         detailLabel.font = Utils.getFont(size: 16)
         let widthlabelDiscount = detailLabel.attributedText?.widthWithConstrainedHeight(height: 18)
@@ -116,7 +116,7 @@ class DiscountBodyCell: UIView {
         if let concept = coupon.concept {
            detailLabel.text = concept
         } else {
-           detailLabel.text = "Descuento".localized
+           detailLabel.text = LocalizableStringsUtil.DESCUENTO
         }
         detailLabel.textColor = UIColor.mpGreenishTeal()
         detailLabel.font = Utils.getFont(size: 16)
@@ -217,7 +217,7 @@ class DiscountToolBar: UIView {
         rightArrow.tintColor = UIColor.white
         let detailLabel = MPLabel()
         detailLabel.textAlignment = .center
-        detailLabel.text = "Tengo un descuento".localized
+        detailLabel.text = LocalizableStringsUtil.TENGO_UN_DESCUENTO
         detailLabel.textColor = UIColor.white
         detailLabel.font = Utils.getFont(size: 16)
         let widthlabelDiscount = detailLabel.attributedText?.widthWithConstrainedHeight(height: 18)
@@ -254,7 +254,7 @@ class DiscountToolBar: UIView {
         if let concept = coupon.concept {
             detailLabel.text = concept
         } else {
-            detailLabel.text = "Descuento".localized
+            detailLabel.text = LocalizableStringsUtil.DESCUENTO
         }
         detailLabel.textColor = UIColor.white
         detailLabel.font = Utils.getFont(size: 16)
