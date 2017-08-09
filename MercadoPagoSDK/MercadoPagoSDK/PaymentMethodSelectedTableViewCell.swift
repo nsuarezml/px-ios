@@ -83,24 +83,24 @@ class PaymentMethodSelectedTableViewCell: UITableViewCell {
             self.paymentDescription.attributedText = Utils.getAttributedAmount(amount, thousandSeparator: currency.thousandsSeparator, decimalSeparator: currency.decimalSeparator, currencySymbol: currency.symbol, color: UIColor.black, fontSize: 24, centsFontSize: 12, baselineOffset: 9)
             self.totalAmountLabel.text = ""
         }
-        
+
         self.noRateLabel.attributedText = NSAttributedString(string : "")
-        
+
         if showBankInterestWarning(paymentData: paymentData) {
             self.noRateLabel.attributedText = NSAttributedString(string : LocalizableStringsUtil.NO_INCLUYE_INTERES_BANCARIOS)
             self.noRateLabel.textColor = self.totalAmountLabel.textColor
             self.noRateLabel.font = Utils.getFont(size: self.totalAmountLabel.font.pointSize)
         }
-        
+
         if showPayerCostDescription(paymentData: paymentData) {
             self.noRateLabel.attributedText = NSAttributedString(string : LocalizableStringsUtil.SIN_INTERES)
         }
     }
-    
+
     func showBankInterestWarning(paymentData: PaymentData) -> Bool {
         return paymentData.payerCost != nil && MercadoPagoCheckout.showBankInterestWarning()
     }
-    
+
     func showPayerCostDescription(paymentData: PaymentData) -> Bool {
         return paymentData.payerCost != nil && !paymentData.payerCost!.hasInstallmentsRate() && paymentData.payerCost?.installments != 1 && !showBankInterestWarning(paymentData: paymentData)
     }
