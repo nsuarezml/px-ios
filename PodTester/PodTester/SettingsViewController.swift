@@ -14,10 +14,12 @@ open class SettingsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var continueButton: UIButton!
 
     let viewModel = SettingsViewModel()
-
+    var sitesDic: NSDictionary!
+    
     override open func viewDidLoad() {
         self.title = "Settings"
         drawContinueButton()
+        self.viewModel.getSitesFirebase()
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,6 +32,14 @@ open class SettingsViewController: UIViewController, UITableViewDataSource, UITa
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return self.viewModel.getCellFor(indexPath: indexPath)
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row ==  Cells.regreButton.rawValue {
+            let regreController = RegreController()
+            regreController.siteDic = self.viewModel.sitesConfig.value(forKey: self.viewModel.getSelectedSite()) as! NSDictionary
+            self.navigationController?.pushViewController(regreController, animated: true)
+        }
     }
 
     func drawContinueButton() {

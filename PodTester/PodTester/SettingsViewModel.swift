@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MercadoPagoSDK
+import Firebase
 
 open class SettingsViewModel: NSObject {
 
@@ -47,7 +48,7 @@ open class SettingsViewModel: NSObject {
             return getSwitchCellFor(forSwitch: Switches.OfflinePaymentMethods)
         case Cells.colorPicker.rawValue:
             return getColorPickerCell()
-        case Cells.jsonInput.rawValue:
+        case Cells.regreButton.rawValue:
             return getJsonInputCell()
         default:
             let defaultCell = UITableViewCell()
@@ -197,7 +198,7 @@ open class SettingsViewModel: NSObject {
 
     //--Color Picker Logic
     func getColorPickerCell() -> UITableViewCell {
-
+        
         let cell = UITableViewCell()
         cell.frame.size.height = 40
         cell.frame.size.width = Mainframe.width
@@ -235,18 +236,12 @@ open class SettingsViewModel: NSObject {
         cell.frame.size.width = Mainframe.width
         cell.selectionStyle = .none
         cell.textLabel?.textColor = UIColor.black
-        cell.textLabel?.text = "Config. JSON"
-
-        let cellFrame = cell.bounds
-
-        let cellTextfield = UITextField()
-        cellTextfield.frame = CGRect(x: cellFrame.midX + marginSpace/2, y: cellFrame.minY + marginSpace/2, width: cellFrame.width/2 - marginSpace, height: cellFrame.height - marginSpace)
-        cellTextfield.layer.borderWidth = 1
-        cellTextfield.layer.cornerRadius = 5
-        cellTextfield.placeholder = "{JSON}"
-        cellTextfield.autocapitalizationType = .allCharacters
-        cellTextfield.addTarget(self, action: #selector(setConfigurationJSON(sender: )), for: UIControlEvents.allEditingEvents)
-        cell.addSubview(cellTextfield)
+        cell.textLabel?.text = "Regre"
+//        let frame = CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height)
+//        let button = UIButton(frame: frame)
+//        button.backgroundColor = UIColor.red
+//        button.setTitle("Regre", for: .normal)
+//        cell.addSubview(button)
 
         return cell
     }
@@ -410,15 +405,20 @@ open class SettingsViewModel: NSObject {
             return UIColor.fromHex(dictionary.value(forKey: "default_color") as! String)
         }
     }
+    
+    
+    var ref = Database.database().reference()
+    var sitesConfig: NSDictionary!
 
-    public enum Cells: Int {
-        case siteSelector = 0
-        case environmentSelector = 1
-        case apiEnvironment = 2
-        case onlinePMs = 3
-        case offlinePMS = 4
-        case colorPicker = 5
-        case jsonInput = 6
+    open func getSitesFirebase() {
+        let sitesRef = ref.child("sites")
+        sitesRef.observe(DataEventType.value, with: { (snapshot) in
+            self.sitesConfig = snapshot.value as! NSDictionary
+        })
+    }
+    
+    open func getSelectedSite() -> String {
+        return selectedSite.ID
     }
 
     public enum Environments: String {
@@ -441,4 +441,14 @@ open class SettingsViewModel: NSObject {
         case OnlinePaymentMethods = "Online Payment Methods"
         case OfflinePaymentMethods = "Offline Payment Methods"
     }
+}
+
+public enum Cells: Int{
+    case siteSelector = 0
+    case environmentSelector = 1
+    case apiEnvironment = 2
+    case onlinePMs = 3
+    case offlinePMS = 4
+    case colorPicker = 5
+    case regreButton = 6
 }

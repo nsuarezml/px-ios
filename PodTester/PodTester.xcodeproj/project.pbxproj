@@ -10,6 +10,9 @@
 		4D1BA2FFECDADE21693F8479 /* Pods_PodTesterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA4C6DA5720ADA0D959E10D /* Pods_PodTesterUITests.framework */; };
 		7977B3C2CC366377F1711AB8 /* Pods_PodTester.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F6C388D4809CF09D1B5C5F /* Pods_PodTester.framework */; };
 		96268BFEE693DF0EC8A35C50 /* Pods_PodTesterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D902B45F8C5F45AB09E44105 /* Pods_PodTesterTests.framework */; };
+		FC2727301F42202A002BEA05 /* PodTesterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC27272F1F42202A002BEA05 /* PodTesterController.swift */; };
+		FC2727321F422120002BEA05 /* FirebaseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2727311F422120002BEA05 /* FirebaseUtil.swift */; };
+		FC2727341F423051002BEA05 /* RegreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2727331F423051002BEA05 /* RegreController.swift */; };
 		FC333DD71EA67982009C746A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC333DD61EA67982009C746A /* SettingsViewController.swift */; };
 		FC333DD81EA67982009C746A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC333DD61EA67982009C746A /* SettingsViewController.swift */; };
 		FC333DDA1EA693A1009C746A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC333DD91EA693A1009C746A /* SettingsViewModel.swift */; };
@@ -54,6 +57,9 @@
 		D902B45F8C5F45AB09E44105 /* Pods_PodTesterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PodTesterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEEA8E2EECAA9A8B0A1F4CA7 /* Pods-PodTesterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodTesterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PodTesterTests/Pods-PodTesterTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6C53D7369B63FDD5568DA23 /* Pods-PodTesterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodTesterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PodTesterUITests/Pods-PodTesterUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FC27272F1F42202A002BEA05 /* PodTesterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodTesterController.swift; sourceTree = "<group>"; };
+		FC2727311F422120002BEA05 /* FirebaseUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtil.swift; sourceTree = "<group>"; };
+		FC2727331F423051002BEA05 /* RegreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegreController.swift; sourceTree = "<group>"; };
 		FC333DD61EA67982009C746A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FC333DD91EA693A1009C746A /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		FC333DDC1EA6A4A6009C746A /* EnvironmentSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EnvironmentSettings.plist; sourceTree = "<group>"; };
@@ -153,8 +159,11 @@
 				FC5DEA341F4217880094C06E /* GoogleService-Info.plist */,
 				FCCDCC1E1E0B2265005E7095 /* AppDelegate.swift */,
 				FC579C2F1E0C047900F32F7B /* MainTableViewController.swift */,
+				FC27272F1F42202A002BEA05 /* PodTesterController.swift */,
 				FC333DD61EA67982009C746A /* SettingsViewController.swift */,
+				FC2727331F423051002BEA05 /* RegreController.swift */,
 				FC333DD91EA693A1009C746A /* SettingsViewModel.swift */,
+				FC2727311F422120002BEA05 /* FirebaseUtil.swift */,
 				FCF85BA21EAE402E00D45589 /* Site.swift */,
 				FC333DDC1EA6A4A6009C746A /* EnvironmentSettings.plist */,
 				FCCDCC221E0B2265005E7095 /* Main.storyboard */,
@@ -260,7 +269,7 @@
 				TargetAttributes = {
 					FCCDCC1A1E0B2265005E7095 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = FC266WG8NL;
+						DevelopmentTeam = W99E943H9K;
 						ProvisioningStyle = Automatic;
 					};
 					FCCDCC2E1E0B2265005E7095 = {
@@ -469,9 +478,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCCDCC1F1E0B2265005E7095 /* AppDelegate.swift in Sources */,
+				FC2727341F423051002BEA05 /* RegreController.swift in Sources */,
 				FCF85BA31EAE402E00D45589 /* Site.swift in Sources */,
+				FC2727321F422120002BEA05 /* FirebaseUtil.swift in Sources */,
 				FC579C301E0C047900F32F7B /* MainTableViewController.swift in Sources */,
 				FC333DD71EA67982009C746A /* SettingsViewController.swift in Sources */,
+				FC2727301F42202A002BEA05 /* PodTesterController.swift in Sources */,
 				FC333DDA1EA693A1009C746A /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,7 +640,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = FC266WG8NL;
+				DEVELOPMENT_TEAM = W99E943H9K;
 				INFOPLIST_FILE = PodTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MLx.PodTester;
@@ -643,7 +655,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = FC266WG8NL;
+				DEVELOPMENT_TEAM = W99E943H9K;
 				INFOPLIST_FILE = PodTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MLx.PodTester;
