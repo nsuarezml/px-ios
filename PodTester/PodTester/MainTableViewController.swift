@@ -183,8 +183,10 @@ class MainTableViewController: UITableViewController {
 
     /// Load Checkout
     func loadCheckout(showRyC: Bool = true, setPaymentDataCallback: Bool = false, paymentData: PaymentData? = nil, setPaymentDataConfirmCallback: Bool = false, paymentResult: PaymentResult? = nil) {
+        MercadoPagoContext.setAccountMoneyAvailable(accountMoneyAvailable: true)
+        self.customCheckoutPref = CheckoutPreference(items: [Item(_id: "", title: "sda", quantity: 1, unitPrice: 123, description: "", currencyId: "ARS")], payer: Payer(_id: "asd", email: "das@das.com", identification: nil, entityType: nil), paymentMethods: nil)
         let pref = self.customCheckoutPref != nil ? self.customCheckoutPref :CheckoutPreference(_id:self.prefID)
-        let checkout = MercadoPagoCheckout(publicKey: self.publicKey, accessToken: self.accessToken, checkoutPreference: pref!, paymentData: paymentData, paymentResult: paymentResult, navigationController: self.navigationController!)
+        let checkout = MercadoPagoCheckout(publicKey: self.publicKey, accessToken:"TEST-2278197349568462-091320-a1b4f0d7c18f4655a0cf620c4bc2e693__LD_LA__-207100706", checkoutPreference: pref!, paymentData: paymentData, paymentResult: paymentResult, navigationController: self.navigationController!)
 
    //     let paypref = PaymentResultScreenPreference()
    //     paypref.setApproved(title: "⬅ Soy hermano de ese titulo")
@@ -280,8 +282,8 @@ class MainTableViewController: UITableViewController {
 
     func startWalletCongrats() {
         self.payment = Payment()
-        self.payment.status = "rejected"
-        self.payment.statusDetail = "cc_rejected_call_for_authorize"
+        self.payment.status = "approved"
+        self.payment.statusDetail = "ok"
         self.payment.payer = Payer(_id: "1", email: "asd@asd.com", identification: nil, entityType: nil)
         //  self.payment.payer.email = "as@asd.com"
         self.payment.statementDescriptor = "description"

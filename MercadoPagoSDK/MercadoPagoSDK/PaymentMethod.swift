@@ -131,9 +131,12 @@ open class PaymentMethod: NSObject, Cellable {
         ]
 
         var additionalInfoJson = ""
-        for info in self.additionalInfoNeeded {
-            additionalInfoJson.append(info + ",")
+        if self.additionalInfoNeeded != nil {
+            for info in self.additionalInfoNeeded {
+                additionalInfoJson.append(info + ",")
+            }
         }
+
         obj["additional_info_needed"] = String(additionalInfoJson.characters.dropLast())
 
         if Array.isNullOrEmpty(settings) {

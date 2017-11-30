@@ -108,7 +108,6 @@
 		0FC4FC411B0FB83700CF7148 /* PromosTyCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC4FC3E1B0FB83700CF7148 /* PromosTyCViewController.xib */; };
 		0FC4FC421B0FB83700CF7148 /* PromosTyCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC4FC3E1B0FB83700CF7148 /* PromosTyCViewController.xib */; };
 		0FE3E37F1AE706B600C27B97 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3E37E1AE706B600C27B97 /* Utils.swift */; };
-		1148DD20D92D820C61EB7F96 /* Pods_MercadoPagoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BE383DF11CE371769290AC /* Pods_MercadoPagoSDK.framework */; };
 		150786A31CD7CD1E0034C5B1 /* IdentificationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150786A21CD7CD1E0034C5B1 /* IdentificationCardView.swift */; };
 		150786A41CD7CD1E0034C5B1 /* IdentificationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150786A21CD7CD1E0034C5B1 /* IdentificationCardView.swift */; };
 		150786A61CD7CD340034C5B1 /* IdentificationCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150786A51CD7CD340034C5B1 /* IdentificationCardView.xib */; };
@@ -585,7 +584,6 @@
 		81ACC8201F9A88F700206F7B /* PXFooterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ACC80B1F9A68D900206F7B /* PXFooterRenderer.swift */; };
 		81ACC8211F9A88F700206F7B /* PXHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ACC8081F9A68D800206F7B /* PXHeaderComponent.swift */; };
 		81ACC8221F9A88F700206F7B /* PXHeaderRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ACC80C1F9A68D900206F7B /* PXHeaderRenderer.swift */; };
-		89B0FDA5624644605E09CB6E /* Pods_MercadoPagoSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CBC6F9326B38C688FC679A4 /* Pods_MercadoPagoSDKTests.framework */; };
 		C5D27F451EEF155500768C1C /* PaymentVaultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D27F441EEF155500768C1C /* PaymentVaultViewModel.swift */; };
 		C5D27F461EEF289400768C1C /* PaymentVaultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D27F441EEF155500768C1C /* PaymentVaultViewModel.swift */; };
 		CC8AA1501DC5612300503910 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8AA14F1DC5612300503910 /* UILabel+Additions.swift */; };
@@ -1146,7 +1144,6 @@
 			files = (
 				4B5E77451FA8F78400D813AF /* MercadoPagoPXTracking.framework in Frameworks */,
 				4B5E77461FA8F78500D813AF /* MercadoPagoServices.framework in Frameworks */,
-				1148DD20D92D820C61EB7F96 /* Pods_MercadoPagoSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1154,7 +1151,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89B0FDA5624644605E09CB6E /* Pods_MercadoPagoSDKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
