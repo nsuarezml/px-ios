@@ -188,11 +188,17 @@ class MainTableViewController: UITableViewController {
 
 
         let paymentPlugin = PaymentMethodPluginsNavigationManager().getPaymentPlugin()
+        
         let nicoPagosPlugin = PXPaymentMethodPlugin(id: "nico_payment", name: "Nico Payment", image: nil, description: nil, paymentPlugin: paymentPlugin)
+        
+        let juanPagosPlugin = PXPaymentMethodPlugin(id: "juan_payment", name: "Juan Payments", image: nil, description: nil, paymentPlugin: paymentPlugin)
+        
+        let edyPagosPlugin = PXPaymentMethodPlugin(id: "edy_payment", name: "Edy Payments", image: nil, description: nil, paymentPlugin: paymentPlugin)
+        
+        let pepePagosPlugin = PXPaymentMethodPlugin(id: "pepe_payment", name: "Pepe Payments", image: nil, description: nil, paymentPlugin: paymentPlugin)
 
-        checkout.setPaymentMethodPlugins(plugins: [nicoPagosPlugin])
-
-
+        checkout.setPaymentMethodPlugins(plugins: [nicoPagosPlugin, juanPagosPlugin, edyPagosPlugin, pepePagosPlugin])
+        
          // Define hooks.
         let firstHook = HooksNavigationManager().getFirstHook()
         firstHook.actionHandler = PXActionHandler(withCheckout: checkout, targetHook: firstHook.hookForStep())

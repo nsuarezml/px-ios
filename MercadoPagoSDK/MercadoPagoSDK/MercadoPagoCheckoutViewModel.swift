@@ -98,8 +98,9 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
 
     var mpESCManager: MercadoPagoESC = MercadoPagoESCImplementation()
 
-    // Plugins
+    // Plugins payment method.
     var paymentMethodPlugins = [PXPaymentMethodPlugin]()
+    var selectedPaymentMethodPlugin: PXPaymentMethodPlugin?
 
     init(checkoutPreference: CheckoutPreference, paymentData: PaymentData?, paymentResult: PaymentResult?, discount: DiscountCoupon?) {
         super.init()
@@ -308,6 +309,12 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
     public func updateCheckoutModel(paymentOptionSelected: PaymentMethodOption) {
         if !self.initWithPaymentData {
             resetInformation()
+        }
+        
+        if let targetPlugin = paymentOptionSelected as? PXPaymentMethodPlugin {
+            self.paymentMethodOptions = [targetPlugin]
+            self.selectedPaymentMethodPlugin = targetPlugin
+            return
         }
 
         self.paymentOptionSelected = paymentOptionSelected
@@ -804,8 +811,9 @@ open class PXPluginStore: NSObject {
 
 }
 
-
+// MARK: PXPaymentMethodPlugin
 open class PXPaymentMethodPlugin: NSObject {
+    
     var id: String
     var name: String
     var _description: String?
@@ -824,9 +832,9 @@ open class PXPaymentMethodPlugin: NSObject {
     open func setPaymetnMethodConfig(plugin: PXPluginComponent) {
         self.paymentMethodConfigPlugin = plugin
     }
-
 }
 
+// MARK: PXPaymentMethodPlugin as PaymentOptionDrawable/PaymentMethodOption
 extension PXPaymentMethodPlugin: PaymentMethodOption, PaymentOptionDrawable {
     public func getId() -> String {
         return id
@@ -867,6 +875,4 @@ extension PXPaymentMethodPlugin: PaymentMethodOption, PaymentOptionDrawable {
     public func getSubtitle() -> String? {
         return _description
     }
-
-
 }
