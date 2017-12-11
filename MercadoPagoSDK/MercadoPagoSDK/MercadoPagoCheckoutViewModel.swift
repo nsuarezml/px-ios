@@ -98,6 +98,9 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
 
     var mpESCManager: MercadoPagoESC = MercadoPagoESCImplementation()
 
+    // Plugins
+    var paymentMethodPlugins = [PXPaymentMethodPlugin]()
+
     init(checkoutPreference: CheckoutPreference, paymentData: PaymentData?, paymentResult: PaymentResult?, discount: DiscountCoupon?) {
         super.init()
         self.checkoutPreference = checkoutPreference
@@ -173,7 +176,7 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
         if let optionSelected = paymentOptionSelected {
             groupName = optionSelected.getId()
         }
-        return PaymentVaultViewModel(amount: self.getAmount(), paymentPrefence: getPaymentPreferences(), paymentMethodOptions: self.paymentMethodOptions!, groupName: groupName, customerPaymentOptions: self.customPaymentOptions, isRoot : rootVC, discount: self.paymentData.discount, email: self.checkoutPreference.payer.email, mercadoPagoServicesAdapter: mercadoPagoServicesAdapter, couponCallback: {[weak self] (discount) in
+        return PaymentVaultViewModel(amount: self.getAmount(), paymentPrefence: getPaymentPreferences(), paymentMethodOptions: self.paymentMethodOptions!, customerPaymentOptions: self.customPaymentOptions, paymentMethodPlugins: paymentMethodPlugins, groupName: groupName, isRoot : rootVC, discount: self.paymentData.discount, email: self.checkoutPreference.payer.email, mercadoPagoServicesAdapter: mercadoPagoServicesAdapter, couponCallback: {[weak self] (discount) in
             guard let object = self else {
                 return
             }
@@ -755,4 +758,115 @@ extension MercadoPagoCheckoutViewModel {
         MercadoPagoCheckoutViewModel.changePaymentMethodCallback = nil
         MercadoPagoCheckoutViewModel.error = nil
     }
+}
+
+@objc
+public protocol PXPluginComponent: PXComponetizable {
+    func render() -> UIView
+    @objc optional func shouldSkipHook(hookStore: PXPluginStore) -> Bool
+    @objc optional func didReceive(hookStore: PXPluginStore)
+    @objc optional func renderDidFinish()
+    @objc optional func titleForNavigationBar() -> String?
+    @objc optional func colorForNavigationBar() -> UIColor?
+    @objc optional func shouldShowBackArrow() -> Bool
+    @objc optional func shouldShowNavigationBar() -> Bool
+}
+
+open class PXPluginStore: NSObject {
+
+    static let sharedInstance = PXPluginStore()
+    private var data = [String: Any]()
+    var paymentData = PaymentData()
+    var paymentOptionSelected: PaymentMethodOption?
+
+    public func addData(forKey: String, value: Any) {
+        self.data[forKey] = value
+    }
+    public func remove(key: String) {
+        data.removeValue(forKey: key)
+    }
+
+    public func removeAll() {
+        data.removeAll()
+    }
+
+    public func getData(forKey: String) -> Any? {
+        return self.data[forKey]
+    }
+
+    public func getPaymentData() -> PaymentData {
+        return paymentData
+    }
+
+    public func getPaymentOptionSelected() -> PaymentMethodOption? {
+        return paymentOptionSelected
+    }
+
+}
+
+
+open class PXPaymentMethodPlugin: NSObject {
+    var id: String
+    var name: String
+    var _description: String?
+    var image: UIImage?
+    var paymentPlugin: PXPluginComponent
+    var paymentMethodConfigPlugin: PXPluginComponent?
+
+    public init (id: String, name: String, image: UIImage?, description: String?, paymentPlugin: PXPluginComponent) {
+        self.id = id
+        self.name = name
+        self.image = image
+        self._description = description
+        self.paymentPlugin = paymentPlugin
+    }
+
+    open func setPaymetnMethodConfig(plugin: PXPluginComponent) {
+        self.paymentMethodConfigPlugin = plugin
+    }
+
+}
+
+extension PXPaymentMethodPlugin: PaymentMethodOption, PaymentOptionDrawable {
+    public func getId() -> String {
+        return id
+    }
+
+    public func getDescription() -> String {
+        return name
+    }
+
+    public func getComment() -> String {
+        return ""
+    }
+
+    public func hasChildren() -> Bool {
+        return false
+    }
+
+    public func getChildren() -> [PaymentMethodOption]? {
+        return nil
+    }
+
+    public func isCard() -> Bool {
+        return false
+    }
+
+    public func isCustomerPaymentMethod() -> Bool {
+        return false
+    }
+
+    public func getImageDescription() -> String {
+        return ""
+    }
+
+    public func getTitle() -> String {
+        return name
+    }
+
+    public func getSubtitle() -> String? {
+        return _description
+    }
+
+
 }

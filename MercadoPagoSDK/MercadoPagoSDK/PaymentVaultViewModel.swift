@@ -17,6 +17,7 @@ class PaymentVaultViewModel: NSObject {
 
     var paymentMethodOptions: [PaymentMethodOption]
     var customerPaymentOptions: [CardInformation]?
+    var paymentMethodPlugins = [PXPaymentMethodPlugin]()
     var paymentMethods: [PaymentMethod]!
     var defaultPaymentOption: PaymentMethodSearchItem?
     // var cards : [Card]?
@@ -34,7 +35,7 @@ class PaymentVaultViewModel: NSObject {
 
     internal var isRoot = true
 
-    init(amount: Double, paymentPrefence: PaymentPreference?, paymentMethodOptions: [PaymentMethodOption], groupName: String? = nil, customerPaymentOptions: [CardInformation]?, isRoot: Bool, discount: DiscountCoupon? = nil, email: String, mercadoPagoServicesAdapter: MercadoPagoServicesAdapter, callbackCancel: (() -> Void)? = nil, couponCallback: ((DiscountCoupon) -> Void)? = nil) {
+    init(amount: Double, paymentPrefence: PaymentPreference?, paymentMethodOptions: [PaymentMethodOption], customerPaymentOptions: [CardInformation]?, paymentMethodPlugins: [PXPaymentMethodPlugin], groupName: String? = nil, isRoot: Bool, discount: DiscountCoupon? = nil, email: String, mercadoPagoServicesAdapter: MercadoPagoServicesAdapter, callbackCancel: (() -> Void)? = nil, couponCallback: ((DiscountCoupon) -> Void)? = nil) {
         self.amount = amount
         self.email = email
         self.groupName = groupName
@@ -42,6 +43,7 @@ class PaymentVaultViewModel: NSObject {
         self.paymentPreference = paymentPrefence
         self.paymentMethodOptions = paymentMethodOptions
         self.customerPaymentOptions = customerPaymentOptions
+        self.paymentMethodPlugins = paymentMethodPlugins
         self.isRoot = isRoot
         self.couponCallback = couponCallback
         self.mercadoPagoServicesAdapter = mercadoPagoServicesAdapter
@@ -80,21 +82,24 @@ class PaymentVaultViewModel: NSObject {
     }
 
     func getPaymentMethodOption(row: Int) -> PaymentOptionDrawable {
-        if self.getCustomerPaymentMethodsToDisplayCount() > row {
-            return self.customerPaymentOptions![row]
+        if hasPaymentMethodsPlugin() {
+            if paymentMethodPlugins.indices.contains(row) {
+                return paymentMethodPlugins[row]
+            }
         }
-        let indexInPaymentMethods = Array.isNullOrEmpty(self.customerPaymentOptions) ? row : (row - self.getCustomerPaymentMethodsToDisplayCount())
+        let indexInCustomerPaymentMethods = Array.isNullOrEmpty(self.paymentMethodPlugins) ? row : (row - self.paymentMethodPlugins.count)
+        if self.getCustomerPaymentMethodsToDisplayCount() > indexInCustomerPaymentMethods {
+            return self.customerPaymentOptions![indexInCustomerPaymentMethods]
+        }
+        let indexInPaymentMethods = Array.isNullOrEmpty(self.customerPaymentOptions) ? (row  - self.paymentMethodPlugins.count) : (row - self.getCustomerPaymentMethodsToDisplayCount() - self.paymentMethodPlugins.count)
         return self.paymentMethodOptions[indexInPaymentMethods] as! PaymentOptionDrawable
     }
 
     func getDisplayedPaymentMethodsCount() -> Int {
         let currentPaymentMethodSearchCount = self.paymentMethodOptions.count
-        return self.getCustomerPaymentMethodsToDisplayCount() + currentPaymentMethodSearchCount
+        let paymentMethodPluginsCount = self.paymentMethodPlugins.count
+        return self.getCustomerPaymentMethodsToDisplayCount() + currentPaymentMethodSearchCount + paymentMethodPluginsCount
     }
-
-    //    func getCustomerCardRowHeight() -> CGFloat {
-    //        return self.getCustomerPaymentMethodsToDisplayCount() > 0 ? CustomerPaymentMethodCell.ROW_HEIGHT : 0
-    //    }
 
     func getExcludedPaymentTypeIds() -> Set<String>? {
         return (self.paymentPreference != nil) ? self.paymentPreference!.excludedPaymentTypeIds : nil
@@ -121,6 +126,10 @@ class PaymentVaultViewModel: NSObject {
 
     func hasOnlyCustomerPaymentMethodAvailable() -> Bool {
         return Array.isNullOrEmpty(self.paymentMethodOptions) && !Array.isNullOrEmpty(self.customerPaymentOptions) && self.customerPaymentOptions?.count == 1
+    }
+
+    func hasPaymentMethodsPlugin() -> Bool {
+        return !paymentMethodPlugins.isEmpty
     }
 
 }

@@ -25,3 +25,12 @@ class HooksNavigationManager {
         return hooksStoryboard.instantiateViewController(withIdentifier: "thirdHook") as! ThirdHookViewController
     }
 }
+
+class PaymentMethodPluginsNavigationManager {
+
+    let storyboard = UIStoryboard(name: "PaymentMethodPlugins", bundle: nil)
+
+    func getPaymentPlugin() -> PaymentPluginViewController {
+        return storyboard.instantiateViewController(withIdentifier: "paymentPlugin") as! PaymentPluginViewController
+    }
+}

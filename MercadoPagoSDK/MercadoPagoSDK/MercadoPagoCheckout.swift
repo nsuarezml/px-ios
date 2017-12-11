@@ -69,6 +69,10 @@ open class MercadoPagoCheckout: NSObject {
         self.viewModel.paymentData = paymentData
     }
 
+    public func setPaymentMethodPlugins(plugins: [PXPaymentMethodPlugin]) {
+        self.viewModel.paymentMethodPlugins = plugins
+    }
+
     public func resume() {
         MercadoPagoCheckout.currentCheckout = self
         executeNextStep()

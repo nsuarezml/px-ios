@@ -187,6 +187,12 @@ class MainTableViewController: UITableViewController {
         let checkout = MercadoPagoCheckout(publicKey: self.publicKey, accessToken: self.accessToken, checkoutPreference: pref!, paymentData: paymentData, paymentResult: paymentResult, navigationController: self.navigationController!)
 
 
+        let paymentPlugin = PaymentMethodPluginsNavigationManager().getPaymentPlugin()
+        let nicoPagosPlugin = PXPaymentMethodPlugin(id: "nico_payment", name: "Nico Payment", image: nil, description: nil, paymentPlugin: paymentPlugin)
+
+        checkout.setPaymentMethodPlugins(plugins: [nicoPagosPlugin])
+
+
          // Define hooks.
         let firstHook = HooksNavigationManager().getFirstHook()
         firstHook.actionHandler = PXActionHandler(withCheckout: checkout, targetHook: firstHook.hookForStep())
