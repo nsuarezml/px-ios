@@ -7,6 +7,308 @@
 */
 
 
+
+//<!-- Banks deals -- = "
+"mpsdk_empty_bank_deals" = "No tienes ninguna promoción disponible";
+"mpsdk_bank" = "banco";
+"mpsdk_and" = "y";
+"mpsdk_title_activity_bank_deals" = "Promociones";
+
+//<!-- Payment Methods -- = "
+"mpsdk_title_activity_payment_methods" = "¿Cómo quieres pagar?";
+
+//<!-- Customer cards -- = "
+"mpsdk_title_activity_customer_pms" = "¿Con qué tarjeta?";
+"other_payment_method" = "Otro medio de pago…";
+
+//<!-- Vault -- = "
+"mpsdk_cod_seg_desc" = "Últimos %1$s números al dorso de la tarjeta";
+"mpsdk_cod_seg_desc_amex" = "%1$s números al frente de la tarjeta";
+"mpsdk_title_activity_vault" = "Pagar";
+"mpsdk_select_pm_label" = "Selecciona un medio de pago…";
+"mpsdk_last_digits_label" = "Terminada en";
+"mpsdk_account_money_description" = "Dinero en cuenta \nde Mercado Pago";
+"mpsdk_confirm" = "Confirmar";
+"mpsdk_title_activity_payment_vault" = "¿Cómo quieres pagar?";
+"mpsdk_invalid_pm_for_current_amount" = "El medio de pago que elegiste no se puede usar para pagar ese monto. Por favor selecciona otro";
+"mpsdk_no_payment_methods_found" = "No hay medios de pago disponibles";
+"mpsdk_payment_method_groups_label" = "Otros";
+
+//<!-- Instruction -- = "
+"mpsdk_pay_with_this_data" = "Paga con estos datos";
+
+//<!-- Issuers -- = "
+"mpsdk_card_issuers_title" = "¿Quién emitió tu tarjeta?";
+
+//<!-- Installments -- = "
+"mpsdk_card_installments_title" = "¿En cuántas cuotas?";
+"mpsdk_installments_of" = "de";
+"mpsdk_installments_by" = "x";
+"mpsdk_installments_tea" = "TEA";
+"mpsdk_installments_cft" = "CFT";
+
+//<!-- Checkout -- = "
+"mpsdk_text_terms_and_conditions_start" = "Al pagar, afirmo que soy mayor de edad y acepto los";
+"mpsdk_text_terms_and_conditions_linked" = "Términos y condiciones";
+"mpsdk_text_terms_and_conditions_end" = "de Mercado Pago";
+"mpsdk_payment_amount_to_pay" = "Total a pagar";
+"mpsdk_pay_button_text" = "Pagar";
+"mpsdk_press_again_confirm" = "Si presionas de nuevo reiniciarás la selección";
+"mpsdk_title_activity_checkout" = "Revisa si está todo bien…";
+
+//<!-- Card token and guessing -- = "
+"mpsdk_invalid_card_number_incomplete" = "Ingresa todos los números de la tarjeta";
+"mpsdk_invalid_empty_name" = "Ingresa el nombre y apellido impreso en la tarjeta";
+"mpsdk_invalid_expiry_date" = "La fecha que ingresaste es inválida";
+"mpsdk_invalid_identification_number" = "Ingresa todos los números";
+"mpsdk_invalid_identification_name" = "Ingresa tu nombre";
+"mpsdk_invalid_identification_last_name" = "Ingresa tu apellido";
+"mpsdk_invalid_identification_business_name" = "Ingresa la razón social";
+"mpsdk_invalid_payment_method" = "No puedes pagar con este medio de pago";
+"mpsdk_card_number_label" = "Número de tarjeta";
+"mpsdk_card_expire_date_label" = "Fecha de expiración";
+"mpsdk_cardholder_name" = "Nombre y apellido";
+"mpsdk_name" = "Nombre";
+"mpsdk_lastname" = "Apellido";
+"mpsdk_doc_type_label" = "Tipo";
+"mpsdk_doc_number_label" = "Documento";
+"mpsdk_bank_deals_action" = "Ver promociones";
+"mpsdk_security_code" = "Código de seguridad";
+"mpsdk_continue_label" = "Continuar";
+"mpsdk_payment_method" = "Medio de pago";
+"mpsdk_issuer_label" = "Banco";
+
+"mpsdk_invalid_card_bin" = "El número de tarjeta que ingresaste no se corresponde con el tipo de tarjeta";
+"mpsdk_invalid_card_luhn" = "El número de tarjeta que ingresaste es incorrecto";
+"mpsdk_invalid_card_length" = "Ingresa los %1$s números de la tarjeta";
+"mpsdk_invalid_cvv_length" = "Ingresa los %1$s números del código de seguridad";
+"mpsdk_invalid_field" = "Revisa este dato";
+"mpsdk_invalid_empty_card" = "Ingresa el número de la tarjeta de crédito";
+"mpsdk_card_expiry_date_hint" = "Mes / Año";
+"mpsdk_card_expiry_month_hint" = "MM";
+"mpsdk_card_expiry_divider_hint" = "/";
+"mpsdk_card_expiry_year_hint" = "AA";
+"mpsdk_card_identification_label" = "DOCUMENTO DEL TITULAR\nDE LA TARJETA";
+"mpsdk_ticket_identification_label" = "DATOS PARA VALIDAR SU PAGO";
+"mpsdk_name_and_lastname_identification_label" = "NOMBRE Y APELLIDO";
+"mpsdk_card_identification_number" = "Número";
+"mpsdk_card_identification_type" = "Tipo";
+"mpsdk_cardholder_name_short" = "NOMBRE APELLIDO";
+"mpsdk_title_activity_new_card" = "Ingresa los datos de tu tarjeta";
+
+"mpsdk_more_info" = "MÁS INFO";
+"mpsdk_try_other_card" = "Ingresar tarjeta";
+"mpsdk_you_can_finish_your_payment_with_cards" = "No te preocupes, aún puedes terminar tu pago con:";
+"mpsdk_invalid_card_payment_method" = "No puedes pagar con esta tarjeta";
+"mpsdk_exclusion_one_element" = "Solo puedes pagar con %1$s";
+
+//<!-- Congrats -- = "
+"mpsdk_title_activity_congrats" = "¡Listo, se acreditó tu pago!";
+"mpsdk_subtitle_action_activity_congrats" = "Te enviaremos los datos a\n%1$s";
+"mpsdk_text_state_account_activity_congrats" = "En tu estado de cuenta verás el cargo como\n %s";
+"mpsdk_payment_id_description" = "Comprobante";
+"mpsdk_payment_id_description_number" = "Nº %1$s";
+"mpsdk_statement_default" = "MERCADO PAGO";
+
+//<!-- CallForAuthorize -- = "
+"mpsdk_title_activity_call_for_authorize" = "Debes autorizar ante %1$s el pago de %2$s a Mercado Pago";
+"mpsdk_text_order_call_for_authorize" = "El teléfono está al dorso de tu tarjeta.";
+"mpsdk_error_title_activity_call_for_authorize" = "Debes autorizar el pago ante tu tarjeta";
+"mpsdk_text_authorized_call_for_authorize" = "Ya hablé con %1$s y me autorizó";
+"mpsdk_text_question_call_for_authorize" = "¿No pudiste autorizarlo?";
+"mpsdk_text_select_other_payment_method" = "Elige otro medio de pago";
+
+//<!-- Pending -- = "
+"mpsdk_title_pending" = "Estamos procesando\n el pago";
+"mpsdk_subtitle_pending_contingency" = "En menos de 1 hora te enviaremos por e-mail el resultado.";
+"mpsdk_subtitle_pending_review_manual" = "En menos de 2 días hábiles te diremos por e-mail si se acreditó o si necesitamos más información.";
+
+//<!-- Rejection -- = "
+"mpsdk_text_other_payment_method_button_rejection" = "Usar otro medio de pago";
+"mpsdk_text_pay_with_other_method" = "Cambiar medio de pago";
+"mpsdk_text_enter_again" = "Ingrésalo nuevamente";
+"mpsdk_subtitle_rejection_insufficient_amount_credit_card" = "¡No te desanimes! Puedes elegir otro medio de pago.";
+"mpsdk_title_other_reason_rejection" = "%1$s no procesó el pago";
+"mpsdk_text_select_other_rejection" = "Usa otra tarjeta u otro medio de pago";
+"mpsdk_text_some_card_data_is_incorrect" = "Algún dato de tu %1$s es incorrecto.";
+"mpsdk_title_bad_filled_other" = "Uy, no pudimos procesar el pago";
+"mpsdk_text_some_number" = "Algún número de tu %1$s es incorrecto.";
+"mpsdk_text_insufficient_amount" = "Tu %1$s no tiene fondos suficientes";
+"mpsdk_subtitle_rejection_insufficient_amount" = "¡No te desanimes! Recárgala en cualquier banco o desde tu banca electrónica e inténtalo de nuevo. O si prefieres, puedes elegir otro medio de pago.";
+"mpsdk_subtitle_rejection_duplicated_payment" = "Si necesitas volver a pagar usa otra tarjeta u otro medio de pago.";
+"mpsdk_text_active_card" = "Llama a %1$s para que active tu tarjeta";
+"mpsdk_subtitle_rejection_card_disabled" = "El teléfono está al dorso de tu tarjeta.";
+"mpsdk_title_bad_filled_security_code" = "El código de seguridad no es el correcto.";
+"mpsdk_title_bad_filled_date" = "La fecha de vencimiento no es la correcta.";
+"mpsdk_title_rejection_high_risk" = "Por seguridad, tuvimos que rechazar tu pago";
+"mpsdk_subtitle_rejection_high_risk" = "Si quieres pagar con el dinero de tu cuenta, contactate con Atención al Cliente de Mercado Pago. O si prefieres, puedes elegir otro medio de pago.";
+"mpsdk_title_rejection_max_attempts" = "Llegaste al límite de intentos permitidos";
+"mpsdk_subtitle_rejection_max_attempts" = "Elige otra tarjeta u otro medio de pago.";
+"mpsdk_rejection_title" = "Algo salió mal…";
+
+//<!-- Error messages -- = "
+"mpsdk_error_message_invalid_amount" = "Monto inválido";
+"mpsdk_error_message_invalid_item" = "Item inválido";
+"mpsdk_error_message_expired_preference" = "Preferencia expirada";
+"mpsdk_error_message_inactive_preference" = "Preferencia inactiva";
+"mpsdk_error_message_invalid_default_installments" = "Número de cuotas por defecto inválido";
+"mpsdk_error_message_invalid_max_installments" = "Número máximo de cuotas inválido";
+"mpsdk_error_message_excluded_all_payment_type" = "Todos los tipos de pagos excluídos";
+"mpsdk_error_message_invalid_currency" = "Moneda inválida";
+"mpsdk_error_message_invalid_title" = "Título inválido";
+"mpsdk_error_message_invalid_merchant" = "Comercio inválido";
+"mpsdk_error_message_invalid_preference" = "Preferencia inválida";
+"mpsdk_error_message_invalid_installments" = "Número de cuotas inválido";
+"mpsdk_error_title" = "¡Uy! Algo salió mal";
+"mpsdk_standard_error_message" = "Vamos a solucionarlo. Intenta más tarde.";
+"mpsdk_error_message_email_required" = "El email es requerido";
+"mpsdk_error_message_missing_public_key" = "Public key requerida";
+"mpsdk_error_message_missing_amount" = "El monto es requerido";
+"mpsdk_error_message_missing_site" = "El site es requerido";
+"mpsdk_error_message_missing_payer_cost" = "No se encontraron cuotas";
+"mpsdk_error_message_missing_installment_for_issuer" = "No se encontraron planes de cuotas para ese banco";
+"mpsdk_error_message_multiple_installments_for_issuer" = "Se encontraron múltiples planes de cuotas para ese banco";
+"mpsdk_error_message_missing_identification_types" = "No se encontraron identification types";
+"mpsdk_error_message_missing_setting_for_bin" = "No se encontraron settings para ese bin";
+
+//<!-- API exception messages -- = "
+"mpsdk_empty_card_expiration_month" = "No se ingresó el mes de la fecha de expiración de la tarjeta";
+"mpsdk_empty_card_expiration_year" = "No se ingresó el año de la fecha de expiración de la tarjeta";
+"mpsdk_empty_card_holder_name" = "No se ingresó el nombre del titular de la tarjeta";
+"mpsdk_empty_document_number" = "No se ingresó el número de documento del titular de la tarjeta";
+"mpsdk_empty_document_type" = "No se ingresó el tipo de documento del titular de la tarjeta";
+"mpsdk_invalid_payment_type_id" = "Tipo de medio de pago inválido";
+"mpsdk_invalid_card_expiration_month" = "Mes de expiración de la tarjeta inválido";
+"mpsdk_invalid_card_expiration_year" = "Año de expiración de la tarjeta inválido";
+"mpsdk_invalid_payer_email" = "Email del cliente inválido";
+"mpsdk_customer_not_allowed_to_operate" = "No tienes permitido operar";
+"mpsdk_collector_not_allowed_to_operate" = "El vendedor no tiene permitido operar";
+"mpsdk_invalid_users_involved" = "Usuarios no válidos involucrados";
+"mpsdk_customer_equal_to_collector" = "Mismo usuario cliente y vendedor";
+"mpsdk_invalid_card_holder_name" = "Nombre del titular de la tarjeta inválido";
+"mpsdk_unauthorized_client" = "Cliente no autorizado";
+"mpsdk_payment_method_not_found" = "No encontramos el medio de pago seleccionado";
+"mpsdk_invalid_security_code" = "Código de seguridad inválido";
+"mpsdk_security_code_required" = "Código de seguridad requerido";
+"mpsdk_invalid_card_number" = "Número de tarjeta inválido";
+"mpsdk_api_invalid_identification_number" = "El número de identificación es inválido";
+
+//<!-- Utils -- = "
+"mpsdk_text_continue" = "Continuar";
+"mpsdk_continue_shopping" = "Seguir comprando";
+"mpsdk_text_cancel_payment_and_continue" = "Cancelar pago y continuar";
+"mpsdk_zero_rate" = "Sin interés";
+"mpsdk_exit_label" = "Salir";
+"mpsdk_cancel_payment" = "Cancelar Pago";
+"mpsdk_input_button_back" = "Anterior";
+"mpsdk_input_button_next" = "Continuar";
+"mpsdk_hour" = "hora";
+"mpsdk_working_day" = "día hábil";
+"mpsdk_press_again_to_leave" = "Presiona de nuevo para salir";
+"mpsdk_working_days" = "días hábiles";
+"mpsdk_refresh_message" = "Reintentar";
+"mpsdk_title_activity_terms_and_conditions" = "Términos y condiciones";
+"mpsdk_format_date" = "<![CDATA[ %1$s/%2$s/%3$s - %4$s]] = "";
+"mpsdk_no_connection_message" = "Sin conexión";
+"mpsdk_instant_accreditation_time" = "Se acreditará instantáneamente";
+"mpsdk_accreditation_time" = "Se acreditará en";
+"mpsdk_what_can_do" = "¿Qué puedo hacer?";
+"mpsdk_debit" = "por";
+
+//<!-- Low Res -- = "
+"mpsdk_form_card_title_payment_type" = "Tarjeta de %1$s";
+"mpsdk_form_card_title" = "Tarjeta";
+"mpsdk_form_identification_title" = "Documento del titular";
+"mpsdk_bank_deals_lowres" = "Promociones";
+
+//<!-- PaymentTypes -- = "
+"mpsdk_credit_payment_type" = "Crédito";
+"mpsdk_debit_payment_type" = "Débito";
+"mpsdk_form_card_title_payment_type_prepaid" = "Tarjeta prepaga";
+"mpsdk_payment_types_title" = "¿Qué tipo de tarjeta es?";
+
+"mpsdk_confirm_prompt_yes" = "Sí";
+"mpsdk_confirm_prompt_no" = "No";
+
+//<!-- Review and Confirm -- = "
+"mpsdk_change_payment" = "Cambiar medio de pago";
+"mpsdk_review_description_card" = "%1$s terminada en: %2$s";
+"mpsdk_review_off_text_default" = "Pagarás %1$s\n%2$s";
+"mpsdk_review_off_text" = "Pagarás %1$s en un\n%2$s";
+"mpsdk_review_off_text_2" = "Pagarás %1$s en\n%2$s";
+"mpsdk_review_off_text_3" = "Pagarás %1$s en tu\n%2$s";
+"mpsdk_review_off_text_4" = "Pagarás %1$s con\n%2$s";
+"mpsdk_review_off_text_5" = "Pagarás %1$s por\n%2$s";
+"mpsdk_review_off_text_6" = "Pagarás %1$s en\n%2$s";
+"mpsdk_homebanking" = "Home Banking de";
+"mpsdk_your_atm" = "cajero automático de";
+"mpsdk_review_product_quantity" = "Cantidad: %1$s";
+"mpsdk_review_product_price" = "Precio unitario: %1$s";
+"mpsdk_activity_checkout_title" = "Revisa tu pago";
+"mpsdk_review_summary_products" = "Productos";
+"mpsdk_review_summary_interests" = "Intereses";
+"mpsdk_review_summary_charges" = "Cargos";
+"mpsdk_review_summary_taxes" = "Impuestos";
+"mpsdk_review_summary_shipping" = "Envío";
+"mpsdk_review_summary_arrear" = "Mora";
+"mpsdk_review_summary_subtotal" = "Subtotal";
+"mpsdk_review_summary_pay" = "Pagas";
+"mpsdk_review_summary_total" = "Total";
+"mpsdk_review_summary_discount" = "Descuento";
+"mpsdk_review_summary_discount_with_percent_off" = "Descuento %1$s%%";
+"mpsdk_review_summary_discount_with_amount_off" = "Descuento";
+"mpsdk_review_summary_discounts" = "Descuentos";
+"mpsdk_ryc_account_money_description" = "Con dinero en cuenta";
+
+//<!-- Discount -- = "
+"mpsdk_discount" = "Descuento";
+"mpsdk_input_button_exchange" = "Canjear";
+"mpsdk_discount_code" = "Código de descuento";
+"mpsdk_has_a_discount" = "Tengo un descuento";
+"mpsdk_of_discount" = "de descuento";
+"mpsdk_percent_of_discount" = "% de descuento";
+"mpsdk_do_not_enter_code" = "No se ingresó código";
+"mpsdk_invalid_code" = "Código inválido";
+"mpsdk_merchant_without_discount_available" = "Vendedor sin descuento disponible";
+"mpsdk_ran_out_of_quantity_uses_quantity" = "Se agotó la cantidad de usos";
+"mpsdk_amount_doesnt_match" = "Importe fuera del alcance";
+"mpsdk_campaign_expired" = "La campaña expiró";
+"mpsdk_discount_percent_off" = "%1$s %%";
+"mpsdk_percent" = "%";
+"mpsdk_total" = "Total:";
+"mpsdk_something_went_wrong" = "¡Uy! Algo salió mal…";
+
+"mpsdk_interest_label" = "No incluye intereses bancarios";
+
+//<!-- Unlock Card -- = "
+"mpsdk_text_unlock_card_start" = "Recuerda";
+"mpsdk_text_unlock_card_linked" = "desbloquear tu tarjeta";
+"mpsdk_text_unlock_card_end" = "antes de confirmar el pago.";
+"mpsdk_title_unlock_card" = "Desbloqueo de Tarjeta";
+
+"mpsdk_error_message_detail_no_installments" = "no installments found for an issuer at InstallmentsActivity";
+"mpsdk_error_message_detail_no_payer_cost_found" = "no payer costs found at InstallmentsActivity";
+"mpsdk_error_message_detail_multiple_installments" = "multiple installments found for an issuer at InstallmentsActivity";
+"mpsdk_error_message_detail_issuers" = "no issuers found at IssuersActivity";
+"mpsdk_error_message_detail_no_payment_method_list" = "no payment method list found at ReviewPaymentMethodsActivity";
+
+//<!-- Boleto -- = "
+"mpsdk_fill_your_data" = "Ingrese sus datos…";
+"mpsdk_bolbradesco_rejection" = "No fue posible procesar su pago";
+"mpsdk_bolbradesco_rejection_text" = "Intenta otro medio de pago";
+
+
+
+
+
+
+
+
+
+
+
+
+
 "Si" = "Si";
 "No" = "No";
 
