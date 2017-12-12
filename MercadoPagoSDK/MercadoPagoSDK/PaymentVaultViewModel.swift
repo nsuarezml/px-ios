@@ -87,17 +87,17 @@ class PaymentVaultViewModel: NSObject {
                 return paymentMethodPlugins[row]
             }
         }
-        let indexInCustomerPaymentMethods = Array.isNullOrEmpty(self.paymentMethodPlugins) ? row : (row - self.paymentMethodPlugins.count)
+        let indexInCustomerPaymentMethods = Array.isNullOrEmpty(self.paymentMethodPlugins) ? row : (row - self.getPaymentMethodPluginCount())
         if self.getCustomerPaymentMethodsToDisplayCount() > indexInCustomerPaymentMethods {
             return self.customerPaymentOptions![indexInCustomerPaymentMethods]
         }
-        let indexInPaymentMethods = Array.isNullOrEmpty(self.customerPaymentOptions) ? (row  - self.paymentMethodPlugins.count) : (row - self.getCustomerPaymentMethodsToDisplayCount() - self.paymentMethodPlugins.count)
+        let indexInPaymentMethods = Array.isNullOrEmpty(self.customerPaymentOptions) ? (row  - self.getPaymentMethodPluginCount()) : (row - self.getCustomerPaymentMethodsToDisplayCount() - self.getPaymentMethodPluginCount())
         return self.paymentMethodOptions[indexInPaymentMethods] as! PaymentOptionDrawable
     }
 
     func getDisplayedPaymentMethodsCount() -> Int {
         let currentPaymentMethodSearchCount = self.paymentMethodOptions.count
-        let paymentMethodPluginsCount = self.paymentMethodPlugins.count
+        let paymentMethodPluginsCount = self.getPaymentMethodPluginCount()
         return self.getCustomerPaymentMethodsToDisplayCount() + currentPaymentMethodSearchCount + paymentMethodPluginsCount
     }
 
@@ -129,7 +129,14 @@ class PaymentVaultViewModel: NSObject {
     }
 
     func hasPaymentMethodsPlugin() -> Bool {
-        return !paymentMethodPlugins.isEmpty
+        return getPaymentMethodPluginCount() > 0
+    }
+
+    func getPaymentMethodPluginCount() -> Int {
+        if !Array.isNullOrEmpty(paymentMethodPlugins) && self.isRoot {
+            return paymentMethodPlugins.count
+        }
+        return 0
     }
 
 }

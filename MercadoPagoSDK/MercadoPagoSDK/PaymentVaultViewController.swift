@@ -272,15 +272,15 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
         
         if isGroupSection(section: indexPath.section) {
             
-            // Handle custom payment plugin selection.
-            if self.viewModel.hasPaymentMethodsPlugin() {
-                if self.viewModel.paymentMethodPlugins.indices.contains(indexPath.item) {
-                    collectionView.deselectItem(at: indexPath, animated: true)
-                    collectionView.allowsSelection = false
-                    self.callback!(self.viewModel.paymentMethodPlugins[indexPath.item])
-                    return
-                }
-            }
+//            // Handle custom payment plugin selection.
+//            if self.viewModel.hasPaymentMethodsPlugin() {
+//                if self.viewModel.paymentMethodPlugins.indices.contains(indexPath.item) {
+//                    collectionView.deselectItem(at: indexPath, animated: true)
+//                    collectionView.allowsSelection = false
+//                    self.callback!(self.viewModel.paymentMethodPlugins[indexPath.item])
+//                    return
+//                }
+//            }
             
             let paymentSearchItemSelected = self.viewModel.getPaymentMethodOption(row: indexPath.row) as! PaymentMethodOption
             collectionView.deselectItem(at: indexPath, animated: true)
