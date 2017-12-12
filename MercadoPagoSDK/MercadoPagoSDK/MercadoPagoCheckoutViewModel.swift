@@ -312,9 +312,13 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
         }
         
         if let targetPlugin = paymentOptionSelected as? PXPaymentMethodPlugin {
-//            self.paymentMethodOptions = [targetPlugin]
             self.selectedPaymentMethodPlugin = targetPlugin
             self.paymentOptionSelected = targetPlugin
+            let paymentMethod = PaymentMethod()
+            paymentMethod._id = targetPlugin.getId()
+            paymentMethod.name = targetPlugin.getTitle()
+            paymentMethod.paymentTypeId = "paymentMethodPlugin"
+            self.paymentData.paymentMethod = paymentMethod
             return
         }
 
