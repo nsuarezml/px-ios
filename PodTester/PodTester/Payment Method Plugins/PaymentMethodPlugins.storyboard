@@ -52,37 +52,38 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cuf-qO-jgc" userLabel="Container View">
                                         <rect key="frame" x="0.0" y="8" width="375" height="250"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Usuario" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kcP-sw-bN9">
-                                                <rect key="frame" x="20" y="158.5" width="335" height="25"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1HB5XMLmzFVj8ALj6mfBsbifRoD4" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kcP-sw-bN9">
+                                                <rect key="frame" x="20" y="158" width="335" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Tv8-Lp-DkQ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" secureTextEntry="YES"/>
+                                                <color key="textColor" red="1" green="0.42893415178571431" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad" returnKeyType="next" smartQuotesType="no"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgE-oZ-nGV" userLabel="Underline">
-                                                <rect key="frame" x="20" y="187.5" width="335" height="1"/>
+                                                <rect key="frame" x="20" y="187" width="335" height="1"/>
                                                 <color key="backgroundColor" red="0.77798477560000001" green="0.77798477560000001" blue="0.77798477560000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="eWH-z8-05T"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debes completar este dato" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9P-58-QFr">
-                                                <rect key="frame" x="16" y="194.5" width="343" height="19"/>
+                                                <rect key="frame" x="16" y="194" width="343" height="19"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" red="0.81188405119999996" green="0.23072348200000001" blue="0.083309273140000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mpx_lockimage" translatesAutoresizingMaskIntoConstraints="NO" id="ZLe-Wf-5iy">
-                                                <rect key="frame" x="132" y="10" width="112" height="95"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoin_wallet" translatesAutoresizingMaskIntoConstraints="NO" id="ZLe-Wf-5iy">
+                                                <rect key="frame" x="122" y="10" width="132" height="95"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="95" id="4yu-Ts-n4I"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de usuario" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hph-A7-pIc">
-                                                <rect key="frame" x="114" y="113" width="146" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿A qué dirección quieres pagar?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hph-A7-pIc">
+                                                <rect key="frame" x="65" y="113" width="245.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.224275421" green="0.224275421" blue="0.224275421" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -136,6 +137,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="mpx_lockimage" width="112" height="110"/>
+        <image name="bitcoin_wallet" width="132" height="128"/>
     </resources>
 </document>

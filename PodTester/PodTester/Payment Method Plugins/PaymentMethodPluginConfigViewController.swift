@@ -18,6 +18,7 @@ class PaymentMethodPluginConfigViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNextButton()
     }
 }
 
@@ -56,6 +57,6 @@ extension PaymentMethodPluginConfigViewController: PXPluginComponent {
     }
 
     func titleForNavigationBar() -> String? {
-        return "Ingrese nombre de usuario"
+        return "Pagar con Bitcoin"
     }
 }

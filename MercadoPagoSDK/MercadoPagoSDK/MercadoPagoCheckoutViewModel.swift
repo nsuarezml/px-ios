@@ -784,8 +784,8 @@ extension MercadoPagoCheckoutViewModel {
 @objc
 public protocol PXPluginComponent: PXComponetizable {
     func render() -> UIView
-    @objc optional func shouldSkipHook(hookStore: PXPluginStore) -> Bool
-    @objc optional func didReceive(hookStore: PXPluginStore)
+    @objc optional func shouldSkip(pluginStore: PXPluginStore) -> Bool
+    @objc optional func didReceive(pluginStore: PXPluginStore)
     @objc optional func renderDidFinish()
     @objc optional func titleForNavigationBar() -> String?
     @objc optional func colorForNavigationBar() -> UIColor?

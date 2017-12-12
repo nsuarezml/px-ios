@@ -327,37 +327,48 @@ extension MercadoPagoCheckout {
     }
 
     func showPaymentMethodPluginPaymentScreen() {
+        
         guard let paymentMethodPlugin = self.viewModel.paymentOptionSelected as? PXPaymentMethodPlugin else {
             return
         }
-        let vc = MercadoPagoUIViewController()
+        
+        let containerVC = MercadoPagoUIViewController()
 
-        vc.shouldShowBackArrow = false
+        // By feature definition. Back is not available in payment step.
+        containerVC.shouldShowBackArrow = false
 
-        let pluginPaymentView = paymentMethodPlugin.paymentPlugin.render()
-        pluginPaymentView.removeFromSuperview()
-        pluginPaymentView.frame = vc.view.frame
-        vc.view.addSubview(pluginPaymentView)
-
-        self.navigationController.pushViewController(vc, animated: true)
+        let paymentPluginComponent = paymentMethodPlugin.paymentPlugin
+        
+        let paymentPluginComponentView = paymentPluginComponent.render()
+        paymentPluginComponentView.removeFromSuperview()
+        paymentPluginComponentView.frame = containerVC.view.frame
+        containerVC.view.addSubview(paymentPluginComponentView)
+        
+        paymentPluginComponent.renderDidFinish?()
+        
+        self.navigationController.pushViewController(containerVC, animated: true)
     }
 
     func showPaymentMethodPluginConfigScreen() {
+        
         guard let paymentMethodPlugin = self.viewModel.paymentOptionSelected as? PXPaymentMethodPlugin else {
             return
         }
-        let vc = MercadoPagoUIViewController()
+        
+        let containerVC = MercadoPagoUIViewController()
 
-        vc.shouldShowBackArrow = false
-
-        guard let pluginPaymentView = paymentMethodPlugin.paymentMethodConfigPlugin?.render() else {
+        guard let paymentMethodConfigPluginComponent = paymentMethodPlugin.paymentMethodConfigPlugin else {
             return
         }
+        
+        let paymentMethodConfigPluginComponentView = paymentMethodConfigPluginComponent.render()
 
-        pluginPaymentView.removeFromSuperview()
-        pluginPaymentView.frame = vc.view.frame
-        vc.view.addSubview(pluginPaymentView)
+        paymentMethodConfigPluginComponentView.removeFromSuperview()
+        paymentMethodConfigPluginComponentView.frame = containerVC.view.frame
+        containerVC.view.addSubview(paymentMethodConfigPluginComponentView)
 
-        self.navigationController.pushViewController(vc, animated: true)
+        paymentMethodConfigPluginComponent.renderDidFinish?()
+        
+        self.navigationController.pushViewController(containerVC, animated: true)
     }
 }

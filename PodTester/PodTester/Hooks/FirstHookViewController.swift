@@ -33,6 +33,13 @@ extension FirstHookViewController: PXHookComponent {
         return self.view
     }
     
+    func shouldSkipHook(hookStore: PXHookStore) -> Bool {
+        if let paymentId = hookStore.getPaymentOptionSelected()?.getId(), paymentId == "bitcoin" {
+            return true
+        }
+        return false
+    }
+    
     func renderDidFinish() {
         messageLabel.text = nil
         passwordTextfield.text = nil

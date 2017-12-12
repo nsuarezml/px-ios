@@ -187,19 +187,24 @@ class MainTableViewController: UITableViewController {
         let checkout = MercadoPagoCheckout(publicKey: self.publicKey, accessToken: "APP_USR-1094487241196549-081708-4bc39f94fd147e7ce839c230c93261cb__LA_LC__-145698489", checkoutPreference: pref!, paymentData: paymentData, paymentResult: paymentResult, navigationController: self.navigationController!)
 
 
+        // Get Payment plugin
         let paymentPlugin = PaymentMethodPluginsNavigationManager().getPaymentPlugin()
-
         paymentPlugin.pluginNaviagtionHandler = PXPluginNavigationHandler(withCheckout: checkout)
         
-        let nicoPagosPlugin = PXPaymentMethodPlugin(id: "nico_payment", name: "Nico Payment", image: UIImage(named: "nico_pagos"), description: nil, paymentPlugin: paymentPlugin)
+        // Create custom payment method plugin (Bitcoin)
+        let bitcoinPaymentPlugin = PXPaymentMethodPlugin(id: "bitcoin", name: "Bitcoin", image: UIImage(named: "bitcoin_payment"), description: nil, paymentPlugin: paymentPlugin)
 
+        // Get Payment configuration plugin
         let paymentMethodConfigPlugin = PaymentMethodPluginsNavigationManager().getPaymentMethodConfigurationPlugin()
-
-        nicoPagosPlugin.setPaymentMethodConfig(plugin: paymentMethodConfigPlugin)
+        paymentMethodConfigPlugin.navigationHandler = PXPluginNavigationHandler(withCheckout: checkout)
         
-        let edyPagosPlugin = PXPaymentMethodPlugin(id: "edy_payment", name: "Edy Payments", image: UIImage(named: "edy_pagos"), description: nil, paymentPlugin: paymentPlugin)
-
-        checkout.setPaymentMethodPlugins(plugins: [nicoPagosPlugin, edyPagosPlugin])
+        // Add Payment configuration (optional) plugin to Bitcoint payment plugin.
+        bitcoinPaymentPlugin.setPaymentMethodConfig(plugin: paymentMethodConfigPlugin)
+        
+        // Create NicoPagos custom payment method plugin
+        let nicoPagosPlugin = PXPaymentMethodPlugin(id: "nico_payment", name: "Nico Pagos", image: UIImage(named: "nico_payment"), description: nil, paymentPlugin: paymentPlugin)
+        
+        checkout.setPaymentMethodPlugins(plugins: [bitcoinPaymentPlugin, nicoPagosPlugin])
         
          // Define hooks.
         let firstHook = HooksNavigationManager().getFirstHook()

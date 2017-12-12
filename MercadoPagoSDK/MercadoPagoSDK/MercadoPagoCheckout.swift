@@ -146,8 +146,8 @@ open class MercadoPagoCheckout: NSObject {
             self.showHookScreen(hookStep: .BEFORE_PAYMENT)
         case .SCREEN_PAYMENT_METHOD_PLUGIN_PAYMENT:
             self.showPaymentMethodPluginPaymentScreen()
-        case .SCREEN_PAYMENT_METHOD_PLUGIN_PAYMENT:
-            self.showPaymentMethodPluginPaymentScreen()
+        case .SCREEN_PAYMENT_METHOD_PLUGIN_CONFIG:
+            self.showPaymentMethodPluginConfigScreen()
         default: break
         }
     }
