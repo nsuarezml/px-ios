@@ -278,6 +278,10 @@ extension MercadoPagoCheckoutViewModel {
         return false
     }
 
+    func needToCreatePaymentForPlugin() -> Bool {
+        return needToCreatePayment() && self.paymentOptionSelected is PXPaymentMethodPlugin
+    }
+
     func setPaymentOptionSelected() {
         guard let paymentMethod = self.paymentData.getPaymentMethod() else {
             return
@@ -313,5 +317,12 @@ extension MercadoPagoCheckoutViewModel {
             return mpESCManager.getESC(cardId: card.getCardId()) == nil ? false : true
         }
         return false
+    }
+
+    func needToShowPaymentMethodConfigPlugin() -> Bool {
+        guard let paymentMethodPluginSelected = paymentOptionSelected as? PXPaymentMethodPlugin else {
+            return false
+        }
+        return paymentMethodPluginSelected.paymentMethodConfigPlugin != nil
     }
 }

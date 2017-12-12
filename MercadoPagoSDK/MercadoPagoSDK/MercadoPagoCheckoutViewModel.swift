@@ -37,6 +37,8 @@ public enum CheckoutStep: String {
     case SCREEN_HOOK_BEFORE_PAYMENT_METHOD_CONFIG
     case SCREEN_HOOK_AFTER_PAYMENT_METHOD_CONFIG
     case SCREEN_HOOK_BEFORE_PAYMENT
+    case SCREEN_PAYMENT_METHOD_PLUGIN_CONFIG
+    case SCREEN_PAYMENT_METHOD_PLUGIN_PAYMENT
 }
 
 open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
@@ -100,7 +102,6 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
 
     // Plugins payment method.
     var paymentMethodPlugins = [PXPaymentMethodPlugin]()
-    var selectedPaymentMethodPlugin: PXPaymentMethodPlugin?
 
     init(checkoutPreference: CheckoutPreference, paymentData: PaymentData?, paymentResult: PaymentResult?, discount: DiscountCoupon?) {
         super.init()
@@ -312,7 +313,6 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
         }
         
         if let targetPlugin = paymentOptionSelected as? PXPaymentMethodPlugin {
-            self.selectedPaymentMethodPlugin = targetPlugin
             self.paymentOptionSelected = targetPlugin
             let paymentMethod = PaymentMethod()
             paymentMethod._id = targetPlugin.getId()
@@ -382,12 +382,21 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
             return .SCREEN_HOOK_BEFORE_PAYMENT_METHOD_CONFIG
         }
 
+        if needToShowPaymentMethodConfigPlugin() {
+            return .SCREEN_PAYMENT_METHOD_PLUGIN_CONFIG
+        }
+
         if shouldShowHook(hookStep: .AFTER_PAYMENT_METHOD_CONFIG) {
             return .SCREEN_HOOK_AFTER_PAYMENT_METHOD_CONFIG
         }
 
         if shouldShowHook(hookStep: .BEFORE_PAYMENT) {
             return .SCREEN_HOOK_BEFORE_PAYMENT
+        }
+
+        if needToCreatePaymentForPlugin() {
+            readyToPay = false
+            return .SCREEN_PAYMENT_METHOD_PLUGIN_PAYMENT
         }
 
         if needToCreatePayment() {
@@ -834,7 +843,7 @@ open class PXPaymentMethodPlugin: NSObject {
         self.paymentPlugin = paymentPlugin
     }
 
-    open func setPaymetnMethodConfig(plugin: PXPluginComponent) {
+    open func setPaymentMethodConfig(plugin: PXPluginComponent) {
         self.paymentMethodConfigPlugin = plugin
     }
 }
@@ -869,8 +878,8 @@ extension PXPaymentMethodPlugin: PaymentMethodOption, PaymentOptionDrawable {
         return false
     }
 
-    public func getImageDescription() -> String {
-        return ""
+    public func getImage() -> UIImage? {
+        return image
     }
 
     public func getTitle() -> String {
@@ -879,5 +888,39 @@ extension PXPaymentMethodPlugin: PaymentMethodOption, PaymentOptionDrawable {
 
     public func getSubtitle() -> String? {
         return _description
+    }
+}
+
+open class PXPluginNavigationHandler: NSObject {
+
+    private var checkout: MercadoPagoCheckout?
+
+    public init(withCheckout: MercadoPagoCheckout) {
+        self.checkout = withCheckout
+    }
+
+    open func didFinishPayment(status: String, statusDetails: String, id: String?){
+        guard let paymentData = self.checkout?.viewModel.paymentData else {
+            return
+        }
+        let paymentResult = PaymentResult(status: status, statusDetail: statusDetails, paymentData: paymentData, payerEmail: nil, id: id, statementDescription: nil)
+        checkout?.setPaymentResult(paymentResult: paymentResult)
+        checkout?.executeNextStep()
+    }
+
+    open func next() {
+        checkout?.executeNextStep()
+    }
+
+    open func cancel() {
+        checkout?.cancel()
+    }
+
+    open func showLoading() {
+        checkout?.presentLoading()
+    }
+
+    open func hideLoading() {
+        checkout?.dismissLoading()
     }
 }

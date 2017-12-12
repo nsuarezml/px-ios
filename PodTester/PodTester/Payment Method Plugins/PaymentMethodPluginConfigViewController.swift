@@ -7,29 +7,55 @@
 //
 
 import UIKit
+import MercadoPagoSDK
 
 class PaymentMethodPluginConfigViewController: UIViewController {
 
+    var navigationHandler: PXPluginNavigationHandler?
+
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var messageLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+}
 
-        // Do any additional setup after loading the view.
+//MARK: - Setup methods.
+extension PaymentMethodPluginConfigViewController {
+
+    fileprivate func setupNextButton() {
+        let nextButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 55.0))
+        nextButton.backgroundColor = UIColor.mpDefaultColor()
+        nextButton.tintColor = UIColor.white
+        nextButton.setTitle("Continuar", for: .normal)
+        nextButton.addTarget(self, action: #selector(PaymentMethodPluginConfigViewController.shouldNextAction), for: .touchUpInside)
+        passwordTextfield.inputAccessoryView = nextButton
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func shouldNextAction() {
+        if let text = passwordTextfield.text, !text.isEmpty {
+            navigationHandler?.next()
+        } else {
+            messageLabel.text = "Debes completar este campo."
+        }
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
+//MARK: Plugin implementation.
+extension PaymentMethodPluginConfigViewController: PXPluginComponent {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func render() -> UIView {
+        return self.view
     }
-    */
 
+    func renderDidFinish() {
+        messageLabel.text = nil
+        passwordTextfield.text = nil
+        passwordTextfield.becomeFirstResponder()
+    }
+
+    func titleForNavigationBar() -> String? {
+        return "Ingrese nombre de usuario"
+    }
 }

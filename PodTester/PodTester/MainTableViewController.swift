@@ -188,16 +188,18 @@ class MainTableViewController: UITableViewController {
 
 
         let paymentPlugin = PaymentMethodPluginsNavigationManager().getPaymentPlugin()
-        
-        let nicoPagosPlugin = PXPaymentMethodPlugin(id: "nico_payment", name: "Nico Payment", image: nil, description: nil, paymentPlugin: paymentPlugin)
-        
-        let juanPagosPlugin = PXPaymentMethodPlugin(id: "juan_payment", name: "Juan Payments", image: nil, description: nil, paymentPlugin: paymentPlugin)
-        
-        let edyPagosPlugin = PXPaymentMethodPlugin(id: "edy_payment", name: "Edy Payments", image: nil, description: nil, paymentPlugin: paymentPlugin)
-        
-        let pepePagosPlugin = PXPaymentMethodPlugin(id: "pepe_payment", name: "Pepe Payments", image: nil, description: nil, paymentPlugin: paymentPlugin)
 
-        checkout.setPaymentMethodPlugins(plugins: [nicoPagosPlugin, juanPagosPlugin, edyPagosPlugin, pepePagosPlugin])
+        paymentPlugin.pluginNaviagtionHandler = PXPluginNavigationHandler(withCheckout: checkout)
+        
+        let nicoPagosPlugin = PXPaymentMethodPlugin(id: "nico_payment", name: "Nico Payment", image: UIImage(named: "nico_pagos"), description: nil, paymentPlugin: paymentPlugin)
+
+        let paymentMethodConfigPlugin = PaymentMethodPluginsNavigationManager().getPaymentMethodConfigurationPlugin()
+
+        nicoPagosPlugin.setPaymentMethodConfig(plugin: paymentMethodConfigPlugin)
+        
+        let edyPagosPlugin = PXPaymentMethodPlugin(id: "edy_payment", name: "Edy Payments", image: UIImage(named: "edy_pagos"), description: nil, paymentPlugin: paymentPlugin)
+
+        checkout.setPaymentMethodPlugins(plugins: [nicoPagosPlugin, edyPagosPlugin])
         
          // Define hooks.
         let firstHook = HooksNavigationManager().getFirstHook()

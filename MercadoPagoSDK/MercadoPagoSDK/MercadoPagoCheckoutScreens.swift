@@ -325,4 +325,39 @@ extension MercadoPagoCheckout {
             self.viewModel.continueFrom(hook: hookStep)
         }
     }
+
+    func showPaymentMethodPluginPaymentScreen() {
+        guard let paymentMethodPlugin = self.viewModel.paymentOptionSelected as? PXPaymentMethodPlugin else {
+            return
+        }
+        let vc = MercadoPagoUIViewController()
+
+        vc.shouldShowBackArrow = false
+
+        let pluginPaymentView = paymentMethodPlugin.paymentPlugin.render()
+        pluginPaymentView.removeFromSuperview()
+        pluginPaymentView.frame = vc.view.frame
+        vc.view.addSubview(pluginPaymentView)
+
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+
+    func showPaymentMethodPluginConfigScreen() {
+        guard let paymentMethodPlugin = self.viewModel.paymentOptionSelected as? PXPaymentMethodPlugin else {
+            return
+        }
+        let vc = MercadoPagoUIViewController()
+
+        vc.shouldShowBackArrow = false
+
+        guard let pluginPaymentView = paymentMethodPlugin.paymentMethodConfigPlugin?.render() else {
+            return
+        }
+
+        pluginPaymentView.removeFromSuperview()
+        pluginPaymentView.frame = vc.view.frame
+        vc.view.addSubview(pluginPaymentView)
+
+        self.navigationController.pushViewController(vc, animated: true)
+    }
 }

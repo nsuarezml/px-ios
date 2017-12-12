@@ -68,10 +68,9 @@ class OfflinePaymentMethodCell: UITableViewCell {
             self.acreditationTimeLabel.isHidden = true
             self.accreditationTimeIcon.isHidden = true
             
-        } else if paymentMethodOption is PXPaymentMethodPlugin {
+        } else if let paymentMethodPlugin =  paymentMethodOption as? PXPaymentMethodPlugin {
 
-            // TODO: Setear bien la imagen
-            self.iconCash.image = MercadoPago.getOfflineReviewAndConfirmImage(paymentMethod)
+            self.iconCash.image = paymentMethodPlugin.getImage()
             self.acreditationTimeLabel.isHidden = true
             self.accreditationTimeIcon.isHidden = true
 

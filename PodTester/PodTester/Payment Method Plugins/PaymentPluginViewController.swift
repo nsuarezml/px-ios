@@ -14,6 +14,8 @@ class PaymentPluginViewController: UIViewController {
     //MARK: Outlets.
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
 
+    var pluginNaviagtionHandler: PXPluginNavigationHandler?
+
     //MARK: Lifecycle.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,7 @@ extension PaymentPluginViewController: PXPluginComponent {
 extension PaymentPluginViewController {
     func finishPayment() {
         loadingView.stopAnimating()
+        pluginNaviagtionHandler?.didFinishPayment(status: PaymentStatus.APPROVED , statusDetails: "", id: "123")
         //TODO: Execute success.
     }
 }

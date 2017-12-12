@@ -142,7 +142,13 @@ class ApprovedTableViewCell: UITableViewCell {
         if let token = token {
             self.lastFourDigits.text = "Terminada en ".localized + String(describing: token.lastFourDigits!)
         } else if let paymentMethod = paymentMethod {
-            self.lastFourDigits.text = paymentMethod._id == "account_money" ? "Con dinero en cuenta".localized : ""
+            if paymentMethod.paymentTypeId == PaymentTypeId.ACCOUNT_MONEY.rawValue {
+                self.lastFourDigits.text = "Con dinero en cuenta".localized
+            } else if paymentMethod.paymentTypeId == PaymentTypeId.PAYMENT_METHOD_PLUGIN.rawValue {
+                self.lastFourDigits.text = paymentMethod.name
+            } else {
+                self.lastFourDigits.text = ""
+            }
         }
     }
 
