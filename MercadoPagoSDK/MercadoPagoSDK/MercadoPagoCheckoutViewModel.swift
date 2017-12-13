@@ -457,7 +457,6 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
         }
 
         return .ACTION_FINISH
-
     }
 
     var search: PaymentMethodSearch?
@@ -834,6 +833,7 @@ open class PXPaymentMethodPlugin: NSObject {
     var image: UIImage?
     var paymentPlugin: PXPluginComponent
     var paymentMethodConfigPlugin: PXPluginComponent?
+    var paymentMethodConfigPluginShowed: Bool = false
 
     public init (id: String, name: String, image: UIImage?, description: String?, paymentPlugin: PXPluginComponent) {
         self.id = id
@@ -900,10 +900,18 @@ open class PXPluginNavigationHandler: NSObject {
     }
 
     open func didFinishPayment(status: String, statusDetails: String, id: String?){
+        
         guard let paymentData = self.checkout?.viewModel.paymentData else {
             return
         }
+        
+        // Set paymentPlugin image into payment method.
+        if let paymentMethodPlugin = self.checkout?.viewModel.paymentOptionSelected as? PXPaymentMethodPlugin  {
+             paymentData.paymentMethod?.setExternalPaymentMethodImage(externalImage: paymentMethodPlugin.getImage())
+        }
+        
         let paymentResult = PaymentResult(status: status, statusDetail: statusDetails, paymentData: paymentData, payerEmail: nil, id: id, statementDescription: nil)
+        
         checkout?.setPaymentResult(paymentResult: paymentResult)
         checkout?.executeNextStep()
     }

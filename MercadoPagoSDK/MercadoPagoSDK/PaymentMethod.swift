@@ -27,6 +27,7 @@ open class PaymentMethod: NSObject, Cellable {
     open var minAllowedAmount: Double = 0
     open var maxAllowedAmount: Double!
     open var merchantAccountId: String?
+    open var externalPaymentPluginImageData: NSData?
 
     public override init() {
         super.init()
@@ -385,6 +386,19 @@ open class PaymentMethod: NSObject, Cellable {
     // IMAGE
     open func getImage() -> UIImage? {
         return MercadoPago.getImageFor(self)
+    }
+    
+    open func setExternalPaymentMethodImage(externalImage:UIImage?) {
+        if let imageResource = externalImage {
+            externalPaymentPluginImageData = UIImagePNGRepresentation(imageResource) as NSData?
+        }
+    }
+    
+    open func getImageForExtenalPaymentMethod() -> UIImage? {
+        if let imageDataStream = externalPaymentPluginImageData as Data? {
+            return UIImage(data: imageDataStream)
+        }
+        return nil
     }
 
     // COLORS

@@ -192,7 +192,7 @@ class MainTableViewController: UITableViewController {
         paymentPlugin.pluginNaviagtionHandler = PXPluginNavigationHandler(withCheckout: checkout)
         
         // Create custom payment method plugin (Bitcoin)
-        let bitcoinPaymentPlugin = PXPaymentMethodPlugin(id: "bitcoin", name: "Bitcoin", image: UIImage(named: "bitcoin_payment"), description: nil, paymentPlugin: paymentPlugin)
+        let bitcoinPaymentPlugin = PXPaymentMethodPlugin(id: "bitcoin_payment", name: "Bitcoin", image: UIImage(named: "bitcoin_payment"), description: nil, paymentPlugin: paymentPlugin)
 
         // Get Payment configuration plugin
         let paymentMethodConfigPlugin = PaymentMethodPluginsNavigationManager().getPaymentMethodConfigurationPlugin()

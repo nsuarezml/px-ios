@@ -135,7 +135,15 @@ class ApprovedTableViewCell: UITableViewCell {
     }
 
     func fillPaymentMethodIcon(paymentMethod: PaymentMethod?) {
-        self.paymentMethod.image = MercadoPago.getImage(paymentMethod?._id)
+        
+        var paymentMethodImage: UIImage? = MercadoPago.getImage(paymentMethod?._id)
+        
+        // Retrieve image for payment plugin or any external payment method.
+        if paymentMethodImage == nil {
+            paymentMethodImage = paymentMethod?.getImageForExtenalPaymentMethod()
+        }
+        
+        self.paymentMethod.image = paymentMethodImage
     }
 
     func fillPaymentMethodDescriptionLabel(paymentMethod: PaymentMethod?, token: Token?) {
