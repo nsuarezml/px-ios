@@ -35,7 +35,11 @@ extension PaymentPluginViewController: PXPluginComponent {
 extension PaymentPluginViewController {
     func finishPayment() {
         loadingView.stopAnimating()
-        pluginNaviagtionHandler?.didFinishPayment(status: PaymentStatus.APPROVED , statusDetails: "", id: "123")
-        //TODO: Execute success.
+        pluginNaviagtionHandler?.showFailure(message: "Opps, algo salio mal", errorDetails: "Verifique su conexión a internet", shouldRetry: true, callback: {
+            self.pluginNaviagtionHandler?.didFinishPayment(status: PaymentStatus.APPROVED , statusDetails: "", id: "123")
+
+        })
+
+
     }
 }
