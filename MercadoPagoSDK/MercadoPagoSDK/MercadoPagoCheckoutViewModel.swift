@@ -833,7 +833,6 @@ open class PXPaymentMethodPlugin: NSObject {
     var image: UIImage?
     var paymentPlugin: PXPluginComponent
     var paymentMethodConfigPlugin: PXPluginComponent?
-    var paymentMethodConfigPluginShowed: Bool = false
 
     public init (id: String, name: String, image: UIImage?, description: String?, paymentPlugin: PXPluginComponent) {
         self.id = id
