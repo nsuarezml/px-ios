@@ -19,7 +19,7 @@ class PaymentPluginViewController: UIViewController {
     //MARK: Lifecycle.
     override func viewDidLoad() {
         super.viewDidLoad()
-        perform(#selector(PaymentPluginViewController.finishPayment), with: nil, afterDelay: 4.0)
+        perform(#selector(PaymentPluginViewController.fakeFailurePaymentExample), with: nil, afterDelay: 2.0)
     }
 
 }
@@ -33,13 +33,17 @@ extension PaymentPluginViewController: PXPluginComponent {
 
 //MARK: Actions.
 extension PaymentPluginViewController {
-    func finishPayment() {
+    
+    func fakeFailurePaymentExample() {
         loadingView.stopAnimating()
         pluginNaviagtionHandler?.showFailure(message: "Opps, algo salio mal", errorDetails: "Verifique su conexión a internet", shouldRetry: true, callback: {
-            self.pluginNaviagtionHandler?.didFinishPayment(status: PaymentStatus.APPROVED , statusDetails: "", id: "123")
-
+            self.loadingView.startAnimating()
+            self.perform(#selector(PaymentPluginViewController.finishPaymentSuccessExample), with: nil, afterDelay: 4.0)
         })
-
-
+    }
+    
+    func finishPaymentSuccessExample() {
+        loadingView.stopAnimating()
+        self.pluginNaviagtionHandler?.didFinishPayment(status: PaymentStatus.APPROVED , statusDetails: "", id: "123")
     }
 }

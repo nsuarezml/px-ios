@@ -343,7 +343,7 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
         let paymentMethod = PaymentMethod()
         paymentMethod._id = plugin.getId()
         paymentMethod.name = plugin.getTitle()
-        paymentMethod.paymentTypeId = "paymentMethodPlugin"
+        paymentMethod.paymentTypeId = PXPaymentMethodPlugin.PAYMENT_METHOD_TYPE_ID
         self.paymentData.paymentMethod = paymentMethod
     }
 
@@ -846,6 +846,8 @@ open class PXPluginStore: NSObject {
 
 // MARK: PXPaymentMethodPlugin
 open class PXPaymentMethodPlugin: NSObject {
+    
+    static let PAYMENT_METHOD_TYPE_ID = PaymentTypeId.PAYMENT_METHOD_PLUGIN.rawValue
     
     var id: String
     var name: String
