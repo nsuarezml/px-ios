@@ -21,7 +21,7 @@ open class PXActionHandler: NSObject {
     open func next() {
         if let targetHook = targetHook, targetHook == .BEFORE_PAYMENT_METHOD_CONFIG {
             if let paymentOptionSelected = self.checkout?.viewModel.paymentOptionSelected {
-                self.checkout?.viewModel.updateCheckoutModel(paymentOptionSelected: paymentOptionSelected)
+                self.checkout?.viewModel.updateCheckoutModelAfterBeforeConfigHook(paymentOptionSelected: paymentOptionSelected)
             }
         }
         checkout?.executeNextStep()

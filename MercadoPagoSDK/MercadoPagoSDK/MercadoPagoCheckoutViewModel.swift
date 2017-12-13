@@ -97,6 +97,7 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
     var directDiscountSearched = false
     var savedESCCardToken: SavedESCCardToken?
     private var checkoutComplete = false
+    var paymentMethodConfigPluginShowed = false
 
     var mpESCManager: MercadoPagoESC = MercadoPagoESCImplementation()
 
@@ -306,34 +307,46 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
         self.paymentData.payer.entityType = entityType
     }
 
-    //PAYMENT_METHOD_SELECTION
+    // MARK: PAYMENT METHOD OPTION SELECTION
     public func updateCheckoutModel(paymentOptionSelected: PaymentMethodOption) {
         if !self.initWithPaymentData {
-            resetInformation()
+            resetInFormationOnNewPaymentMethodOptionSelected()
         }
-        
+        resetPaymentOptionSelectedWith(newPaymentOptionSelected: paymentOptionSelected)
+    }
+
+    public func resetPaymentOptionSelectedWith(newPaymentOptionSelected: PaymentMethodOption) {
+        self.paymentOptionSelected = newPaymentOptionSelected
+
         if let targetPlugin = paymentOptionSelected as? PXPaymentMethodPlugin {
-            self.paymentOptionSelected = targetPlugin
-            let paymentMethod = PaymentMethod()
-            paymentMethod._id = targetPlugin.getId()
-            paymentMethod.name = targetPlugin.getTitle()
-            paymentMethod.paymentTypeId = "paymentMethodPlugin"
-            self.paymentData.paymentMethod = paymentMethod
+            self.paymentMethodPluginToPaymentMethod(plugin: targetPlugin)
             return
         }
 
-        self.paymentOptionSelected = paymentOptionSelected
-        if paymentOptionSelected.hasChildren() {
-            self.paymentMethodOptions =  paymentOptionSelected.getChildren()
+        if newPaymentOptionSelected.hasChildren() {
+            self.paymentMethodOptions =  newPaymentOptionSelected.getChildren()
         }
 
         if self.paymentOptionSelected!.isCustomerPaymentMethod() {
-            self.findAndCompletePaymentMethodFor(paymentMethodId: paymentOptionSelected.getId())
-        } else if !paymentOptionSelected.isCard() && !paymentOptionSelected.hasChildren() {
-            self.paymentData.updatePaymentDataWith(paymentMethod: Utils.findPaymentMethod(self.availablePaymentMethods!, paymentMethodId: paymentOptionSelected.getId()))
+            self.findAndCompletePaymentMethodFor(paymentMethodId: newPaymentOptionSelected.getId())
+        } else if !newPaymentOptionSelected.isCard() && !newPaymentOptionSelected.hasChildren() {
+            self.paymentData.updatePaymentDataWith(paymentMethod: Utils.findPaymentMethod(self.availablePaymentMethods!, paymentMethodId: newPaymentOptionSelected.getId()))
         }
-
     }
+
+    public func updateCheckoutModelAfterBeforeConfigHook(paymentOptionSelected: PaymentMethodOption) {
+        resetInformation()
+        resetPaymentOptionSelectedWith(newPaymentOptionSelected: paymentOptionSelected)
+    }
+
+    public func paymentMethodPluginToPaymentMethod(plugin: PXPaymentMethodPlugin) {
+        let paymentMethod = PaymentMethod()
+        paymentMethod._id = plugin.getId()
+        paymentMethod.name = plugin.getTitle()
+        paymentMethod.paymentTypeId = "paymentMethodPlugin"
+        self.paymentData.paymentMethod = paymentMethod
+    }
+
     public func nextStep() -> CheckoutStep {
 
         if !startedCheckout {
@@ -383,6 +396,7 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
         }
 
         if needToShowPaymentMethodConfigPlugin() {
+            willShowPaymentMethodConfigPlugin()
             return .SCREEN_PAYMENT_METHOD_PLUGIN_CONFIG
         }
 
@@ -714,6 +728,11 @@ extension MercadoPagoCheckoutViewModel {
         self.updateCheckoutModel(paymentMethodSearch: search)
     }
 
+    func resetInFormationOnNewPaymentMethodOptionSelected() {
+        resetInformation()
+        MercadoPagoCheckoutViewModel.flowPreference.resetHooksToShow()
+    }
+
     func resetInformation() {
         self.paymentData.clearCollectedData()
         self.cardToken = nil
@@ -722,6 +741,7 @@ extension MercadoPagoCheckoutViewModel {
         cleanPayerCostSearch()
         cleanIssuerSearch()
         cleanIdentificationTypesSearch()
+        resetPaymentMethodConfigPlugin()
     }
 
     func cleanPayerCostSearch() {

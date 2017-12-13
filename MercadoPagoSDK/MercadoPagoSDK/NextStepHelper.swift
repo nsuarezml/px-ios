@@ -323,6 +323,23 @@ extension MercadoPagoCheckoutViewModel {
         guard let paymentMethodPluginSelected = paymentOptionSelected as? PXPaymentMethodPlugin else {
             return false
         }
+
+        if  wasPaymentMethodConfigPluginShowed() {
+            return false
+        }
+
         return paymentMethodPluginSelected.paymentMethodConfigPlugin != nil
+    }
+
+    func wasPaymentMethodConfigPluginShowed() -> Bool {
+        return paymentMethodConfigPluginShowed
+    }
+
+    func willShowPaymentMethodConfigPlugin() {
+        paymentMethodConfigPluginShowed = true
+    }
+
+    func resetPaymentMethodConfigPlugin() {
+        paymentMethodConfigPluginShowed = false
     }
 }
