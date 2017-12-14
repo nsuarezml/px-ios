@@ -920,7 +920,7 @@ open class PXPluginNavigationHandler: NSObject {
         self.checkout = withCheckout
     }
 
-    open func didFinishPayment(status: String, statusDetails: String, id: String?){
+    open func didFinishPayment(status: String, statusDetails: String, receiptId: String?){
         
         guard let paymentData = self.checkout?.viewModel.paymentData else {
             return
@@ -931,7 +931,7 @@ open class PXPluginNavigationHandler: NSObject {
              paymentData.paymentMethod?.setExternalPaymentMethodImage(externalImage: paymentMethodPlugin.getImage())
         }
         
-        let paymentResult = PaymentResult(status: status, statusDetail: statusDetails, paymentData: paymentData, payerEmail: nil, id: id, statementDescription: nil)
+        let paymentResult = PaymentResult(status: status, statusDetail: statusDetails, paymentData: paymentData, payerEmail: nil, id: receiptId, statementDescription: nil)
         
         checkout?.setPaymentResult(paymentResult: paymentResult)
         checkout?.executeNextStep()

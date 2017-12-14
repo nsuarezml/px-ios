@@ -26,8 +26,13 @@ class PaymentPluginViewController: UIViewController {
 
 //MARK: Plugin implementation.
 extension PaymentPluginViewController: PXPluginComponent {
+    
     func render() -> UIView {
         return self.view
+    }
+    
+    func titleForNavigationBar() -> String? {
+        return "Procesando el pago..."
     }
 }
 
@@ -36,7 +41,7 @@ extension PaymentPluginViewController {
     
     func fakeFailurePaymentExample() {
         loadingView.stopAnimating()
-        pluginNaviagtionHandler?.showFailure(message: "Opps, algo salio mal", errorDetails: "Verifique su conexión a internet", shouldRetry: true, callback: {
+        pluginNaviagtionHandler?.showFailure(message: "Opps, algo salio mal", errorDetails: "Error al procesar pago.", shouldRetry: true, callback: {
             self.loadingView.startAnimating()
             self.perform(#selector(PaymentPluginViewController.finishPaymentSuccessExample), with: nil, afterDelay: 4.0)
         })
@@ -44,6 +49,6 @@ extension PaymentPluginViewController {
     
     func finishPaymentSuccessExample() {
         loadingView.stopAnimating()
-        self.pluginNaviagtionHandler?.didFinishPayment(status: PaymentStatus.APPROVED , statusDetails: "", id: "123")
+        self.pluginNaviagtionHandler?.didFinishPayment(status: PaymentStatus.APPROVED , statusDetails: "", receiptId: "123")
     }
 }

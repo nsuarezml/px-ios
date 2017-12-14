@@ -52,6 +52,13 @@ extension ThirdHookViewController: PXHookComponent {
     func didReceive(hookStore: PXHookStore) {
         targetHookStore = hookStore
     }
+    
+    func shouldSkipHook(hookStore: PXHookStore) -> Bool {
+        if let paymentId = hookStore.getPaymentOptionSelected()?.getId(), paymentId == "bitcoin_payment" {
+            return true
+        }
+        return false
+    }
 }
 
 //MARK: - Presentation-Navigation

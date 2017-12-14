@@ -334,10 +334,26 @@ extension MercadoPagoCheckout {
         
         let containerVC = MercadoPagoUIViewController()
 
-        // By feature definition. Back is not available in payment step.
+        // By feature definition. Back is not available in make payment plugin.
         containerVC.shouldShowBackArrow = false
 
         let paymentPluginComponent = paymentMethodPlugin.paymentPlugin
+        
+        if self.viewModel.copyViewModelAndAssignToHookStore() {
+            paymentPluginComponent.didReceive?(pluginStore: PXPluginStore.sharedInstance)
+        }
+        
+        if let navTitle = paymentPluginComponent.titleForNavigationBar?() {
+            containerVC.title = navTitle
+        }
+        
+        if let navBarColor = paymentPluginComponent.colorForNavigationBar?() {
+            containerVC.setNavBarBackgroundColor(color: navBarColor)
+        }
+        
+        if let shouldShowNavigationBar = paymentPluginComponent.shouldShowNavigationBar?() {
+            containerVC.shouldHideNavigationBar = !shouldShowNavigationBar
+        }
         
         let paymentPluginComponentView = paymentPluginComponent.render()
         paymentPluginComponentView.removeFromSuperview()
@@ -359,6 +375,27 @@ extension MercadoPagoCheckout {
 
         guard let paymentMethodConfigPluginComponent = paymentMethodPlugin.paymentMethodConfigPlugin else {
             return
+        }
+        
+        if self.viewModel.copyViewModelAndAssignToHookStore() {
+            paymentMethodConfigPluginComponent.didReceive?(pluginStore: PXPluginStore.sharedInstance)
+        }
+        
+        if let navTitle = paymentMethodConfigPluginComponent.titleForNavigationBar?() {
+            containerVC.title = navTitle
+        }
+        
+        if let navBarColor = paymentMethodConfigPluginComponent.colorForNavigationBar?() {
+            containerVC.setNavBarBackgroundColor(color: navBarColor)
+        }
+        
+        containerVC.shouldShowBackArrow = true
+        if let shouldShowBackArrow = paymentMethodConfigPluginComponent.shouldShowBackArrow?() {
+            containerVC.shouldShowBackArrow = shouldShowBackArrow
+        }
+        
+        if let shouldShowNavigationBar = paymentMethodConfigPluginComponent.shouldShowNavigationBar?() {
+            containerVC.shouldHideNavigationBar = !shouldShowNavigationBar
         }
         
         let paymentMethodConfigPluginComponentView = paymentMethodConfigPluginComponent.render()
