@@ -37,4 +37,5 @@ open class PXCheckoutStore: NSObject {
     public func getPaymentOptionSelected() -> PaymentMethodOption? {
         return paymentOptionSelected
     }
+
 }

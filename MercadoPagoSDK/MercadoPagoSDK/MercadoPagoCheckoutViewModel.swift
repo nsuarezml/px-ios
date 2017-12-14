@@ -334,19 +334,6 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
         }
     }
 
-    public func updateCheckoutModelAfterBeforeConfigHook(paymentOptionSelected: PaymentMethodOption) {
-        resetInformation()
-        resetPaymentOptionSelectedWith(newPaymentOptionSelected: paymentOptionSelected)
-    }
-
-    public func paymentMethodPluginToPaymentMethod(plugin: PXPaymentMethodPlugin) {
-        let paymentMethod = PaymentMethod()
-        paymentMethod._id = plugin.getId()
-        paymentMethod.name = plugin.getTitle()
-        paymentMethod.paymentTypeId = PXPaymentMethodPlugin.PAYMENT_METHOD_TYPE_ID
-        self.paymentData.paymentMethod = paymentMethod
-    }
-
     public func nextStep() -> CheckoutStep {
 
         if !startedCheckout {
@@ -709,14 +696,15 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
         return false
     }
 
-    public func wentBackFrom(hook: PXHookStep) {
-        MercadoPagoCheckoutViewModel.flowPreference.addHookToHooksToShow(hookStep: hook)
+    func copyViewModelAndAssignToCheckoutStore() -> Bool {
+        // Set a copy of CheckoutVM in HookStore
+        if self.copy() is MercadoPagoCheckoutViewModel {
+            PXCheckoutStore.sharedInstance.paymentData = self.paymentData
+            PXCheckoutStore.sharedInstance.paymentOptionSelected = self.paymentOptionSelected
+            return true
+        }
+        return false
     }
-
-    public func continueFrom(hook: PXHookStep) {
-        MercadoPagoCheckoutViewModel.flowPreference.removeHookFromHooksToShow(hookStep: hook)
-    }
-
 }
 
 extension MercadoPagoCheckoutViewModel {
@@ -797,144 +785,5 @@ extension MercadoPagoCheckoutViewModel {
         MercadoPagoCheckoutViewModel.paymentCallback = nil
         MercadoPagoCheckoutViewModel.changePaymentMethodCallback = nil
         MercadoPagoCheckoutViewModel.error = nil
-    }
-}
-
-@objc
-public protocol PXPluginComponent: PXComponetizable {
-    func render() -> UIView
-    @objc optional func shouldSkip(pluginStore: PXCheckoutStore) -> Bool
-    @objc optional func didReceive(pluginStore: PXCheckoutStore)
-    @objc optional func renderDidFinish()
-    @objc optional func titleForNavigationBar() -> String?
-    @objc optional func colorForNavigationBar() -> UIColor?
-    @objc optional func shouldShowBackArrow() -> Bool
-    @objc optional func shouldShowNavigationBar() -> Bool
-}
-
-
-// MARK: PXPaymentMethodPlugin
-open class PXPaymentMethodPlugin: NSObject {
-    
-    static let PAYMENT_METHOD_TYPE_ID = PaymentTypeId.PAYMENT_METHOD_PLUGIN.rawValue
-    
-    @objc public enum DisplayOrder: Int {
-        case TOP
-        case BOTTOM
-    }
-    
-    var id: String
-    var name: String
-    var _description: String?
-    var image: UIImage
-    var paymentPlugin: PXPluginComponent
-    var paymentMethodConfigPlugin: PXPluginComponent?
-    var displayOrder = DisplayOrder.TOP
-
-    public init (id: String, name: String, image: UIImage, description: String?, paymentPlugin: PXPluginComponent) {
-        self.id = id
-        self.name = name
-        self.image = image
-        self._description = description
-        self.paymentPlugin = paymentPlugin
-    }
-
-    open func setPaymentMethodConfig(plugin: PXPluginComponent) {
-        self.paymentMethodConfigPlugin = plugin
-    }
-    
-    open func setDisplayOrder(order:DisplayOrder) {
-        self.displayOrder = order
-    }
-}
-
-// MARK: PXPaymentMethodPlugin as PaymentOptionDrawable/PaymentMethodOption
-extension PXPaymentMethodPlugin: PaymentMethodOption, PaymentOptionDrawable {
-    public func getId() -> String {
-        return id
-    }
-
-    public func getDescription() -> String {
-        return name
-    }
-
-    public func getComment() -> String {
-        return ""
-    }
-
-    public func hasChildren() -> Bool {
-        return false
-    }
-
-    public func getChildren() -> [PaymentMethodOption]? {
-        return nil
-    }
-
-    public func isCard() -> Bool {
-        return false
-    }
-
-    public func isCustomerPaymentMethod() -> Bool {
-        return false
-    }
-
-    public func getImage() -> UIImage? {
-        return image
-    }
-
-    public func getTitle() -> String {
-        return name
-    }
-
-    public func getSubtitle() -> String? {
-        return _description
-    }
-}
-
-open class PXPluginNavigationHandler: NSObject {
-
-    private var checkout: MercadoPagoCheckout?
-
-    public init(withCheckout: MercadoPagoCheckout) {
-        self.checkout = withCheckout
-    }
-
-    open func didFinishPayment(status: String, statusDetails: String, receiptId: String?){
-        
-        guard let paymentData = self.checkout?.viewModel.paymentData else {
-            return
-        }
-        
-        // Set paymentPlugin image into payment method.
-        if let paymentMethodPlugin = self.checkout?.viewModel.paymentOptionSelected as? PXPaymentMethodPlugin  {
-             paymentData.paymentMethod?.setExternalPaymentMethodImage(externalImage: paymentMethodPlugin.getImage())
-        }
-        
-        let paymentResult = PaymentResult(status: status, statusDetail: statusDetails, paymentData: paymentData, payerEmail: nil, id: receiptId, statementDescription: nil)
-        
-        checkout?.setPaymentResult(paymentResult: paymentResult)
-        checkout?.executeNextStep()
-    }
-
-    open func showFailure(message: String, errorDetails: String, shouldRetry: Bool, callback: (() -> Void)?) {
-        MercadoPagoCheckoutViewModel.error = MPSDKError(message: message, errorDetail: errorDetails, retry: shouldRetry)
-        checkout?.viewModel.errorCallback = callback
-        checkout?.executeNextStep()
-    }
-
-    open func next() {
-        checkout?.executeNextStep()
-    }
-
-    open func cancel() {
-        checkout?.cancel()
-    }
-
-    open func showLoading() {
-        checkout?.presentLoading()
-    }
-
-    open func hideLoading() {
-        checkout?.dismissLoading()
     }
 }

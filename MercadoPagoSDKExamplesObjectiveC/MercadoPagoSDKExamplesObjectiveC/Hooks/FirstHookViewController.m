@@ -89,7 +89,7 @@
 
 
 #pragma mark - PXHookComponent optional delegates.
-- (BOOL)shouldSkipHookWithHookStore:(PXHookStore * _Nonnull)hookStore {
+- (BOOL)shouldSkipHookWithHookStore:(PXCheckoutStore * _Nonnull)hookStore {
     return NO;
 }
 

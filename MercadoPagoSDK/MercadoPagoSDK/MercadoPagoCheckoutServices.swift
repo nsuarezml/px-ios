@@ -338,7 +338,7 @@ extension MercadoPagoCheckout {
     func createPayment() {
         self.presentLoading()
 
-        var paymentBody: [String:Any]
+        var paymentBody: [String: Any]
         if MercadoPagoCheckoutViewModel.servicePreference.isUsingDeafaultPaymentSettings() {
             let mpPayment = MercadoPagoCheckoutViewModel.createMPPayment(preferenceId: self.viewModel.checkoutPreference._id, paymentData: self.viewModel.paymentData, binaryMode: self.viewModel.binaryMode)
             paymentBody = mpPayment.toJSON()
@@ -346,8 +346,8 @@ extension MercadoPagoCheckout {
             paymentBody = self.viewModel.paymentData.toJSON()
         }
 
-        var createPaymentQuery: [String:String]? = [:]
-        if let paymentAdditionalInfo = MercadoPagoCheckoutViewModel.servicePreference.getPaymentAddionalInfo() as? [String:String] {
+        var createPaymentQuery: [String: String]? = [:]
+        if let paymentAdditionalInfo = MercadoPagoCheckoutViewModel.servicePreference.getPaymentAddionalInfo() as? [String: String] {
             createPaymentQuery = paymentAdditionalInfo
         } else {
             createPaymentQuery = nil
