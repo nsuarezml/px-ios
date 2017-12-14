@@ -849,14 +849,20 @@ open class PXPaymentMethodPlugin: NSObject {
     
     static let PAYMENT_METHOD_TYPE_ID = PaymentTypeId.PAYMENT_METHOD_PLUGIN.rawValue
     
+    @objc public enum DisplayOrder: Int {
+        case TOP
+        case BOTTOM
+    }
+    
     var id: String
     var name: String
     var _description: String?
-    var image: UIImage?
+    var image: UIImage
     var paymentPlugin: PXPluginComponent
     var paymentMethodConfigPlugin: PXPluginComponent?
+    var displayOrder = DisplayOrder.TOP
 
-    public init (id: String, name: String, image: UIImage?, description: String?, paymentPlugin: PXPluginComponent) {
+    public init (id: String, name: String, image: UIImage, description: String?, paymentPlugin: PXPluginComponent) {
         self.id = id
         self.name = name
         self.image = image
@@ -866,6 +872,10 @@ open class PXPaymentMethodPlugin: NSObject {
 
     open func setPaymentMethodConfig(plugin: PXPluginComponent) {
         self.paymentMethodConfigPlugin = plugin
+    }
+    
+    open func setDisplayOrder(order:DisplayOrder) {
+        self.displayOrder = order
     }
 }
 

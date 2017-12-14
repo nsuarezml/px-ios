@@ -184,7 +184,7 @@ class MainTableViewController: UITableViewController {
     /// Load Checkout
     func loadCheckout(showRyC: Bool = true, setPaymentDataCallback: Bool = false, paymentData: PaymentData? = nil, setPaymentDataConfirmCallback: Bool = false, paymentResult: PaymentResult? = nil) {
         let pref = self.customCheckoutPref != nil ? self.customCheckoutPref :CheckoutPreference(_id: self.prefID)
-        let checkout = MercadoPagoCheckout(publicKey: self.publicKey, accessToken: "APP_USR-1094487241196549-081708-4bc39f94fd147e7ce839c230c93261cb__LA_LC__-145698489", checkoutPreference: pref!, paymentData: paymentData, paymentResult: paymentResult, navigationController: self.navigationController!)
+        let checkout = MercadoPagoCheckout(publicKey: self.publicKey, accessToken:"APP_USR-1094487241196549-081708-4bc39f94fd147e7ce839c230c93261cb__LA_LC__-145698489", checkoutPreference: pref!, paymentData: paymentData, paymentResult: paymentResult, navigationController: self.navigationController!)
 
 
         // Get Payment plugin
@@ -192,7 +192,7 @@ class MainTableViewController: UITableViewController {
         paymentPlugin.pluginNaviagtionHandler = PXPluginNavigationHandler(withCheckout: checkout)
         
         // Create custom payment method plugin (Bitcoin)
-        let bitcoinPaymentPlugin = PXPaymentMethodPlugin(id: "bitcoin_payment", name: "Bitcoin", image: UIImage(named: "bitcoin_payment"), description: nil, paymentPlugin: paymentPlugin)
+        let bitcoinPaymentPlugin = PXPaymentMethodPlugin(id: "bitcoin_payment", name: "Bitcoin", image: UIImage(named: "bitcoin_payment")!, description: nil, paymentPlugin: paymentPlugin)
 
         // Get Payment configuration plugin
         let paymentMethodConfigPlugin = PaymentMethodPluginsNavigationManager().getPaymentMethodConfigurationPlugin()
@@ -202,7 +202,8 @@ class MainTableViewController: UITableViewController {
         bitcoinPaymentPlugin.setPaymentMethodConfig(plugin: paymentMethodConfigPlugin)
         
         // Create NicoPagos custom payment method plugin
-        let nicoPagosPlugin = PXPaymentMethodPlugin(id: "nico_payment", name: "Nico Pagos", image: UIImage(named: "nico_payment"), description: nil, paymentPlugin: paymentPlugin)
+        let nicoPagosPlugin = PXPaymentMethodPlugin(id: "nico_payment", name: "Nico Pagos", image: UIImage(named: "nico_payment")!, description: nil, paymentPlugin: paymentPlugin)
+        nicoPagosPlugin.setDisplayOrder(order: .BOTTOM)
         
         checkout.setPaymentMethodPlugins(plugins: [bitcoinPaymentPlugin, nicoPagosPlugin])
         

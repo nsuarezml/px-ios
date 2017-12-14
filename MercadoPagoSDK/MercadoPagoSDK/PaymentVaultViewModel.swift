@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class PaymentVaultViewModel: NSObject {
 
     var groupName: String?
@@ -20,16 +21,13 @@ class PaymentVaultViewModel: NSObject {
     var paymentMethodPlugins = [PXPaymentMethodPlugin]()
     var paymentMethods: [PaymentMethod]!
     var defaultPaymentOption: PaymentMethodSearchItem?
-    // var cards : [Card]?
-
+    
+    var displayItems = [PaymentOptionDrawable]()
+    
     var discount: DiscountCoupon?
-
-    weak var controller: PaymentVaultViewController?
 
     var customerId: String?
 
-    var callback : ((_ paymentMethod: PaymentMethod, _ token: Token?, _ issuer: Issuer?, _ payerCost: PayerCost?) -> Void)!
-    var callbackCancel: (() -> Void)?
     var couponCallback: ((DiscountCoupon) -> Void)?
     var mercadoPagoServicesAdapter: MercadoPagoServicesAdapter!
 
@@ -47,17 +45,111 @@ class PaymentVaultViewModel: NSObject {
         self.isRoot = isRoot
         self.couponCallback = couponCallback
         self.mercadoPagoServicesAdapter = mercadoPagoServicesAdapter
-
+        
+        super.init()
+        self.populateDisplayItems()
     }
 
+    func getPaymentMethodOption(row: Int) -> PaymentOptionDrawable? {
+        if displayItems.indices.contains(row) {
+            return displayItems[row]
+        }
+        return nil
+    }
+}
+
+
+//MARK: Logic
+extension PaymentVaultViewModel {
+    
+    fileprivate func populateDisplayItems() {
+        
+        var topPluginsDrawable = [PaymentOptionDrawable]()
+        var bottomPluginsDrawable = [PaymentOptionDrawable]()
+        var customerPaymentOptionsDrawable = [PaymentOptionDrawable]()
+        var paymentOptionsDrawable = [PaymentOptionDrawable]()
+        
+        // Populate payments methods plugins.
+        if hasPaymentMethodsPlugins() {
+            for plugin in paymentMethodPlugins {
+                if plugin.displayOrder == .TOP {
+                    topPluginsDrawable.append(plugin)
+                } else {
+                    bottomPluginsDrawable.append(plugin)
+                }
+            }
+        }
+        
+        // Populate customer payment options.
+        let customerPaymentMethodsCount = getCustomerPaymentMethodsToDisplayCount()
+        if customerPaymentMethodsCount > 0 {
+            for customerPaymentMethodIndex in 0...customerPaymentMethodsCount-1 {
+                if let customerPaymentOptions = customerPaymentOptions, customerPaymentOptions.indices.contains(customerPaymentMethodIndex) {
+                    let customerPaymentOption = customerPaymentOptions[customerPaymentMethodIndex]
+                    customerPaymentOptionsDrawable.append(customerPaymentOption)
+                }
+            }
+        }
+        
+        // Populate payment methods search items.
+        for targetPaymentMethodOption in paymentMethodOptions {
+            if let targetPaymentOptionDrawable = targetPaymentMethodOption as? PaymentOptionDrawable {
+                paymentOptionsDrawable.append(targetPaymentOptionDrawable)
+            }
+        }
+        
+        // Fill displayItems
+        displayItems.append(contentsOf: topPluginsDrawable)
+        displayItems.append(contentsOf: customerPaymentOptionsDrawable)
+        displayItems.append(contentsOf: paymentOptionsDrawable)
+        displayItems.append(contentsOf: bottomPluginsDrawable)
+    }
+    
+    func hasPaymentMethodsPlugins() -> Bool {
+        return isRoot && !paymentMethodPlugins.isEmpty
+    }
+    
     func shouldGetCustomerCardsInfo() -> Bool {
         return MercadoPagoCheckoutViewModel.servicePreference.isCustomerInfoAvailable() && self.isRoot
     }
+    
+    func hasAccountMoneyIn(customerOptions: [CardInformation]) -> Bool {
+        for paymentOption: CardInformation in customerOptions {
+            if paymentOption.getPaymentMethodId() == PaymentTypeId.ACCOUNT_MONEY.rawValue {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func hasOnlyGroupsPaymentMethodAvailable() -> Bool {
+        return (self.paymentMethodOptions.count == 1 && Array.isNullOrEmpty(self.customerPaymentOptions))
+    }
+    
+    func hasOnlyCustomerPaymentMethodAvailable() -> Bool {
+        return Array.isNullOrEmpty(self.paymentMethodOptions) && !Array.isNullOrEmpty(self.customerPaymentOptions) && self.customerPaymentOptions?.count == 1
+    }
+}
 
+
+//MARK: Counters
+extension PaymentVaultViewModel {
+    
+    func getPaymentMethodPluginCount() -> Int {
+        if !Array.isNullOrEmpty(paymentMethodPlugins) && self.isRoot {
+            return paymentMethodPlugins.count
+        }
+        return 0
+    }
+    
+    func getDisplayedPaymentMethodsCount() -> Int {
+        return displayItems.count
+    }
+    
     func getCustomerPaymentMethodsToDisplayCount() -> Int {
         if !Array.isNullOrEmpty(customerPaymentOptions) && self.isRoot {
             let realCount = self.customerPaymentOptions!.count
-
+            
             if MercadoPagoCheckoutViewModel.flowPreference.isShowAllSavedCardsEnabled() {
                 return realCount
             } else {
@@ -71,72 +163,4 @@ class PaymentVaultViewModel: NSObject {
         }
         return 0
     }
-
-    func hasAccountMoneyIn(customerOptions: [CardInformation]) -> Bool {
-        for paymentOption: CardInformation in customerOptions {
-            if paymentOption.getPaymentMethodId() == PaymentTypeId.ACCOUNT_MONEY.rawValue {
-                return true
-            }
-        }
-        return false
-    }
-
-    func getPaymentMethodOption(row: Int) -> PaymentOptionDrawable {
-        if hasPaymentMethodsPlugin() {
-            if paymentMethodPlugins.indices.contains(row) {
-                return paymentMethodPlugins[row]
-            }
-        }
-        let indexInCustomerPaymentMethods = Array.isNullOrEmpty(self.paymentMethodPlugins) ? row : (row - self.getPaymentMethodPluginCount())
-        if self.getCustomerPaymentMethodsToDisplayCount() > indexInCustomerPaymentMethods {
-            return self.customerPaymentOptions![indexInCustomerPaymentMethods]
-        }
-        let indexInPaymentMethods = Array.isNullOrEmpty(self.customerPaymentOptions) ? (row  - self.getPaymentMethodPluginCount()) : (row - self.getCustomerPaymentMethodsToDisplayCount() - self.getPaymentMethodPluginCount())
-        return self.paymentMethodOptions[indexInPaymentMethods] as! PaymentOptionDrawable
-    }
-
-    func getDisplayedPaymentMethodsCount() -> Int {
-        let currentPaymentMethodSearchCount = self.paymentMethodOptions.count
-        let paymentMethodPluginsCount = self.getPaymentMethodPluginCount()
-        return self.getCustomerPaymentMethodsToDisplayCount() + currentPaymentMethodSearchCount + paymentMethodPluginsCount
-    }
-
-    func getExcludedPaymentTypeIds() -> Set<String>? {
-        return (self.paymentPreference != nil) ? self.paymentPreference!.excludedPaymentTypeIds : nil
-    }
-
-    func getExcludedPaymentMethodIds() -> Set<String>? {
-        return (self.paymentPreference != nil) ? self.paymentPreference!.excludedPaymentMethodIds : nil
-    }
-
-    func getPaymentPreferenceDefaultPaymentMethodId() -> String? {
-        return (self.paymentPreference != nil) ? self.paymentPreference!.defaultPaymentMethodId : nil
-    }
-
-    func isCustomerPaymentMethodOptionSelected(_ row: Int) -> Bool {
-        if Array.isNullOrEmpty(self.customerPaymentOptions) {
-            return false
-        }
-        return (row < self.getCustomerPaymentMethodsToDisplayCount())
-    }
-
-    func hasOnlyGroupsPaymentMethodAvailable() -> Bool {
-        return (self.paymentMethodOptions.count == 1 && Array.isNullOrEmpty(self.customerPaymentOptions))
-    }
-
-    func hasOnlyCustomerPaymentMethodAvailable() -> Bool {
-        return Array.isNullOrEmpty(self.paymentMethodOptions) && !Array.isNullOrEmpty(self.customerPaymentOptions) && self.customerPaymentOptions?.count == 1
-    }
-
-    func hasPaymentMethodsPlugin() -> Bool {
-        return getPaymentMethodPluginCount() > 0
-    }
-
-    func getPaymentMethodPluginCount() -> Int {
-        if !Array.isNullOrEmpty(paymentMethodPlugins) && self.isRoot {
-            return paymentMethodPlugins.count
-        }
-        return 0
-    }
-
 }
