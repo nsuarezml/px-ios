@@ -13,7 +13,7 @@ class ThirdHookViewController: UIViewController {
     
     var actionHandler: PXActionHandler?
     
-    var targetHookStore: PXHookStore?
+    var targetHookStore: PXCheckoutStore?
     
     @IBOutlet weak var hookStoreDebugLabel: UILabel!
     
@@ -49,11 +49,11 @@ extension ThirdHookViewController: PXHookComponent {
         }
     }
     
-    func didReceive(hookStore: PXHookStore) {
+    func didReceive(hookStore: PXCheckoutStore) {
         targetHookStore = hookStore
     }
     
-    func shouldSkipHook(hookStore: PXHookStore) -> Bool {
+    func shouldSkipHook(hookStore: PXCheckoutStore) -> Bool {
         if let paymentId = hookStore.getPaymentOptionSelected()?.getId(), paymentId == "bitcoin_payment" {
             return true
         }

@@ -803,8 +803,8 @@ extension MercadoPagoCheckoutViewModel {
 @objc
 public protocol PXPluginComponent: PXComponetizable {
     func render() -> UIView
-    @objc optional func shouldSkip(pluginStore: PXPluginStore) -> Bool
-    @objc optional func didReceive(pluginStore: PXPluginStore)
+    @objc optional func shouldSkip(pluginStore: PXCheckoutStore) -> Bool
+    @objc optional func didReceive(pluginStore: PXCheckoutStore)
     @objc optional func renderDidFinish()
     @objc optional func titleForNavigationBar() -> String?
     @objc optional func colorForNavigationBar() -> UIColor?
@@ -812,37 +812,6 @@ public protocol PXPluginComponent: PXComponetizable {
     @objc optional func shouldShowNavigationBar() -> Bool
 }
 
-open class PXPluginStore: NSObject {
-
-    static let sharedInstance = PXPluginStore()
-    private var data = [String: Any]()
-    var paymentData = PaymentData()
-    var paymentOptionSelected: PaymentMethodOption?
-
-    public func addData(forKey: String, value: Any) {
-        self.data[forKey] = value
-    }
-    public func remove(key: String) {
-        data.removeValue(forKey: key)
-    }
-
-    public func removeAll() {
-        data.removeAll()
-    }
-
-    public func getData(forKey: String) -> Any? {
-        return self.data[forKey]
-    }
-
-    public func getPaymentData() -> PaymentData {
-        return paymentData
-    }
-
-    public func getPaymentOptionSelected() -> PaymentMethodOption? {
-        return paymentOptionSelected
-    }
-
-}
 
 // MARK: PXPaymentMethodPlugin
 open class PXPaymentMethodPlugin: NSObject {

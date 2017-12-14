@@ -15,9 +15,9 @@ extension MercadoPagoCheckoutViewModel {
             return false
         }
 
-        copyViewModelAndAssignToHookStore()
+        copyViewModelAndAssignToCheckoutStore()
         
-        if let shouldSkip = hookSelected.shouldSkipHook?(hookStore: PXHookStore.sharedInstance), shouldSkip {
+        if let shouldSkip = hookSelected.shouldSkipHook?(hookStore: PXCheckoutStore.sharedInstance), shouldSkip {
             self.continueFrom(hook: hookSelected.hookForStep())
             return false
         }
@@ -59,14 +59,11 @@ extension MercadoPagoCheckoutViewModel {
         return readyToPay
     }
     
-    func copyViewModelAndAssignToHookStore() -> Bool {
+    func copyViewModelAndAssignToCheckoutStore() -> Bool {
         // Set a copy of CheckoutVM in HookStore
         if self.copy() is MercadoPagoCheckoutViewModel {
-            PXHookStore.sharedInstance.paymentData = self.paymentData
-            PXHookStore.sharedInstance.paymentOptionSelected = self.paymentOptionSelected
-            // TODO-Plugins: ver si unificamos PXHookStore con PXPluginStore como FlowStore o algo asi.
-            PXPluginStore.sharedInstance.paymentData = self.paymentData
-            PXPluginStore.sharedInstance.paymentOptionSelected = self.paymentOptionSelected
+            PXCheckoutStore.sharedInstance.paymentData = self.paymentData
+            PXCheckoutStore.sharedInstance.paymentOptionSelected = self.paymentOptionSelected
             return true
         }
         return false

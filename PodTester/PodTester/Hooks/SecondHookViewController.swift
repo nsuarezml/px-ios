@@ -13,7 +13,7 @@ class SecondHookViewController: UIViewController {
     
     var actionHandler: PXActionHandler?
     
-    var targetHookStore:PXHookStore?
+    var targetHookStore:PXCheckoutStore?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,11 +65,11 @@ extension SecondHookViewController: PXHookComponent {
         return "Hook 2"
     }
     
-    func didReceive(hookStore: PXHookStore) {
+    func didReceive(hookStore: PXCheckoutStore) {
         targetHookStore = hookStore
     }
     
-    func shouldSkipHook(hookStore: PXHookStore) -> Bool {
+    func shouldSkipHook(hookStore: PXCheckoutStore) -> Bool {
         if let paymentId = hookStore.getPaymentOptionSelected()?.getId(), paymentId == "bitcoin_payment" {
             return true
         }

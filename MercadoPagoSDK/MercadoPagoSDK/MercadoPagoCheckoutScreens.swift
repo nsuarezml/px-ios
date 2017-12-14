@@ -292,8 +292,8 @@ extension MercadoPagoCheckout {
                 self.viewModel.wentBackFrom(hook: hookStep)
             }
 
-            if self.viewModel.copyViewModelAndAssignToHookStore() {
-                targetHook.didReceive?(hookStore: PXHookStore.sharedInstance)
+            if self.viewModel.copyViewModelAndAssignToCheckoutStore() {
+                targetHook.didReceive?(hookStore: PXCheckoutStore.sharedInstance)
             }
 
             if let navTitle = targetHook.titleForNavigationBar?() {
@@ -339,8 +339,8 @@ extension MercadoPagoCheckout {
 
         let paymentPluginComponent = paymentMethodPlugin.paymentPlugin
         
-        if self.viewModel.copyViewModelAndAssignToHookStore() {
-            paymentPluginComponent.didReceive?(pluginStore: PXPluginStore.sharedInstance)
+        if self.viewModel.copyViewModelAndAssignToCheckoutStore() {
+            paymentPluginComponent.didReceive?(pluginStore: PXCheckoutStore.sharedInstance)
         }
         
         if let navTitle = paymentPluginComponent.titleForNavigationBar?() {
@@ -377,8 +377,8 @@ extension MercadoPagoCheckout {
             return
         }
         
-        if self.viewModel.copyViewModelAndAssignToHookStore() {
-            paymentMethodConfigPluginComponent.didReceive?(pluginStore: PXPluginStore.sharedInstance)
+        if self.viewModel.copyViewModelAndAssignToCheckoutStore() {
+            paymentMethodConfigPluginComponent.didReceive?(pluginStore: PXCheckoutStore.sharedInstance)
         }
         
         if let navTitle = paymentMethodConfigPluginComponent.titleForNavigationBar?() {
