@@ -13,6 +13,9 @@ class PaymentMethodPluginFlowTest : BaseTest {
 
     var mpCheckout: MercadoPagoCheckout!
     let flowPreference = FlowPreference()
+    var mockPaymentMethodPlugin1: PXPaymentMethodPlugin!
+    var mockPaymentMethodPlugin2: PXPaymentMethodPlugin!
+    var mockPaymentMethodPlugin3: PXPaymentMethodPlugin!
 
     override func setUp() {
         super.setUp()
@@ -32,10 +35,10 @@ class PaymentMethodPluginFlowTest : BaseTest {
         let paymentMethodConfigPlugin = MockPaymentPluginViewController(shouldSkip: false)
         let paymentMethodConfigPlugin2 = MockPaymentPluginViewController(shouldSkip: true)
 
-        let mockPaymentMethodPlugin1 = MockBuilder.buildPaymentMethodPlugin(id: "plugin1", name: "Plugin 1", configPaymentMethodPlugin: nil)
-        let mockPaymentMethodPlugin2 = MockBuilder.buildPaymentMethodPlugin(id: "plugin2", name: "Plugin 2", configPaymentMethodPlugin: paymentMethodConfigPlugin)
-        let mockPaymentMethodPlugin3 = MockBuilder.buildPaymentMethodPlugin(id: "plugin2", name: "Plugin 2", configPaymentMethodPlugin: paymentMethodConfigPlugin2)
-        let pluginPaymentMethods = [mockPaymentMethodPlugin1, mockPaymentMethodPlugin2, mockPaymentMethodPlugin3]
+        mockPaymentMethodPlugin1 = MockBuilder.buildPaymentMethodPlugin(id: "plugin1", name: "Plugin 1", configPaymentMethodPlugin: nil)
+        mockPaymentMethodPlugin2 = MockBuilder.buildPaymentMethodPlugin(id: "plugin2", name: "Plugin 2", configPaymentMethodPlugin: paymentMethodConfigPlugin)
+        mockPaymentMethodPlugin3 = MockBuilder.buildPaymentMethodPlugin(id: "plugin2", name: "Plugin 2", configPaymentMethodPlugin: paymentMethodConfigPlugin2)
+        let pluginPaymentMethods: [PXPaymentMethodPlugin] = [mockPaymentMethodPlugin1, mockPaymentMethodPlugin2, mockPaymentMethodPlugin3]
 
         mpCheckout.setPaymentMethodPlugins(plugins: pluginPaymentMethods)
     }
@@ -844,7 +847,9 @@ class PaymentMethodPluginFlowTest : BaseTest {
 
     // MARK: Tests flow with Payment Method Plugins
 
-    func testNextStep_withCheckoutPreference_pluginWithHooks() {
+    func testNextStep_withCheckoutPreference_plugin1WithHooks() {
+        // Plugin 1 has no payment method config plugin
+
         // Set access_token
         MercadoPagoContext.setAccountMoneyAvailable(accountMoneyAvailable: true)
         XCTAssertNotNil(mpCheckout.viewModel)
@@ -877,8 +882,8 @@ class PaymentMethodPluginFlowTest : BaseTest {
         step = mpCheckout.viewModel.nextStep()
         XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_METHOD_SELECTION, step)
 
-        // 6. Payment option selected : plugin
-        MPCheckoutTestAction.selectPlugin(mpCheckout: mpCheckout)
+        // 6. Payment option selected : plugin 1
+        mpCheckout.viewModel.updateCheckoutModel(paymentOptionSelected: mockPaymentMethodPlugin1 as PaymentMethodOption)
 
         // 7. Display HOOK 1: After payment type selected
         step = mpCheckout.viewModel.nextStep()
@@ -915,6 +920,298 @@ class PaymentMethodPluginFlowTest : BaseTest {
         XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_RESULT, step)
 
         // 13. Finish
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.ACTION_FINISH, step)
+    }
+
+    func testNextStep_withCheckoutPreference_plugin2WithHooks() {
+        // Plugin 2 has payment method config plugin, no skippable
+
+        // Set access_token
+        MercadoPagoContext.setAccountMoneyAvailable(accountMoneyAvailable: true)
+        XCTAssertNotNil(mpCheckout.viewModel)
+        MercadoPagoCheckoutViewModel.flowPreference.showDiscount = true
+
+        // 0. Start
+        var step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.START, step)
+
+        // 1. Search Preference
+        step = mpCheckout.viewModel.nextStep()
+
+        XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
+
+        //2. Buscar DirectDiscount
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
+
+        // 3. Validate preference
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.ACTION_VALIDATE_PREFERENCE, step)
+
+        // 4. Search Payment Methods
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SERVICE_GET_PAYMENT_METHODS, step)
+
+        MPCheckoutTestAction.loadGroupsInViewModel(mpCheckout: mpCheckout)
+
+        // 5. Display payment methods (no exclusions)
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_METHOD_SELECTION, step)
+
+        // 6. Payment option selected : plugin 2
+        mpCheckout.viewModel.updateCheckoutModel(paymentOptionSelected: mockPaymentMethodPlugin2 as PaymentMethodOption)
+
+        // 7. Display HOOK 1: After payment type selected
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_HOOK_BEFORE_PAYMENT_METHOD_CONFIG, step)
+        mpCheckout.viewModel.continueFrom(hook: .BEFORE_PAYMENT_METHOD_CONFIG)
+
+        // 8. Display Payment Method Config plugin
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_METHOD_PLUGIN_CONFIG, step)
+
+        // 9. Display HOOK 2: After payment method selected
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_HOOK_AFTER_PAYMENT_METHOD_CONFIG, step)
+        mpCheckout.viewModel.continueFrom(hook: .AFTER_PAYMENT_METHOD_CONFIG)
+
+        // 10. Display Review and Confirm y setear Payment data
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_REVIEW_AND_CONFIRM, step)
+
+        let accountMoneyPm = MockBuilder.buildPaymentMethod("plugin2", name: "Dinero en cuenta", paymentTypeId: PaymentTypeId.ACCOUNT_MONEY.rawValue)
+        let paymentDataMock = MockBuilder.buildPaymentData(paymentMethod: accountMoneyPm)
+        mpCheckout.viewModel.updateCheckoutModel(paymentData: paymentDataMock)
+
+        // 11. Display HOOK 3: BeFore payment
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_HOOK_BEFORE_PAYMENT, step)
+        mpCheckout.viewModel.continueFrom(hook: .BEFORE_PAYMENT)
+
+        // 12 . Pagar
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_METHOD_PLUGIN_PAYMENT, step)
+
+        // 13. Simular Pago realizado y se muestra congrats
+        let paymentMock = MockBuilder.buildPayment("plugin2")
+        mpCheckout.viewModel.updateCheckoutModel(payment: paymentMock)
+        mpCheckout.viewModel.paymentResult = MockBuilder.buildPaymentResult()
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_RESULT, step)
+
+        // 14. Finish
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.ACTION_FINISH, step)
+    }
+
+    func testNextStep_withCheckoutPreference_plugin3WithHooks() {
+        // Plugin 2 has payment method config plugin, and will be skipped
+
+        // Set access_token
+        MercadoPagoContext.setAccountMoneyAvailable(accountMoneyAvailable: true)
+        XCTAssertNotNil(mpCheckout.viewModel)
+        MercadoPagoCheckoutViewModel.flowPreference.showDiscount = true
+
+        // 0. Start
+        var step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.START, step)
+
+        // 1. Search Preference
+        step = mpCheckout.viewModel.nextStep()
+
+        XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
+
+        //2. Buscar DirectDiscount
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
+
+        // 3. Validate preference
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.ACTION_VALIDATE_PREFERENCE, step)
+
+        // 4. Search Payment Methods
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SERVICE_GET_PAYMENT_METHODS, step)
+
+        MPCheckoutTestAction.loadGroupsInViewModel(mpCheckout: mpCheckout)
+
+        // 5. Display payment methods (no exclusions)
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_METHOD_SELECTION, step)
+
+        // 6. Payment option selected : plugin 3
+        mpCheckout.viewModel.updateCheckoutModel(paymentOptionSelected: mockPaymentMethodPlugin3 as PaymentMethodOption)
+
+        // 7. Display HOOK 1: After payment type selected
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_HOOK_BEFORE_PAYMENT_METHOD_CONFIG, step)
+        mpCheckout.viewModel.continueFrom(hook: .BEFORE_PAYMENT_METHOD_CONFIG)
+
+        // 8. Display HOOK 2: After payment method selected
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_HOOK_AFTER_PAYMENT_METHOD_CONFIG, step)
+        mpCheckout.viewModel.continueFrom(hook: .AFTER_PAYMENT_METHOD_CONFIG)
+
+        // 9. Display Review and Confirm y setear Payment data
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_REVIEW_AND_CONFIRM, step)
+
+        let accountMoneyPm = MockBuilder.buildPaymentMethod("plugin3", name: "Dinero en cuenta", paymentTypeId: PaymentTypeId.ACCOUNT_MONEY.rawValue)
+        let paymentDataMock = MockBuilder.buildPaymentData(paymentMethod: accountMoneyPm)
+        mpCheckout.viewModel.updateCheckoutModel(paymentData: paymentDataMock)
+
+        // 10. Display HOOK 3: BeFore payment
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_HOOK_BEFORE_PAYMENT, step)
+        mpCheckout.viewModel.continueFrom(hook: .BEFORE_PAYMENT)
+
+        // 11 . Pagar
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_METHOD_PLUGIN_PAYMENT, step)
+
+        // 12. Simular Pago realizado y se muestra congrats
+        let paymentMock = MockBuilder.buildPayment("plugin3")
+        mpCheckout.viewModel.updateCheckoutModel(payment: paymentMock)
+        mpCheckout.viewModel.paymentResult = MockBuilder.buildPaymentResult()
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_RESULT, step)
+
+        // 13. Finish
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.ACTION_FINISH, step)
+    }
+
+    func testNextStep_withCheckoutPreference_plugin1WithNOHooks() {
+        let flowPref = FlowPreference()
+        MercadoPagoCheckout.setFlowPreference(flowPref)
+
+        // Plugin 1 has no payment method config plugin
+
+        // Set access_token
+        MercadoPagoContext.setAccountMoneyAvailable(accountMoneyAvailable: true)
+        XCTAssertNotNil(mpCheckout.viewModel)
+        MercadoPagoCheckoutViewModel.flowPreference.showDiscount = true
+
+        // 0. Start
+        var step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.START, step)
+
+        // 1. Search Preference
+        step = mpCheckout.viewModel.nextStep()
+
+        XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
+
+        //2. Buscar DirectDiscount
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
+
+        // 3. Validate preference
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.ACTION_VALIDATE_PREFERENCE, step)
+
+        // 4. Search Payment Methods
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SERVICE_GET_PAYMENT_METHODS, step)
+
+        MPCheckoutTestAction.loadGroupsInViewModel(mpCheckout: mpCheckout)
+
+        // 5. Display payment methods (no exclusions)
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_METHOD_SELECTION, step)
+
+        // 6. Payment option selected : plugin 1
+        mpCheckout.viewModel.updateCheckoutModel(paymentOptionSelected: mockPaymentMethodPlugin1 as PaymentMethodOption)
+
+        // 9. Display Review and Confirm y setear Payment data
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_REVIEW_AND_CONFIRM, step)
+
+        let accountMoneyPm = MockBuilder.buildPaymentMethod("plugin1", name: "Dinero en cuenta", paymentTypeId: PaymentTypeId.ACCOUNT_MONEY.rawValue)
+        let paymentDataMock = MockBuilder.buildPaymentData(paymentMethod: accountMoneyPm)
+        mpCheckout.viewModel.updateCheckoutModel(paymentData: paymentDataMock)
+
+        // 11 . Pagar
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_METHOD_PLUGIN_PAYMENT, step)
+
+        // 12. Simular Pago realizado y se muestra congrats
+        let paymentMock = MockBuilder.buildPayment("plugin1")
+        mpCheckout.viewModel.updateCheckoutModel(payment: paymentMock)
+        mpCheckout.viewModel.paymentResult = MockBuilder.buildPaymentResult()
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_RESULT, step)
+
+        // 13. Finish
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.ACTION_FINISH, step)
+    }
+
+    func testNextStep_withCheckoutPreference_plugin2WithNOHooks() {
+        // Plugin 2 has payment method config plugin, no skippable
+
+        let flowPref = FlowPreference()
+        MercadoPagoCheckout.setFlowPreference(flowPref)
+
+        // Set access_token
+        MercadoPagoContext.setAccountMoneyAvailable(accountMoneyAvailable: true)
+        XCTAssertNotNil(mpCheckout.viewModel)
+        MercadoPagoCheckoutViewModel.flowPreference.showDiscount = true
+
+        // 0. Start
+        var step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.START, step)
+
+        // 1. Search Preference
+        step = mpCheckout.viewModel.nextStep()
+
+        XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
+
+        //2. Buscar DirectDiscount
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
+
+        // 3. Validate preference
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.ACTION_VALIDATE_PREFERENCE, step)
+
+        // 4. Search Payment Methods
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SERVICE_GET_PAYMENT_METHODS, step)
+
+        MPCheckoutTestAction.loadGroupsInViewModel(mpCheckout: mpCheckout)
+
+        // 5. Display payment methods (no exclusions)
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_METHOD_SELECTION, step)
+
+        // 6. Payment option selected : plugin 2
+        mpCheckout.viewModel.updateCheckoutModel(paymentOptionSelected: mockPaymentMethodPlugin2 as PaymentMethodOption)
+
+        // 8. Display Payment Method Config plugin
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_METHOD_PLUGIN_CONFIG, step)
+
+        // 10. Display Review and Confirm y setear Payment data
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_REVIEW_AND_CONFIRM, step)
+
+        let accountMoneyPm = MockBuilder.buildPaymentMethod("plugin2", name: "Dinero en cuenta", paymentTypeId: PaymentTypeId.ACCOUNT_MONEY.rawValue)
+        let paymentDataMock = MockBuilder.buildPaymentData(paymentMethod: accountMoneyPm)
+        mpCheckout.viewModel.updateCheckoutModel(paymentData: paymentDataMock)
+
+        // 12 . Pagar
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_METHOD_PLUGIN_PAYMENT, step)
+
+        // 13. Simular Pago realizado y se muestra congrats
+        let paymentMock = MockBuilder.buildPayment("plugin2")
+        mpCheckout.viewModel.updateCheckoutModel(payment: paymentMock)
+        mpCheckout.viewModel.paymentResult = MockBuilder.buildPaymentResult()
+        step = mpCheckout.viewModel.nextStep()
+        XCTAssertEqual(CheckoutStep.SCREEN_PAYMENT_RESULT, step)
+
+        // 14. Finish
         step = mpCheckout.viewModel.nextStep()
         XCTAssertEqual(CheckoutStep.ACTION_FINISH, step)
     }

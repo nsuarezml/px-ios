@@ -13,7 +13,7 @@ class SecondHookViewController: UIViewController {
     
     var actionHandler: PXActionHandler?
     
-    var targetHookStore:PXCheckoutStore?
+    var targetHookStore: PXCheckoutStore?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -14,6 +14,11 @@ extension MercadoPagoCheckoutViewModel {
             return false
         }
 
+        if let shouldSkip = paymentMethodPluginSelected.paymentMethodConfigPlugin?.shouldSkip?(pluginStore: PXCheckoutStore.sharedInstance), shouldSkip {
+            willShowPaymentMethodConfigPlugin()
+            return false
+        }
+
         if  wasPaymentMethodConfigPluginShowed() {
             return false
         }
