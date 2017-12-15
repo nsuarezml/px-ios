@@ -47,66 +47,12 @@ class PaymentVaultViewModel: NSObject {
         self.mercadoPagoServicesAdapter = mercadoPagoServicesAdapter
 
         super.init()
-        self.populateDisplayItems()
-    }
-
-    func getPaymentMethodOption(row: Int) -> PaymentOptionDrawable? {
-        if displayItems.indices.contains(row) {
-            return displayItems[row]
-        }
-        return nil
+        self.populateDisplayItemsDrawable()
     }
 }
 
 // MARK: Logic
 extension PaymentVaultViewModel {
-
-    fileprivate func extractedFunc(_ topPluginsDrawable: inout [PaymentOptionDrawable], _ bottomPluginsDrawable: inout [PaymentOptionDrawable]) {
-        // Populate payments methods plugins.
-        if hasPaymentMethodsPlugins() {
-            for plugin in paymentMethodPlugins {
-                if plugin.displayOrder == .TOP {
-                    topPluginsDrawable.append(plugin)
-                } else {
-                    bottomPluginsDrawable.append(plugin)
-                }
-            }
-        }
-    }
-
-    fileprivate func populateDisplayItems() {
-
-        var topPluginsDrawable = [PaymentOptionDrawable]()
-        var bottomPluginsDrawable = [PaymentOptionDrawable]()
-        var customerPaymentOptionsDrawable = [PaymentOptionDrawable]()
-        var paymentOptionsDrawable = [PaymentOptionDrawable]()
-
-        extractedFunc(&topPluginsDrawable, &bottomPluginsDrawable)
-
-        // Populate customer payment options.
-        let customerPaymentMethodsCount = getCustomerPaymentMethodsToDisplayCount()
-        if customerPaymentMethodsCount > 0 {
-            for customerPaymentMethodIndex in 0...customerPaymentMethodsCount-1 {
-                if let customerPaymentOptions = customerPaymentOptions, customerPaymentOptions.indices.contains(customerPaymentMethodIndex) {
-                    let customerPaymentOption = customerPaymentOptions[customerPaymentMethodIndex]
-                    customerPaymentOptionsDrawable.append(customerPaymentOption)
-                }
-            }
-        }
-
-        // Populate payment methods search items.
-        for targetPaymentMethodOption in paymentMethodOptions {
-            if let targetPaymentOptionDrawable = targetPaymentMethodOption as? PaymentOptionDrawable {
-                paymentOptionsDrawable.append(targetPaymentOptionDrawable)
-            }
-        }
-
-        // Fill displayItems
-        displayItems.append(contentsOf: topPluginsDrawable)
-        displayItems.append(contentsOf: customerPaymentOptionsDrawable)
-        displayItems.append(contentsOf: paymentOptionsDrawable)
-        displayItems.append(contentsOf: bottomPluginsDrawable)
-    }
 
     func hasPaymentMethodsPlugins() -> Bool {
         return isRoot && !paymentMethodPlugins.isEmpty
@@ -132,7 +78,79 @@ extension PaymentVaultViewModel {
     func hasOnlyCustomerPaymentMethodAvailable() -> Bool {
         return Array.isNullOrEmpty(self.paymentMethodOptions) && !Array.isNullOrEmpty(self.customerPaymentOptions) && self.customerPaymentOptions?.count == 1
     }
+    
+    func getPaymentMethodOption(row: Int) -> PaymentOptionDrawable? {
+        if displayItems.indices.contains(row) {
+            return displayItems[row]
+        }
+        return nil
+    }
 }
+
+
+//MARK: Drawable Builders
+extension PaymentVaultViewModel {
+    
+    fileprivate func populateDisplayItemsDrawable() {
+        
+        var topPluginsDrawable = [PaymentOptionDrawable]()
+        var bottomPluginsDrawable = [PaymentOptionDrawable]()
+        var customerPaymentOptionsDrawable = [PaymentOptionDrawable]()
+        var paymentOptionsDrawable = [PaymentOptionDrawable]()
+        
+        buildTopBottomPaymentPluginsAsDrawable(&topPluginsDrawable, &bottomPluginsDrawable)
+        
+        // Populate customer payment options.
+        customerPaymentOptionsDrawable = buildCustomerPaymentOptionsAsDrawable()
+        
+        // Populate payment methods search items.
+        paymentOptionsDrawable = buildPaymentMethodSearchItemsAsDrawable()
+        
+        // Fill displayItems
+        displayItems.append(contentsOf: topPluginsDrawable)
+        displayItems.append(contentsOf: customerPaymentOptionsDrawable)
+        displayItems.append(contentsOf: paymentOptionsDrawable)
+        displayItems.append(contentsOf: bottomPluginsDrawable)
+    }
+    
+    fileprivate func buildTopBottomPaymentPluginsAsDrawable(_ topPluginsDrawable: inout [PaymentOptionDrawable], _ bottomPluginsDrawable: inout [PaymentOptionDrawable]) {
+        // Populate payments methods plugins.
+        if hasPaymentMethodsPlugins() {
+            for plugin in paymentMethodPlugins {
+                if plugin.displayOrder == .TOP {
+                    topPluginsDrawable.append(plugin)
+                } else {
+                    bottomPluginsDrawable.append(plugin)
+                }
+            }
+        }
+    }
+    
+    fileprivate func buildCustomerPaymentOptionsAsDrawable() -> [PaymentOptionDrawable] {
+        var returnDrawable = [PaymentOptionDrawable]()
+        let customerPaymentMethodsCount = getCustomerPaymentMethodsToDisplayCount()
+        if customerPaymentMethodsCount > 0 {
+            for customerPaymentMethodIndex in 0...customerPaymentMethodsCount-1 {
+                if let customerPaymentOptions = customerPaymentOptions, customerPaymentOptions.indices.contains(customerPaymentMethodIndex) {
+                    let customerPaymentOption = customerPaymentOptions[customerPaymentMethodIndex]
+                    returnDrawable.append(customerPaymentOption)
+                }
+            }
+        }
+        return returnDrawable
+    }
+    
+    fileprivate func buildPaymentMethodSearchItemsAsDrawable() -> [PaymentOptionDrawable] {
+        var returnDrawable = [PaymentOptionDrawable]()
+        for targetPaymentMethodOption in paymentMethodOptions {
+            if let targetPaymentOptionDrawable = targetPaymentMethodOption as? PaymentOptionDrawable {
+                returnDrawable.append(targetPaymentOptionDrawable)
+            }
+        }
+        return returnDrawable
+    }
+}
+
 
 // MARK: Counters
 extension PaymentVaultViewModel {
