@@ -9,12 +9,17 @@
 import Foundation
 open class PXPaymentMethodPlugin: NSObject {
 
-    static let PAYMENT_METHOD_TYPE_ID = PaymentTypeId.PAYMENT_METHOD_PLUGIN.rawValue
-
+    @objc public enum RemotePaymentStatus: Int {
+        case APPROVED
+        case REJECTED
+    }
+    
     @objc public enum DisplayOrder: Int {
         case TOP
         case BOTTOM
     }
+    
+    static let PAYMENT_METHOD_TYPE_ID = PaymentTypeId.PAYMENT_METHOD_PLUGIN.rawValue
 
     var id: String
     var name: String

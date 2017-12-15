@@ -15,7 +15,7 @@ open class PXPluginNavigationHandler: NSObject {
         self.checkout = withCheckout
     }
 
-    open func didFinishPayment(status: String, statusDetails: String, receiptId: String?) {
+    open func didFinishPayment(paymentStatus: PXPaymentMethodPlugin.RemotePaymentStatus, statusDetails: String, receiptId: String?) {
 
         guard let paymentData = self.checkout?.viewModel.paymentData else {
             return
@@ -25,8 +25,14 @@ open class PXPluginNavigationHandler: NSObject {
         if let paymentMethodPlugin = self.checkout?.viewModel.paymentOptionSelected as? PXPaymentMethodPlugin {
             paymentData.paymentMethod?.setExternalPaymentMethodImage(externalImage: paymentMethodPlugin.getImage())
         }
+        
+        // By definition of MVP1, we support only approved or rejected.
+        var paymentStatusStrDefault = PaymentStatus.REJECTED
+        if paymentStatus == .APPROVED {
+            paymentStatusStrDefault = PaymentStatus.APPROVED
+        }
 
-        let paymentResult = PaymentResult(status: status, statusDetail: statusDetails, paymentData: paymentData, payerEmail: nil, id: receiptId, statementDescription: nil)
+        let paymentResult = PaymentResult(status: paymentStatusStrDefault, statusDetail: statusDetails, paymentData: paymentData, payerEmail: nil, id: receiptId, statementDescription: nil)
 
         checkout?.setPaymentResult(paymentResult: paymentResult)
         checkout?.executeNextStep()
