@@ -242,7 +242,7 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
         if self.titleSectionReference != nil {
             self.titleSectionReference.title.text = ""
         }
-        return "¿Cómo quiéres pagar?".localized
+        return "¿Cómo quieres pagar?".localized
     }
 
     open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
