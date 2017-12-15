@@ -38,9 +38,9 @@ open class PXPluginNavigationHandler: NSObject {
         checkout?.executeNextStep()
     }
 
-    open func showFailure(message: String, errorDetails: String, shouldRetry: Bool, callback: (() -> Void)?) {
-        MercadoPagoCheckoutViewModel.error = MPSDKError(message: message, errorDetail: errorDetails, retry: shouldRetry)
-        checkout?.viewModel.errorCallback = callback
+    open func showFailure(message: String, errorDetails: String, retryButtonCallback: (() -> Void)?) {
+        MercadoPagoCheckoutViewModel.error = MPSDKError(message: message, errorDetail: errorDetails, retry: retryButtonCallback != nil)
+        checkout?.viewModel.errorCallback = retryButtonCallback
         checkout?.executeNextStep()
     }
 
