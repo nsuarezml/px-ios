@@ -18,6 +18,10 @@ class MPCheckoutTestAction: NSObject {
         MPCheckoutTestAction.selectAccountMoney(mpCheckoutViewModel: mpCheckout.viewModel)
     }
 
+    static func selectPlugin(mpCheckout: MercadoPagoCheckout) {
+        MPCheckoutTestAction.selectPlugin(mpCheckoutViewModel: mpCheckout.viewModel)
+    }
+
     static func selectCreditCardOption(mpCheckout: MercadoPagoCheckout) {
         MPCheckoutTestAction.selectCreditCardOption(mpCheckoutViewModel : mpCheckout.viewModel)
     }
@@ -33,6 +37,11 @@ class MPCheckoutTestAction: NSObject {
     static func selectAccountMoney(mpCheckoutViewModel: MercadoPagoCheckoutViewModel) {
         let accountMoneyOption = MockBuilder.buildCustomerPaymentMethod("account_money", paymentMethodId : "account_money")
         mpCheckoutViewModel.updateCheckoutModel(paymentOptionSelected: accountMoneyOption as! PaymentMethodOption)
+    }
+
+    static func selectPlugin(mpCheckoutViewModel: MercadoPagoCheckoutViewModel) {
+        let pluginOption = MockBuilder.buildPaymentMethodPlugin(id: "plugin", name: "plugin1", configPaymentMethodPlugin: nil)
+        mpCheckoutViewModel.updateCheckoutModel(paymentOptionSelected: pluginOption as! PaymentMethodOption)
     }
 
     static func selectCreditCardOption(mpCheckoutViewModel: MercadoPagoCheckoutViewModel) {
