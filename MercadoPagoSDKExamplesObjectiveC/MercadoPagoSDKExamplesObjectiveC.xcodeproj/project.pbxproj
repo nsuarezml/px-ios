@@ -11,7 +11,9 @@
 		15AF42AA1D36848100E70343 /* MercadoPagoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF7EFB1D255AA10087C785 /* MercadoPagoSDK.framework */; };
 		15AF42AB1D36848100E70343 /* MercadoPagoSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF7EFB1D255AA10087C785 /* MercadoPagoSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		15C84A981D2D531E002E4988 /* MediosOffTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C84A971D2D531E002E4988 /* MediosOffTableViewController.m */; };
-		49912F160C51404B7FDBEB5E /* Pods_MercadoPagoSDKExamplesObjectiveC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542941FB936E655430F3C821 /* Pods_MercadoPagoSDKExamplesObjectiveC.framework */; };
+		23346C341FE83734005FD8C9 /* PaymentPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23346C2E1FE83733005FD8C9 /* PaymentPluginViewController.m */; };
+		23346C351FE83734005FD8C9 /* PaymentMethodPlugins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23346C301FE83734005FD8C9 /* PaymentMethodPlugins.storyboard */; };
+		23346C361FE83734005FD8C9 /* PaymentMethodPluginConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23346C311FE83734005FD8C9 /* PaymentMethodPluginConfigViewController.m */; };
 		4B34DC331E5DA33100FDD295 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EF7EC41D2559140087C785 /* AppDelegate.m */; };
 		4B7AA9801E55E64C000902B9 /* DineroEnCuentaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA97E1E55E64C000902B9 /* DineroEnCuentaTableViewCell.m */; };
 		4B7AA9811E55E64C000902B9 /* DineroEnCuentaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA97E1E55E64C000902B9 /* DineroEnCuentaTableViewCell.m */; };
@@ -93,6 +95,11 @@
 /* Begin PBXFileReference section */
 		15C84A961D2D531E002E4988 /* MediosOffTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediosOffTableViewController.h; sourceTree = "<group>"; };
 		15C84A971D2D531E002E4988 /* MediosOffTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediosOffTableViewController.m; sourceTree = "<group>"; };
+		23346C2E1FE83733005FD8C9 /* PaymentPluginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentPluginViewController.m; sourceTree = "<group>"; };
+		23346C301FE83734005FD8C9 /* PaymentMethodPlugins.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaymentMethodPlugins.storyboard; sourceTree = "<group>"; };
+		23346C311FE83734005FD8C9 /* PaymentMethodPluginConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentMethodPluginConfigViewController.m; sourceTree = "<group>"; };
+		23346C321FE83734005FD8C9 /* PaymentMethodPluginConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentMethodPluginConfigViewController.h; sourceTree = "<group>"; };
+		23346C331FE83734005FD8C9 /* PaymentPluginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentPluginViewController.h; sourceTree = "<group>"; };
 		2E63040F2E13FF09B0FAC07F /* Pods_MercadoPagoSDKExamplesObjectiveCTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MercadoPagoSDKExamplesObjectiveCTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7AA97D1E55E64C000902B9 /* DineroEnCuentaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DineroEnCuentaTableViewCell.h; sourceTree = "<group>"; };
 		4B7AA97E1E55E64C000902B9 /* DineroEnCuentaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DineroEnCuentaTableViewCell.m; sourceTree = "<group>"; };
@@ -174,6 +181,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23346C371FE83738005FD8C9 /* PaymentMethodPlugins */ = {
+			isa = PBXGroup;
+			children = (
+				23346C321FE83734005FD8C9 /* PaymentMethodPluginConfigViewController.h */,
+				23346C311FE83734005FD8C9 /* PaymentMethodPluginConfigViewController.m */,
+				23346C301FE83734005FD8C9 /* PaymentMethodPlugins.storyboard */,
+				23346C331FE83734005FD8C9 /* PaymentPluginViewController.h */,
+				23346C2E1FE83733005FD8C9 /* PaymentPluginViewController.m */,
+			);
+			name = PaymentMethodPlugins;
+			sourceTree = "<group>";
+		};
 		250DBD73536A8A42B1E606E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +283,7 @@
 		76EF7EBF1D2559140087C785 /* MercadoPagoSDKExamplesObjectiveC */ = {
 			isa = PBXGroup;
 			children = (
+				23346C371FE83738005FD8C9 /* PaymentMethodPlugins */,
 				4B811DE71FCDD48A000611AD /* Hooks */,
 				76E6E0601D2AD29C006CE49B /* Example */,
 				76EF7F1E1D255B5F0087C785 /* Component Examples */,
@@ -442,6 +462,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23346C351FE83734005FD8C9 /* PaymentMethodPlugins.storyboard in Resources */,
 				76BAC64A1E4B30060081F675 /* CustomTableViewCell.xib in Resources */,
 				4B7AA9821E55E64C000902B9 /* DineroEnCuentaTableViewCell.xib in Resources */,
 				4B7D07DC1E55324700E6CA78 /* SubeTableViewCell.xib in Resources */,
@@ -588,6 +609,8 @@
 				76E6E06A1D2AD33F006CE49B /* SimpleVaultViewController.m in Sources */,
 				76EF7F601D2706720087C785 /* ServicesExamplesViewController.m in Sources */,
 				76EF7EC21D2559140087C785 /* main.m in Sources */,
+				23346C341FE83734005FD8C9 /* PaymentPluginViewController.m in Sources */,
+				23346C361FE83734005FD8C9 /* PaymentMethodPluginConfigViewController.m in Sources */,
 				763B44F91D2BFEB0002E2B39 /* SelectPaymentMethodTableViewController.m in Sources */,
 				76BAC6471E4B2F220081F675 /* CustomTableViewCell.m in Sources */,
 				4B7AA9801E55E64C000902B9 /* DineroEnCuentaTableViewCell.m in Sources */,

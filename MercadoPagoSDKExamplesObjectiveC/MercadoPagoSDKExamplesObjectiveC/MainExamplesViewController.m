@@ -15,6 +15,8 @@
 #import "FirstHookViewController.h"
 #import "SecondHookViewController.h"
 #import "ThirdHookViewController.h"
+#import "PaymentMethodPluginConfigViewController.h"
+#import "PaymentPluginViewController.h"
 
 @import MercadoPagoSDK;
 
@@ -90,7 +92,8 @@
     checkoutPreference:self.pref paymentData:self.paymentData paymentResult:self.paymentResult discount:nil navigationController:self.navigationController];
 
     [self setHooks];
-
+    
+    [self setPaymentMethodPlugins];
 
     // Setear PaymentResultScreenPreference
     [self setPaymentResultScreenPreference];
@@ -126,6 +129,27 @@
     [flowPref addHookToFlowWithHook:thirdHook];
 
     [MercadoPagoCheckout setFlowPreference:flowPref];
+}
+
+-(void)setPaymentMethodPlugins {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
+                                @"PaymentMethodPlugins" bundle:[NSBundle mainBundle]];
+    
+    PaymentPluginViewController *makePaymentComponent = [storyboard instantiateViewControllerWithIdentifier:@"paymentPlugin"];
+    makePaymentComponent.navigationHandler = [[PXPluginNavigationHandler alloc] initWithCheckout:self.mpCheckout];
+    
+    PXPaymentMethodPlugin * bitcoinPaymentMethodPlugin = [[PXPaymentMethodPlugin alloc] initWithId:@"bitcoin_payment" name:@"Bitcoin" image:[UIImage imageNamed:@"bitcoin_payment"] description:@"" paymentPlugin:makePaymentComponent];
+    
+    // Payment method config plugin component.
+    PaymentMethodPluginConfigViewController *configPaymentComponent = [storyboard instantiateViewControllerWithIdentifier:@"paymentMethodConfigPlugin"];
+    configPaymentComponent.navigationHandler = [[PXPluginNavigationHandler alloc] initWithCheckout:self.mpCheckout];
+    [bitcoinPaymentMethodPlugin setPaymentMethodConfigWithPlugin:configPaymentComponent];
+    
+    NSMutableArray *paymentMethodPlugins = [[NSMutableArray alloc] init];
+    [paymentMethodPlugins addObject:bitcoinPaymentMethodPlugin];
+    
+    [self.mpCheckout setPaymentMethodPluginsWithPlugins:paymentMethodPlugins];
 }
 
 -(void)setPaymentResult {

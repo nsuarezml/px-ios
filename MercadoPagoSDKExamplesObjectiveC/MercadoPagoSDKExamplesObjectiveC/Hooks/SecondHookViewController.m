@@ -41,7 +41,7 @@
 
 #pragma mark - PXHookComponent optional delegates.
 - (BOOL)shouldSkipHookWithHookStore:(PXCheckoutStore * _Nonnull)hookStore {
-    return NO;
+    return [[[hookStore getPaymentOptionSelected] getId] isEqualToString:@"bitcoin_payment"];
 }
 
 - (void)didReceiveWithHookStore:(PXCheckoutStore * _Nonnull)hookStore {
