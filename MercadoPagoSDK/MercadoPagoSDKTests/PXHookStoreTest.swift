@@ -12,24 +12,24 @@ import XCTest
 class PXHookDataTest : BaseTest {
 
     func test_addData() {
-        PXHookStore.sharedInstance.addData(forKey: "key", value: "value")
-        let value = PXHookStore.sharedInstance.getData(forKey: "key")
+        PXCheckoutStore.sharedInstance.addData(forKey: "key", value: "value")
+        let value = PXCheckoutStore.sharedInstance.getData(forKey: "key")
         XCTAssertEqual("value", value as! String)
     }
 
     func test_removeData() {
-        PXHookStore.sharedInstance.addData(forKey: "key", value: "value")
-        var value = PXHookStore.sharedInstance.getData(forKey: "key")
+        PXCheckoutStore.sharedInstance.addData(forKey: "key", value: "value")
+        var value = PXCheckoutStore.sharedInstance.getData(forKey: "key")
         XCTAssertEqual("value", value as! String)
 
-        PXHookStore.sharedInstance.remove(key: "key")
-        value = PXHookStore.sharedInstance.getData(forKey: "key")
+        PXCheckoutStore.sharedInstance.remove(key: "key")
+        value = PXCheckoutStore.sharedInstance.getData(forKey: "key")
         XCTAssertNil(value)
     }
 
     override func tearDown() {
          super.tearDown()
-        PXHookStore.sharedInstance.removeAll()
+        PXCheckoutStore.sharedInstance.removeAll()
     }
 
 }

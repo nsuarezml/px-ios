@@ -36,7 +36,7 @@ extension MockedHookViewController: PXHookComponent {
         return self.view
     }
     
-    public func shouldSkipHook(hookStore: PXHookStore) -> Bool {
+    public func shouldSkipHook(hookStore: PXCheckoutStore) -> Bool {
         return shouldSkipHook
     }
 }
