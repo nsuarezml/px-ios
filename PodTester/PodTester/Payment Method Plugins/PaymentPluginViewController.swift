@@ -49,6 +49,6 @@ extension PaymentPluginViewController {
     
     func finishPaymentSuccessExample() {
         loadingView.stopAnimating()
-        self.pluginNaviagtionHandler?.didFinishPayment(paymentStatus: .REJECTED , statusDetails: RejectedStatusDetail.OTHER_REASON, receiptId: "123")
+        self.pluginNaviagtionHandler?.didFinishPayment(paymentStatus: .REJECTED, receiptId: "123")
     }
 }
