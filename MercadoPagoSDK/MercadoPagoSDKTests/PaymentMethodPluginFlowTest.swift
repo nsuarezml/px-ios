@@ -59,10 +59,6 @@ class PaymentMethodPluginFlowTest : BaseTest {
 
         XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
 
-        //2. Buscar DirectDiscount
-        step = mpCheckout.viewModel.nextStep()
-        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
-
         // 3. Validate preference
         step = mpCheckout.viewModel.nextStep()
         XCTAssertEqual(CheckoutStep.ACTION_VALIDATE_PREFERENCE, step)
@@ -133,10 +129,6 @@ class PaymentMethodPluginFlowTest : BaseTest {
         // 1. Search Preference
         step = mpCheckout.viewModel.nextStep()
         XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
-
-        //2. Buscar DirectDiscount
-        step = mpCheckout.viewModel.nextStep()
-        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
 
         // 3. Validate preference
         step = mpCheckout.viewModel.nextStep()
@@ -268,10 +260,6 @@ class PaymentMethodPluginFlowTest : BaseTest {
         step = mpCheckout.viewModel.nextStep()
 
         XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
-
-        //2. Buscar DirectDiscount
-        step = mpCheckout.viewModel.nextStep()
-        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
 
         // 3. Validate preference
         step = mpCheckout.viewModel.nextStep()
@@ -449,10 +437,6 @@ class PaymentMethodPluginFlowTest : BaseTest {
         step = mpCheckout.viewModel.nextStep()
         XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
 
-        //2. Buscar DirectDiscount
-        step = mpCheckout.viewModel.nextStep()
-        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
-
         // 3. Validate preference
         step = mpCheckout.viewModel.nextStep()
         XCTAssertEqual(CheckoutStep.ACTION_VALIDATE_PREFERENCE, step)
@@ -574,10 +558,6 @@ class PaymentMethodPluginFlowTest : BaseTest {
 
         XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
 
-        //2. Buscar DirectDiscount
-        step = mpCheckout.viewModel.nextStep()
-        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
-
         // 3. Validate preference
         step = mpCheckout.viewModel.nextStep()
         XCTAssertEqual(CheckoutStep.ACTION_VALIDATE_PREFERENCE, step)
@@ -658,10 +638,6 @@ class PaymentMethodPluginFlowTest : BaseTest {
         // 1. Search Preference
         step = mpCheckout.viewModel.nextStep()
         XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
-
-        //2. Buscar DirectDiscount
-        step = mpCheckout.viewModel.nextStep()
-        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
 
         // 3. Validate preference
         step = mpCheckout.viewModel.nextStep()
@@ -783,10 +759,6 @@ class PaymentMethodPluginFlowTest : BaseTest {
 
         XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
 
-        //2. Buscar DirectDiscount
-        step = mpCheckout.viewModel.nextStep()
-        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
-
         // 3. Validate preference
         step = mpCheckout.viewModel.nextStep()
         XCTAssertEqual(CheckoutStep.ACTION_VALIDATE_PREFERENCE, step)
@@ -861,12 +833,7 @@ class PaymentMethodPluginFlowTest : BaseTest {
 
         // 1. Search Preference
         step = mpCheckout.viewModel.nextStep()
-
         XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
-
-        //2. Buscar DirectDiscount
-        step = mpCheckout.viewModel.nextStep()
-        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
 
         // 3. Validate preference
         step = mpCheckout.viewModel.nextStep()
@@ -938,12 +905,7 @@ class PaymentMethodPluginFlowTest : BaseTest {
 
         // 1. Search Preference
         step = mpCheckout.viewModel.nextStep()
-
         XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
-
-        //2. Buscar DirectDiscount
-        step = mpCheckout.viewModel.nextStep()
-        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
 
         // 3. Validate preference
         step = mpCheckout.viewModel.nextStep()
@@ -1019,12 +981,8 @@ class PaymentMethodPluginFlowTest : BaseTest {
 
         // 1. Search Preference
         step = mpCheckout.viewModel.nextStep()
-
         XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
 
-        //2. Buscar DirectDiscount
-        step = mpCheckout.viewModel.nextStep()
-        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
 
         // 3. Validate preference
         step = mpCheckout.viewModel.nextStep()
@@ -1099,12 +1057,7 @@ class PaymentMethodPluginFlowTest : BaseTest {
 
         // 1. Search Preference
         step = mpCheckout.viewModel.nextStep()
-
         XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
-
-        //2. Buscar DirectDiscount
-        step = mpCheckout.viewModel.nextStep()
-        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
 
         // 3. Validate preference
         step = mpCheckout.viewModel.nextStep()
@@ -1164,12 +1117,7 @@ class PaymentMethodPluginFlowTest : BaseTest {
 
         // 1. Search Preference
         step = mpCheckout.viewModel.nextStep()
-
         XCTAssertEqual(CheckoutStep.SERVICE_GET_PREFERENCE, step)
-
-        //2. Buscar DirectDiscount
-        step = mpCheckout.viewModel.nextStep()
-        XCTAssertEqual(CheckoutStep.SERVICE_GET_DIRECT_DISCOUNT, step)
 
         // 3. Validate preference
         step = mpCheckout.viewModel.nextStep()

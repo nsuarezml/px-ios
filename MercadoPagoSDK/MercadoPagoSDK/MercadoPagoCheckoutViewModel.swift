@@ -565,7 +565,7 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
     }
 
     internal func getFinalAmount() -> Double {
-        if MercadoPagoCheckoutViewModel.flowPreference.isDiscountEnable(), let discount = paymentData.discount {
+        if isDiscountEnable(), let discount = paymentData.discount {
             return discount.newAmount()
         } else {
             return self.checkoutPreference.getAmount()
