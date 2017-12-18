@@ -19,9 +19,7 @@ class PaymentPluginViewController: UIViewController {
     //MARK: Lifecycle.
     override func viewDidLoad() {
         super.viewDidLoad()
-        perform(#selector(PaymentPluginViewController.fakeFailurePaymentExample), with: nil, afterDelay: 2.0)
     }
-
 }
 
 //MARK: Plugin implementation.
@@ -33,6 +31,11 @@ extension PaymentPluginViewController: PXPluginComponent {
     
     func titleForNavigationBar() -> String? {
         return "Procesando el pago..."
+    }
+    
+    func renderDidFinish() {
+        loadingView.startAnimating()
+        perform(#selector(PaymentPluginViewController.fakeFailurePaymentExample), with: nil, afterDelay: 2.0)
     }
 }
 
