@@ -224,8 +224,10 @@ class IssuerAdditionalStepViewModel: AdditionalStepViewModel {
 class PayerCostAdditionalStepViewModel: AdditionalStepViewModel {
 
     let cardViewRect = CGRect(x: 0, y: 0, width: 100, height: 30)
+    var discountEnabled: Bool
 
-    init(amount: Double, token: CardInformationForm?, paymentMethod: PaymentMethod, dataSource: [Cellable], discount: DiscountCoupon? = nil, email: String? = nil, mercadoPagoServicesAdapter: MercadoPagoServicesAdapter) {
+    init(amount: Double, token: CardInformationForm?, paymentMethod: PaymentMethod, dataSource: [Cellable], discount: DiscountCoupon? = nil, email: String? = nil, mercadoPagoServicesAdapter: MercadoPagoServicesAdapter, discountEnable: Bool = true) {
+        self.discountEnabled = discountEnable
         super.init(screenTitle: "¿En cuántas cuotas?".localized, cardSectionVisible: true, cardSectionView: CardFrontView(frame: self.cardViewRect), totalRowVisible: true, showBankInsterestWarning: true, amount: amount, token: token, paymentMethods: [paymentMethod], dataSource: dataSource, discount: discount, email: email, mercadoPagoServicesAdapter: mercadoPagoServicesAdapter)
     }
 
@@ -241,7 +243,7 @@ class PayerCostAdditionalStepViewModel: AdditionalStepViewModel {
     }
 
     override func showDiscountSection() -> Bool {
-        return MercadoPagoCheckoutViewModel.flowPreference.isDiscountEnable()
+        return discountEnabled
     }
 
     override func isBankInterestCellFor(indexPath: IndexPath) -> Bool {

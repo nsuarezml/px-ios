@@ -15,14 +15,16 @@ class PaymentResultViewModel: NSObject {
     var checkoutPreference: CheckoutPreference!
 
     var contentCell: PaymentResultContentView?
+    var discountEnable: Bool
 
     var paymentResultScreenPreference = PaymentResultScreenPreference()
 
-    init(paymentResult: PaymentResult, checkoutPreference: CheckoutPreference, callback : @escaping ( _ status: PaymentResult.CongratsState) -> Void, paymentResultScreenPreference: PaymentResultScreenPreference = PaymentResultScreenPreference()) {
+    init(paymentResult: PaymentResult, checkoutPreference: CheckoutPreference, callback : @escaping ( _ status: PaymentResult.CongratsState) -> Void, paymentResultScreenPreference: PaymentResultScreenPreference = PaymentResultScreenPreference(), discountEnable: Bool = true) {
         self.paymentResult = paymentResult
         self.callback = callback
         self.checkoutPreference = checkoutPreference
         self.paymentResultScreenPreference = paymentResultScreenPreference
+        self.discountEnable = discountEnable
     }
 
     open func getContentCell() -> PaymentResultContentView {

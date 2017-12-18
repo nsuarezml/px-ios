@@ -11,7 +11,6 @@ import Foundation
 class PaymentVaultViewModel: NSObject {
 
     var groupName: String?
-
     var amount: Double
     var paymentPreference: PaymentPreference?
     var email: String
@@ -21,19 +20,16 @@ class PaymentVaultViewModel: NSObject {
     var paymentMethodPlugins = [PXPaymentMethodPlugin]()
     var paymentMethods: [PaymentMethod]!
     var defaultPaymentOption: PaymentMethodSearchItem?
-
     var displayItems = [PaymentOptionDrawable]()
-
     var discount: DiscountCoupon?
-
     var customerId: String?
-
     var couponCallback: ((DiscountCoupon) -> Void)?
     var mercadoPagoServicesAdapter: MercadoPagoServicesAdapter!
+    var discountEnable: Bool
 
     internal var isRoot = true
 
-    init(amount: Double, paymentPrefence: PaymentPreference?, paymentMethodOptions: [PaymentMethodOption], customerPaymentOptions: [CardInformation]?, paymentMethodPlugins: [PXPaymentMethodPlugin], groupName: String? = nil, isRoot: Bool, discount: DiscountCoupon? = nil, email: String, mercadoPagoServicesAdapter: MercadoPagoServicesAdapter, callbackCancel: (() -> Void)? = nil, couponCallback: ((DiscountCoupon) -> Void)? = nil) {
+    init(amount: Double, paymentPrefence: PaymentPreference?, paymentMethodOptions: [PaymentMethodOption], customerPaymentOptions: [CardInformation]?, paymentMethodPlugins: [PXPaymentMethodPlugin], groupName: String? = nil, isRoot: Bool, discount: DiscountCoupon? = nil, email: String, mercadoPagoServicesAdapter: MercadoPagoServicesAdapter, discountEnable: Bool = true, callbackCancel: (() -> Void)? = nil, couponCallback: ((DiscountCoupon) -> Void)? = nil) {
         self.amount = amount
         self.email = email
         self.groupName = groupName
@@ -45,7 +41,7 @@ class PaymentVaultViewModel: NSObject {
         self.isRoot = isRoot
         self.couponCallback = couponCallback
         self.mercadoPagoServicesAdapter = mercadoPagoServicesAdapter
-
+        self.discountEnable = discountEnable
         super.init()
         self.populateDisplayItemsDrawable()
     }
@@ -182,5 +178,27 @@ extension PaymentVaultViewModel {
             }
         }
         return 0
+    }
+}
+
+// MARK: Table View logic
+extension PaymentVaultViewModel {
+    func isHeaderSection(section: Int) -> Bool {
+        return section == 0
+    }
+    func isCouponSection(section: Int) -> Bool {
+        return discountEnable && section == 1
+    }
+
+    func isGroupSection(section: Int) -> Bool {
+        let sectionGroup = discountEnable ? 2 : 1
+        return sectionGroup == section
+    }
+
+    func getNumberOfSections() -> Int {
+        if discountEnable {
+            return 3
+        }
+        return 2
     }
 }

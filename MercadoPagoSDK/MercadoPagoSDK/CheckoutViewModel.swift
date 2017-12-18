@@ -16,20 +16,21 @@ open class CheckoutViewModel: NSObject {
     var paymentOptionSelected: PaymentMethodOption
 
     var discount: DiscountCoupon?
+    var discountEnable: Bool
 
     var reviewScreenPreference: ReviewScreenPreference!
-
     var summaryComponent: SummaryComponent!
 
     public static var CUSTOMER_ID = ""
 
-    public init(checkoutPreference: CheckoutPreference, paymentData: PaymentData, paymentOptionSelected: PaymentMethodOption, discount: DiscountCoupon? = nil, reviewScreenPreference: ReviewScreenPreference = ReviewScreenPreference()) {
+    public init(checkoutPreference: CheckoutPreference, paymentData: PaymentData, paymentOptionSelected: PaymentMethodOption, discount: DiscountCoupon? = nil, reviewScreenPreference: ReviewScreenPreference = ReviewScreenPreference(), discountEnable: Bool = true) {
         CheckoutViewModel.CUSTOMER_ID = ""
         self.preference = checkoutPreference
         self.paymentData = paymentData
         self.discount = discount
         self.paymentOptionSelected = paymentOptionSelected
         self.reviewScreenPreference = reviewScreenPreference
+        self.discountEnable = discountEnable
         super.init()
         let screenWidth = UIScreen.main.bounds.width
         self.summaryComponent = SummaryComponent(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 0), summary: self.getValidSummary(amount: checkoutPreference.getAmount()), paymentData: self.paymentData, totalAmount:(self.preference?.getAmount())!)
@@ -140,7 +141,7 @@ open class CheckoutViewModel: NSObject {
         if let payerCost = paymentData.getPayerCost() {
             return payerCost.totalAmount
         }
-        if MercadoPagoCheckoutViewModel.flowPreference.isDiscountEnable(), let discount = paymentData.discount {
+        if discountEnable, let discount = paymentData.discount {
             return discount.newAmount()
         }
         return self.preference!.getAmount()

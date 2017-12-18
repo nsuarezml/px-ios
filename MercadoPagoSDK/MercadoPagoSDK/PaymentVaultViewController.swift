@@ -261,19 +261,19 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
         if self.loadingGroups {
             return 0
         }
-        return MercadoPagoCheckoutViewModel.flowPreference.isDiscountEnable() ? 3 : 2
+        return self.viewModel.getNumberOfSections()
     }
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        if isGroupSection(section: indexPath.section) {
+        if self.viewModel.isGroupSection(section: indexPath.section) {
 
             let paymentSearchItemSelected = self.viewModel.getPaymentMethodOption(row: indexPath.row) as! PaymentMethodOption
             collectionView.deselectItem(at: indexPath, animated: true)
             collectionView.allowsSelection = false
             self.callback!(paymentSearchItemSelected)
 
-        } else if isCouponSection(section: indexPath.section) {
+        } else if self.viewModel.isCouponSection(section: indexPath.section) {
             if let coupon = self.viewModel.discount {
                 let step = CouponDetailViewController(coupon: coupon)
                 self.present(step, animated: false, completion: {})
@@ -290,29 +290,16 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
         }
     }
 
-    func isHeaderSection(section: Int) -> Bool {
-        return section == 0
-    }
-    func isCouponSection(section: Int) -> Bool {
-        return MercadoPagoCheckoutViewModel.flowPreference.isDiscountEnable() && section == 1
-    }
-
-    func isGroupSection(section: Int) -> Bool {
-        let sectionGroup = MercadoPagoCheckoutViewModel.flowPreference.isDiscountEnable() ? 2 :1
-
-        return sectionGroup == section
-    }
-
     public func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
 
             if loadingGroups {
                 return 0
             }
-            if isHeaderSection(section: section) {
+            if self.viewModel.isHeaderSection(section: section) {
                 return 1
             }
-            if isCouponSection(section: section) {
+            if self.viewModel.isCouponSection(section: section) {
                 return 1
             }
 
@@ -330,7 +317,7 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
             self.titleSectionReference = cell
             titleCell = cell
             return cell
-        } else if isGroupSection(section: indexPath.section) {
+        } else if self.viewModel.isGroupSection(section: indexPath.section) {
 
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCollectionCell",
 
@@ -342,7 +329,7 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
 
             return cell
 
-        } else if isCouponSection(section: indexPath.section) {
+        } else if self.viewModel.isCouponSection(section: indexPath.section) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponCell", for: indexPath)
             cell.contentView.viewWithTag(1)?.removeFromSuperview()
             let discountBody = DiscountBodyCell(frame: CGRect(x: 0, y: 0, width : view.frame.width, height : DiscountBodyCell.HEIGHT), coupon: self.viewModel.discount, amount:self.viewModel.amount, topMargin: 15)
@@ -370,10 +357,10 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
         let availableWidth = view.frame.width - paddingSpace
 
         titleCellHeight = 82
-        if isHeaderSection(section: indexPath.section) {
+        if self.viewModel.isHeaderSection(section: indexPath.section) {
             return CGSize(width : view.frame.width, height : titleCellHeight)
         }
-        if isCouponSection(section: indexPath.section) {
+        if self.viewModel.isCouponSection(section: indexPath.section) {
             return CGSize(width : view.frame.width, height : DiscountBodyCell.HEIGHT + 20) // Add 20 px to separate sections
         }
 
@@ -427,7 +414,7 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
     public func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        if isCouponSection(section: section) {
+        if self.viewModel.isCouponSection(section: section) {
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)

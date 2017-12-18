@@ -179,7 +179,7 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
         if let optionSelected = paymentOptionSelected {
             groupName = optionSelected.getId()
         }
-        return PaymentVaultViewModel(amount: self.getAmount(), paymentPrefence: getPaymentPreferences(), paymentMethodOptions: self.paymentMethodOptions!, customerPaymentOptions: self.customPaymentOptions, paymentMethodPlugins: paymentMethodPlugins, groupName: groupName, isRoot : rootVC, discount: self.paymentData.discount, email: self.checkoutPreference.payer.email, mercadoPagoServicesAdapter: mercadoPagoServicesAdapter, couponCallback: {[weak self] (discount) in
+        return PaymentVaultViewModel(amount: self.getAmount(), paymentPrefence: getPaymentPreferences(), paymentMethodOptions: self.paymentMethodOptions!, customerPaymentOptions: self.customPaymentOptions, paymentMethodPlugins: paymentMethodPlugins, groupName: groupName, isRoot : rootVC, discount: self.paymentData.discount, email: self.checkoutPreference.payer.email, mercadoPagoServicesAdapter: mercadoPagoServicesAdapter, discountEnable: isDiscountEnable(), couponCallback: {[weak self] (discount) in
             guard let object = self else {
                 return
             }
@@ -216,7 +216,7 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
             }
         }
 
-        return PayerCostAdditionalStepViewModel(amount: self.getAmount(), token: cardInformation, paymentMethod: paymentMethod, dataSource: payerCosts!, discount: self.paymentData.discount, email: self.checkoutPreference.payer.email, mercadoPagoServicesAdapter: mercadoPagoServicesAdapter)
+        return PayerCostAdditionalStepViewModel(amount: self.getAmount(), token: cardInformation, paymentMethod: paymentMethod, dataSource: payerCosts!, discount: self.paymentData.discount, email: self.checkoutPreference.payer.email, mercadoPagoServicesAdapter: mercadoPagoServicesAdapter, discountEnable: isDiscountEnable())
     }
 
     public func savedCardSecurityCodeViewModel() -> SecurityCodeViewModel {
@@ -237,7 +237,7 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
     }
 
     public func checkoutViewModel() -> CheckoutViewModel {
-        let checkoutViewModel = CheckoutViewModel(checkoutPreference: self.checkoutPreference, paymentData : self.paymentData, paymentOptionSelected : self.paymentOptionSelected!, discount: paymentData.discount, reviewScreenPreference: reviewScreenPreference)
+        let checkoutViewModel = CheckoutViewModel(checkoutPreference: self.checkoutPreference, paymentData : self.paymentData, paymentOptionSelected : self.paymentOptionSelected!, discount: paymentData.discount, reviewScreenPreference: reviewScreenPreference, discountEnable: isDiscountEnable())
         return checkoutViewModel
     }
 
@@ -565,7 +565,7 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
     }
 
     internal func getFinalAmount() -> Double {
-        if MercadoPagoCheckoutViewModel.flowPreference.isDiscountEnable(), let discount = paymentData.discount {
+        if isDiscountEnable(), let discount = paymentData.discount {
             return discount.newAmount()
         } else {
             return self.checkoutPreference.getAmount()
@@ -704,6 +704,10 @@ open class MercadoPagoCheckoutViewModel: NSObject, NSCopying {
             return true
         }
         return false
+    }
+
+    func isDiscountEnable() -> Bool {
+        return MercadoPagoCheckoutViewModel.flowPreference.isDiscountEnable() && self.paymentMethodPlugins.isEmpty
     }
 }
 

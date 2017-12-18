@@ -32,7 +32,7 @@ class ApprovedTableViewCell: UITableViewCell {
         setFonts()
     }
 
-    func fillCell(paymentResult: PaymentResult, checkoutPreference: CheckoutPreference?, paymentResultScreenPreference: PaymentResultScreenPreference) {
+    func fillCell(paymentResult: PaymentResult, checkoutPreference: CheckoutPreference?, paymentResultScreenPreference: PaymentResultScreenPreference, discountEnable: Bool = true) {
 
         let currency = MercadoPagoContext.getCurrency()
 
@@ -48,7 +48,7 @@ class ApprovedTableViewCell: UITableViewCell {
                 fillInterestLabel(payerCost: payerCost)
                 fillTotalLabel(payerCost: payerCost, currency: currency)
 
-            } else  if MercadoPagoCheckoutViewModel.flowPreference.isDiscountEnable(), let discount = paymentResult.paymentData?.discount {
+            } else  if discountEnable, let discount = paymentResult.paymentData?.discount {
                 fillInstallmentLabel(amount: discount.newAmount(), currency: currency)
                 paymentMethodTotalConstraint.constant = 0
             } else if let amount = checkoutPreference?.getAmount() {
@@ -70,7 +70,7 @@ class ApprovedTableViewCell: UITableViewCell {
 
         fillStatementDescriptionLabel(description: paymentResult.statementDescription)
 
-        if MercadoPagoCheckoutViewModel.flowPreference.isDiscountEnable(), let discount = paymentResult.paymentData?.discount {
+        if discountEnable, let discount = paymentResult.paymentData?.discount {
             let screenSize: CGRect = UIScreen.main.bounds
             let screenWidth = screenSize.width
             let discountBody = DiscountBodyCell(frame: CGRect(x: 0, y: 0, width : screenWidth, height : DiscountBodyCell.HEIGHT), coupon:discount, amount:(checkoutPreference?.getAmount())!, addBorder: false, hideArrow: true)
