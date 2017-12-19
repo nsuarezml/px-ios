@@ -13,6 +13,7 @@ public protocol PXPluginComponent: PXComponetizable {
     @objc optional func shouldSkip(pluginStore: PXCheckoutStore) -> Bool
     @objc optional func didReceive(pluginStore: PXCheckoutStore)
     @objc optional func renderDidFinish()
+    @objc optional func navigationHandlerForPlugin(navigationHandler: PXPluginNavigationHandler)
     @objc optional func titleForNavigationBar() -> String?
     @objc optional func colorForNavigationBar() -> UIColor?
     @objc optional func shouldShowBackArrow() -> Bool

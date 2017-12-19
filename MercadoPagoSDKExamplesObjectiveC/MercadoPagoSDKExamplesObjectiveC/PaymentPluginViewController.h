@@ -10,5 +10,4 @@
 @import MercadoPagoSDK;
 
 @interface PaymentPluginViewController : UIViewController <PXPluginComponent>
-@property (strong, nonatomic) PXPluginNavigationHandler * navigationHandler;
 @end

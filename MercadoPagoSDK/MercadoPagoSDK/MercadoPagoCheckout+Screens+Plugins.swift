@@ -25,6 +25,9 @@ extension MercadoPagoCheckout {
         if self.viewModel.copyViewModelAndAssignToCheckoutStore() {
             paymentPluginComponent.didReceive?(pluginStore: PXCheckoutStore.sharedInstance)
         }
+        
+        // Create navigation handler.
+        paymentPluginComponent.navigationHandlerForPlugin?(navigationHandler: PXPluginNavigationHandler(withCheckout: self))
 
         if let navTitle = paymentPluginComponent.titleForNavigationBar?() {
             containerVC.title = navTitle
@@ -62,6 +65,9 @@ extension MercadoPagoCheckout {
         if self.viewModel.copyViewModelAndAssignToCheckoutStore() {
             paymentMethodConfigPluginComponent.didReceive?(pluginStore: PXCheckoutStore.sharedInstance)
         }
+        
+        // Create navigation handler.
+        paymentMethodConfigPluginComponent.navigationHandlerForPlugin?(navigationHandler: PXPluginNavigationHandler(withCheckout: self))
 
         if let navTitle = paymentMethodConfigPluginComponent.titleForNavigationBar?() {
             containerVC.title = navTitle

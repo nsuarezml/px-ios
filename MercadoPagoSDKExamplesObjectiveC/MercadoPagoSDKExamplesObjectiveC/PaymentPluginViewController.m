@@ -10,6 +10,8 @@
 
 @interface PaymentPluginViewController ()
 
+@property (strong, nonatomic) PXPluginNavigationHandler * pluginNavigationHandler;
+
 @end
 
 @implementation PaymentPluginViewController
@@ -25,14 +27,18 @@
 
 - (void)renderDidFinish {
     
-    [_navigationHandler showLoading];
+    [self.pluginNavigationHandler showLoading];
     
     double delay = 3.0;
     dispatch_time_t tm = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
     dispatch_after(tm, dispatch_get_main_queue(), ^(void){
-        [_navigationHandler hideLoading];
-        [_navigationHandler didFinishPaymentWithPaymentStatus:RemotePaymentStatusREJECTED receiptId:@"ABCD"];
+        [self.pluginNavigationHandler hideLoading];
+        [self.pluginNavigationHandler didFinishPaymentWithPaymentStatus:RemotePaymentStatusREJECTED receiptId:@"ABCD"];
     });
+}
+
+- (void)navigationHandlerForPluginWithNavigationHandler:(PXPluginNavigationHandler *)navigationHandler {
+    self.pluginNavigationHandler = navigationHandler;
 }
 
 @end

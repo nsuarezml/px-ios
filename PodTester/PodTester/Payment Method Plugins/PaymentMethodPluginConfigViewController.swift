@@ -11,7 +11,7 @@ import MercadoPagoSDK
 
 class PaymentMethodPluginConfigViewController: UIViewController {
 
-    var navigationHandler: PXPluginNavigationHandler?
+    fileprivate var navigationHandler: PXPluginNavigationHandler?
 
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var messageLabel: UILabel!
@@ -58,5 +58,9 @@ extension PaymentMethodPluginConfigViewController: PXPluginComponent {
 
     func titleForNavigationBar() -> String? {
         return "Pagar con Bitcoin"
+    }
+    
+    func navigationHandlerForPlugin(navigationHandler: PXPluginNavigationHandler) {
+        self.navigationHandler = navigationHandler
     }
 }

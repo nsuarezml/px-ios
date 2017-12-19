@@ -14,7 +14,7 @@ class PaymentPluginViewController: UIViewController {
     //MARK: Outlets.
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
 
-    var pluginNaviagtionHandler: PXPluginNavigationHandler?
+    fileprivate var navigationHandler: PXPluginNavigationHandler?
 
     //MARK: Lifecycle.
     override func viewDidLoad() {
@@ -37,6 +37,10 @@ extension PaymentPluginViewController: PXPluginComponent {
         loadingView.startAnimating()
         perform(#selector(PaymentPluginViewController.fakeFailurePaymentExample), with: nil, afterDelay: 2.0)
     }
+    
+    func navigationHandlerForPlugin(navigationHandler: PXPluginNavigationHandler) {
+        self.navigationHandler = navigationHandler
+    }
 }
 
 //MARK: Actions.
@@ -44,7 +48,7 @@ extension PaymentPluginViewController {
     
     func fakeFailurePaymentExample() {
         loadingView.stopAnimating()
-        pluginNaviagtionHandler?.showFailure(message: "Opps, algo salio mal", errorDetails: "Error al procesar pago.", retryButtonCallback: {
+        navigationHandler?.showFailure(message: "Opps, algo salio mal", errorDetails: "Error al procesar pago.", retryButtonCallback: {
             self.loadingView.startAnimating()
             self.perform(#selector(PaymentPluginViewController.finishPaymentSuccessExample), with: nil, afterDelay: 4.0)
         })
@@ -52,6 +56,6 @@ extension PaymentPluginViewController {
     
     func finishPaymentSuccessExample() {
         loadingView.stopAnimating()
-        self.pluginNaviagtionHandler?.didFinishPayment(paymentStatus: .REJECTED, receiptId: "123")
+        navigationHandler?.didFinishPayment(paymentStatus: .REJECTED, receiptId: "123")
     }
 }

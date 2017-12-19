@@ -137,13 +137,12 @@
                                 @"PaymentMethodPlugins" bundle:[NSBundle mainBundle]];
     
     PaymentPluginViewController *makePaymentComponent = [storyboard instantiateViewControllerWithIdentifier:@"paymentPlugin"];
-    makePaymentComponent.navigationHandler = [[PXPluginNavigationHandler alloc] initWithCheckout:self.mpCheckout];
     
     PXPaymentMethodPlugin * bitcoinPaymentMethodPlugin = [[PXPaymentMethodPlugin alloc] initWithId:@"bitcoin_payment" name:@"Bitcoin" image:[UIImage imageNamed:@"bitcoin_payment"] description:@"" paymentPlugin:makePaymentComponent];
     
     // Payment method config plugin component.
     PaymentMethodPluginConfigViewController *configPaymentComponent = [storyboard instantiateViewControllerWithIdentifier:@"paymentMethodConfigPlugin"];
-    configPaymentComponent.navigationHandler = [[PXPluginNavigationHandler alloc] initWithCheckout:self.mpCheckout];
+
     [bitcoinPaymentMethodPlugin setPaymentMethodConfigWithPlugin:configPaymentComponent];
     
     NSMutableArray *paymentMethodPlugins = [[NSMutableArray alloc] init];

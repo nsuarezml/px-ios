@@ -10,6 +10,7 @@
 
 @interface PaymentMethodPluginConfigViewController ()
 
+@property (strong, nonatomic) PXPluginNavigationHandler * pluginNavigationHandler;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UITextField *walletTextField;
 
@@ -47,9 +48,9 @@
 #pragma mark - Selectors/handlers
 - (IBAction)didTapOnNext {
     
-    if (self.navigationHandler != nil && [_walletTextField.text length] > 0) {
+    if (self.pluginNavigationHandler != nil && [_walletTextField.text length] > 0) {
         _messageLabel.text = nil;
-        [self.navigationHandler next];
+        [self.pluginNavigationHandler next];
     } else {
         _messageLabel.text = @"Debes completar este dato.";
     }
@@ -68,6 +69,10 @@
 - (void)renderDidFinish {
     _messageLabel.text = nil;
     [_walletTextField becomeFirstResponder];
+}
+
+- (void)navigationHandlerForPluginWithNavigationHandler:(PXPluginNavigationHandler *)navigationHandler {
+    self.pluginNavigationHandler = navigationHandler;
 }
 
 @end
