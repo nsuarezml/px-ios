@@ -1,5 +1,5 @@
 //
-//  PXActionHandler.swift
+//  PXHookNavigationHandler.swift
 //  MercadoPagoSDK
 //
 //  Created by Eden Torres on 11/28/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class PXActionHandler: NSObject {
+open class PXHookNavigationHandler: NSObject {
 
     private var checkout: MercadoPagoCheckout?
     private var targetHook: PXHookStep?

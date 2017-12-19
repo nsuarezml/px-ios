@@ -14,6 +14,7 @@ public protocol PXHookComponent: PXComponetizable {
     func render() -> UIView
     @objc optional func shouldSkipHook(hookStore: PXCheckoutStore) -> Bool
     @objc optional func didReceive(hookStore: PXCheckoutStore)
+    @objc optional func navigationHandlerForHook(navigationHandler: PXHookNavigationHandler)
     @objc optional func renderDidFinish()
     @objc optional func titleForNavigationBar() -> String?
     @objc optional func colorForNavigationBar() -> UIColor?

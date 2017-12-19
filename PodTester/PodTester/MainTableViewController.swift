@@ -206,13 +206,8 @@ class MainTableViewController: UITableViewController {
         
          // Define hooks.
         let firstHook = HooksNavigationManager().getFirstHook()
-        firstHook.actionHandler = PXActionHandler(withCheckout: checkout, targetHook: firstHook.hookForStep())
-        
         let secondHook = HooksNavigationManager().getSecondHook()
-        secondHook.actionHandler = PXActionHandler(withCheckout: checkout, targetHook: secondHook.hookForStep())
-        
         let thirdHook = HooksNavigationManager().getThirdHook()
-        thirdHook.actionHandler = PXActionHandler(withCheckout: checkout, targetHook: thirdHook.hookForStep())
 
         if let color = self.color {
             let decorationPref: DecorationPreference = DecorationPreference(baseColor: color)

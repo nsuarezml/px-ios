@@ -11,7 +11,7 @@ import MercadoPagoSDK
 
 class ThirdHookViewController: UIViewController {
     
-    var actionHandler: PXActionHandler?
+    fileprivate var navigationHandler: PXHookNavigationHandler?
     
     var targetHookStore: PXCheckoutStore?
     
@@ -22,7 +22,7 @@ class ThirdHookViewController: UIViewController {
     }
     
     @IBAction func didTapOnNext() {
-        actionHandler?.next()
+        navigationHandler?.next()
     }
 }
 
@@ -58,6 +58,10 @@ extension ThirdHookViewController: PXHookComponent {
             return true
         }
         return false
+    }
+
+    func navigationHandlerForHook(navigationHandler: PXHookNavigationHandler) {
+        self.navigationHandler = navigationHandler
     }
 }
 

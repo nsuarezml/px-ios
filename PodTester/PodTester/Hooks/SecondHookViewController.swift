@@ -11,7 +11,7 @@ import MercadoPagoSDK
 
 class SecondHookViewController: UIViewController {
     
-    var actionHandler: PXActionHandler?
+    fileprivate var navigationHandler: PXHookNavigationHandler?
     
     var targetHookStore: PXCheckoutStore?
     
@@ -20,13 +20,13 @@ class SecondHookViewController: UIViewController {
     }
     
     @IBAction func didTapOnNext() {
-        actionHandler?.next()
+        navigationHandler?.next()
     }
     
     @IBAction func didTapOnloadingExample() {
-        actionHandler?.showLoading()
+        navigationHandler?.showLoading()
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            self.actionHandler?.hideLoading()
+            self.navigationHandler?.hideLoading()
         })
     }
     
@@ -74,6 +74,10 @@ extension SecondHookViewController: PXHookComponent {
             return true
         }
         return false
+    }
+
+    func navigationHandlerForHook(navigationHandler: PXHookNavigationHandler) {
+        self.navigationHandler = navigationHandler
     }
 }
 

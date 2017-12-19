@@ -15,6 +15,8 @@ extension MercadoPagoCheckout {
             let vc = MercadoPagoUIViewController()
             vc.view.backgroundColor = .clear
 
+            targetHook.navigationHandlerForHook?(navigationHandler: PXHookNavigationHandler(withCheckout: self, targetHook: targetHook.hookForStep()))
+
             vc.callbackCancel = {
                 self.viewModel.wentBackFrom(hook: hookStep)
             }
