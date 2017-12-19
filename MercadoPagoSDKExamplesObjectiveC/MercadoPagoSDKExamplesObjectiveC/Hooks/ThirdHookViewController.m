@@ -9,6 +9,7 @@
 #import "ThirdHookViewController.h"
 
 @interface ThirdHookViewController ()
+@property (strong, nonatomic) PXHookNavigationHandler * navigationHandler;
 @end
 
 @implementation ThirdHookViewController
@@ -19,8 +20,8 @@
 }
 
 - (IBAction)didTapOnNext {
-    if (self.actionHandler != nil) {
-        [self.actionHandler next];
+    if (self.navigationHandler != nil) {
+        [self.navigationHandler next];
     }
 }
 
@@ -58,6 +59,10 @@
 
 - (UIColor * _Nullable)colorForNavigationBar {
     return nil;
+}
+
+- (void)navigationHandlerForHookWithNavigationHandler:(PXHookNavigationHandler *)navigationHandler {
+    self.navigationHandler = navigationHandler;
 }
 
 @end

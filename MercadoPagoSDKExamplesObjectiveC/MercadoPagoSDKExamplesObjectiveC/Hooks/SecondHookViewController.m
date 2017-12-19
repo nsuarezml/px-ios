@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *paymentMethodLabel;
 @property PaymentData *paymentData;
+@property (strong, nonatomic) PXHookNavigationHandler * navigationHandler;
 
 @end
 
@@ -23,8 +24,8 @@
 }
 
 - (IBAction)didTapOnNext {
-    if (self.actionHandler != nil) {
-        [self.actionHandler next];
+    if (self.navigationHandler != nil) {
+        [self.navigationHandler next];
     }
 }
 
@@ -67,6 +68,9 @@
 
 - (UIColor * _Nullable)colorForNavigationBar {
     return nil;
+}
+- (void)navigationHandlerForHookWithNavigationHandler:(PXHookNavigationHandler *)navigationHandler {
+    self.navigationHandler = navigationHandler;
 }
 
 @end

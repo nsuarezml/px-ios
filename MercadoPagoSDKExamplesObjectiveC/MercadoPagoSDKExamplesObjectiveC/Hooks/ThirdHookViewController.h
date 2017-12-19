@@ -10,5 +10,4 @@
 @import MercadoPagoSDK;
 
 @interface ThirdHookViewController : UIViewController  <PXHookComponent>
-@property (strong, nonatomic) PXActionHandler * actionHandler;
 @end

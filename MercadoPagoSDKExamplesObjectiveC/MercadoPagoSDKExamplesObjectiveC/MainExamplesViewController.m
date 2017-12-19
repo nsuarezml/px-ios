@@ -115,14 +115,8 @@
                                 @"Hooks" bundle:[NSBundle mainBundle]];
 
     FirstHookViewController *firstHook = [storyboard instantiateViewControllerWithIdentifier:@"firstHook"];
-    firstHook.actionHandler = [[PXActionHandler alloc] initWithCheckout:self.mpCheckout targetHook:[firstHook hookForStep]];
-
     SecondHookViewController *secondHook = [storyboard instantiateViewControllerWithIdentifier:@"secondHook"];
-    secondHook.actionHandler = [[PXActionHandler alloc] initWithCheckout:self.mpCheckout targetHook:[secondHook hookForStep]];
-
     ThirdHookViewController *thirdHook = [storyboard instantiateViewControllerWithIdentifier:@"thirdHook"];
-    thirdHook.actionHandler = [[PXActionHandler alloc] initWithCheckout:self.mpCheckout targetHook:[thirdHook hookForStep]];
-
 
     [flowPref addHookToFlowWithHook:firstHook];
     [flowPref addHookToFlowWithHook:secondHook];

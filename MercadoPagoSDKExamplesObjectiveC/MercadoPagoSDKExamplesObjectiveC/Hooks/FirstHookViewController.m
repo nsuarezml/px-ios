@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+@property (strong, nonatomic) PXHookNavigationHandler * navigationHandler;
 
 @end
 
@@ -46,21 +47,21 @@
 #pragma mark - Selectors/handlers
 - (IBAction)didTapOnNext {
     
-    if (self.actionHandler != nil) {
+    if (self.navigationHandler != nil) {
         
         _messageLabel.text = nil;
         
         if  ([self codeIsValid]) {
             
             // Loading example
-            [self.actionHandler showLoading];
+            [self.navigationHandler showLoading];
             
             double delay = 3.0;
             dispatch_time_t tm = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
             dispatch_after(tm, dispatch_get_main_queue(), ^(void){
                 // Hide loading and next action example
-                [self.actionHandler hideLoading];
-                [self.actionHandler next];
+                [self.navigationHandler hideLoading];
+                [self.navigationHandler next];
             });
         }
     }
@@ -113,6 +114,10 @@
 
 - (UIColor * _Nullable)colorForNavigationBar {
     return [UIColor fromHex:@"#CA254D"];
+}
+
+- (void)navigationHandlerForHookWithNavigationHandler:(PXHookNavigationHandler *)navigationHandler {
+    self.navigationHandler = navigationHandler;
 }
 
 @end
