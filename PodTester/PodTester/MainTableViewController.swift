@@ -184,7 +184,18 @@ class MainTableViewController: UITableViewController {
     /// Load Checkout
     func loadCheckout(showRyC: Bool = true, setPaymentDataCallback: Bool = false, paymentData: PaymentData? = nil, setPaymentDataConfirmCallback: Bool = false, paymentResult: PaymentResult? = nil) {
         let pref = self.customCheckoutPref != nil ? self.customCheckoutPref :CheckoutPreference(_id: self.prefID)
-        let checkout = MercadoPagoCheckout(publicKey: self.publicKey, accessToken:"APP_USR-1094487241196549-081708-4bc39f94fd147e7ce839c230c93261cb__LA_LC__-145698489", checkoutPreference: pref!, paymentData: paymentData, paymentResult: paymentResult, navigationController: self.navigationController!)
+        
+        // Example DiscountCoupon for Test
+        var discountObj = DiscountCoupon()
+        discountObj._id = "15098"
+        discountObj.name = "Prueba Plugins"
+        discountObj.percent_off = "0"
+        discountObj.amount_off = "15"
+        discountObj.coupon_amount = "15"
+        discountObj.currency_id = "ARS"
+        discountObj.amount = 5000
+        
+        let checkout = MercadoPagoCheckout(publicKey: self.publicKey, accessToken:"APP_USR-1094487241196549-081708-4bc39f94fd147e7ce839c230c93261cb__LA_LC__-145698489", checkoutPreference: pref!, paymentData: paymentData, paymentResult: paymentResult, discount:discountObj, navigationController: self.navigationController!)
         
         // Get Payment plugin
         let paymentPlugin = PaymentMethodPluginsNavigationManager().getPaymentPlugin()
@@ -216,6 +227,7 @@ class MainTableViewController: UITableViewController {
             let decorationPref: DecorationPreference = DecorationPreference(baseColor: UIColor.mpDefaultColor())
             MercadoPagoCheckout.setDecorationPreference(decorationPref)
         }
+        
 
         if String.isNullOrEmpty(self.configJSON) {
 
