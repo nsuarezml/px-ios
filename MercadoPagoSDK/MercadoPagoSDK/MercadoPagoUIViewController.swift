@@ -48,7 +48,6 @@ open class MercadoPagoUIViewController: UIViewController, UIGestureRecognizerDel
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
         self.loadMPStyles()
-        MercadoPagoCheckout.firstViewControllerPushed = true
 
         if shouldHideNavigationBar {
             navigationController?.setNavigationBarHidden(true, animated: false)

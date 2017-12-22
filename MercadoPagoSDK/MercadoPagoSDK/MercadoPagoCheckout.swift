@@ -19,7 +19,6 @@ open class MercadoPagoCheckout: NSObject {
 
     private var currentLoadingView: UIViewController?
 
-    internal static var firstViewControllerPushed = false
     private var rootViewController: UIViewController?
 
     var entro = false
@@ -225,37 +224,44 @@ open class MercadoPagoCheckout: NSObject {
         }
     }
 
-    func presentLoading(animated: Bool = false, completion: (() -> Swift.Void)? = nil) {
-        self.countLoadings += 1
-        if self.countLoadings == 1 {
-            let when = DispatchTime.now() + 0.3
-            DispatchQueue.main.asyncAfter(deadline: when) {
-                if self.countLoadings > 0 && self.currentLoadingView == nil {
-                    self.createCurrentLoading()
-                    self.navigationController.present(self.currentLoadingView!, animated: animated, completion: completion)
-                }
-            }
+    func presentLoading(from:UIView) {
+        
+        if currentLoadingView == nil {
+            currentLoadingView = self.createCurrentLoading()
         }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.currentLoadingView?.view.alpha = 1
+        }, completion: { (finish) in
+        
+        })
+        
+        from.addSubview(self.currentLoadingView!.view)
+    }
+    
+    func presentLoading(animated: Bool = false, completion: (() -> Swift.Void)? = nil) {
     }
 
     func dismissLoading(animated: Bool = false, completion: (() -> Swift.Void)? = nil) {
-        self.countLoadings -= 1
-        if self.currentLoadingView != nil && countLoadings == 0 {
-            self.currentLoadingView!.dismiss(animated: animated, completion: completion)
+        UIView.animate(withDuration: 1.0, animations: {
             self.currentLoadingView?.view.alpha = 0
-            self.currentLoadingView = nil
-        }
+        }, completion: { (finish) in
+            
+        })
     }
 
-    internal func createCurrentLoading() {
+    internal func createCurrentLoading() -> UIViewController? {
         let vcLoading = MPXLoadingViewController()
-        vcLoading.view.backgroundColor = MercadoPagoCheckoutViewModel.decorationPreference.baseColor
-        let loadingInstance = LoadingOverlay.shared.showOverlay(vcLoading.view, backgroundColor: MercadoPagoCheckoutViewModel.decorationPreference.baseColor)
-
+        let loadingInstance = vcLoading.getInstance()
+        
+        vcLoading.view.backgroundColor = .white
+        
         vcLoading.view.addSubview(loadingInstance)
         loadingInstance.bringSubview(toFront: vcLoading.view)
 
-        self.currentLoadingView = vcLoading
+        currentLoadingView = vcLoading
+        
+        return currentLoadingView
     }
 
     internal func pushViewController(viewController: MercadoPagoUIViewController,

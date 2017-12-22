@@ -195,10 +195,6 @@ open class MercadoPagoContext: NSObject {
         return sharedInstance.account_money_available
     }
 
-    open class func shouldDisplayDefaultLoading() -> Bool {
-        return sharedInstance.display_default_loading
-    }
-
     open class func paymentKey() -> String {
         if sharedInstance.payment_key == "" {
             sharedInstance.payment_key = String(arc4random()) + String(Date().timeIntervalSince1970)

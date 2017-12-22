@@ -10,13 +10,11 @@ import UIKit
 
 class MPXLoadingViewController: MercadoPagoUIViewController {
 
-    open override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        MercadoPagoCheckout.firstViewControllerPushed = false
+    override func viewDidLoad() {
+        view.backgroundColor = MercadoPagoCheckoutViewModel.decorationPreference.baseColor
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    func getInstance() ->  UIView {
+        return LoadingOverlay.shared.showOverlay(view, backgroundColor: MercadoPagoCheckoutViewModel.decorationPreference.baseColor)
     }
-
 }
