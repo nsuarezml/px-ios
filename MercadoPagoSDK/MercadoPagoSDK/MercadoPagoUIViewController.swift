@@ -198,12 +198,6 @@ open class MercadoPagoUIViewController: UIViewController, UIGestureRecognizerDel
         self.navigationController!.popViewController(animated: true)
     }
 
-    internal func showLoading() {
-        self.loadingInstance = LoadingOverlay.shared.showOverlay(self.view, backgroundColor: UIColor.primaryColor())
-        self.view.bringSubview(toFront: self.loadingInstance!)
-
-    }
-
     var fistResponder: UITextField?
 
     internal func hideKeyboard(_ view: UIView) -> Bool {
@@ -229,8 +223,8 @@ open class MercadoPagoUIViewController: UIViewController, UIGestureRecognizerDel
     }
 
     internal func hideLoading() {
-        LoadingOverlay.shared.hideOverlayView()
-        self.loadingInstance = nil
+        //LoadingOverlay.shared.hideOverlayView()
+        //self.loadingInstance = nil
     }
 
     open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -342,15 +336,6 @@ extension UINavigationBar {
         self.setValue(false, forKey: "hidesShadow")
     }
 
-}
-extension UINavigationController {
-    internal func showLoading() {
-        LoadingOverlay.shared.showOverlay(self.visibleViewController!.view, backgroundColor: UIColor.primaryColor())
-    }
-
-    internal func hideLoading() {
-        LoadingOverlay.shared.hideOverlayView()
-    }
 }
 
 extension UIImage {

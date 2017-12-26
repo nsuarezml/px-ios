@@ -227,37 +227,37 @@ open class MercadoPagoCheckout: NSObject {
     func presentLoading(from:UIView) {
         
         if currentLoadingView == nil {
-            currentLoadingView = self.createCurrentLoading()
+            currentLoadingView = self.createLoading()
         }
         
         UIView.animate(withDuration: 0.3, animations: {
             self.currentLoadingView?.view.alpha = 1
         }, completion: { (finish) in
-        
+            
         })
         
         from.addSubview(self.currentLoadingView!.view)
-    }
-    
-    func presentLoading(animated: Bool = false, completion: (() -> Swift.Void)? = nil) {
     }
 
     func dismissLoading(animated: Bool = false, completion: (() -> Swift.Void)? = nil) {
         UIView.animate(withDuration: 1.0, animations: {
             self.currentLoadingView?.view.alpha = 0
         }, completion: { (finish) in
-            
+            if finish {
+                self.currentLoadingView?.view.removeFromSuperview()
+            }
         })
     }
-
-    internal func createCurrentLoading() -> UIViewController? {
+    
+    internal func createLoading() -> UIViewController? {
         let vcLoading = MPXLoadingViewController()
         let loadingInstance = vcLoading.getInstance()
         
         vcLoading.view.backgroundColor = .white
         
         vcLoading.view.addSubview(loadingInstance)
-        loadingInstance.bringSubview(toFront: vcLoading.view)
+        
+        //loadingInstance.bringSubview(toFront: vcLoading.view)
 
         currentLoadingView = vcLoading
         

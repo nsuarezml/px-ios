@@ -23,18 +23,9 @@ open class LoadingOverlay {
     }
 
     open func showOverlay(_ view: UIView, backgroundColor: UIColor, indicatorColor: UIColor = UIColor.px_white()) -> UIView {
-
         loadingContainer = MPSDKLoadingView(loading: UIColor.primaryColor())!
-        
         view.addSubview(loadingContainer)
         view.bringSubview(toFront: loadingContainer)
-    
         return loadingContainer
-    }
-
-    open func hideOverlayView() {
-        if self.loadingContainer != nil {
-            self.loadingContainer.removeFromSuperview()
-        }
     }
 }

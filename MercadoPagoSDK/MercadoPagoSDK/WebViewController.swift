@@ -36,7 +36,7 @@ class WebViewController: MercadoPagoUIViewController, UIWebViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.showNavBar()
-        self.showLoading()
+        //self.showLoading()
     }
 
     override func getNavigationBarTitle() -> String {

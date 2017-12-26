@@ -104,7 +104,7 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.showLoading()
+        //self.showLoading()
 
         self.titleCellHeight = 44
 
@@ -132,7 +132,7 @@ open class ReviewScreenViewController: MercadoPagoUIScrollViewController, UITabl
         if self.shouldShowNavBar(self.checkoutTable) {
             self.showNavBar()
         }
-        self.hideLoading()
+       // self.hideLoading()
 
     }
 

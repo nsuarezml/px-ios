@@ -91,7 +91,9 @@ open class AddCouponViewController: MercadoPagoUIViewController, UITextFieldDele
         guard let couponCode = textBox.text else {
             return
         }
-        self.showLoading()
+        
+        //self.showLoading()
+        
         self.textBox.resignFirstResponder()
         self.viewModel.getCoupon(code: couponCode, success: { () in
             self.hideLoading()
