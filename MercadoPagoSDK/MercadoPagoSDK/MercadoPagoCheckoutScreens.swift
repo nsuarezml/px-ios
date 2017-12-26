@@ -30,7 +30,7 @@ extension MercadoPagoCheckout {
             strongSelf.executeNextStep()
         })
         
-        self.pushViewController(viewController : paymentMethodSelectionStep, animated: false)
+        self.pushViewController(viewController : paymentMethodSelectionStep, animated: !self.viewModel.rootVC)
     }
     
     func showCardForm() {
