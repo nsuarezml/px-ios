@@ -193,7 +193,8 @@ import UIKit
 
     }
 
-    open class func getOfflineReviewAndConfirmImage(_ paymentMethod: PaymentMethod? = nil) -> UIImage {
+    open class func getOfflineReviewAndConfirmImage(_ paymentMethod: PaymentMethod? = nil) -> UIImage? {
+        return nil
         guard let paymentMethod = paymentMethod else {
             return MercadoPago.getImage("MPSDK_review_iconoDineroEnEfectivo")!
         }
