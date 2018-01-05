@@ -14,6 +14,7 @@ open class CheckoutViewModel: NSObject {
     var preference: CheckoutPreference?
     var paymentData: PaymentData!
     var paymentOptionSelected: PaymentMethodOption
+    var paymentOptionsQuantity: Int?
 
     var discount: DiscountCoupon?
 
@@ -23,17 +24,17 @@ open class CheckoutViewModel: NSObject {
 
     public static var CUSTOMER_ID = ""
 
-    public init(checkoutPreference: CheckoutPreference, paymentData: PaymentData, paymentOptionSelected: PaymentMethodOption, discount: DiscountCoupon? = nil, reviewScreenPreference: ReviewScreenPreference = ReviewScreenPreference()) {
+    public init(checkoutPreference: CheckoutPreference, paymentData: PaymentData, paymentOptionSelected: PaymentMethodOption, discount: DiscountCoupon? = nil, reviewScreenPreference: ReviewScreenPreference = ReviewScreenPreference(), paymentOptionsQty: Int? = nil) {
         CheckoutViewModel.CUSTOMER_ID = ""
         self.preference = checkoutPreference
         self.paymentData = paymentData
         self.discount = discount
         self.paymentOptionSelected = paymentOptionSelected
         self.reviewScreenPreference = reviewScreenPreference
+        self.paymentOptionsQuantity = paymentOptionsQty
         super.init()
         let screenWidth = UIScreen.main.bounds.width
         self.summaryComponent = SummaryComponent(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 0), summary: self.getValidSummary(amount: checkoutPreference.getAmount()), paymentData: self.paymentData, totalAmount:(self.preference?.getAmount())!)
-
     }
 
     func isPaymentMethodSelectedCard() -> Bool {

@@ -28,19 +28,22 @@ public class PXPaymentMethodReviewComponent: NSObject, PXComponentizable {
 }
 
 class PXPaymentMethodReviewProps: NSObject {
-    var paymentMethodIcon: UIImage?
-    var amountTitle: String
-    var amountDetail: String?
-    var paymentMethodDescription: String?
-    var paymentMethodDetail: String?
-    var disclaimer: String?
     
-    init(paymentMethodIcon: UIImage?, amountTitle: String, amountDetail: String?, paymentMethodDescription: String?, paymentMethodDetail: String?, disclaimer: String?) {
+    var paymentMethodIcon: UIImage?
+    var title: String?
+    var subTitle: String?
+    var acreditationTime: String?
+    var paymentOptionsQuantity: Int?
+    var isOnlinePayment: Bool = true
+    
+    init(paymentMethodIcon: UIImage?, title: String?, subTitle: String?, acreditationTime: String?, isOnlinePayment:Bool?, paymentOptionsQty: Int?) {
         self.paymentMethodIcon = paymentMethodIcon
-        self.amountTitle = amountTitle
-        self.amountDetail = amountDetail
-        self.paymentMethodDescription = paymentMethodDescription
-        self.paymentMethodDetail = paymentMethodDetail
-        self.disclaimer = disclaimer
+        self.title = title
+        self.subTitle = subTitle
+        self.acreditationTime = acreditationTime
+        self.paymentOptionsQuantity = paymentOptionsQty
+        if let isOnline = isOnlinePayment {
+            self.isOnlinePayment = isOnline
+        }
     }
 }

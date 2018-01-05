@@ -10,9 +10,8 @@ import UIKit
 
 class PXPaymentMethodReviewView: PXComponentView {
     var paymentMethodIcon: UIView?
-    var amountTitle: UILabel?
-    var amountDetail: UILabel?
-    var paymentMethodDescription: UILabel?
-    var paymentMethodDetail: UILabel?
-    var disclaimerLabel: UILabel?
+    var title: UILabel?
+    var subTitle: UILabel?
+    var acreditationTime: UILabel?
+    var changePaymentButton:UIButton?
 }

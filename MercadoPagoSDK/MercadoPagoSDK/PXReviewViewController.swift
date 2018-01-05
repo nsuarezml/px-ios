@@ -18,6 +18,9 @@ class PXReviewViewController: PXComponentContainerViewController {
     //MARK: Definitions
     fileprivate var viewModel: CheckoutViewModel!
     
+    //MARK: ComponentViews
+    var paymentMethodView:UIView!
+    
     //MARK: Lifecycle - Publics
     init(viewModel: CheckoutViewModel) {
         super.init()
@@ -56,5 +59,24 @@ extension PXReviewViewController {
         for constraint in contentView.constraints {
             constraint.isActive = false
         }
+        
+        // Renderize component views.
+        renderPaymentMethodView()
+    }
+    
+    fileprivate func renderPaymentMethodView() {
+        paymentMethodView = buildPaymentMethodComponent().render()
+        contentView.addSubview(paymentMethodView)
+        PXLayout.pinTop(view: paymentMethodView, to: contentView).isActive = true
+        PXLayout.centerHorizontally(view: paymentMethodView).isActive = true
+    }
+}
+
+// MARK: Comonents builders.
+extension PXReviewViewController {
+    
+    fileprivate func buildPaymentMethodComponent() -> PXPaymentMethodReviewComponent {
+        let paymentMethodProps = PXPaymentMethodReviewProps(paymentMethodIcon: viewModel.paymentData.getPaymentMethod()?.getImage(), title: self.viewModel.paymentData.getPaymentMethod()?.name, subTitle:self.viewModel.paymentOptionSelected.getDescription(), acreditationTime:"TODO_ACREDITATION_TIME", isOnlinePayment:self.viewModel.paymentData.getPaymentMethod()?.isOnlinePaymentMethod, paymentOptionsQty: self.viewModel.paymentOptionsQuantity)
+        return PXPaymentMethodReviewComponent(props: paymentMethodProps)
     }
 }
