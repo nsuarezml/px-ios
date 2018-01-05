@@ -252,6 +252,7 @@
 		232FA92A1F06D2E2002F7E39 /* ApiException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232FA9291F06D2E2002F7E39 /* ApiException.swift */; };
 		232FA92C1F06D30F002F7E39 /* Cause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232FA92B1F06D30F002F7E39 /* Cause.swift */; };
 		236251CC1EF2D518005589AB /* PaymentResultTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236251CB1EF2D518005589AB /* PaymentResultTest.swift */; };
+		23695A431FFFA1CF00A48816 /* PXReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23695A421FFFA1CF00A48816 /* PXReviewViewController.swift */; };
 		2382DF221FFEC90F00EFCD1B /* PXPaymentMethodReviewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382DF1F1FFEC90F00EFCD1B /* PXPaymentMethodReviewComponent.swift */; };
 		2382DF231FFEC90F00EFCD1B /* PXPaymentMethodReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382DF201FFEC90F00EFCD1B /* PXPaymentMethodReviewView.swift */; };
 		2382DF241FFEC90F00EFCD1B /* PXPaymentMethodReviewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382DF211FFEC90F00EFCD1B /* PXPaymentMethodReviewRenderer.swift */; };
@@ -898,6 +899,7 @@
 		232FA9291F06D2E2002F7E39 /* ApiException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiException.swift; sourceTree = "<group>"; };
 		232FA92B1F06D30F002F7E39 /* Cause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cause.swift; sourceTree = "<group>"; };
 		236251CB1EF2D518005589AB /* PaymentResultTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentResultTest.swift; sourceTree = "<group>"; };
+		23695A421FFFA1CF00A48816 /* PXReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PXReviewViewController.swift; sourceTree = "<group>"; };
 		2382DF1F1FFEC90F00EFCD1B /* PXPaymentMethodReviewComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PXPaymentMethodReviewComponent.swift; sourceTree = "<group>"; };
 		2382DF201FFEC90F00EFCD1B /* PXPaymentMethodReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PXPaymentMethodReviewView.swift; sourceTree = "<group>"; };
 		2382DF211FFEC90F00EFCD1B /* PXPaymentMethodReviewRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PXPaymentMethodReviewRenderer.swift; sourceTree = "<group>"; };
@@ -1736,6 +1738,14 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
+		23695A411FFFA15F00A48816 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				23695A421FFFA1CF00A48816 /* PXReviewViewController.swift */,
+			);
+			name = Screen;
+			sourceTree = "<group>";
+		};
 		2382DF1D1FFEC8D800EFCD1B /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -1747,6 +1757,7 @@
 		2382DF1E1FFEC8E100EFCD1B /* Review */ = {
 			isa = PBXGroup;
 			children = (
+				23695A411FFFA15F00A48816 /* Screen */,
 				2382DF251FFEC91400EFCD1B /* PaymentMethod */,
 			);
 			name = Review;
@@ -2882,6 +2893,7 @@
 			files = (
 				151ECC6C1FF55CDB003F5E4B /* PXCheckoutStore.swift in Sources */,
 				15DA6A1D1FC73FF40038D827 /* CardsAdminViewModel.swift in Sources */,
+				23695A431FFFA1CF00A48816 /* PXReviewViewController.swift in Sources */,
 				155954EE1F87CD200086854B /* BoletoComponent.swift in Sources */,
 				FCD0890B1F7E90A3002F3F22 /* InstructionsViewModel.swift in Sources */,
 				FCD089081F7E8F45002F3F22 /* SecondaryInfoTableViewCell.xib in Sources */,
