@@ -252,6 +252,9 @@
 		232FA92A1F06D2E2002F7E39 /* ApiException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232FA9291F06D2E2002F7E39 /* ApiException.swift */; };
 		232FA92C1F06D30F002F7E39 /* Cause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232FA92B1F06D30F002F7E39 /* Cause.swift */; };
 		236251CC1EF2D518005589AB /* PaymentResultTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236251CB1EF2D518005589AB /* PaymentResultTest.swift */; };
+		2382DF221FFEC90F00EFCD1B /* PXPaymentMethodReviewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382DF1F1FFEC90F00EFCD1B /* PXPaymentMethodReviewComponent.swift */; };
+		2382DF231FFEC90F00EFCD1B /* PXPaymentMethodReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382DF201FFEC90F00EFCD1B /* PXPaymentMethodReviewView.swift */; };
+		2382DF241FFEC90F00EFCD1B /* PXPaymentMethodReviewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382DF211FFEC90F00EFCD1B /* PXPaymentMethodReviewRenderer.swift */; };
 		239A9C161F0FFA7100C338C7 /* Cause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232FA92B1F06D30F002F7E39 /* Cause.swift */; };
 		23BC737C1F0D53F700B19C1A /* ApiException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232FA9291F06D2E2002F7E39 /* ApiException.swift */; };
 		23BC737F1F0D71D500B19C1A /* ApiExceptionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC737E1F0D71D500B19C1A /* ApiExceptionTest.swift */; };
@@ -895,6 +898,9 @@
 		232FA9291F06D2E2002F7E39 /* ApiException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiException.swift; sourceTree = "<group>"; };
 		232FA92B1F06D30F002F7E39 /* Cause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cause.swift; sourceTree = "<group>"; };
 		236251CB1EF2D518005589AB /* PaymentResultTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentResultTest.swift; sourceTree = "<group>"; };
+		2382DF1F1FFEC90F00EFCD1B /* PXPaymentMethodReviewComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PXPaymentMethodReviewComponent.swift; sourceTree = "<group>"; };
+		2382DF201FFEC90F00EFCD1B /* PXPaymentMethodReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PXPaymentMethodReviewView.swift; sourceTree = "<group>"; };
+		2382DF211FFEC90F00EFCD1B /* PXPaymentMethodReviewRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PXPaymentMethodReviewRenderer.swift; sourceTree = "<group>"; };
 		23BC737E1F0D71D500B19C1A /* ApiExceptionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiExceptionTest.swift; sourceTree = "<group>"; };
 		23BC73841F0E84FB00B19C1A /* CauseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CauseTest.swift; sourceTree = "<group>"; };
 		23ECADC41EF1C7CC003E4539 /* ApiUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUtil.swift; sourceTree = "<group>"; };
@@ -1395,6 +1401,7 @@
 		0F9883C01AD2AD3200F750F0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2382DF1D1FFEC8D800EFCD1B /* Components */,
 				1563DCA41E9BFDEF00A7E5C8 /* Cards Admin */,
 				4BA78EB51EC0C5B600CA5D6E /* SecurityCode */,
 				4BAA55E31DAFFBAC00501061 /* AdditionalStep */,
@@ -1727,6 +1734,32 @@
 				767D8DCE1E5554460004FCA9 /* MPXLoadingViewController.swift */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		2382DF1D1FFEC8D800EFCD1B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2382DF1E1FFEC8E100EFCD1B /* Review */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		2382DF1E1FFEC8E100EFCD1B /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				2382DF251FFEC91400EFCD1B /* PaymentMethod */,
+			);
+			name = Review;
+			sourceTree = "<group>";
+		};
+		2382DF251FFEC91400EFCD1B /* PaymentMethod */ = {
+			isa = PBXGroup;
+			children = (
+				2382DF1F1FFEC90F00EFCD1B /* PXPaymentMethodReviewComponent.swift */,
+				2382DF211FFEC90F00EFCD1B /* PXPaymentMethodReviewRenderer.swift */,
+				2382DF201FFEC90F00EFCD1B /* PXPaymentMethodReviewView.swift */,
+			);
+			name = PaymentMethod;
 			sourceTree = "<group>";
 		};
 		4B08CDA91F224C7F00FE800A /* ESC */ = {
@@ -3060,6 +3093,7 @@
 				FC45F1231E8D50F2008D4831 /* UnlockCardTableViewCell.swift in Sources */,
 				81ACC8141F9A88EF00206F7B /* PXLayout.swift in Sources */,
 				4BD84D721F1E48FB002219D4 /* MercadoPagoCheckoutServices.swift in Sources */,
+				2382DF231FFEC90F00EFCD1B /* PXPaymentMethodReviewView.swift in Sources */,
 				0F98836B1AD2AB6000F750F0 /* Customer.swift in Sources */,
 				151ECC6A1FF55C43003F5E4B /* PXComponentizable.swift in Sources */,
 				0F9883AF1AD2ACFE00F750F0 /* CurrenciesUtil.swift in Sources */,
@@ -3080,6 +3114,7 @@
 				4BAE1D481DCBE8FF0000ED5C /* HeaderCongratsTableViewCell.swift in Sources */,
 				1575E7141FBCD34700E0756D /* PXHeaderViewModelHelper.swift in Sources */,
 				76FD24891C5BFEA1008C5DC0 /* TextFieldsEffects.swift in Sources */,
+				2382DF241FFEC90F00EFCD1B /* PXPaymentMethodReviewRenderer.swift in Sources */,
 				76C834411D510CD4003C4717 /* AmountInfo.swift in Sources */,
 				4B88E2571E48CC5C00D52527 /* MPCustomCell.swift in Sources */,
 				4B5C1A681F82AEB6008E56B9 /* UIView+Additions.swift in Sources */,
@@ -3092,6 +3127,7 @@
 				15904D551E09748C00B3B9FD /* MLPXSpinner.m in Sources */,
 				FC3FC8501FBCCAA700CF29E1 /* PXInstructionsContentComponent.swift in Sources */,
 				FC3FC8841FBE13A300CF29E1 /* PXInstructionsAccreditationCommentComponent.swift in Sources */,
+				2382DF221FFEC90F00EFCD1B /* PXPaymentMethodReviewComponent.swift in Sources */,
 				766012EF1CF284A600897F9D /* WebViewController.swift in Sources */,
 				4B53C5EB1E4A2D0200D6190A /* MPCellContentProvider.swift in Sources */,
 				FC3FC8731FBE122000CF29E1 /* PXInstructionsTertiaryInfoComponent.swift in Sources */,
