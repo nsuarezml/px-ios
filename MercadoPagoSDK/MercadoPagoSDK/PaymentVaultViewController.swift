@@ -100,8 +100,7 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
         var upperFrame = self.collectionSearch.bounds
         upperFrame.origin.y = -upperFrame.size.height + 10
         upperFrame.size.width = UIScreen.main.bounds.width
-        let upperView = UIView(frame: upperFrame)
-        upperView.backgroundColor = UIColor.primaryColor()
+        let upperView = PXUpperView(frame: upperFrame)
         collectionSearch.addSubview(upperView)
 
         if self.title == nil || self.title!.isEmpty {
@@ -124,8 +123,7 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
             self.callbackCancel = callbackCancel
         }
 
-       self.collectionSearch.backgroundColor = UIColor.px_white()
-
+        self.collectionSearch.backgroundColor = UIColor.pxWhite
     }
 
     func updateCoupon(_ notification: Notification) {
@@ -437,7 +435,6 @@ open class PaymentVaultViewController: MercadoPagoUIScrollViewController, UIColl
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
         self.didScrollInTable(scrollView)
     }
 

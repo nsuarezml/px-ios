@@ -22,6 +22,7 @@ extension ThemeManager {
     
     func initialize() {
         customizeButtons(theme: currentTheme)
+        navigationBar(theme: currentTheme)
     }
     
     func setDefaultColor(color: UIColor) {
@@ -39,7 +40,26 @@ extension ThemeManager {
 //MARK: - UI Theme customization
 extension ThemeManager {
     fileprivate func customizeButtons(theme: PXTheme) {
-        UIButton.appearance().backgroundColor = theme.primaryButton().backgroundColor
-        UIButton.appearance().tintColor = theme.primaryButton().tintColor
+        
+    }
+    
+    fileprivate func navigationBar(theme: PXTheme) {
+        
+        
+        TitleCellScroll.appearance().backgroundColor = theme.navigationBar().backgroundColor
+        TitleCellTableScroll.appearance().backgroundColor = theme.navigationBar().backgroundColor
+        PXUpperView.appearance().backgroundColor = theme.navigationBar().backgroundColor
+        PXTitleLabel.appearance().textColor = theme.navigationBar().tintColor
+        UINavigationBar.appearance().tintColor = theme.navigationBar().tintColor
+        UINavigationBar.appearance().backgroundColor = theme.navigationBar().backgroundColor
+        PXBarButton.appearance().image = MercadoPago.getImage("back")
+        PXBarButton.appearance().style = .plain
+        PXBarButton.appearance().tintColor = theme.navigationBar().tintColor
+        
+        
+        // Cross backgrounds (Collections, Tables, Scrolls)
+        UICollectionView.appearance(whenContainedInInstancesOf: [MercadoPagoUIViewController.self]).backgroundColor = .white
+        UITableView.appearance(whenContainedInInstancesOf: [MercadoPagoUIViewController.self]).backgroundColor = .white
+        UIScrollView.appearance(whenContainedInInstancesOf: [MercadoPagoUIViewController.self]).backgroundColor = .white
     }
 }
